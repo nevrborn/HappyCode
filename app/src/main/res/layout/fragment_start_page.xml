@@ -11,6 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@android:color/black"
     tools:context="com.cloud9.android.happycode.StartPageActivity">
 
     <LinearLayout
@@ -25,6 +26,8 @@
             android:id="@+id/textview_title_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:text="@string/title_subtitle"
             />
 
@@ -32,10 +35,11 @@
             android:id="@+id/textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorHappyCode"
             android:text="@string/title_main"
-            tools:text="@string/title_main"
-            android:textStyle="normal|bold"
-            tools:textSize="30sp"/>
+            android:textStyle="bold"
+            android:textSize="30sp"
+            />
 
     </LinearLayout>
 
@@ -46,7 +50,9 @@
         android:layout_weight="0"
         android:text="@string/button_start"
         android:background="@drawable/button_start"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:textColor="@android:color/black"
+        />
 
     <TextView
         android:id="@+id/textview_start_info"
@@ -54,6 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
         android:text="@string/start_page_info"
         />
 
