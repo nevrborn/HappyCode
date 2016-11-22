@@ -13,8 +13,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -30,7 +30,8 @@ public class QuestionFragment extends Fragment {
     private ImageView mImage;
     private SeekBar mSeekBar;
     private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();
-    private ArrayList<Integer> mResultArray = new ArrayList<Integer>();
+    private ArrayList<Integer> mTempResultArray = new ArrayList<Integer>();
+    private ArrayList<Result> mResults = new ArrayList<Result>();
 
     // Adding all the questions and descriptions to an array - mQuestions
     private Question[] mQuestions = new Question[]{
@@ -90,9 +91,9 @@ public class QuestionFragment extends Fragment {
                 } else {
                     findStrengths();
 
-                    String title1 = mQuestions[mResultArray.get(0)].getTitle();
-                    String title2 = mQuestions[mResultArray.get(1)].getTitle();
-                    String title3 = mQuestions[mResultArray.get(2)].getTitle();
+                    String title1 = mQuestions[mResults.get(mResults.size()).getNo1Strength()].getTitle();
+                    String title2 = mQuestions[mResults.get(mResults.size()).getNo2Strength()].getTitle();
+                    String title3 = mQuestions[mResults.get(mResults.size()).getNo3Strength()].getTitle();
 
                     Log.d(TAG, "Your strengths are: " + title1 + ", " + title2 + " and " + title3);
 
@@ -158,11 +159,12 @@ public class QuestionFragment extends Fragment {
         while (j < 3) {
             int max = Collections.max(mStrenghtArray);
             int index = mStrenghtArray.indexOf(max);
-            mResultArray.add(index);
+            mTempResultArray.add(index);
             mStrenghtArray.set(index, 0);
             j += 1;
         }
 
+        mResults.add(new Result(new Date(), "Jarle", mTempResultArray.get(0), mTempResultArray.get(1), mTempResultArray.get(2)));
     }
 
 }
