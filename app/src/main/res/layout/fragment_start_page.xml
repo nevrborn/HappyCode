@@ -13,21 +13,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cloud9.android.happycode.StartPageActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_second"
-        />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_subtitle"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_main"
+            tools:text="@string/title_main"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_weight="0"
+        android:text="@string/button_start"
+        android:background="@drawable/button_start"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_main"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="@string/start_page_info"
         />
 
-    <Bu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        />
 </LinearLayout>
