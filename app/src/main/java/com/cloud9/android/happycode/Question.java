@@ -8,6 +8,7 @@ public class Question {
 
     private int mQuestionID;
     private int mDescriptionID;
+    private int mPercentage;
 
     // Contstructor to make Questions
     public Question(int questionId, int descriptionId) {
@@ -23,4 +24,11 @@ public class Question {
         return mDescriptionID;
     }
 
+    public int getPercentage() {
+        return mPercentage;
+    }
+
+    public void setPercentage(int percentage) {
+        mPercentage = percentage;
+    }
 }
