@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:id="@+id/imageview_strength_image"
+        android:layout_width="match_parent"
+        android:layout_height="238dp"
+        android:src="@mipmap/strength_leader"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="false"
+        />
+
+    <TextView
+        android:id="@+id/textview_question_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In een grope neem ik vaak de belissingen \n want ik weet waar ik naar toe wil."
+        android:padding="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:text="Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:foreground="@color/colorAccent"/>
+
+</LinearLayout>
