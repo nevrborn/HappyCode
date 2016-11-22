@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:weightSum="1"
     android:background="@android:color/black">
 
@@ -17,24 +18,29 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:clickable="false"
+        android:contentDescription="strength_image"
         />
 
     <TextView
         android:id="@+id/textview_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="In een grope neem ik vaak de belissingen \n want ik weet waar ik naar toe wil."
+        android:text="Default text"
         android:padding="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:textAlignment="center"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
 
     <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:foreground="@color/colorAccent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Buttons"
+        android:text="NEXT"
+        android:textAlignment="center"
+
+        />
 
 </LinearLayout>
