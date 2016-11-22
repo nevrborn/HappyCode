@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Buttons">
+        <item name="android:background">@color/colorHappyCode</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
 </resources>
