@@ -12,7 +12,7 @@ public class StartPageActivity extends SingleFragmentActivity {
     /*
     * create Intent to start this activity
     */
-    public Intent newIntent(Context context) {
+    public static Intent newIntent(Context context) {
         return new Intent(context, StartPageActivity.class);
     }
 

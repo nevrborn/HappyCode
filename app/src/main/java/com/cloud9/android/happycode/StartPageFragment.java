@@ -1,5 +1,6 @@
 package com.cloud9.android.happycode;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,7 +41,8 @@ public class StartPageFragment extends Fragment {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add code here to start questions
+                Intent i = QuestionActivity.newIntent(getActivity());
+                startActivity(i);
             }
         });
 
