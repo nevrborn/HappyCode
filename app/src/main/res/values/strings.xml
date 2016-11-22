@@ -5,48 +5,88 @@
     <string name="button_start">START\nTEST</string>
     <string name="start_page_info">Push the \'start\' button to start the test. At the end of the test we will tell you what your personal code to be happy in life is.</string>
     <string name="button_next">NEXT</string>
-    
-
-    // QUESTIONS AND DESCRIPTIONS
-    <string name="question_leader">In een grope neem ik vaak de belissingen, want ik weet waar ik naar toe wil</string>
-    <string name="question_leader_description">Jij bent zelfverzekerd. Je kunt goed de leiding nemen. Zo geef je anderen duidelijkheid.</string>
-    <string name="question_storyteller">Ik geniet ervan om te vertellen</string>
-    <string name="question_storyteller_description">Jij bent gevat.  Je kunt pakkende verhalen vertellen.  Zo gaan anderen in je ideeën geloven.</string>
-    <string name="question_challenger">Ik wil heel graag winnen</string>
-    <string name="question_challenger_description">Jij bent fanatiek.  Je kunt helemaal voor de winst gaan.  Zo daag je anderen uit om zichzelf te overtreffen.</string>
-    <string name="question_networker">Ik leg makkelijk contact, het is leuk om nieuwe mensen te leren kennen</string>
-    <string name="question_networker_description">Jij bent charmant.  Je kunt mensen voor je winnen.  Zo zorg je dat anderen graag iets voor je doen.</string>
-    <string name="question_moodmaker">Ik wil niet te lang nadenken, maar ideeën meteen uitvoeren</string>
-    <string name="question_moodmaker_description">Jij bent ondernemend. Je kunt er helemaal voor gaan.  Zo breng je anderen in beweging. </string>
-    <string name="question_organiser">Ik kan goed organiseren en zie al voor me hoe het kan worden</string>
-    <string name="question_organiser_description">Jij bent in control. Je kunt alles overzien en coördineren.  Zo zorg je dat anderen weten wat hun rol is.</string>
-    <string name="question_guardian">Ik denk goed na over voor- en nadelen voordat ik beslis</string>
-    <string name="question_guardian_description">Jij bent verstandig.  Je kunt risico’s en kansen inschatten.  Zo help je anderen om goede keuzes te maken.</string>
-    <string name="question_planner">Als ik iets moet doen, dan bereid ik het goed voor</string>
-    <string name="question_planner_description">Jij bent geordend.  Je kunt voorzien welke dingen wanneer moeten gebeuren.  Zo geef je anderen houvast.</string>
-    <string name="question_hardworker">Ik vind het heerlijk om bezig te zijn, van niets doen word ik onrustig</string>
-    <string name="question_hardworker_description">Jij bent energiek.  Je kunt veel aan en geeft niet op.  Zo geef je anderen vertrouwen dat het gaat lukken.</string>
-    <string name="question_administrator">Ik doe de dingen die nodig zijn, mensen kunnen op me rekenen</string>
-    <string name="question_administrator_description">Jij bent verantwoordelijk.  Je kunt zien wat nodig is en zorgt dat het gebeurt.  Zo weten anderen dat het nooit mis kan gaan.</string>
-    <string name="question_motivator">Ik zie waar mensen goed in zijn en vind het leuk om ze aan te moedigen</string>
-    <string name="question_motivator_description">Jij bent betrokken.  Je kunt zorgen dat mensen het beste uit zichzelf halen.  Zo krijgen ze zelfvertrouwen.</string>
-    <string name="question_connector">Ik voel mij verbonden met anderen en geloof dat alles met elkaar te maken heeft</string>
-    <string name="question_connector_description">Jij bent open. Je kunt zien wat mensen met elkaar gemeen hebben.  Zo help je anderen om overeenkomsten te zien.</string>
-    <string name="question_unifier">Ik vind het belangrijk dat iedereen mee kan doen</string>
-    <string name="question_unifier_description">Jij bent harmonieus.  Je kunt mensen accepteren zoals ze zijn.  Zo voelen ze zich betrokken bij de groep.</string>
-    <string name="question_inspirer">Ik ben enthousiast en dat straal ik vaak uit</string>
-    <string name="question_inspirer_description">Jij bent enthousiast.  Je kunt de positieve kanten zien.  Zo krijgen anderen er zin in.</string>
-    <string name="question_feeler">Ik voel meestal precies wat anderen voelen.</string>
-    <string name="question_feeler_description">Jij bent vriendelijk.  Je kunt je goed inleven in mensen. Zo voelen anderen zich begrepen.</string>
-    <string name="question_strategist">Ik overzie wat gevolgen van iets zijn en hoe je daar rekening mee kan houden</string>
-    <string name="question_strategist_description">Jij bent scherp. Je kunt bedenken hoe een doel het beste bereikt wordt.  Zo help je anderen aan een slimme aanpak.</string>
-    <string name="question_visionary">Ik vind de toekomst fascinerend en stel me voor hoe het zal zijn</string>
-    <string name="question_visionary_description">Jij bent bevlogen. Jij kunt je voorstellen hoe de toekomst er uit ziet. Zo geef je anderen iets om naar toe te werken.</string>
-    <string name="question_pathfinder">Ik leer graag nieuwe dingen en wil er dan ook veel over weten</string>
-    <string name="question_pathfinder_description">Jij bent nieuwsgierig.  Je kunt oneindig veel informatie verzamelen.  Zo help je anderen aan nuttige kennis.</string>
-    <string name="question_researcher">Ik wil precies begrijpen hoe dingen zitten</string>
-    <string name="question_researcher_description">Jij bent leergierig. Je kunt je ergens in verdiepen en het dan begrijpen.  Zo geef je anderen inzicht.</string>
-    <string name="question_thinker">Ik vind het geweldig om nieuwe ideeën te bedenken</string>
-    <string name="question_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
     <string name="textview_result_rename">RESULT</string>
+
+
+    // STRENGTHS AND DESCRIPTIONS
+    <string name="strength_leader_title">Leider</string>
+    <string name="strength_leader">In een grope neem ik vaak de belissingen, want ik weet waar ik naar toe wil</string>
+    <string name="strength_leader_description">Jij bent zelfverzekerd. Je kunt goed de leiding nemen. Zo geef je anderen duidelijkheid.</string>
+
+    <string name="strength_storyteller_title">Verteller</string>
+    <string name="strength_storyteller">Ik geniet ervan om te vertellen</string>
+    <string name="strength_storyteller_description">Jij bent gevat.  Je kunt pakkende verhalen vertellen.  Zo gaan anderen in je ideeën geloven.</string>
+
+    <string name="strength_challenger_title">Uitdager</string>
+    <string name="strength_challenger">Ik wil heel graag winnen</string>
+    <string name="strength_challenger_description">Jij bent fanatiek.  Je kunt helemaal voor de winst gaan.  Zo daag je anderen uit om zichzelf te overtreffen.</string>
+
+    <string name="strength_networker_title">Netwerker</string>
+    <string name="strength_networker">Ik leg makkelijk contact, het is leuk om nieuwe mensen te leren kennen</string>
+    <string name="strength_networker_description">Jij bent charmant.  Je kunt mensen voor je winnen.  Zo zorg je dat anderen graag iets voor je doen.</string>
+
+    <string name="strength_moodmaker_title">Gangmaker</string>
+    <string name="strength_moodmaker">Ik wil niet te lang nadenken, maar ideeën meteen uitvoeren</string>
+    <string name="strength_moodmaker_description">Jij bent ondernemend. Je kunt er helemaal voor gaan.  Zo breng je anderen in beweging. </string>
+
+    <string name="strength_organiser_title">Organisator</string>
+    <string name="strength_organiser">Ik kan goed organiseren en zie al voor me hoe het kan worden</string>
+    <string name="strength_organiser_description">Jij bent in control. Je kunt alles overzien en coördineren.  Zo zorg je dat anderen weten wat hun rol is.</string>
+
+    <string name="strength_guardian_title">Bewaker</string>
+    <string name="strength_guardian">Ik denk goed na over voor- en nadelen voordat ik beslis</string>
+    <string name="strength_guardian_description">Jij bent verstandig.  Je kunt risico’s en kansen inschatten.  Zo help je anderen om goede keuzes te maken.</string>
+
+    <string name="strength_planner_title">Planner</string>
+    <string name="strength_planner">Als ik iets moet doen, dan bereid ik het goed voor</string>
+    <string name="strength_planner_description">Jij bent geordend.  Je kunt voorzien welke dingen wanneer moeten gebeuren.  Zo geef je anderen houvast.</string>
+
+    <string name="strength_hardworker_title">Aanpakker</string>
+    <string name="strength_hardworker">Ik vind het heerlijk om bezig te zijn, van niets doen word ik onrustig</string>
+    <string name="strength_hardworker_description">Jij bent energiek.  Je kunt veel aan en geeft niet op.  Zo geef je anderen vertrouwen dat het gaat lukken.</string>
+
+    <string name="strength_administrator_title">Beheerder</string>
+    <string name="strength_administrator">Ik doe de dingen die nodig zijn, mensen kunnen op me rekenen</string>
+    <string name="strength_administrator_description">Jij bent verantwoordelijk.  Je kunt zien wat nodig is en zorgt dat het gebeurt.  Zo weten anderen dat het nooit mis kan gaan.</string>
+
+    <string name="strength_motivator_title">Motivator</string>
+    <string name="strength_motivator">Ik zie waar mensen goed in zijn en vind het leuk om ze aan te moedigen</string>
+    <string name="strength_motivator_description">Jij bent betrokken.  Je kunt zorgen dat mensen het beste uit zichzelf halen.  Zo krijgen ze zelfvertrouwen.</string>
+
+    <string name="strength_connector_title">Verbinder</string>
+    <string name="strength_connector">Ik voel mij verbonden met anderen en geloof dat alles met elkaar te maken heeft</string>
+    <string name="strength_connector_description">Jij bent open. Je kunt zien wat mensen met elkaar gemeen hebben.  Zo help je anderen om overeenkomsten te zien.</string>
+
+    <string name="strength_unifier_title">Vereniger</string>
+    <string name="strength_unifier">Ik vind het belangrijk dat iedereen mee kan doen</string>
+    <string name="strength_unifier_description">Jij bent harmonieus.  Je kunt mensen accepteren zoals ze zijn.  Zo voelen ze zich betrokken bij de groep.</string>
+
+    <string name="strength_inspirer_title">Inspirator</string>
+    <string name="strength_inspirer">Ik ben enthousiast en dat straal ik vaak uit</string>
+    <string name="strength_inspirer_description">Jij bent enthousiast.  Je kunt de positieve kanten zien.  Zo krijgen anderen er zin in.</string>
+
+    <string name="strength_feeler_title">Aanvoeler</string>
+    <string name="strength_feeler">Ik voel meestal precies wat anderen voelen.</string>
+    <string name="strength_feeler_description">Jij bent vriendelijk.  Je kunt je goed inleven in mensen. Zo voelen anderen zich begrepen.</string>
+
+    <string name="strength_strategist_title">Strateeg</string>
+    <string name="strength_strategist">Ik overzie wat gevolgen van iets zijn en hoe je daar rekening mee kan houden</string>
+    <string name="strength_strategist_description">Jij bent scherp. Je kunt bedenken hoe een doel het beste bereikt wordt.  Zo help je anderen aan een slimme aanpak.</string>
+
+    <string name="strength_visionary_title">Visionair</string>
+    <string name="strength_visionary">Ik vind de toekomst fascinerend en stel me voor hoe het zal zijn</string>
+    <string name="strength_visionary_description">Jij bent bevlogen. Jij kunt je voorstellen hoe de toekomst er uit ziet. Zo geef je anderen iets om naar toe te werken.</string>
+
+    <string name="strength_pathfinder_title">Verkenner</string>
+    <string name="strength_pathfinder">Ik leer graag nieuwe dingen en wil er dan ook veel over weten</string>
+    <string name="strength_pathfinder_description">Jij bent nieuwsgierig.  Je kunt oneindig veel informatie verzamelen.  Zo help je anderen aan nuttige kennis.</string>
+
+    <string name="strength_researcher_title">Onderzoeker</string>
+    <string name="strength_researcher">Ik wil precies begrijpen hoe dingen zitten</string>
+    <string name="strength_researcher_description">Jij bent leergierig. Je kunt je ergens in verdiepen en het dan begrijpen.  Zo geef je anderen inzicht.</string>
+
+    <string name="strength_thinker_title">Bedenker</string>
+    <string name="strength_thinker">Ik vind het geweldig om nieuwe ideeën te bedenken</string>
+    <string name="strength_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+
 </resources>

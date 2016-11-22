@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorHappyCode"
         android:textAlignment="center"
-        />
+        android:textSize="18sp"/>
 
     <Button
         android:id="@+id/button_question_next"

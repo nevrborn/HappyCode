@@ -1,6 +1,7 @@
 package com.cloud9.android.happycode;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -9,17 +10,26 @@ import java.util.Date;
 public class Result {
 
     private Date mDate;
+    private String mID;
     private String mName;
     private int mNo1Strength;
     private int mNo2Strength;
     private int mNo3Strength;
 
     public Result(Date date, String name, int no1Strength, int no2Strength, int no3Strength) {
+
+        // UUID to be used when we hook up to Firebase
+        mID = UUID.randomUUID().toString();
+
         mDate = date;
         mName = name;
         mNo1Strength = no1Strength;
         mNo2Strength = no2Strength;
         mNo3Strength = no3Strength;
+    }
+
+    public String getID() {
+        return mID;
     }
 
     public int getNo1Strength() {

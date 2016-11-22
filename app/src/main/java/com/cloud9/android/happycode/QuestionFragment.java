@@ -25,39 +25,39 @@ public class QuestionFragment extends Fragment {
     private static final String TAG = "QuestionFragment";
 
     private Button mNextButton;
-    private TextView mQuestionText;
+    private TextView mStrengthText;
     private TextView mPercentageText;
     private ImageView mImage;
     private SeekBar mSeekBar;
-    private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();
-    private ArrayList<Integer> mTempResultArray = new ArrayList<Integer>();
-    private ArrayList<Result> mResults = new ArrayList<Result>();
+    private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
+    private ArrayList<Integer> mTempResultArray = new ArrayList<Integer>(); // Temporary array to hold the 3 strongest strengths.. Used to make a new Result
+    private ArrayList<Result> mResults = new ArrayList<Result>();           // Array of all Results.
 
-    // Adding all the questions and descriptions to an array - mQuestions
-    private Question[] mQuestions = new Question[]{
-            new Question("Leader", R.string.question_leader, R.string.question_leader_description),
-            new Question("Storyteller", R.string.question_storyteller, R.string.question_storyteller_description),
-            new Question("Challenger", R.string.question_challenger, R.string.question_challenger_description),
-            new Question("Networker", R.string.question_networker, R.string.question_networker_description),
-            new Question("Moodmaker", R.string.question_moodmaker, R.string.question_moodmaker_description),
-            new Question("Organiser", R.string.question_organiser, R.string.question_organiser_description),
-            new Question("Guardian", R.string.question_guardian, R.string.question_guardian_description),
-            new Question("Planner", R.string.question_planner, R.string.question_planner_description),
-            new Question("Hardworker", R.string.question_hardworker, R.string.question_hardworker_description),
-            new Question("Administrator", R.string.question_administrator, R.string.question_administrator_description),
-            new Question("Motivator", R.string.question_motivator, R.string.question_motivator_description),
-            new Question("Connector", R.string.question_connector, R.string.question_connector_description),
-            new Question("Unifier", R.string.question_unifier, R.string.question_unifier_description),
-            new Question("Inspirer", R.string.question_inspirer, R.string.question_inspirer_description),
-            new Question("Feeler", R.string.question_feeler, R.string.question_feeler_description),
-            new Question("Strategist", R.string.question_strategist, R.string.question_strategist_description),
-            new Question("Visionary", R.string.question_visionary, R.string.question_visionary_description),
-            new Question("Pathfinder", R.string.question_pathfinder, R.string.question_pathfinder_description),
-            new Question("Researcher", R.string.question_researcher, R.string.question_researcher_description),
-            new Question("Thinker", R.string.question_thinker, R.string.question_thinker_description)
+    // Adding all the Strenghts and descriptions to an array - mStrength
+    private Strength[] mStrengths = new Strength[]{
+            new Strength(R.string.strength_leader_title, R.string.strength_leader, R.string.strength_leader_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_storyteller_title, R.string.strength_storyteller, R.string.strength_storyteller_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_challenger_title, R.string.strength_challenger, R.string.strength_challenger_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_networker_title, R.string.strength_networker, R.string.strength_networker_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_moodmaker_title, R.string.strength_moodmaker, R.string.strength_moodmaker_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_organiser_title, R.string.strength_organiser, R.string.strength_organiser_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_guardian_title, R.string.strength_guardian, R.string.strength_guardian_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_planner_title, R.string.strength_planner, R.string.strength_planner_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_hardworker_title, R.string.strength_hardworker, R.string.strength_hardworker_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_administrator_title, R.string.strength_administrator, R.string.strength_administrator_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_motivator_title, R.string.strength_motivator, R.string.strength_motivator_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_connector_title, R.string.strength_connector, R.string.strength_connector_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_unifier_title, R.string.strength_unifier, R.string.strength_unifier_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_inspirer_title, R.string.strength_inspirer, R.string.strength_inspirer_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_feeler_title, R.string.strength_feeler, R.string.strength_feeler_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_strategist_title, R.string.strength_strategist, R.string.strength_strategist_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_visionary_title, R.string.strength_visionary, R.string.strength_visionary_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_pathfinder_title, R.string.strength_pathfinder, R.string.strength_pathfinder_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_researcher_title, R.string.strength_researcher, R.string.strength_researcher_description, R.mipmap.strength_leader),
+            new Strength(R.string.strength_thinker_title, R.string.strength_thinker, R.string.strength_thinker_description, R.mipmap.strength_leader)
     };
 
-    private int mCurrentIndex = 1;
+    private int mCurrentIndex = 0;
 
     /* Method to create fragment */
     public static QuestionFragment newInstance() {
@@ -71,33 +71,40 @@ public class QuestionFragment extends Fragment {
 
         // Setting up variables for the imageviews, buttons and textviews
         mImage = (ImageView) view.findViewById(R.id.imageview_question);
-        mQuestionText = (TextView) view.findViewById(R.id.textview_question_text);
+        mStrengthText = (TextView) view.findViewById(R.id.textview_question_text);
         mPercentageText = (TextView) view.findViewById(R.id.textView_question_percentage);
         mNextButton = (Button) view.findViewById(R.id.button_question_next);
         mSeekBar = (SeekBar) view.findViewById(R.id.seekBar_question);
 
-        // Setting up what happens when the next button is pressed - go to next question
+        setPercentage(50);
+
+        // Setting up what happens when the next button is pressed - go to next strength
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // Increase index by one till all questions have been view, then setStrenghts and move to result screen
-                if (mCurrentIndex < mQuestions.length - 1) {
-                    Log.d(TAG, mQuestions[mCurrentIndex].getTitle() + " has " + mQuestions[mCurrentIndex].getPercentage() + "%");
+                // Increase index by one till all strengths have been view, then setStrenghts and move to result screen
+                if (mCurrentIndex < mStrengths.length - 1) {
+                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrengths[mCurrentIndex].getPercentage() + "%");
                     mCurrentIndex += 1;
-                    updateQuestion();
+                    updateStrength();
                     mSeekBar.setProgress(50);
+                    setPercentage(50);
 
                 } else {
+                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrengths[mCurrentIndex].getPercentage() + "%");
+
                     findStrengths();
 
-                    String title1 = mQuestions[mResults.get(mResults.size()).getNo1Strength()].getTitle();
-                    String title2 = mQuestions[mResults.get(mResults.size()).getNo2Strength()].getTitle();
-                    String title3 = mQuestions[mResults.get(mResults.size()).getNo3Strength()].getTitle();
-
+                    // These are just here to print out to Log to see what is happening
+                    String title1 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo1Strength()].getTitleID());
+                    String title2 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo2Strength()].getTitleID());
+                    String title3 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo3Strength()].getTitleID());
                     Log.d(TAG, "Your strengths are: " + title1 + ", " + title2 + " and " + title3);
 
                     mCurrentIndex = 0;
+                    mTempResultArray.clear();
+                    mStrenghtArray.clear();
                 }
 
             }
@@ -121,7 +128,7 @@ public class QuestionFragment extends Fragment {
             }
         });
 
-        updateQuestion();
+        updateStrength();
 
         return view;
     }
@@ -132,24 +139,24 @@ public class QuestionFragment extends Fragment {
 
     }
 
-    /*Method to update the question visible in the screen*/
-    private void updateQuestion() {
-        int question = mQuestions[mCurrentIndex].getQuestion();
-        mQuestionText.setText(question);
+    /*Method to update the Strength visible in the screen*/
+    private void updateStrength() {
+        int strength = mStrengths[mCurrentIndex].getStrength();
+        mStrengthText.setText(strength);
     }
 
     // Set the percentage for each strength
     private void setPercentage(int percentage) {
-        mQuestions[mCurrentIndex].setPercentage(percentage);
+        mStrengths[mCurrentIndex].setPercentage(percentage);
     }
 
     public void findStrengths() {
         int i = 0;
         int j = 0;
 
-        // Import all the strengths from the mQUestionsBank
-        while (i < mQuestions.length - 1) {
-            mStrenghtArray.add(mQuestions[i].getPercentage());
+        // Import all the strengths from the mStrengthsBank
+        while (i < mStrengths.length - 1) {
+            mStrenghtArray.add(mStrengths[i].getPercentage());
             i += 1;
         }
 
@@ -164,6 +171,8 @@ public class QuestionFragment extends Fragment {
             j += 1;
         }
 
+        // Add a new Result to the Results array
+        // "Jarle" here should be replaced by a user nam,e of the person is logged in
         mResults.add(new Result(new Date(), "Jarle", mTempResultArray.get(0), mTempResultArray.get(1), mTempResultArray.get(2)));
     }
 

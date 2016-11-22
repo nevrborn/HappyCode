@@ -4,22 +4,26 @@ package com.cloud9.android.happycode;
  * Created by nevrborn on 22.11.2016.
  */
 
-public class Question {
+public class Strength {
 
-    private String mTitle;
-    private int mQuestionID;
+    private int mTitleID;
+    private int mStrengthID;
     private int mDescriptionID;
     private int mPercentage;
+    private int mImage;
 
     // Contstructor to make Questions
-    public Question(String title, int questionId, int descriptionId) {
-        this.mTitle = title;
-        this.mQuestionID = questionId;
+    public Strength(int titleId, int questionId, int descriptionId, int image) {
+        this.mTitleID = titleId;
+        this.mStrengthID = questionId;
         this.mDescriptionID = descriptionId;
+        this.mImage = image;
+
+
     }
 
-    public int getQuestion() {
-        return mQuestionID;
+    public int getStrength() {
+        return mStrengthID;
     }
 
     public int getDescription() {
@@ -34,7 +38,7 @@ public class Question {
         mPercentage = percentage;
     }
 
-    public String getTitle() {
-        return mTitle;
+    public int getTitleID() {
+        return mTitleID;
     }
 }
