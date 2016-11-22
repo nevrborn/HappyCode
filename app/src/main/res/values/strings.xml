@@ -48,4 +48,5 @@
     <string name="question_researcher_description">Jij bent leergierig. Je kunt je ergens in verdiepen en het dan begrijpen.  Zo geef je anderen inzicht.</string>
     <string name="question_thinker">Ik vind het geweldig om nieuwe ideeën te bedenken</string>
     <string name="question_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+    <string name="textview_result_rename">RESULT</string>
 </resources>

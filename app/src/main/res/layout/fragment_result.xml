@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    >
+
+    <TextView
+        android:id="@+id/text_view_result_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:text="@string/textview_result_rename"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearlayout_result_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_result_header"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/imageview_result_one"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/strength_leader"
+            />
+
+        <ImageView
+            android:id="@+id/imageview_result_two"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:src="@mipmap/strength_leader"
+            />
+
+        <ImageView
+            android:id="@+id/imageview_result_three"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/strength_leader"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageview_result_line"
+        android:layout_width="6dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/linearlayout_result_images"
+        android:layout_marginLeft="61dp"
+        android:layout_marginRight="61dp"
+        android:background="@drawable/line_result_page"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@id/imageview_result_line"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/line_result_page"
+        />
+
+</RelativeLayout>
