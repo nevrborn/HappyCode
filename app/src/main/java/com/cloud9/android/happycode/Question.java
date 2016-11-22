@@ -6,12 +6,14 @@ package com.cloud9.android.happycode;
 
 public class Question {
 
+    private String mTitle;
     private int mQuestionID;
     private int mDescriptionID;
     private int mPercentage;
 
     // Contstructor to make Questions
-    public Question(int questionId, int descriptionId) {
+    public Question(String title, int questionId, int descriptionId) {
+        this.mTitle = title;
         this.mQuestionID = questionId;
         this.mDescriptionID = descriptionId;
     }
@@ -30,5 +32,9 @@ public class Question {
 
     public void setPercentage(int percentage) {
         mPercentage = percentage;
+    }
+
+    public String getTitle() {
+        return mTitle;
     }
 }

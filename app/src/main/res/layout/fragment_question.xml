@@ -6,45 +6,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:weightSum="1"
-    android:background="@android:color/black">
+
+    android:gravity="center_horizontal"
+    android:background="@android:color/black"
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/imageview_question"
         android:layout_width="match_parent"
-        android:layout_height="227dp"
+        android:layout_height="200dp"
         android:src="@mipmap/strength_leader"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:clickable="false"
         android:contentDescription="strength_image"
-        />
+        android:layout_weight="0.47"/>
 
     <TextView
         android:id="@+id/textview_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Default text"
         android:padding="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:textSize="18sp"/>
-
-    <Button
-        android:id="@+id/button_question_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Buttons"
-        android:text="NEXT"
-        android:textAlignment="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-
-        />
 
     <SeekBar
         android:id="@+id/seekBar_question"
@@ -62,6 +50,27 @@
         android:focusableInTouchMode="true"
         android:progressTint="@color/colorHappyCode"
         android:thumbTint="@color/colorHappyCode"
+        />
+
+    <TextView
+        android:id="@+id/textView_question_percentage"
+        android:text="50%"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorHappyCode"
+        android:textAlignment="center"
+        />
+
+    <Button
+        android:id="@+id/button_question_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Buttons"
+        android:text="NEXT"
+        android:textAlignment="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="16dp"
+
         />
 
 
