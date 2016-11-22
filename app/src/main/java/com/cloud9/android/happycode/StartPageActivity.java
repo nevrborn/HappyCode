@@ -11,10 +11,10 @@ public class StartPageActivity extends SingleFragmentActivity {
     /*
     *
     */
-    @Override
-    public Intent newIntent() {
-        return StartPageFragment.newInstance();
-    }
+//    @Override
+//    public Intent newIntent() {
+//        return StartPageFragment.newInstance();
+//    }
 
     /*
     *
