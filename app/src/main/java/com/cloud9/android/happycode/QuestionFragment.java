@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 /**
@@ -21,6 +22,7 @@ public class QuestionFragment extends Fragment {
     private Button mNextButton;
     private TextView mQuestionText;
     private ImageView mImage;
+    private SeekBar mSeekBar;
 
     // Adding all the questions and descriptions to an array - mQuestions
     private Question[] mQuestions = new Question[]{
@@ -58,6 +60,34 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question, container, false);
 
+        // Setting up variables for the imageviews, buttons and textviews
+        mImage = (ImageView) view.findViewById(R.id.imageview_question);
+        mQuestionText = (TextView) view.findViewById(R.id.textview_question_text);
+        mNextButton = (Button) view.findViewById(R.id.button_question_next);
+        mSeekBar = (SeekBar) view.findViewById(R.id.seekBar_question);
+
+        // Setting up what happens when the next button is pressed - go to next question
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCurrentIndex += 1;
+                updateQuestion();
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mCurrentIndex = 0;
+        updateQuestion();
+    }
+
+    /*Method to update the question visible in the screen*/
+    private void updateQuestion() {
+        int question = mQuestions[mCurrentIndex].getQuestion();
+        mQuestionText.setText(question);
     }
 }
