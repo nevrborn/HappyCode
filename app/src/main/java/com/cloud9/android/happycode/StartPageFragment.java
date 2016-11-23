@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +20,8 @@ import android.widget.Button;
 public class StartPageFragment extends Fragment {
 
     Button mStartButton;
+    ActionBarDrawerToggle mDrawerToggle;
+    DrawerLayout mDrawerLayout;
 
 
     /*
@@ -23,6 +29,13 @@ public class StartPageFragment extends Fragment {
     */
     public static Fragment newInstance() {
         return new StartPageFragment();
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
 
@@ -36,6 +49,7 @@ public class StartPageFragment extends Fragment {
 
         // set the references
         mStartButton = (Button) view.findViewById(R.id.button_start);
+        mDrawerLayout = (DrawerLayout) view;
 
         // set listeners
         mStartButton.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +61,41 @@ public class StartPageFragment extends Fragment {
         });
 
 
+        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+
+                getActivity().invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                // Log.d(TAG, "onDrawerClosed: " + getTitle());
+
+                getActivity().invalidateOptionsMenu();
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+
         return view;
     }
 
 
-
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Pass the event to ActionBarDrawerToggle
+//        // If it returns true, then it has handled
+//        // the nav drawer indicator touch event
+//        if (mDrawerToggle.onOptionsItemSelected(item)) {
+//            return true;
+//        }
+//
+//        // Handle your other action bar items...
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }
