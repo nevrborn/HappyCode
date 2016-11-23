@@ -63,9 +63,9 @@ public class ResultPageFragment extends Fragment {
         mResultIcon2 = (ImageView) view.findViewById(R.id.imageview_result_two);
         mResultIcon3 = (ImageView) view.findViewById(R.id.imageview_result_three);
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
-        mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strentgh_title);
+        mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
         mRetakeButton = (Button) view.findViewById(R.id.button_result_retake);
-        mResultLine1 = (ImageView) view.findViewById(R.id.imageview_result_line);
+        //mResultLine1 = (ImageView) view.findViewById(R.id.imageview_result_line);
         //mResultLine2 = (ImageView) view.findViewById(R.id.imageview_result_line_two);
         //mResultLine3 = (ImageView) view.findViewById(R.id.imageview_result_line_three);
 
@@ -75,12 +75,18 @@ public class ResultPageFragment extends Fragment {
         mResultIcon1.setImageResource(mStrengths[mNr1Strength].getIconID());
         mResultIcon2.setImageResource(mStrengths[mNr2Strength].getIconID());
         mResultIcon3.setImageResource(mStrengths[mNr3Strength].getIconID());
+        mResultIcon1.setAlpha(1.0f);
+        mResultIcon2.setAlpha(0.4f);
+        mResultIcon3.setAlpha(0.4f);
 
         mResultIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mStrengthTitle.setText(mStrengths[mNr1Strength].getTitleID());
                 mStrenghtText.setText(mStrengths[mNr1Strength].getDescriptionID());
+                mResultIcon1.setAlpha(1.0f);
+                mResultIcon2.setAlpha(0.4f);
+                mResultIcon3.setAlpha(0.4f);
             }
         });
 
@@ -89,6 +95,9 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 mStrengthTitle.setText(mStrengths[mNr2Strength].getTitleID());
                 mStrenghtText.setText(mStrengths[mNr2Strength].getDescriptionID());
+                mResultIcon1.setAlpha(0.4f);
+                mResultIcon2.setAlpha(1.0f);
+                mResultIcon3.setAlpha(0.4f);
             }
         });
 
@@ -97,6 +106,9 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 mStrengthTitle.setText(mStrengths[mNr3Strength].getTitleID());
                 mStrenghtText.setText(mStrengths[mNr3Strength].getDescriptionID());
+                mResultIcon1.setAlpha(0.4f);
+                mResultIcon2.setAlpha(0.4f);
+                mResultIcon3.setAlpha(1.0f);
             }
         });
 

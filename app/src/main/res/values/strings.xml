@@ -8,6 +8,7 @@
     <string name="button_finish">FINISH</string>
     <string name="button_result_retake">Re-take</string>
     <string name="textview_result_rename">RESULT</string>
+    <string name="result_title">JOUW HAPPYCODE</string>
     <string name="drawer_open">open drawer</string>
     <string name="drawer_close">close drawer</string>
 
