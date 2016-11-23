@@ -58,6 +58,10 @@ public class Result {
         mID = UUID.randomUUID().toString();
     }
 
+    public void deleteResult() {
+        mResult = null;
+    }
+
     /*
     * getter to get a strength object based on the id of the first strength
     */

@@ -14,10 +14,10 @@ public class ResultPageActivity extends SingleFragmentActivity {
     /*
     * create Intent to start this activity
     */
-    public static Intent newIntent(Context context, String nr1Strength, String nr2Strength, String nr3Strength) {
-        Intent i = new Intent(context, StartPageActivity.class);
+    public static Intent newIntent(Context context) {
+        Intent i = new Intent(context, ResultPageActivity.class);
 
-        return new Intent(context, StartPageActivity.class);
+        return new Intent(context, ResultPageActivity.class);
     }
 
 

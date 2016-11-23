@@ -18,6 +18,9 @@
         <activity android:name=".QuestionActivity">
 
         </activity>
+        <activity android:name=".ResultPageActivity">
+
+        </activity>
     </application>
 
 </manifest>
