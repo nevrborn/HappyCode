@@ -44,24 +44,18 @@ public class Result {
 
 
     /* get singleton instance of the result*/
-    public static Result getInstance(Date date, String name, int no1Strength, int no2Strength, int no3Strength) {
+    public static Result getInstance() {
         if (mResult == null) {
-            mResult = new Result(date, name, no1Strength, no2Strength, no3Strength);
+            mResult = new Result();
         }
         return mResult;
     }
 
 
-    private Result(Date date, String name, int no1Strength, int no2Strength, int no3Strength) {
+    private Result() {
 
         // UUID to be used when we hook up to Firebase
         mID = UUID.randomUUID().toString();
-
-        mDate = date;
-        mName = name;
-        mNo1Strength = no1Strength;
-        mNo2Strength = no2Strength;
-        mNo3Strength = no3Strength;
     }
 
     /*

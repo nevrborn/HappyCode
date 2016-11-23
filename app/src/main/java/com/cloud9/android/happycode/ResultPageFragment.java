@@ -28,7 +28,9 @@ public class ResultPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // code to initialize the three strengths
+        Result result = Result.getInstance()
     }
 
     @Nullable
