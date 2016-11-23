@@ -1,5 +1,6 @@
 package com.cloud9.android.happycode;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -65,6 +66,7 @@ public class ResultPageFragment extends Fragment {
         mResultLine = (ImageView) view.findViewById(R.id.imageview_result_line);
 
         mStrenghtText.setText(mStrengths[mNr1Strength].getDescriptionID());
+        mStrengthTitle.setText(mStrengths[mNr1Strength].getTitleID());
 
         mResultIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +89,15 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 mStrengthTitle.setText(mStrengths[mNr3Strength].getTitleID());
                 mStrenghtText.setText(mStrengths[mNr3Strength].getDescriptionID());
+            }
+        });
+
+        mRetakeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = StartPageActivity.newIntent(getActivity());
+                startActivity(i);
+                mResult.deleteResult();
             }
         });
 
