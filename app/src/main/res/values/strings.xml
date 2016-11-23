@@ -5,6 +5,7 @@
     <string name="button_start">START\nTEST</string>
     <string name="start_page_info">Push the \'start\' button to start the test. At the end of the test we will tell you what your personal code to be happy in life is.</string>
     <string name="button_next">NEXT</string>
+    <string name="button_result_retake">Re-take</string>
     <string name="textview_result_rename">RESULT</string>
 
 
@@ -88,5 +89,6 @@
     <string name="strength_thinker_title">Bedenker</string>
     <string name="strength_thinker">Ik vind het geweldig om nieuwe ideeën te bedenken</string>
     <string name="strength_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+
 
 </resources>
