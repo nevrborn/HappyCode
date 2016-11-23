@@ -1,5 +1,6 @@
 package com.cloud9.android.happycode;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,9 +33,10 @@ public class QuestionFragment extends Fragment {
     private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private ArrayList<Integer> mTempResultArray = new ArrayList<Integer>(); // Temporary array to hold the 3 strongest strengths.. Used to make a new Result
     private ArrayList<Result> mResults = new ArrayList<Result>();           // Array of all Results.
+    private Result mResult;
 
     // Adding all the Strenghts and descriptions to an array - mStrength
-    private Strength[] mStrengths = new Strength[]{
+    public Strength[] mStrengths = new Strength[]{
             new Strength(R.string.strength_leader_title, R.string.strength_leader, R.string.strength_leader_description, R.mipmap.strength_leader),
             new Strength(R.string.strength_storyteller_title, R.string.strength_storyteller, R.string.strength_storyteller_description, R.mipmap.strength_leader),
             new Strength(R.string.strength_challenger_title, R.string.strength_challenger, R.string.strength_challenger_description, R.mipmap.strength_leader),
@@ -91,20 +93,27 @@ public class QuestionFragment extends Fragment {
                     mSeekBar.setProgress(50);
                     setPercentage(50);
 
+                    if (mCurrentIndex == mStrengths.length - 1) {
+                        mNextButton.setText(R.string.button_finish);
+                    }
+
                 } else {
                     Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrengths[mCurrentIndex].getPercentage() + "%");
 
                     findStrengths();
 
-                    // These are just here to print out to Log to see what is happening
-                    String title1 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo1Strength()].getTitleID());
-                    String title2 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo2Strength()].getTitleID());
-                    String title3 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo3Strength()].getTitleID());
-                    Log.d(TAG, "Your strengths are: " + title1 + ", " + title2 + " and " + title3);
+                    // Go to Result page
+                    Intent i = ResultPageActivity.newIntent(getActivity());
+                    startActivity(i);
 
-                    mCurrentIndex = 0;
-                    mTempResultArray.clear();
-                    mStrenghtArray.clear();
+//                    // These are just here to print out to Log to see what is happening
+//                    String title1 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo1Strength()].getTitleID());
+//                    String title2 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo2Strength()].getTitleID());
+//                    String title3 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo3Strength()].getTitleID());
+//                    Log.d(TAG, "Your strengths are: " + title1 + ", " + title2 + " and " + title3);
+//                    mCurrentIndex = 0;
+//                    mTempResultArray.clear();
+//                    mStrenghtArray.clear();
                 }
 
             }
@@ -141,7 +150,7 @@ public class QuestionFragment extends Fragment {
 
     /*Method to update the Strength visible in the screen*/
     private void updateStrength() {
-        int strength = mStrengths[mCurrentIndex].getStrength();
+        int strength = mStrengths[mCurrentIndex].getStrengthID();
         mStrengthText.setText(strength);
     }
 
@@ -173,7 +182,13 @@ public class QuestionFragment extends Fragment {
 
         // Add a new Result to the Results array
         // "Jarle" here should be replaced by a user nam,e of the person is logged in
-        mResults.add(new Result(new Date(), "Jarle", mTempResultArray.get(0), mTempResultArray.get(1), mTempResultArray.get(2)));
+        //mResults.add(new Result(new Date(), "Jarle", mTempResultArray.get(0), mTempResultArray.get(1), mTempResultArray.get(2)));
+        mResult = Result.getInstance();
+        mResult.setDate(new Date());
+        mResult.setNo1Strength(mTempResultArray.get(0));
+        mResult.setNo2Strength(mTempResultArray.get(1));
+        mResult.setNo3Strength(mTempResultArray.get(2));
+        mResult.setName("Jarle");
     }
 
 }

@@ -63,6 +63,7 @@
         />
 
     <TextView
+        android:id="@+id/textview_result_strentgh_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageview_result_line"
@@ -72,7 +73,21 @@
         android:padding="16dp"
         android:textColor="@android:color/white"
         android:textAlignment="center"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere. \n\nDuis odio enim, venenatis egestas quam id, tincidunt dictum lorem. Aliquam commodo libero at tortor egestas, at auctor turpis pellentesque. \n\nPraesent vel blandit massa. Nunc feugiat ante eu odio porttitor congue ut non ipsum."
+        android:text="Leader"
+        />
+
+    <TextView
+        android:id="@+id/textview_result_strentgh_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_result_strentgh_title"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/box_result_page"
+        android:padding="16dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere. \n\nDuis odio enim, venenatis egestas quam id, tincidunt dictum lorem."
         />
 
     <Button
