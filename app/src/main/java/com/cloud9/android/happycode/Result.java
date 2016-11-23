@@ -59,10 +59,10 @@ public class Result {
     }
 
     /*
-    * getter to get a strength object based on the id of the strength
+    * getter to get a strength object based on the id of the first strength
     */
-    public Strength getNo1Strength(int No1StrengthId) {
-        return mStrengths[No1StrengthId];
+    public Strength getNoXStrength(int NoXStrengthId) {
+        return mStrengths[NoXStrengthId];
     }
 
 
