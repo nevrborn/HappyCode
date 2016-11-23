@@ -11,14 +11,15 @@ public class Strength {
     private int mDescriptionID;
     private int mPercentage;
     private int mImageID;
+    private int mIconID;
 
     // Contstructor to make Strengths
-    public Strength(int titleId, int strengthId, int descriptionId, int image) {
+    public Strength(int titleId, int strengthId, int descriptionId, int imageId, int iconId) {
         this.mTitleID = titleId;
         this.mStrengthID = strengthId;
         this.mDescriptionID = descriptionId;
-        this.mImageID = image;
-
+        this.mImageID = imageId;
+        this.mIconID = iconId;
 
     }
 
@@ -44,5 +45,9 @@ public class Strength {
 
     public int getImageID() {
         return mImageID;
+    }
+
+    public int getIconID() {
+        return mIconID;
     }
 }

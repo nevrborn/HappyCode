@@ -27,7 +27,9 @@ public class ResultPageFragment extends Fragment {
     private TextView mStrenghtText;
     private TextView mStrengthTitle;
     private Button mRetakeButton;
-    private ImageView mResultLine;
+    private ImageView mResultLine1;
+    private ImageView mResultLine2;
+    private ImageView mResultLine3;
     private Strength[] mStrengths;
 
     /*
@@ -44,12 +46,12 @@ public class ResultPageFragment extends Fragment {
 
         // code to initialize the three strengths
         mResult = Result.getInstance();
+        mStrengths = QuestionFragment.newInstance().mStrengths;
 
         mNr1Strength = mResult.getNo1Strength();
         mNr2Strength = mResult.getNo2Strength();
         mNr3Strength = mResult.getNo3Strength();
 
-        mStrengths = QuestionFragment.newInstance().mStrengths;
     }
 
     @Nullable
@@ -63,10 +65,16 @@ public class ResultPageFragment extends Fragment {
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strentgh_title);
         mRetakeButton = (Button) view.findViewById(R.id.button_result_retake);
-        mResultLine = (ImageView) view.findViewById(R.id.imageview_result_line);
+        mResultLine1 = (ImageView) view.findViewById(R.id.imageview_result_line);
+        //mResultLine2 = (ImageView) view.findViewById(R.id.imageview_result_line_two);
+        //mResultLine3 = (ImageView) view.findViewById(R.id.imageview_result_line_three);
 
         mStrenghtText.setText(mStrengths[mNr1Strength].getDescriptionID());
         mStrengthTitle.setText(mStrengths[mNr1Strength].getTitleID());
+
+        mResultIcon1.setImageResource(mStrengths[mNr1Strength].getIconID());
+        mResultIcon2.setImageResource(mStrengths[mNr2Strength].getIconID());
+        mResultIcon3.setImageResource(mStrengths[mNr3Strength].getIconID());
 
         mResultIcon1.setOnClickListener(new View.OnClickListener() {
             @Override

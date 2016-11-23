@@ -52,8 +52,19 @@
 
     </LinearLayout>
 
+
     <ImageView
         android:id="@+id/imageview_result_line"
+        android:layout_width="6dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/linearlayout_result_images"
+        android:layout_marginRight="58dp"
+        android:background="@drawable/line_result_page"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"/>
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="6dp"
         android:layout_height="50dp"
         android:layout_below="@id/linearlayout_result_images"

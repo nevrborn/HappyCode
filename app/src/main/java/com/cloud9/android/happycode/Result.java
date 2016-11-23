@@ -27,7 +27,6 @@ public class Result {
         return mResult;
     }
 
-
     private Result() {
 
         // UUID to be used when we hook up to Firebase
