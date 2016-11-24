@@ -6,10 +6,9 @@
     <string name="button_about">About</string>
     <string name="button_all_codes">All\ncodes</string>
     <string name="button_test_history">Test\nhistory</string>
-    <string name="start_page_info">Push the \'start\' button to start the test. At the end of the test we will tell you what your personal code to be happy in life is.</string>
     <string name="button_next">NEXT</string>
     <string name="button_finish">FINISH</string>
-    <string name="button_result_retake">Re-take</string>
+    <string name="button_result_retake">MENU</string>
     <string name="textview_result_rename">RESULT</string>
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="drawer_open">open drawer</string>

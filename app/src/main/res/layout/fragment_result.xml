@@ -89,7 +89,7 @@
         />
 
     <Button
-        android:id="@+id/button_result_retake"
+        android:id="@+id/button_result_to_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
