@@ -1,6 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,15 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import static android.R.layout.simple_list_item_1;
 
 /**
  * Created by nevrborn on 24.11.2016.
@@ -38,9 +32,7 @@ public class CodeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mContext = getContext();
         mStrengths = QuestionFragment.newInstance().mStrengths;
-        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Nullable
@@ -50,14 +42,17 @@ public class CodeFragment extends Fragment {
 
         mListView = (ListView) view.findViewById(R.id.listView_codes);
 
-        CodeAdapter adapter = new CodeAdapter(this, mStrengths);
+        CodeAdapter adapter = new CodeAdapter(this.getContext(), mStrengths);
         mListView.setAdapter(adapter);
         return view;
     }
 
     private class CodeAdapter extends BaseAdapter {
 
-        public CodeAdapter(CodeFragment codeFragment, Strength[] strengths) {
+        public CodeAdapter(Context codeFragment, Strength[] strengths) {
+            mContext = codeFragment;
+            mStrengths = strengths;
+            mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
         @Override
@@ -77,19 +72,35 @@ public class CodeFragment extends Fragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            View rowView = mInflater.inflate(R.layout.list_item_code, viewGroup, false);
+            ViewHolder mViewHolder;
 
-            ImageView mIconView = (ImageView) rowView.findViewById(R.id.list_item_icon);
-            TextView mTitleView = (TextView) rowView.findViewById(R.id.list_item_title);
-            TextView mDescriptionView = (TextView) rowView.findViewById(R.id.list_item_description);
+            if (viewGroup == null) {
+                view = mInflater.inflate(R.layout.list_item_code, viewGroup, false);
+
+                mViewHolder = new ViewHolder();
+                
+                mViewHolder.mIconView = (ImageView) view.findViewById(R.id.list_item_icon);
+                mViewHolder.mTitleView = (TextView) view.findViewById(R.id.list_item_title);
+                mViewHolder.mDescriptionView = (TextView) view.findViewById(R.id.list_item_description);
+
+                view.setTag(mViewHolder);
+            } else {
+                mViewHolder = (ViewHolder) view.getTag();
+            }
 
             Strength mStrength = (Strength) getItem(i);
 
-            mIconView.setImageResource(mStrength.getIconID());
-            mTitleView.setText(mStrength.getTitleID());
-            mDescriptionView.setText(mStrength.getDescriptionID());
+            mViewHolder.mIconView.setImageResource(mStrength.getIconID());
+            mViewHolder.mTitleView.setText(mStrength.getTitleID());
+            mViewHolder.mDescriptionView.setText(mStrength.getDescriptionID());
 
-            return rowView;
+            return view;
         }
+    }
+
+    private static class ViewHolder {
+        public ImageView mIconView;
+        public TextView mTitleView;
+        public TextView mDescriptionView;
     }
 }

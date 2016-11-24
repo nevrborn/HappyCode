@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="?android:attr/listPreferredItemHeight"
-                android:padding="6dip">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip"
+    android:background="@color/colorBlack">
 
     <ImageView
         android:id="@+id/list_item_icon"
@@ -20,8 +22,9 @@
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/list_item_icon"
         android:ellipsize="marquee"
+        android:textColor="@android:color/white"
         android:text="@string/test_text"
         android:textSize="12sp"/>
 
@@ -32,11 +35,13 @@
         android:layout_above="@id/list_item_description"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:textColor="@color/colorHappyCode"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/list_item_icon"
         android:gravity="center_vertical"
         android:text="Title"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
 
 </RelativeLayout>
 
