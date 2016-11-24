@@ -1,11 +1,9 @@
 package com.cloud9.android.happycode;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.Intent;
 
 import java.util.UUID;
-
 
 /**
  * Created by paulvancappelle on 23-11-16.
@@ -25,7 +21,6 @@ public class ResultPageFragment extends Fragment {
 
     private static final String TAG = "ResultPageFragment";
     private static final String KEY_CURRENT_STRENGTH = "currentStrength";
-    private static final String TEST_RESULT_ID = "test_result_id";
 
     private static UUID mID;
     private int mNr1Strength;
@@ -50,8 +45,6 @@ public class ResultPageFragment extends Fragment {
         mID = testResultID;
         return new ResultPageFragment();
     }
-
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

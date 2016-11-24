@@ -46,7 +46,7 @@ public class TestResultList {
         return null;
     }
 
-    public List<TestResult> getTestResultList() {
+    public static List<TestResult> getTestResultList() {
         return mTestResultList;
     }
 }
