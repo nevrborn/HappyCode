@@ -72,35 +72,20 @@ public class CodeFragment extends Fragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            ViewHolder mViewHolder;
+            View rowView = mInflater.inflate(R.layout.list_item_code, viewGroup, false);
 
-            if (viewGroup == null) {
-                view = mInflater.inflate(R.layout.list_item_code, viewGroup, false);
-
-                mViewHolder = new ViewHolder();
-                
-                mViewHolder.mIconView = (ImageView) view.findViewById(R.id.list_item_icon);
-                mViewHolder.mTitleView = (TextView) view.findViewById(R.id.list_item_title);
-                mViewHolder.mDescriptionView = (TextView) view.findViewById(R.id.list_item_description);
-
-                view.setTag(mViewHolder);
-            } else {
-                mViewHolder = (ViewHolder) view.getTag();
-            }
+            ImageView mIconView = (ImageView) rowView.findViewById(R.id.list_item_icon);
+            TextView mTitleView = (TextView) rowView.findViewById(R.id.list_item_title);
+            TextView mDescriptionView = (TextView) rowView.findViewById(R.id.list_item_description);
 
             Strength mStrength = (Strength) getItem(i);
 
-            mViewHolder.mIconView.setImageResource(mStrength.getIconID());
-            mViewHolder.mTitleView.setText(mStrength.getTitleID());
-            mViewHolder.mDescriptionView.setText(mStrength.getDescriptionID());
+            mIconView.setImageResource(mStrength.getIconID());
+            mTitleView.setText(mStrength.getTitleID());
+            mDescriptionView.setText(mStrength.getDescriptionID());
 
-            return view;
+            return rowView;
         }
     }
 
-    private static class ViewHolder {
-        public ImageView mIconView;
-        public TextView mTitleView;
-        public TextView mDescriptionView;
-    }
 }
