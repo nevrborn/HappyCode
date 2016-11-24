@@ -23,4 +23,5 @@ public class QuestionActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         return QuestionFragment.newInstance();
     }
+
 }
