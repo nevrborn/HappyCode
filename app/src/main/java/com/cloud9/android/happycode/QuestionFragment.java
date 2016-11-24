@@ -14,8 +14,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -26,6 +24,7 @@ public class QuestionFragment extends Fragment {
     private static final String TAG = "QuestionFragment";
     private static final String CURRENT_INDEX = "index";
     private static final String STRENGTH_ARRAY = "strength_array";
+    private static final String TEST_RESULT_ID = "testresult_id";
 
     private Button mNextButton;
     private TextView mStrengthText;
@@ -33,9 +32,8 @@ public class QuestionFragment extends Fragment {
     private ImageView mImage;
     private SeekBar mSeekBar;
     private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
-    private ArrayList<Integer> mTempResultArray = new ArrayList<Integer>(); // Temporary array to hold the 3 strongest strengths.. Used to make a new Result
-    private ArrayList<Result> mResults = new ArrayList<Result>();           // Array of all Results.
-    private Result mResult;
+    private TestResultList mTestResultList;
+    private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mPercentage;
 
@@ -73,6 +71,9 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question, container, false);
 
+        mTestResultList = TestResultList.get(getContext());
+        mTestResult = TestResult.getInstance();
+
         // Setting up variables for the imageviews, buttons and textviews
         mImage = (ImageView) view.findViewById(R.id.imageview_question);
         mStrengthText = (TextView) view.findViewById(R.id.textview_question_text);
@@ -103,10 +104,11 @@ public class QuestionFragment extends Fragment {
                     setPercentage(mPercentage);
                     Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
 
-                    findStrengths();
+                    mTestResult.setTestResult(mStrenghtArray);
+                    mTestResultList.addResult(mTestResult);
 
-                    // Go to Result page
-                    Intent i = ResultPageActivity.newIntent(getActivity());
+                    // Go to TestResult page
+                    Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
                     startActivity(i);
 
                 }
@@ -122,12 +124,10 @@ public class QuestionFragment extends Fragment {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
@@ -159,37 +159,6 @@ public class QuestionFragment extends Fragment {
         mStrenghtArray.add(percentage);
         mStrengths[mCurrentIndex].setPercentage(percentage);
         mPercentage = 50;
-    }
-
-    public void findStrengths() {
-        int i = 0;
-        int j = 0;
-
-        // Import all the strengths from the mStrengthsBank
-//        while (i < mStrengths.length - 1) {
-//            mStrenghtArray.add(mStrengths[i].getPercentage());
-//            i += 1;
-//        }
-
-        // Look through all the strength and find max. Add the index of where max is to a ResultArray and remove that index from the array
-        // Do this 3 times to find three strengths
-        // NEED TO ADJUST THIS IN ORDER TO ACCOUNT FOR STRENGTHS HAVING SIMILAR %
-        while (j < 3) {
-            int max = Collections.max(mStrenghtArray);
-            int index = mStrenghtArray.indexOf(max);
-            mTempResultArray.add(index);
-            mStrenghtArray.set(index, 0);
-            j += 1;
-        }
-
-        // Add a new Result to the Results array
-        // "Jarle" here should be replaced by a user name of the person is logged in
-        mResult = Result.getInstance();
-        mResult.setDate(new Date());
-        mResult.setNo1Strength(mTempResultArray.get(0));
-        mResult.setNo2Strength(mTempResultArray.get(1));
-        mResult.setNo3Strength(mTempResultArray.get(2));
-        mResult.setName("Jarle");
     }
 
     @Override
