@@ -9,13 +9,13 @@
     >
 
     <ImageView
-        android:id="@+id/list_item_user_icon"
+        android:id="@+id/list_item_tester_icon"
         android:layout_width="130dp"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="6dip"
-        android:contentDescription="user"
+        android:contentDescription="tester"
         android:src="@mipmap/strength_hardworker"
         />
 
@@ -24,7 +24,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/list_item_user_icon"
+        android:layout_toRightOf="@id/list_item_tester_icon"
         android:layout_marginRight="6dip"
         android:contentDescription="code"
         android:src="@mipmap/icon_challenger"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/list_item_user_icon"
+        android:layout_toRightOf="@id/list_item_tester_icon"
         android:layout_marginLeft="16dp"
         android:textStyle="bold"
         android:textColor="@color/colorHappyCode"
