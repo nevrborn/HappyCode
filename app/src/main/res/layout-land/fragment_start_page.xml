@@ -15,41 +15,11 @@
         android:background="@android:color/black"
         tools:context="com.cloud9.android.happycode.StartPageActivity">
 
-        <LinearLayout
-            android:id="@+id/linearLayout_start_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:id="@+id/textview_title_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_subtitle"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                />
-
-            <TextView
-                android:id="@+id/textview_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_main"
-                android:textColor="@color/colorHappyCode"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                />
-
-        </LinearLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="275dp"
+            android:layout_height="265dp"
             android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
             >
 
             <Button
@@ -68,8 +38,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
-                android:layout_toLeftOf="@id/button_start"
                 android:layout_marginBottom="50dp"
+                android:layout_toLeftOf="@id/button_start"
                 android:background="@drawable/button_start"
                 android:text="@string/button_about"
                 android:textColor="@android:color/black"
@@ -93,12 +63,33 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@id/button_start"
                 android:layout_marginBottom="50dp"
+                android:layout_toRightOf="@id/button_start"
                 android:background="@drawable/button_start"
                 android:text="@string/button_all_codes"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/textview_title_subtitle"
+                android:layout_toLeftOf="@id/button_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_subtitle"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                />
+
+            <TextView
+                android:id="@+id/textview_title"
+                android:layout_toRightOf="@id/button_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_main"
+                android:textColor="@color/colorHappyCode"
+                android:textSize="30sp"
+                android:textStyle="bold"
                 />
 
         </RelativeLayout>
@@ -163,11 +154,11 @@
             android:id="@+id/navList"
             android:layout_width="280dp"
             android:layout_height="match_parent"
-            android:background="#ffffffff"
-            android:choiceMode="singleChoice"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:background="#ffffffff"
+            android:choiceMode="singleChoice"/>
 
     </RelativeLayout>
 
