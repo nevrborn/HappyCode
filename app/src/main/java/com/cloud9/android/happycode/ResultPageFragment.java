@@ -1,9 +1,11 @@
 package com.cloud9.android.happycode;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Intent;
+
+import java.util.UUID;
 
 
 /**
@@ -20,12 +25,15 @@ public class ResultPageFragment extends Fragment {
 
     private static final String TAG = "ResultPageFragment";
     private static final String KEY_CURRENT_STRENGTH = "currentStrength";
+    private static final String TEST_RESULT_ID = "test_result_id";
 
+    private static UUID mID;
     private int mNr1Strength;
     private int mNr2Strength;
     private int mNr3Strength;
     private int mCurrentStrength; // which result is currently selected (0, 1, ...)
-    private Result mResult;
+    private TestResult mTestResult;
+    private TestResultList mTestResultList;
 
     private ImageView mResultIcon1;
     private ImageView mResultIcon2;
@@ -33,17 +41,16 @@ public class ResultPageFragment extends Fragment {
     private TextView mStrenghtText;
     private TextView mStrengthTitle;
     private Button mToMenuButton;
-    private ImageView mResultLine1;
-    private ImageView mResultLine2;
-    private ImageView mResultLine3;
     private Strength[] mStrengths;
 
     /*
     * create new instance
     */
-    public static Fragment newInstance() {
+    public static Fragment newInstance(UUID testResultID) {
+        mID = testResultID;
         return new ResultPageFragment();
     }
+
 
 
     @Override
@@ -52,12 +59,13 @@ public class ResultPageFragment extends Fragment {
 
 
         // code to initialize the three strengths
-        mResult = Result.getInstance();
+        mTestResultList = TestResultList.get(getContext());
+        mTestResult = mTestResultList.getResult(mID);
         mStrengths = QuestionFragment.newInstance().mStrengths;
 
-        mNr1Strength = mResult.getNo1Strength();
-        mNr2Strength = mResult.getNo2Strength();
-        mNr3Strength = mResult.getNo3Strength();
+        mNr1Strength = mTestResult.getNo1Strength();
+        mNr2Strength = mTestResult.getNo2Strength();
+        mNr3Strength = mTestResult.getNo3Strength();
 
     }
 
@@ -66,7 +74,6 @@ public class ResultPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
 
-
         // set the references
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
         mResultIcon2 = (ImageView) view.findViewById(R.id.imageview_result_two);
@@ -74,10 +81,6 @@ public class ResultPageFragment extends Fragment {
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
         mToMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
-        //mResultLine1 = (ImageView) view.findViewById(R.id.imageview_result_line);
-        //mResultLine2 = (ImageView) view.findViewById(R.id.imageview_result_line_two);
-        //mResultLine3 = (ImageView) view.findViewById(R.id.imageview_result_line_three);
-
 
         // set images for the results
         mResultIcon1.setImageResource(mStrengths[mNr1Strength].getIconID());
@@ -115,7 +118,7 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = StartPageActivity.newIntent(getActivity());
                 startActivity(i);
-                mResult.deleteResult();
+                mTestResult.deleteResult();
             }
         });
 
