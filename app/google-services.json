@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "118127035909",
+    "firebase_url": "https://happycode-d8997.firebaseio.com",
+    "project_id": "happycode-d8997",
+    "storage_bucket": "happycode-d8997.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118127035909:android:7a8590eb7fba2156",
+        "android_client_info": {
+          "package_name": "com.cloud9.android.happycode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118127035909-ramokgus3mj06ljsm8u67erqsfte3vqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA-TbCGxR_xODIsxz4VTG01DgdYnzt530"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
