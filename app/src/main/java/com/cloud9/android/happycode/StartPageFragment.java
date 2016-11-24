@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * Created by paulvancappelle on 22-11-16.
@@ -20,6 +21,9 @@ import android.widget.Button;
 public class StartPageFragment extends Fragment {
 
     Button mStartButton;
+    Button mAboutButton;
+    Button mTestHistoryButton;
+    Button mAllCodes;
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
 
@@ -44,11 +48,14 @@ public class StartPageFragment extends Fragment {
     /*
     * onCreateView
     */
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_start_page, container, false);
 
         // set the references
         mStartButton = (Button) view.findViewById(R.id.button_start);
+        mAboutButton = (Button) view.findViewById(R.id.button_about);
+        mAllCodes = (Button) view.findViewById(R.id.button_all_codes);
+        mTestHistoryButton = (Button) view.findViewById(R.id.button_test_history);
         mDrawerLayout = (DrawerLayout) view;
 
         // set listeners
@@ -56,6 +63,26 @@ public class StartPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = QuestionActivity.newIntent(getActivity());
+                startActivity(i);
+            }
+        });
+        mAboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = AboutPageActivity.newIntent(getActivity());
+                startActivity(i);
+            }
+        });
+        mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Sorry, je hebt nog geen historie.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mAllCodes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = CodesActivity.newIntent(getActivity());
                 startActivity(i);
             }
         });

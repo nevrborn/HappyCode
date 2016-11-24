@@ -21,6 +21,12 @@
         <activity android:name=".ResultPageActivity">
 
         </activity>
+        <activity android:name=".AboutPageActivity">
+
+        </activity>
+        <activity android:name=".CodesActivity">
+
+        </activity>
     </application>
 
 </manifest>

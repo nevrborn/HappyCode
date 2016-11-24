@@ -3,9 +3,9 @@
     <string name="title_main">HappyCode</string>
     <string name="title_subtitle">Ontcijfer jouw</string>
     <string name="button_start">START</string>
-    <string name="button_about">About</string>
-    <string name="button_all_codes">All\ncodes</string>
-    <string name="button_test_history">Test\nhistory</string>
+    <string name="button_about">Over\nCloud9</string>
+    <string name="button_all_codes">Alle\ncodes</string>
+    <string name="button_test_history">Test\nhistorie</string>
     <string name="button_next">NEXT</string>
     <string name="button_finish">FINISH</string>
     <string name="button_result_retake">MENU</string>
