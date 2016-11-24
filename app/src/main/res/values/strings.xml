@@ -16,6 +16,12 @@
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
 
 
+    // ABOUT PAGE
+    <string name="title_about">Over cloud9</string>
+    <string name="text_about_main">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
+    <string name="text_about_closing_line">Cloud 9 is een initiatief van NJR.</string>
+
+
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leider</string>
     <string name="strength_leader">In een grope neem ik vaak de belissingen, want ik weet waar ik naar toe wil</string>
