@@ -89,8 +89,8 @@ public class QuestionFragment extends Fragment {
 
                 // Increase index by one till all strengths have been view, then setStrenghts and move to result screen
                 if (mCurrentIndex < mStrengths.length - 1) {
-                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
                     setPercentage(mPercentage);
+                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
                     mCurrentIndex += 1;
                     updateStrength();
                     mSeekBar.setProgress(50);
