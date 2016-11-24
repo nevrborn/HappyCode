@@ -24,6 +24,8 @@ import java.util.Date;
 public class QuestionFragment extends Fragment {
 
     private static final String TAG = "QuestionFragment";
+    private static final String CURRENT_INDEX = "index";
+    private static final String STRENGTH_ARRAY = "strength_array";
 
     private Button mNextButton;
     private TextView mStrengthText;
@@ -34,6 +36,8 @@ public class QuestionFragment extends Fragment {
     private ArrayList<Integer> mTempResultArray = new ArrayList<Integer>(); // Temporary array to hold the 3 strongest strengths.. Used to make a new Result
     private ArrayList<Result> mResults = new ArrayList<Result>();           // Array of all Results.
     private Result mResult;
+    private int mCurrentIndex = 0;
+    private int mPercentage;
 
     // Adding all the Strengths and descriptions to an array - mStrength
     public Strength[] mStrengths = new Strength[]{
@@ -59,8 +63,6 @@ public class QuestionFragment extends Fragment {
             new Strength(R.string.strength_thinker_title, R.string.strength_thinker, R.string.strength_thinker_description, R.mipmap.strength_thinker, R.mipmap.icon_thinker)
     };
 
-    private int mCurrentIndex = 0;
-
     /* Method to create fragment */
     public static QuestionFragment newInstance() {
         return new QuestionFragment();
@@ -78,7 +80,7 @@ public class QuestionFragment extends Fragment {
         mNextButton = (Button) view.findViewById(R.id.button_question_next);
         mSeekBar = (SeekBar) view.findViewById(R.id.seekBar_question);
 
-        setPercentage(50);
+        mPercentage = 50;
 
         // Setting up what happens when the next button is pressed - go to next strength
         mNextButton.setOnClickListener(new View.OnClickListener() {
@@ -87,18 +89,19 @@ public class QuestionFragment extends Fragment {
 
                 // Increase index by one till all strengths have been view, then setStrenghts and move to result screen
                 if (mCurrentIndex < mStrengths.length - 1) {
-                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrengths[mCurrentIndex].getPercentage() + "%");
+                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
+                    setPercentage(mPercentage);
                     mCurrentIndex += 1;
                     updateStrength();
                     mSeekBar.setProgress(50);
-                    setPercentage(50);
 
                     if (mCurrentIndex == mStrengths.length - 1) {
                         mNextButton.setText(R.string.button_finish);
                     }
 
                 } else {
-                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrengths[mCurrentIndex].getPercentage() + "%");
+                    setPercentage(mPercentage);
+                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
 
                     findStrengths();
 
@@ -106,23 +109,14 @@ public class QuestionFragment extends Fragment {
                     Intent i = ResultPageActivity.newIntent(getActivity());
                     startActivity(i);
 
-//                    // These are just here to print out to Log to see what is happening
-//                    String title1 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo1Strength()].getTitleID());
-//                    String title2 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo2Strength()].getTitleID());
-//                    String title3 = getString(mStrengths[mResults.get(mResults.size() - 1).getNo3Strength()].getTitleID());
-//                    Log.d(TAG, "Your strengths are: " + title1 + ", " + title2 + " and " + title3);
-//                    mCurrentIndex = 0;
-//                    mTempResultArray.clear();
-//                    mStrenghtArray.clear();
                 }
-
             }
         });
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                setPercentage(i);
+                mPercentage = i;
                 mPercentageText.setText(i + "%");
             }
 
@@ -146,6 +140,11 @@ public class QuestionFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(CURRENT_INDEX);
+            mStrenghtArray = savedInstanceState.getIntegerArrayList(STRENGTH_ARRAY);
+        }
+
     }
 
     /*Method to update the Strength visible in the screen*/
@@ -157,7 +156,9 @@ public class QuestionFragment extends Fragment {
 
     // Set the percentage for each strength
     private void setPercentage(int percentage) {
+        mStrenghtArray.add(percentage);
         mStrengths[mCurrentIndex].setPercentage(percentage);
+        mPercentage = 50;
     }
 
     public void findStrengths() {
@@ -165,10 +166,10 @@ public class QuestionFragment extends Fragment {
         int j = 0;
 
         // Import all the strengths from the mStrengthsBank
-        while (i < mStrengths.length - 1) {
-            mStrenghtArray.add(mStrengths[i].getPercentage());
-            i += 1;
-        }
+//        while (i < mStrengths.length - 1) {
+//            mStrenghtArray.add(mStrengths[i].getPercentage());
+//            i += 1;
+//        }
 
         // Look through all the strength and find max. Add the index of where max is to a ResultArray and remove that index from the array
         // Do this 3 times to find three strengths
@@ -182,8 +183,7 @@ public class QuestionFragment extends Fragment {
         }
 
         // Add a new Result to the Results array
-        // "Jarle" here should be replaced by a user nam,e of the person is logged in
-        //mResults.add(new Result(new Date(), "Jarle", mTempResultArray.get(0), mTempResultArray.get(1), mTempResultArray.get(2)));
+        // "Jarle" here should be replaced by a user name of the person is logged in
         mResult = Result.getInstance();
         mResult.setDate(new Date());
         mResult.setNo1Strength(mTempResultArray.get(0));
@@ -192,4 +192,14 @@ public class QuestionFragment extends Fragment {
         mResult.setName("Jarle");
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Log.i(TAG, "onSavedInstanceSTate");
+
+        outState.putInt(CURRENT_INDEX, mCurrentIndex);
+        outState.putIntegerArrayList(STRENGTH_ARRAY, mStrenghtArray);
+
+    }
 }

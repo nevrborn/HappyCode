@@ -65,9 +65,6 @@ public class ResultPageFragment extends Fragment {
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
         mRetakeButton = (Button) view.findViewById(R.id.button_result_retake);
-        //mResultLine1 = (ImageView) view.findViewById(R.id.imageview_result_line);
-        //mResultLine2 = (ImageView) view.findViewById(R.id.imageview_result_line_two);
-        //mResultLine3 = (ImageView) view.findViewById(R.id.imageview_result_line_three);
 
         mStrenghtText.setText(mStrengths[mNr1Strength].getDescriptionID());
         mStrengthTitle.setText(mStrengths[mNr1Strength].getTitleID());
