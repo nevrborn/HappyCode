@@ -20,7 +20,7 @@
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/list_item_icon"
         android:ellipsize="marquee"
         android:text="@string/test_text"
         android:textSize="12sp"/>
@@ -32,11 +32,12 @@
         android:layout_above="@id/list_item_description"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:textStyle="bold"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/list_item_icon"
         android:gravity="center_vertical"
         android:text="Title"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
 
 </RelativeLayout>
 
