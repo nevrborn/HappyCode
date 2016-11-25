@@ -1,5 +1,6 @@
 package com.cloud9.android.happycode;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -47,8 +48,9 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
-    private class TestResultHolder extends RecyclerView.ViewHolder {
+    private class TestResultHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private TestResult mTestResult;
         private ImageView mTesterIcon;
         private ImageView mStrenghtIcon1;
         private ImageView mStrenghtIcon2;
@@ -57,11 +59,23 @@ public class TestHistoryFragment extends Fragment {
 
         public TestResultHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             mTesterIcon = (ImageView) itemView.findViewById(R.id.list_item_tester_icon);
             mStrenghtIcon1 = (ImageView) itemView.findViewById(R.id.list_item_icon_1);
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
             mStrenghtIcon3 = (ImageView) itemView.findViewById(R.id.list_item_icon_3);
             mDateTime = (TextView) itemView.findViewById(R.id.list_item_date_time);
+        }
+
+        @Override
+        public void onClick(View view) {
+            // Go to TestResult page
+            Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
+            startActivity(i);
+        }
+
+        public void setResult(TestResult result) {
+            mTestResult = result;
         }
     }
 
@@ -95,6 +109,8 @@ public class TestHistoryFragment extends Fragment {
             holder.mStrenghtIcon3.setImageResource(mStrengths[testResult.getNo3Strength()].getIconID());
             //holder.mDateTime.setText(testResult.getDate().toString() + " uu:mm"); // set date format and add getTime to TestResult
             holder.mDateTime.setText(testResult.getDateTime());
+
+            holder.setResult(testResult);
         }
 
         @Override
