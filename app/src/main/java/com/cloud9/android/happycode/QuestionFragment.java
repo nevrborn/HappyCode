@@ -22,11 +22,13 @@ import java.util.ArrayList;
 public class QuestionFragment extends Fragment {
 
     private static final String TAG = "QuestionFragment";
-    private static final String CURRENT_INDEX = "index";
+    private static final String CURRENT_INDEX = "current_index";
+    private static final String LAST_REACHED_INDEX = "last_reached_index";
     private static final String STRENGTH_ARRAY = "strength_array";
     private static final String TEST_RESULT_ID = "testresult_id";
 
     private Button mNextButton;
+    private Button mPreviousButton;
     private TextView mStrengthText;
     private TextView mPercentageText;
     private ImageView mImage;
@@ -35,6 +37,7 @@ public class QuestionFragment extends Fragment {
     private TestResultList mTestResultList;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
+    private int mLastIndexReached = 0;
     private int mPercentage;
 
     // Adding all the Strengths and descriptions to an array - mStrength
@@ -79,27 +82,48 @@ public class QuestionFragment extends Fragment {
         mStrengthText = (TextView) view.findViewById(R.id.textview_question_text);
         mPercentageText = (TextView) view.findViewById(R.id.textView_question_percentage);
         mNextButton = (Button) view.findViewById(R.id.button_question_next);
+        mPreviousButton = (Button) view.findViewById(R.id.button_question_previous);
         mSeekBar = (SeekBar) view.findViewById(R.id.seekBar_question);
 
         mPercentage = 50;
+        if (mCurrentIndex == 0) {
+            mPreviousButton.setAlpha(0.6f);
+        } else {
+            mPreviousButton.setAlpha(1.0f);
+        }
+
 
         // Setting up what happens when the next button is pressed - go to next strength
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // Increase index by one till all strengths have been view, then setStrenghts and move to result screen
+                // Increase index by one till all strengths have been viewed, then setStrenghts and move to result screen
                 if (mCurrentIndex < mStrengths.length - 1) {
                     setPercentage(mPercentage);
+                    mPreviousButton.setAlpha(1.0f);
                     Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
-                    mCurrentIndex += 1;
-                    updateStrength();
-                    mSeekBar.setProgress(50);
+                    mCurrentIndex++;
 
+                    // add the last index reached if necessary
+                    if (mCurrentIndex > mLastIndexReached) {
+                        mLastIndexReached++;
+                    }
+
+                    // update the view for the new question
+                    updateStrength();
+                    if (mCurrentIndex == mLastIndexReached) {
+                        mSeekBar.setProgress(50);
+                    } else {
+                        mSeekBar.setProgress(mStrengths[mCurrentIndex].getPercentage());
+                    }
+
+                    // set NEXT button to finish if at the last question
                     if (mCurrentIndex == mStrengths.length - 1) {
                         mNextButton.setText(R.string.button_finish);
                     }
 
+                    // you're at the last question, so go the result page
                 } else {
                     setPercentage(mPercentage);
                     Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
@@ -110,6 +134,27 @@ public class QuestionFragment extends Fragment {
                     // Go to TestResult page
                     Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
                     startActivity(i);
+
+                }
+            }
+        });
+
+
+        // Setting up what happens when the previous button is pressed - go to previous strength if possible
+        mPreviousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Decrease index by one till at first question
+                if (mCurrentIndex > 0) {
+                    setPercentage(mPercentage);
+                    mCurrentIndex--;
+                    updateStrength();
+                    mSeekBar.setProgress(mStrengths[mCurrentIndex].getPercentage());
+
+                    if (mCurrentIndex == 0) {
+                        mPreviousButton.setAlpha(0.6f);
+                    }
 
                 }
             }
@@ -142,6 +187,7 @@ public class QuestionFragment extends Fragment {
 
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(CURRENT_INDEX);
+            mLastIndexReached = savedInstanceState.getInt(LAST_REACHED_INDEX);
             mStrenghtArray = savedInstanceState.getIntegerArrayList(STRENGTH_ARRAY);
         }
 
@@ -168,6 +214,7 @@ public class QuestionFragment extends Fragment {
         Log.i(TAG, "onSavedInstanceSTate");
 
         outState.putInt(CURRENT_INDEX, mCurrentIndex);
+        outState.putInt(LAST_REACHED_INDEX, mLastIndexReached);
         outState.putIntegerArrayList(STRENGTH_ARRAY, mStrenghtArray);
 
     }

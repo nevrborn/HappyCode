@@ -37,19 +37,35 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_question_next"
+    <LinearLayout
+        android:id="@+id/linear_layout_buttons_prev_and_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Buttons"
-        android:text="@string/button_next"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp">
 
-        />
+        <Button
+            android:id="@+id/button_question_previous"
+            style="@style/Buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:text="@string/button_previous"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:id="@+id/button_question_next"
+            style="@style/Buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_next"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView_question_percentage"
@@ -57,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorHappyCode"
-        android:layout_above="@id/button_question_next"
+        android:layout_above="@id/linear_layout_buttons_prev_and_next"
         android:textAlignment="center"
         android:textSize="18sp"/>
 
@@ -76,6 +92,7 @@
         android:layout_marginBottom="20dp"
         android:padding="8dp"
         android:focusableInTouchMode="true"
+        android:thumb="@android:drawable/sym_def_app_icon"
         android:progressTint="@color/colorHappyCode"
         android:thumbTint="@color/colorHappyCode"
         />
