@@ -76,7 +76,12 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Sorry, je hebt nog geen historie.", Toast.LENGTH_SHORT).show();
+                if (TestResultList.get(getActivity()).getTestResultList().size() != 0) {
+                    Intent i = TestHistoryActivity.newIntent(getActivity());
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getActivity(), "Sorry, je hebt nog geen historie.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {

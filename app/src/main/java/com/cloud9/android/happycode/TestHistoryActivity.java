@@ -24,6 +24,6 @@ public class TestHistoryActivity extends SingleFragmentActivity {
     */
     @Override
     protected Fragment createFragment() {
-        return null;
+        return new TestHistoryFragment();
     }
 }
