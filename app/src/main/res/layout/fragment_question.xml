@@ -11,69 +11,85 @@
         android:id="@+id/imageview_question"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@mipmap/strength_leader"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:clickable="false"
-        android:layout_centerHorizontal="true"
         android:contentDescription="strength_image"
+        android:src="@mipmap/strength_leader"
         />
 
     <TextView
         android:id="@+id/textview_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:layout_below="@id/imageview_question"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:textAlignment="center"
-        android:layout_below="@id/imageview_question"
-        android:textColor="@android:color/white"
         android:layout_marginTop="30dp"
+        android:padding="16dp"
         android:text="@string/test_text"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="18sp"/>
 
-    <Button
-        android:id="@+id/button_question_next"
+    <LinearLayout
+        android:id="@+id/linear_layout_buttons_prev_and_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Buttons"
-        android:text="@string/button_next"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp">
 
-        />
+        <Button
+            android:id="@+id/button_question_previous"
+            style="@style/Buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:text="@string/button_previous"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:id="@+id/button_question_next"
+            style="@style/Buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_next"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView_question_percentage"
-        android:text="50%"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorHappyCode"
-        android:layout_above="@id/button_question_next"
+        android:layout_above="@id/linear_layout_buttons_prev_and_next"
+        android:text="50%"
         android:textAlignment="center"
+        android:textColor="@color/colorHappyCode"
         android:textSize="18sp"/>
 
     <SeekBar
         android:id="@+id/seekBar_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:tickMark="@color/colorHappyCode"
-        android:saveEnabled="true"
-        android:progress="50"
         android:layout_above="@id/textView_question_percentage"
-        android:hapticFeedbackEnabled="true"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:padding="8dp"
+        android:clickable="true"
         android:focusableInTouchMode="true"
+        android:hapticFeedbackEnabled="true"
+        android:padding="8dp"
+        android:progress="50"
         android:progressTint="@color/colorHappyCode"
+        android:saveEnabled="true"
+        android:thumb="@android:drawable/sym_def_app_icon"
         android:thumbTint="@color/colorHappyCode"
-        android:thumb="@android:drawable/sym_def_app_icon"/>
+        android:tickMark="@color/colorHappyCode"/>
 
 </RelativeLayout>

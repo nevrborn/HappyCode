@@ -6,7 +6,8 @@
     <string name="button_about">Over\nCloud9</string>
     <string name="button_all_codes">Alle\ncodes</string>
     <string name="button_test_history">Test\nhistorie</string>
-    <string name="button_next">NEXT</string>
+    <string name="button_next">VOLGENDE</string>
+    <string name="button_previous"> VORIGE </string>
     <string name="button_finish">FINISH</string>
     <string name="button_result_retake">MENU</string>
     <string name="textview_result_rename">RESULT</string>
