@@ -1,5 +1,9 @@
 package com.cloud9.android.happycode;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -62,10 +66,16 @@ public class StartPageFragment extends Fragment {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                mAboutButton.setText("");
+//                mTestHistoryButton.setText("");
+//                mAllCodes.setText("");
+//                animateCircles();
+
                 Intent i = QuestionActivity.newIntent(getActivity());
                 startActivity(i);
             }
         });
+
         mAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +83,7 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
+
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +95,7 @@ public class StartPageFragment extends Fragment {
                 }
             }
         });
+
         mAllCodes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +126,60 @@ public class StartPageFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void animateCircles() {
+
+        int mStartButtonHeight = mStartButton.getHeight() / 3;
+        int mStartButtonWidth = mStartButton.getWidth() / 3;
+
+        float Yend = mStartButton.getTop() - mStartButtonHeight;
+        float Xend = mStartButton.getX() + mStartButtonWidth;
+
+        float aboutYstart = mAboutButton.getY();
+        float aboutXstart = mAboutButton.getX();
+        float testHistoryYstart = mAboutButton.getY();
+        float allCodesYstart = mAllCodes.getY();
+        float allCodesXstart = mAllCodes.getX();
+        float testHistoryXstart = mAboutButton.getX();
+
+
+        ObjectAnimator aboutYSize = ObjectAnimator.ofFloat(mAboutButton, "scaleY", 1f, 0);
+        ObjectAnimator aboutXSize = ObjectAnimator.ofFloat(mAboutButton, "scaleX", 1f, 0);
+        ObjectAnimator testHistoryYSize = ObjectAnimator.ofFloat(mTestHistoryButton, "scaleY", 1f, 0);
+        ObjectAnimator testHistoryXSize = ObjectAnimator.ofFloat(mTestHistoryButton, "scaleX", 1f, 0);
+        ObjectAnimator allCodesYSize = ObjectAnimator.ofFloat(mAllCodes, "scaleY", 1f, 0);
+        ObjectAnimator allCodesXSize = ObjectAnimator.ofFloat(mAllCodes, "scaleX", 1f, 0);
+
+        ObjectAnimator aboutYPos = ObjectAnimator.ofFloat(mAboutButton, "y", aboutYstart, Yend);
+        ObjectAnimator aboutXPos = ObjectAnimator.ofFloat(mAboutButton, "x", aboutXstart, Xend);
+        ObjectAnimator testHistoryYPos = ObjectAnimator.ofFloat(mTestHistoryButton, "y", testHistoryYstart, Yend);
+        ObjectAnimator allCodesYPos = ObjectAnimator.ofFloat(mAllCodes, "y", allCodesYstart, Yend);
+        ObjectAnimator allCodesXPos = ObjectAnimator.ofFloat(mAllCodes, "x", allCodesXstart, Xend);
+
+        AnimatorSet aboutButton = new AnimatorSet();
+        aboutButton
+                .setDuration(1500)
+                .play(aboutYPos)
+                .with(aboutXPos)
+                .with(aboutYSize)
+                .with(testHistoryXSize)
+                .with(testHistoryYSize)
+                .with(testHistoryYPos)
+                .with(allCodesYSize)
+                .with(allCodesYPos)
+                .with(allCodesXPos)
+        ;
+
+        aboutButton.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent i = QuestionActivity.newIntent(getActivity());
+                startActivity(i);
+            }
+        });
+
+        aboutButton.start();
     }
 
 
