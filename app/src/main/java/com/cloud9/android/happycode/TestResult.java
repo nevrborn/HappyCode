@@ -1,5 +1,7 @@
 package com.cloud9.android.happycode;
 
+import android.text.format.DateFormat;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -81,6 +83,13 @@ public class TestResult {
 
     public Date getDate() {
         return mDate;
+    }
+
+    public String getDateTime() {
+        Date date = this.getDate();
+        String dateFormat = "EEE, dd-MM-yyyy hh:mm";
+        String dateString = DateFormat.format(dateFormat, date).toString();
+        return dateString;
     }
 
     public void setDate(Date date) {

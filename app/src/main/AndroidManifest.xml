@@ -27,6 +27,9 @@
         <activity android:name=".CodesActivity">
 
         </activity>
+        <activity android:name=".TestHistoryActivity">
+
+        </activity>
     </application>
 
 </manifest>
