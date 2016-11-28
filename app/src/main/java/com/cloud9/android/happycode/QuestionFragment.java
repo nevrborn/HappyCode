@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -129,10 +130,12 @@ public class QuestionFragment extends Fragment {
                     Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
 
                     mTestResult.setTestResult(mStrenghtArray);
-                    mTestResultList.addResult(mTestResult);
+                    //mTestResultList.addResult(mTestResult);
+
+                    UUID tempUUID = UUID.randomUUID();
 
                     // Go to TestResult page
-                    Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
+                    Intent i = ResultPageActivity.newIntent(getActivity(), tempUUID);
                     startActivity(i);
 
                 }
