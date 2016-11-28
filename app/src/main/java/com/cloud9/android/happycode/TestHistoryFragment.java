@@ -84,7 +84,8 @@ public class TestHistoryFragment extends Fragment {
     private class TestResultsAdapter extends RecyclerView.Adapter<TestResultHolder> {
 
         private List<TestResult> mTestResultList;
-        private Strength[] mStrengths = QuestionFragment.newInstance().mStrengths;
+        private StrengthList mStrengths = StrengthList.get(getContext());
+
 
         public TestResultsAdapter(List<TestResult> testResultList) {
             mTestResultList = testResultList;
@@ -101,10 +102,14 @@ public class TestHistoryFragment extends Fragment {
         public void onBindViewHolder(TestResultHolder holder, int position) {
             TestResult testResult = mTestResultList.get(position);
 
+            Strength mNr1Strength = mStrengths.getStrength(testResult.getNo1StrengthIndex());
+            Strength mNr2Strength = mStrengths.getStrength(testResult.getNo1StrengthIndex());
+            Strength mNr3Strength = mStrengths.getStrength(testResult.getNo1StrengthIndex());
+
             // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
-            holder.mStrenghtIcon1.setImageResource(mStrengths[testResult.getNo1StrengthIndex()].getIconID());
-            holder.mStrenghtIcon2.setImageResource(mStrengths[testResult.getNo2StrengthIndex()].getIconID());
-            holder.mStrenghtIcon3.setImageResource(mStrengths[testResult.getNo3StrengthIndex()].getIconID());
+            holder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
+            holder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
+            holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
             //holder.mDateTime.setText(testResult.getDate().toString() + " uu:mm"); // set date format and add getTime to TestResult
             holder.mDateTime.setText(testResult.getDateTime());
 

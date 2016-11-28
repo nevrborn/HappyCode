@@ -41,29 +41,31 @@ public class QuestionFragment extends Fragment {
     private int mLastIndexReached = 0;
     private int mPercentage;
 
-    // Adding all the Strengths and descriptions to an array - mStrength
-    public Strength[] mStrengths = new Strength[]{
-            new Strength(R.string.strength_leader_title, R.string.strength_leader, R.string.strength_leader_description, R.mipmap.strength_leader, R.mipmap.icon_leader),
-            new Strength(R.string.strength_storyteller_title, R.string.strength_storyteller, R.string.strength_storyteller_description, R.mipmap.strength_storyteller, R.mipmap.icon_storyteller),
-            new Strength(R.string.strength_challenger_title, R.string.strength_challenger, R.string.strength_challenger_description, R.mipmap.strength_challenger, R.mipmap.icon_challenger),
-            new Strength(R.string.strength_networker_title, R.string.strength_networker, R.string.strength_networker_description, R.mipmap.strength_networker, R.mipmap.icon_networker),
-            new Strength(R.string.strength_moodmaker_title, R.string.strength_moodmaker, R.string.strength_moodmaker_description, R.mipmap.strength_moodmaker, R.mipmap.icon_networker),
-            new Strength(R.string.strength_organiser_title, R.string.strength_organiser, R.string.strength_organiser_description, R.mipmap.strength_organiser, R.mipmap.icon_organiser),
-            new Strength(R.string.strength_guardian_title, R.string.strength_guardian, R.string.strength_guardian_description, R.mipmap.strength_guardian, R.mipmap.icon_guardian),
-            new Strength(R.string.strength_planner_title, R.string.strength_planner, R.string.strength_planner_description, R.mipmap.strength_planner, R.mipmap.icon_planner),
-            new Strength(R.string.strength_hardworker_title, R.string.strength_hardworker, R.string.strength_hardworker_description, R.mipmap.strength_hardworker, R.mipmap.icon_hardworker),
-            new Strength(R.string.strength_administrator_title, R.string.strength_administrator, R.string.strength_administrator_description, R.mipmap.strength_administrator, R.mipmap.icon_administrator),
-            new Strength(R.string.strength_motivator_title, R.string.strength_motivator, R.string.strength_motivator_description, R.mipmap.strength_motivator, R.mipmap.icon_motivator),
-            new Strength(R.string.strength_connector_title, R.string.strength_connector, R.string.strength_connector_description, R.mipmap.strength_connector, R.mipmap.icon_connector),
-            new Strength(R.string.strength_unifier_title, R.string.strength_unifier, R.string.strength_unifier_description, R.mipmap.strength_unifier, R.mipmap.icon_unifier),
-            new Strength(R.string.strength_inspirer_title, R.string.strength_inspirer, R.string.strength_inspirer_description, R.mipmap.strength_inspirer, R.mipmap.icon_inspirer),
-            new Strength(R.string.strength_feeler_title, R.string.strength_feeler, R.string.strength_feeler_description, R.mipmap.strength_feeler, R.mipmap.icon_feeler),
-            new Strength(R.string.strength_strategist_title, R.string.strength_strategist, R.string.strength_strategist_description, R.mipmap.strength_strategist, R.mipmap.icon_strategist),
-            new Strength(R.string.strength_visionary_title, R.string.strength_visionary, R.string.strength_visionary_description, R.mipmap.strength_visionary, R.mipmap.icon_visionary),
-            new Strength(R.string.strength_pathfinder_title, R.string.strength_pathfinder, R.string.strength_pathfinder_description, R.mipmap.strength_pathfinder, R.mipmap.icon_pathfinder),
-            new Strength(R.string.strength_researcher_title, R.string.strength_researcher, R.string.strength_researcher_description, R.mipmap.strength_researcher, R.mipmap.icon_researcher),
-            new Strength(R.string.strength_thinker_title, R.string.strength_thinker, R.string.strength_thinker_description, R.mipmap.strength_thinker, R.mipmap.icon_thinker)
-    };
+    private StrengthList mStrengths = StrengthList.get(getContext());
+
+//    // Adding all the Strengths and descriptions to an array - mStrength
+//    public Strength[] mStrengths = new Strength[]{
+//            new Strength(R.string.strength_leader_title, R.string.strength_leader, R.string.strength_leader_description, R.mipmap.strength_leader, R.mipmap.icon_leader),
+//            new Strength(R.string.strength_storyteller_title, R.string.strength_storyteller, R.string.strength_storyteller_description, R.mipmap.strength_storyteller, R.mipmap.icon_storyteller),
+//            new Strength(R.string.strength_challenger_title, R.string.strength_challenger, R.string.strength_challenger_description, R.mipmap.strength_challenger, R.mipmap.icon_challenger),
+//            new Strength(R.string.strength_networker_title, R.string.strength_networker, R.string.strength_networker_description, R.mipmap.strength_networker, R.mipmap.icon_networker),
+//            new Strength(R.string.strength_moodmaker_title, R.string.strength_moodmaker, R.string.strength_moodmaker_description, R.mipmap.strength_moodmaker, R.mipmap.icon_networker),
+//            new Strength(R.string.strength_organiser_title, R.string.strength_organiser, R.string.strength_organiser_description, R.mipmap.strength_organiser, R.mipmap.icon_organiser),
+//            new Strength(R.string.strength_guardian_title, R.string.strength_guardian, R.string.strength_guardian_description, R.mipmap.strength_guardian, R.mipmap.icon_guardian),
+//            new Strength(R.string.strength_planner_title, R.string.strength_planner, R.string.strength_planner_description, R.mipmap.strength_planner, R.mipmap.icon_planner),
+//            new Strength(R.string.strength_hardworker_title, R.string.strength_hardworker, R.string.strength_hardworker_description, R.mipmap.strength_hardworker, R.mipmap.icon_hardworker),
+//            new Strength(R.string.strength_administrator_title, R.string.strength_administrator, R.string.strength_administrator_description, R.mipmap.strength_administrator, R.mipmap.icon_administrator),
+//            new Strength(R.string.strength_motivator_title, R.string.strength_motivator, R.string.strength_motivator_description, R.mipmap.strength_motivator, R.mipmap.icon_motivator),
+//            new Strength(R.string.strength_connector_title, R.string.strength_connector, R.string.strength_connector_description, R.mipmap.strength_connector, R.mipmap.icon_connector),
+//            new Strength(R.string.strength_unifier_title, R.string.strength_unifier, R.string.strength_unifier_description, R.mipmap.strength_unifier, R.mipmap.icon_unifier),
+//            new Strength(R.string.strength_inspirer_title, R.string.strength_inspirer, R.string.strength_inspirer_description, R.mipmap.strength_inspirer, R.mipmap.icon_inspirer),
+//            new Strength(R.string.strength_feeler_title, R.string.strength_feeler, R.string.strength_feeler_description, R.mipmap.strength_feeler, R.mipmap.icon_feeler),
+//            new Strength(R.string.strength_strategist_title, R.string.strength_strategist, R.string.strength_strategist_description, R.mipmap.strength_strategist, R.mipmap.icon_strategist),
+//            new Strength(R.string.strength_visionary_title, R.string.strength_visionary, R.string.strength_visionary_description, R.mipmap.strength_visionary, R.mipmap.icon_visionary),
+//            new Strength(R.string.strength_pathfinder_title, R.string.strength_pathfinder, R.string.strength_pathfinder_description, R.mipmap.strength_pathfinder, R.mipmap.icon_pathfinder),
+//            new Strength(R.string.strength_researcher_title, R.string.strength_researcher, R.string.strength_researcher_description, R.mipmap.strength_researcher, R.mipmap.icon_researcher),
+//            new Strength(R.string.strength_thinker_title, R.string.strength_thinker, R.string.strength_thinker_description, R.mipmap.strength_thinker, R.mipmap.icon_thinker)
+//    };
 
     /* Method to create fragment */
     public static QuestionFragment newInstance() {
@@ -100,10 +102,10 @@ public class QuestionFragment extends Fragment {
             public void onClick(View view) {
 
                 // Increase index by one till all strengths have been viewed, then setStrenghts and move to result screen
-                if (mCurrentIndex < mStrengths.length - 1) {
+                if (mCurrentIndex < mStrengths.getSize() - 1) {
                     setPercentage(mPercentage);
                     mPreviousButton.setAlpha(1.0f);
-                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
+                    Log.d(TAG, getString(mStrengths.getStrength(mCurrentIndex).getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
                     mCurrentIndex++;
 
                     // add the last index reached if necessary
@@ -116,18 +118,18 @@ public class QuestionFragment extends Fragment {
                     if (mCurrentIndex == mLastIndexReached) {
                         mSeekBar.setProgress(50);
                     } else {
-                        mSeekBar.setProgress(mStrengths[mCurrentIndex].getPercentage());
+                        mSeekBar.setProgress(mStrengths.getStrength(mCurrentIndex).getPercentage());
                     }
 
                     // set NEXT button to finish if at the last question
-                    if (mCurrentIndex == mStrengths.length - 1) {
+                    if (mCurrentIndex == mStrengths.getSize() - 1) {
                         mNextButton.setText(R.string.button_finish);
                     }
 
                     // you're at the last question, so go the result page
                 } else {
                     setPercentage(mPercentage);
-                    Log.d(TAG, getString(mStrengths[mCurrentIndex].getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
+                    Log.d(TAG, getString(mStrengths.getStrength(mCurrentIndex).getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
 
                     mTestResult.setTestResult(mStrenghtArray);
                     //mTestResultList.addResult(mTestResult);
@@ -153,7 +155,7 @@ public class QuestionFragment extends Fragment {
                     setPercentage(mPercentage);
                     mCurrentIndex--;
                     updateStrength();
-                    mSeekBar.setProgress(mStrengths[mCurrentIndex].getPercentage());
+                    mSeekBar.setProgress(mStrengths.getStrength(mCurrentIndex).getPercentage());
 
                     if (mCurrentIndex == 0) {
                         mPreviousButton.setAlpha(0.6f);
@@ -198,15 +200,15 @@ public class QuestionFragment extends Fragment {
 
     /*Method to update the Strength visible in the screen*/
     private void updateStrength() {
-        int strength = mStrengths[mCurrentIndex].getStrengthID();
+        int strength = mStrengths.getStrength(mCurrentIndex).getQuestionID();
         mStrengthText.setText(strength);
-        mImage.setImageResource(mStrengths[mCurrentIndex].getImageID());
+        mImage.setImageResource(mStrengths.getStrength(mCurrentIndex).getImageID());
     }
 
     // Set the percentage for each strength
     private void setPercentage(int percentage) {
         mStrenghtArray.add(percentage);
-        mStrengths[mCurrentIndex].setPercentage(percentage);
+        //mStrengths.getStrength(mCurrentIndex).setPercentage(percentage);
         mPercentage = 50;
     }
 
