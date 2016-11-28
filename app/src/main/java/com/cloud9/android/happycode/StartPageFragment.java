@@ -28,6 +28,7 @@ public class StartPageFragment extends Fragment {
     Button mAboutButton;
     Button mTestHistoryButton;
     Button mAllCodes;
+    Button mLogInButton;
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
 
@@ -60,6 +61,7 @@ public class StartPageFragment extends Fragment {
         mAboutButton = (Button) view.findViewById(R.id.button_about);
         mAllCodes = (Button) view.findViewById(R.id.button_all_codes);
         mTestHistoryButton = (Button) view.findViewById(R.id.button_test_history);
+        mLogInButton = (Button) view.findViewById(R.id.buttonLogInStartPage);
         mDrawerLayout = (DrawerLayout) view;
 
         // set listeners
@@ -75,7 +77,6 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
-
         mAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +84,6 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
-
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +95,6 @@ public class StartPageFragment extends Fragment {
                 }
             }
         });
-
         mAllCodes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +102,14 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
+        mLogInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = LogInActivity.newIntent(getActivity());
+                startActivity(i);
+            }
+        });
+
 
 
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
