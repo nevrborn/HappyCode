@@ -22,6 +22,7 @@ public class ResultPageFragment extends Fragment {
     private static final String TAG = "ResultPageFragment";
     private static final String KEY_CURRENT_STRENGTH = "currentStrength";
 
+
     private static UUID mID;
     private int mNr1Strength;
     private int mNr2Strength;

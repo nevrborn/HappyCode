@@ -31,6 +31,7 @@ public class TestResult {
         if (mTestResult == null) {
             mTestResult = new TestResult();
         }
+
         return mTestResult;
     }
 
