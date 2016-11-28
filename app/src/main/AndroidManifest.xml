@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.cloud9.android.happycode">
 
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,19 +19,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuestionActivity">
-
         </activity>
         <activity android:name=".ResultPageActivity">
-
         </activity>
         <activity android:name=".AboutPageActivity">
-
         </activity>
         <activity android:name=".CodesActivity">
-
         </activity>
         <activity android:name=".TestHistoryActivity">
-
+        </activity>
+        <activity android:name=".LogInActivity">
         </activity>
     </application>
 
