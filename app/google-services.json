@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "118127035909",
-    "firebase_url": "https://happycode-d8997.firebaseio.com",
-    "project_id": "happycode-d8997",
-    "storage_bucket": "happycode-d8997.appspot.com"
+    "project_number": "533965311470",
+    "firebase_url": "https://happycode-ef8ba.firebaseio.com",
+    "project_id": "happycode-ef8ba",
+    "storage_bucket": "happycode-ef8ba.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:118127035909:android:7a8590eb7fba2156",
+        "mobilesdk_app_id": "1:533965311470:android:7a8590eb7fba2156",
         "android_client_info": {
           "package_name": "com.cloud9.android.happycode"
         }
       },
       "oauth_client": [
         {
-          "client_id": "118127035909-ramokgus3mj06ljsm8u67erqsfte3vqd.apps.googleusercontent.com",
+          "client_id": "533965311470-6ef2ta7ou7joomd74kk4ei549oaq0f0o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAA-TbCGxR_xODIsxz4VTG01DgdYnzt530"
+          "current_key": "AIzaSyApljpFZCGZb0osnhp1YPY2u95ikMIVxRw"
         }
       ],
       "services": {
