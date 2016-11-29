@@ -33,7 +33,7 @@
         android:id="@+id/buttonLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_log_in"
+        android:text="@string/button_sign_in"
         />
 
     <Button

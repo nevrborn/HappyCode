@@ -1,0 +1,96 @@
+package com.cloud9.android.happycode;
+
+import android.net.Uri;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+/**
+ * Created by paulvancappelle on 29-11-16.
+ * <p>
+ * User is a Singleton
+ */
+public class User {
+
+    // Name, email address, and profile photo Url
+    private static String sName;
+    private static String sEmail;
+    private static Uri sPhotoUrl;
+
+    // The user's ID, unique to the Firebase project. Do NOT use this value to
+    // authenticate with your backend server, if you have one. Use
+    // FirebaseUser.getToken() instead.
+    private static String sUid;
+
+    private static boolean sIsLoggedIn;
+
+    private static User mUser;
+
+
+    // constructor
+    private User(FirebaseUser firebaseUser) {
+        sName = firebaseUser.getDisplayName();
+        sEmail = firebaseUser.getEmail();
+        sPhotoUrl = firebaseUser.getPhotoUrl();
+        sUid = firebaseUser.getUid();
+        setIsLoggedIn(true);
+    }
+
+    public static User get() {
+        return mUser;
+    }
+
+    public static void set() {
+        // if we have a loggedin user, set mUser
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            mUser = new User(firebaseUser);
+        }
+    }
+
+    public static void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        mUser = null;
+    }
+
+    public boolean isLoggedIn() {
+        return sIsLoggedIn;
+    }
+
+    public void setIsLoggedIn(boolean isLoggedIn) {
+        sIsLoggedIn = isLoggedIn;
+    }
+
+    public String getName() {
+        return sName;
+    }
+
+    public void setName(String name) {
+        User.sName = name;
+    }
+
+    public String getEmail() {
+        return sEmail;
+    }
+
+    public void setEmail(String email) {
+        User.sEmail = email;
+    }
+
+    public Uri getPhotoUrl() {
+        return sPhotoUrl;
+    }
+
+    public void setPhotoUrl(Uri photoUrl) {
+        User.sPhotoUrl = photoUrl;
+    }
+
+    public String getUid() {
+        return sUid;
+    }
+
+    public void setUid(String uid) {
+        User.sUid = uid;
+    }
+}
