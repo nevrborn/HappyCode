@@ -1,6 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,10 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Date;
+import junit.framework.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -33,6 +35,7 @@ public class ResultPageFragment extends Fragment {
     private Strength mNr3Strength;
     private int mCurrentStrength; // which result is currently selected (0, 1, ...)
     private TestResult mTestResult;
+    private Map<String, Integer> mResultArray = new HashMap<>();
     //private TestResultList mTestResultList;
     private StrengthList mStrengths;
     private Boolean hasWrittenToFirebase = false;
@@ -62,16 +65,17 @@ public class ResultPageFragment extends Fragment {
         // code to initialize the three strengths
         //mTestResultList = TestResultList.get(getContext());
         mTestResult = TestResult.getInstance();
+        mResultArray = mTestResult.getResultArray();
         //mTestResult = mTestResultList.getResult(mID);
         mStrengths = StrengthList.get(getContext());
 
-        int mNr1StrengthIndex = mTestResult.getNo1StrengthIndex();
-        int mNr2StrengthIndex = mTestResult.getNo2StrengthIndex();
-        int mNr3StrengthIndex = mTestResult.getNo3StrengthIndex();
+        String mNr1StrengthKey = mTestResult.getNo1StrengthKey();
+        String mNr2StrengthKey = mTestResult.getNo2StrengthKey();
+        String mNr3StrengthKey = mTestResult.getNo3StrengthKey();
 
-        mNr1Strength = mStrengths.getStrength(mNr1StrengthIndex);
-        mNr2Strength = mStrengths.getStrength(mNr2StrengthIndex);
-        mNr3Strength = mStrengths.getStrength(mNr3StrengthIndex);
+        mNr1Strength = mStrengths.getStrengthFromKey(mNr1StrengthKey);
+        mNr2Strength = mStrengths.getStrengthFromKey(mNr2StrengthKey);
+        mNr3Strength = mStrengths.getStrengthFromKey(mNr3StrengthKey);
 
     }
 
@@ -198,6 +202,5 @@ public class ResultPageFragment extends Fragment {
 
         String key = mDatabase.child("testresults").push().getKey();
         mDatabase.child("testresults").child(key).setValue(testResult);
-        //mDatabase.child("testresults").child(key).setValue(mTestResult);
     }
 }

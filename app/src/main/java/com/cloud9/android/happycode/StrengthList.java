@@ -3,6 +3,8 @@ package com.cloud9.android.happycode;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,7 +33,7 @@ public class StrengthList {
         mStrengthList.add(strength);
     }
 
-    public Strength getStrength(int id) {
+    public Strength getStrengthFromIndex(int id) {
         return mStrengthList.get(id);
     }
 
@@ -42,4 +44,23 @@ public class StrengthList {
     public int getSize() {
         return mStrengthList.size();
     }
+
+    public Strength getStrengthFromKey(String strengthKey) {
+
+        int indexOfKey = 0;
+        int i = 0;
+
+        while (i < mStrengthList.size()) {
+
+            if (mStrengthList.get(i).equals(strengthKey)) {
+                indexOfKey = i;
+                i = mStrengthList.size();
+            }
+
+            i += 1;
+        }
+
+        return mStrengthList.get(indexOfKey);
+    }
+
 }

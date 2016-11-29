@@ -62,7 +62,7 @@ public class CodeFragment extends Fragment {
 
         @Override
         public Object getItem(int i) {
-            return mStrengths.getStrength(i);
+            return mStrengths.getStrengthFromIndex(i);
         }
 
         @Override

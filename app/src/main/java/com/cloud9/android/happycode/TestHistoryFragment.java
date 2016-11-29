@@ -68,8 +68,8 @@ public class TestHistoryFragment extends Fragment {
         @Override
         public void onClick(View view) {
             // Go to TestResult page
-            Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
-            startActivity(i);
+            //Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
+            //startActivity(i);
         }
 
         public void setResult(TestResult result) {
@@ -102,9 +102,9 @@ public class TestHistoryFragment extends Fragment {
         public void onBindViewHolder(TestResultHolder holder, int position) {
             TestResult testResult = mTestResultList.get(position);
 
-            Strength mNr1Strength = mStrengths.getStrength(testResult.getNo1StrengthIndex());
-            Strength mNr2Strength = mStrengths.getStrength(testResult.getNo1StrengthIndex());
-            Strength mNr3Strength = mStrengths.getStrength(testResult.getNo1StrengthIndex());
+            Strength mNr1Strength = mStrengths.getStrengthFromKey(testResult.getNo1StrengthKey());
+            Strength mNr2Strength = mStrengths.getStrengthFromKey(testResult.getNo2StrengthKey());
+            Strength mNr3Strength = mStrengths.getStrengthFromKey(testResult.getNo3StrengthKey());
 
             // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
             holder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());

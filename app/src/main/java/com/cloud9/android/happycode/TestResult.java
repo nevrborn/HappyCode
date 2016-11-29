@@ -3,8 +3,12 @@ package com.cloud9.android.happycode;
 import android.text.format.DateFormat;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -14,17 +18,17 @@ import java.util.UUID;
 public class TestResult {
 
     private Date mDate;
-    private UUID mID;
     private String mUser;
     private String mTester;
     private ArrayList<Integer> mTestResultArray;
+    private Map<String, Integer> mResultArray = new HashMap<>();
+    private ArrayList<String> mTop3StrengthKeys = new ArrayList<String>();
 
-    private int mNo1StrengthIndex;
-    private int mNo2StrengthIndex;
-    private int mNo3StrengthIndex;
+    private String mNo1StrengthKey;
+    private String mNo2StrengthKey;
+    private String mNo3StrengthKey;
 
     private static TestResult mTestResult;
-
 
     /* get singleton instance of the result*/
     public static TestResult getInstance() {
@@ -36,41 +40,34 @@ public class TestResult {
 
     private TestResult() {
 
-        // UUID to be used when we hook up to Firebase
-        mID = UUID.randomUUID();
     }
 
     public void deleteResult() {
         mTestResult = null;
     }
 
-
-    public UUID getID() {
-        return mID;
+    public String getNo1StrengthKey() {
+        return mNo1StrengthKey;
     }
 
-    public int getNo1StrengthIndex() {
-        return mNo1StrengthIndex;
+    public void setNo1StrengthKey(String no1StrengthKey) {
+        mNo1StrengthKey = no1StrengthKey;
     }
 
-    public void setNo1StrengthIndex(int no1StrengthIndex) {
-        mNo1StrengthIndex = no1StrengthIndex;
+    public String getNo2StrengthKey() {
+        return mNo2StrengthKey;
     }
 
-    public int getNo2StrengthIndex() {
-        return mNo2StrengthIndex;
+    public void setNo2StrengthKey(String no2StrengthKey) {
+        mNo2StrengthKey = no2StrengthKey;
     }
 
-    public void setNo2StrengthIndex(int no2StrengthIndex) {
-        mNo2StrengthIndex = no2StrengthIndex;
+    public String getNo3StrengthKey() {
+        return mNo3StrengthKey;
     }
 
-    public int getNo3StrengthIndex() {
-        return mNo3StrengthIndex;
-    }
-
-    public void setNo3StrengthIndex(int no3StrengthIndex) {
-        mNo3StrengthIndex = no3StrengthIndex;
+    public void setNo3StrengthKey(String no3StrengthKey) {
+        mNo3StrengthKey = no3StrengthKey;
     }
 
     public String getUser() {
@@ -104,35 +101,41 @@ public class TestResult {
         mTester = tester;
     }
 
-    public ArrayList<Integer> getTestResultArray() {
-        return mTestResultArray;
+    public Map<String, Integer> getResultArray() {
+        return mResultArray;
     }
 
-    public void setTestResult(ArrayList<Integer> testResultArray) {
-        mTestResultArray = testResultArray;
-        //mDate = new Date();
-        findTop3Strengths();
+    public void setResultArray(Map<String, Integer> resultArray) {
+        mResultArray = resultArray;
+        findTop3StrengthsHash(mResultArray);
     }
 
-    public void findTop3Strengths() {
-        ArrayList<Integer> mTempTop3Array = new ArrayList<Integer>();
-        ArrayList<Integer> mTempResultsArray = mTestResultArray;
+    public void findTop3StrengthsHash(Map<String, Integer> resultArray) {
+        Map<String, Integer> tempArray = new HashMap<>(resultArray);
+
+        String keyOfMaxValue = "";
 
         int j = 0;
 
         while (j < 3) {
-            int max = Collections.max(mTempResultsArray);
-            int index = mTempResultsArray.indexOf(max);
-            mTempTop3Array.add(index);
-            mTempResultsArray.set(index, 0);
+
+            int maxValue = Collections.max(tempArray.values());
+
+            for (Map.Entry<String, Integer> entry : tempArray.entrySet()) {
+                if (entry.getValue() == maxValue) {
+                    keyOfMaxValue = entry.getKey();
+                }
+            }
+
+            mTop3StrengthKeys.add(keyOfMaxValue);
+            tempArray.remove(keyOfMaxValue);
             j += 1;
         }
 
-        setNo1StrengthIndex(mTempTop3Array.get(0));
-        setNo2StrengthIndex(mTempTop3Array.get(1));
-        setNo3StrengthIndex(mTempTop3Array.get(2));
+        mNo1StrengthKey = mTop3StrengthKeys.get(0);
+        mNo2StrengthKey = mTop3StrengthKeys.get(1);
+        mNo3StrengthKey = mTop3StrengthKeys.get(2);
 
-        mTempResultsArray.clear();
-        mTempTop3Array.clear();
+        tempArray.clear();
     }
 }

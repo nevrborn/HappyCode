@@ -29,23 +29,6 @@ public class TestResultList {
         mTestResultList = new ArrayList<>();
     }
 
-    public void addResult(TestResult result) {
-        mTestResultList.add(result);
-    }
-
-    public void deleteResult(TestResult result) {
-        mTestResultList.remove(result);
-    }
-
-    public TestResult getResult(UUID id) {
-        for (TestResult result : mTestResultList) {
-            if (result.getID().equals(id)) {
-                return result;
-            }
-        }
-        return null;
-    }
-
     public List<TestResult> getTestResultList() {
         return mTestResultList;
     }
