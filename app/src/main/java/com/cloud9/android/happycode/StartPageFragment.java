@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -70,7 +71,7 @@ public class StartPageFragment extends Fragment {
 //                mAboutButton.setText("");
 //                mTestHistoryButton.setText("");
 //                mAllCodes.setText("");
-//                animateCircles();
+                animateCircles();
 
                 Intent i = QuestionActivity.newIntent(getActivity());
                 startActivity(i);

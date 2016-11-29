@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LogInFragment extends Fragment {
@@ -30,6 +32,7 @@ public class LogInFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private DatabaseReference myDatabaseRef = FirebaseDatabase.getInstance().getReference("test");
 
     String mPassword;
     String mMail;
@@ -44,7 +47,6 @@ public class LogInFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      */
-    // TODO: Rename and change types and number of parameters
     public static LogInFragment newInstance() {
         LogInFragment fragment = new LogInFragment();
         return fragment;

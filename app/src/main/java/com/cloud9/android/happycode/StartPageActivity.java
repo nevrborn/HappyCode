@@ -32,6 +32,8 @@ public class StartPageActivity extends SingleFragmentActivity {
             new Strength(R.string.strength_researcher_title, R.string.strength_researcher, R.string.strength_researcher_description, R.mipmap.strength_researcher, R.mipmap.icon_researcher),
             new Strength(R.string.strength_thinker_title, R.string.strength_thinker, R.string.strength_thinker_description, R.mipmap.strength_thinker, R.mipmap.icon_thinker)
     };
+
+
     /*
     * create Intent to start this activity
     */
@@ -76,9 +78,6 @@ public class StartPageActivity extends SingleFragmentActivity {
         mStrengthList.addStrength(new Strength(R.string.strength_pathfinder_title, R.string.strength_pathfinder, R.string.strength_pathfinder_description, R.mipmap.strength_pathfinder, R.mipmap.icon_pathfinder));
         mStrengthList.addStrength(new Strength(R.string.strength_researcher_title, R.string.strength_researcher, R.string.strength_researcher_description, R.mipmap.strength_researcher, R.mipmap.icon_researcher));
         mStrengthList.addStrength(new Strength(R.string.strength_thinker_title, R.string.strength_thinker, R.string.strength_thinker_description, R.mipmap.strength_thinker, R.mipmap.icon_thinker));
-
-        // More info: http://codetheory.in/difference-between-setdisplayhomeasupenabled-sethomebuttonenabled-and-setdisplayshowhomeenabled/
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }
