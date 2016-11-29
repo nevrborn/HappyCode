@@ -19,9 +19,9 @@ public class TestResult {
     private String mTester;
     private ArrayList<Integer> mTestResultArray;
 
-    private int mNo1Strength;
-    private int mNo2Strength;
-    private int mNo3Strength;
+    private int mNo1StrengthIndex;
+    private int mNo2StrengthIndex;
+    private int mNo3StrengthIndex;
 
     private static TestResult mTestResult;
 
@@ -49,28 +49,28 @@ public class TestResult {
         return mID;
     }
 
-    public int getNo1Strength() {
-        return mNo1Strength;
+    public int getNo1StrengthIndex() {
+        return mNo1StrengthIndex;
     }
 
-    public void setNo1Strength(int no1Strength) {
-        mNo1Strength = no1Strength;
+    public void setNo1StrengthIndex(int no1StrengthIndex) {
+        mNo1StrengthIndex = no1StrengthIndex;
     }
 
-    public int getNo2Strength() {
-        return mNo2Strength;
+    public int getNo2StrengthIndex() {
+        return mNo2StrengthIndex;
     }
 
-    public void setNo2Strength(int no2Strength) {
-        mNo2Strength = no2Strength;
+    public void setNo2StrengthIndex(int no2StrengthIndex) {
+        mNo2StrengthIndex = no2StrengthIndex;
     }
 
-    public int getNo3Strength() {
-        return mNo3Strength;
+    public int getNo3StrengthIndex() {
+        return mNo3StrengthIndex;
     }
 
-    public void setNo3Strength(int no3Strength) {
-        mNo3Strength = no3Strength;
+    public void setNo3StrengthIndex(int no3StrengthIndex) {
+        mNo3StrengthIndex = no3StrengthIndex;
     }
 
     public String getUser() {
@@ -92,8 +92,8 @@ public class TestResult {
         return dateString;
     }
 
-    public void setDate(Date date) {
-        mDate = date;
+    public void setDate() {
+        mDate = new Date();
     }
 
     public String getTester() {
@@ -110,7 +110,7 @@ public class TestResult {
 
     public void setTestResult(ArrayList<Integer> testResultArray) {
         mTestResultArray = testResultArray;
-        mDate = new Date();
+        //mDate = new Date();
         findTop3Strengths();
     }
 
@@ -128,9 +128,9 @@ public class TestResult {
             j += 1;
         }
 
-        setNo1Strength(mTempTop3Array.get(0));
-        setNo2Strength(mTempTop3Array.get(1));
-        setNo3Strength(mTempTop3Array.get(2));
+        setNo1StrengthIndex(mTempTop3Array.get(0));
+        setNo2StrengthIndex(mTempTop3Array.get(1));
+        setNo3StrengthIndex(mTempTop3Array.get(2));
 
         mTempResultsArray.clear();
         mTempTop3Array.clear();

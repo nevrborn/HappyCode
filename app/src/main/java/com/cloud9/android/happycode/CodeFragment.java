@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class CodeFragment extends Fragment {
 
     private ListView mListView;
-    private Strength[] mStrengths;
+    private StrengthList mStrengths;
     private LayoutInflater mInflater;
     private Context mContext;
 
@@ -32,7 +32,7 @@ public class CodeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mStrengths = QuestionFragment.newInstance().mStrengths;
+        mStrengths = StrengthList.get(getContext());
     }
 
     @Nullable
@@ -49,7 +49,7 @@ public class CodeFragment extends Fragment {
 
     private class CodeAdapter extends BaseAdapter {
 
-        public CodeAdapter(Context codeFragment, Strength[] strengths) {
+        public CodeAdapter(Context codeFragment, StrengthList strengths) {
             mContext = codeFragment;
             mStrengths = strengths;
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,12 +57,12 @@ public class CodeFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return mStrengths.length;
+            return mStrengths.getSize();
         }
 
         @Override
         public Object getItem(int i) {
-            return mStrengths[i];
+            return mStrengths.getStrength(i);
         }
 
         @Override

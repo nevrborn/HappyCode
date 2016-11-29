@@ -7,7 +7,7 @@ package com.cloud9.android.happycode;
 public class Strength {
 
     private int mTitleID;
-    private int mStrengthID;
+    private int mQuestionID;
     private int mDescriptionID;
     private int mPercentage;
     private int mImageID;
@@ -16,15 +16,15 @@ public class Strength {
     // Contstructor to make Strengths
     public Strength(int titleId, int strengthId, int descriptionId, int imageId, int iconId) {
         this.mTitleID = titleId;
-        this.mStrengthID = strengthId;
+        this.mQuestionID = strengthId;
         this.mDescriptionID = descriptionId;
         this.mImageID = imageId;
         this.mIconID = iconId;
 
     }
 
-    public int getStrengthID() {
-        return mStrengthID;
+    public int getQuestionID() {
+        return mQuestionID;
     }
 
     public int getDescriptionID() {

@@ -89,17 +89,29 @@
         />
 
     <Button
+        android:text="SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Buttons"
+        android:layout_alignTop="@+id/button_result_to_menu"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/button_result_to_menu"
+        android:layout_toStartOf="@+id/button_result_to_menu"
+        android:id="@+id/button_result_save_result"/>
+
+    <Button
         android:id="@+id/button_result_to_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         style="@style/Buttons"
         android:text="@string/button_result_retake"
         android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
 
-        />
+        android:layout_below="@+id/textview_result_strentgh_text"
+        android:layout_alignRight="@+id/textview_result_strentgh_text"
+        android:layout_alignEnd="@+id/textview_result_strentgh_text"
+        android:layout_marginRight="78dp"
+        android:layout_marginEnd="78dp"/>
 
 </RelativeLayout>
