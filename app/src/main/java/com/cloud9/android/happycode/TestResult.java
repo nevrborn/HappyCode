@@ -20,7 +20,6 @@ public class TestResult {
     private Date mDate;
     private String mUser;
     private String mTester;
-    private ArrayList<Integer> mTestResultArray;
     private Map<String, Integer> mResultArray = new HashMap<>();
     private ArrayList<String> mTop3StrengthKeys = new ArrayList<String>();
 

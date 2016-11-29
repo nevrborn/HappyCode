@@ -28,7 +28,6 @@ public class QuestionFragment extends Fragment {
     private static final String CURRENT_INDEX = "current_index";
     private static final String LAST_REACHED_INDEX = "last_reached_index";
     private static final String STRENGTH_ARRAY = "strength_array";
-    private static final String TEST_RESULT_ID = "testresult_id";
 
     private Button mNextButton;
     private Button mPreviousButton;
@@ -38,13 +37,12 @@ public class QuestionFragment extends Fragment {
     private SeekBar mSeekBar;
     private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
-    private TestResultList mTestResultList;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
     private int mPercentage;
 
-    private StrengthList mStrengths = StrengthList.get(getContext());
+    private StrengthList mStrengths;
 
     /* Method to create fragment */
     public static QuestionFragment newInstance() {
@@ -56,7 +54,7 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question, container, false);
 
-        mTestResultList = TestResultList.get(getContext());
+        mStrengths = StrengthList.get(getContext());
         mTestResult = TestResult.getInstance();
 
         // Setting up variables for the imageviews, buttons and textviews

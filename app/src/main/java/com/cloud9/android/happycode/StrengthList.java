@@ -52,7 +52,7 @@ public class StrengthList {
 
         while (i < mStrengthList.size()) {
 
-            if (mStrengthList.get(i).equals(strengthKey)) {
+            if (mStrengthList.get(i).getID().equals(strengthKey)) {
                 indexOfKey = i;
                 i = mStrengthList.size();
             }

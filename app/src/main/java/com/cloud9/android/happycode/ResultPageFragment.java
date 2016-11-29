@@ -36,7 +36,6 @@ public class ResultPageFragment extends Fragment {
     private int mCurrentStrength; // which result is currently selected (0, 1, ...)
     private TestResult mTestResult;
     private Map<String, Integer> mResultArray = new HashMap<>();
-    //private TestResultList mTestResultList;
     private StrengthList mStrengths;
     private Boolean hasWrittenToFirebase = false;
 
@@ -49,6 +48,7 @@ public class ResultPageFragment extends Fragment {
     private Button mSaveTestResultButton;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mTestResultRef = mDatabase.child("test_results");
 
     /*
     * create new instance
@@ -63,10 +63,8 @@ public class ResultPageFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // code to initialize the three strengths
-        //mTestResultList = TestResultList.get(getContext());
         mTestResult = TestResult.getInstance();
         mResultArray = mTestResult.getResultArray();
-        //mTestResult = mTestResultList.getResult(mID);
         mStrengths = StrengthList.get(getContext());
 
         String mNr1StrengthKey = mTestResult.getNo1StrengthKey();
@@ -162,7 +160,6 @@ public class ResultPageFragment extends Fragment {
         return view;
     }
 
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -200,7 +197,7 @@ public class ResultPageFragment extends Fragment {
 
     private void writeToFirebase(TestResult testResult) {
 
-        String key = mDatabase.child("testresults").push().getKey();
-        mDatabase.child("testresults").child(key).setValue(testResult);
+        String key = mTestResultRef.push().getKey();
+        mTestResultRef.child(key).setValue(testResult);
     }
 }
