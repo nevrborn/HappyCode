@@ -18,8 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.concurrent.Executor;
-
 
 public class LogInFragment extends Fragment {
 
@@ -100,11 +98,31 @@ public class LogInFragment extends Fragment {
                     setMailAndPassword();
 
                     // proceed LogIn
+                    mAuth.signInWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                            Toast.makeText(getActivity(), R.string.sign_in_succesfull, Toast.LENGTH_LONG).show();
+
+                            // set user state to logged in
+                            User.set();
+
+                            // go to startPage
+                            Intent i = StartPageActivity.newIntent(getActivity());
+                            startActivity(i);
 
 
-                    // go to startPage
-                    Intent i = StartPageActivity.newIntent(getActivity());
-                    startActivity(i);
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                            }
+
+                            // ...
+                        }
+                    });
 
                 } else {
                     Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT);
@@ -116,32 +134,31 @@ public class LogInFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Log.i(TAG, String.valueOf(mMailField.getText()));
-                Log.i(TAG, String.valueOf(mPasswordField.getText()));
-
                 if (fieldsAreFilled()) {
 
                     setMailAndPassword();
 
-                    mAuth.createUserWithEmailAndPassword(mMail, mPassword).addOnCompleteListener((Executor) getActivity(), new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                            // go to startPage
+                            Intent i = StartPageActivity.newIntent(getActivity());
+                            startActivity(i);
+
 
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
+                                Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
                             }
 
                             // ...
                         }
                     });
-
-                    // go to startPage
-                    Intent i = StartPageActivity.newIntent(getActivity());
-                    startActivity(i);
 
                 } else {
                     Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT);
@@ -154,7 +171,7 @@ public class LogInFragment extends Fragment {
     }
 
     private boolean fieldsAreFilled() {
-        return String.valueOf(mMailField.getText()) != null && String.valueOf(mPasswordField.getText()) != null;
+        return !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
     }
 
     private void setMailAndPassword() {

@@ -26,7 +26,7 @@ public class TestResult {
     private static TestResult mTestResult;
 
 
-    /* get singleton instance of the result*/
+    /* set singleton instance of the result*/
     public static TestResult getInstance() {
         if (mTestResult == null) {
             mTestResult = new TestResult();

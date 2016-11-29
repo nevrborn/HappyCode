@@ -103,7 +103,7 @@ public class TestHistoryFragment extends Fragment {
         public void onBindViewHolder(TestResultHolder holder, int position) {
             TestResult testResult = mTestResultList.get(position);
 
-            // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
+            // mTesterIcon = testResult.set...;  icon of tester needs to be add to TestResult class
             holder.mStrenghtIcon1.setImageResource(mStrengths[testResult.getNo1Strength()].getIconID());
             holder.mStrenghtIcon2.setImageResource(mStrengths[testResult.getNo2Strength()].getIconID());
             holder.mStrenghtIcon3.setImageResource(mStrengths[testResult.getNo3Strength()].getIconID());

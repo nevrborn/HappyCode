@@ -107,10 +107,13 @@
             android:id="@+id/buttonLogInStartPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test LogIn"
+            android:text="@string/button_sign_in"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            />
+
+            android:backgroundTint="@color/colorHappyCode"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"/>
 
     </RelativeLayout>
 

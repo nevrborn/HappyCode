@@ -23,7 +23,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
 
-        // get the references
+        // set the references
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         // fragment code

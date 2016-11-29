@@ -5,18 +5,20 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Created by paulvancappelle on 22-11-16.
@@ -29,9 +31,8 @@ public class StartPageFragment extends Fragment {
     Button mTestHistoryButton;
     Button mAllCodes;
     Button mLogInButton;
-    ActionBarDrawerToggle mDrawerToggle;
-    DrawerLayout mDrawerLayout;
 
+    User mUser;
 
     /*
     * create new instance
@@ -44,7 +45,6 @@ public class StartPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
     }
 
 
@@ -62,7 +62,6 @@ public class StartPageFragment extends Fragment {
         mAllCodes = (Button) view.findViewById(R.id.button_all_codes);
         mTestHistoryButton = (Button) view.findViewById(R.id.button_test_history);
         mLogInButton = (Button) view.findViewById(R.id.buttonLogInStartPage);
-        mDrawerLayout = (DrawerLayout) view;
 
         // set listeners
         mStartButton.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +90,7 @@ public class StartPageFragment extends Fragment {
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
                 } else {
-                    Toast.makeText(getActivity(), "Sorry, je hebt nog geen historie.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.history_not_availabe, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -105,35 +104,39 @@ public class StartPageFragment extends Fragment {
         mLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = LogInActivity.newIntent(getActivity());
-                startActivity(i);
+                mUser = User.get();
+                if (mUser != null) {
+                    mUser.signOut();
+                    Toast.makeText(getActivity(), R.string.sign_out_succesfull, Toast.LENGTH_LONG).show();
+                    updateLogInButton();
+                } else {
+                    Intent i = LogInActivity.newIntent(getActivity());
+                    startActivity(i);
+                }
             }
         });
 
 
 
-        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-
-                getActivity().invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                // Log.d(TAG, "onDrawerClosed: " + getTitle());
-
-                getActivity().invalidateOptionsMenu();
-            }
-        };
-
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-
         return view;
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateLogInButton();
+    }
+
+    private void updateLogInButton() {
+        mUser = User.get();
+        if (mUser != null) {
+            mLogInButton.setText(mUser.getEmail());
+        } else {
+            mLogInButton.setText(R.string.button_sign_in);
+        }
+    }
+
 
     private void animateCircles() {
 
@@ -189,18 +192,4 @@ public class StartPageFragment extends Fragment {
         aboutButton.start();
     }
 
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Pass the event to ActionBarDrawerToggle
-//        // If it returns true, then it has handled
-//        // the nav drawer indicator touch event
-//        if (mDrawerToggle.onOptionsItemSelected(item)) {
-//            return true;
-//        }
-//
-//        // Handle your other action bar items...
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 }
