@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by paulvancappelle on 22-11-16.
@@ -34,6 +36,7 @@ public class StartPageFragment extends Fragment {
     Button mLogInButton;
 
     User mUser;
+    private DatabaseReference mDatabaseRef;
 
     /*
     * create new instance
@@ -91,7 +94,9 @@ public class StartPageFragment extends Fragment {
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
                 } else {
-                    Toast.makeText(getActivity(), R.string.history_not_availabe, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), R.string.history_not_availabe, Toast.LENGTH_SHORT).show();
+                    mDatabaseRef = FirebaseDatabase.getInstance().getReference(User.get().getUid());
+                    Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

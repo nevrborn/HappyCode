@@ -18,6 +18,7 @@
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
     <string name="auth_failed">Authenticatie is mislukt</string>
+    <string name="auth_user_created">Welkom bij HappyCode!</string>
     <string name="auth_not_all_fields_filled">Niet alle velden zijn gevuld</string>
     <string name="sign_in_succesfull">Je bent ingelogd!</string>
     <string name="sign_out_succesfull">Je bent uitgelogd!</string>
