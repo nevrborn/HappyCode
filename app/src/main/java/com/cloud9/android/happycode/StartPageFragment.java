@@ -74,7 +74,7 @@ public class StartPageFragment extends Fragment {
 //                mAboutButton.setText("");
 //                mTestHistoryButton.setText("");
 //                mAllCodes.setText("");
-                animateCircles();
+//                animateCircles();
 
                 Intent i = QuestionActivity.newIntent(getActivity());
                 startActivity(i);
@@ -90,14 +90,8 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TestResultList.get(getActivity()).getTestResultList().size() != 0) {
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
-                } else {
-//                    Toast.makeText(getActivity(), R.string.history_not_availabe, Toast.LENGTH_SHORT).show();
-                    mDatabaseRef = FirebaseDatabase.getInstance().getReference(User.get().getUid());
-                    Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
-                }
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +126,11 @@ public class StartPageFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateLogInButton();
+        User user = User.get();
+        if (user != null) {
+            mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
+            Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void updateLogInButton() {

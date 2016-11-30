@@ -109,9 +109,8 @@ public class LogInFragment extends Fragment {
                             // set user state to logged in
                             User.set();
 
-                            // go to startPage
-                            Intent i = StartPageActivity.newIntent(getActivity());
-                            startActivity(i);
+                            // go to previous activity
+                            getActivity().finish();
 
 
                             // If sign in fails, display a message to the user. If sign in succeeds
@@ -157,9 +156,9 @@ public class LogInFragment extends Fragment {
                                 User user = User.get();
                                 mDatabaseRef.child("users").child(user.getUid()).setValue(User.get());
 
-                                // go to startPage
-                                Intent i = StartPageActivity.newIntent(getActivity());
-                                startActivity(i);
+                                // go to previous activity
+                                getActivity().finish();
+
                             }
 
                         }
