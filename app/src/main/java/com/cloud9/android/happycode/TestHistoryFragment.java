@@ -60,7 +60,9 @@ public class TestHistoryFragment extends Fragment {
 
     public void getDataFromFirebase() {
 
-        mTestResultRef.addValueEventListener(new ValueEventListener() {
+        mTestResultList.clearResults();
+
+        mTestResultRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {

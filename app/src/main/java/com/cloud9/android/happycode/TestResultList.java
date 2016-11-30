@@ -41,5 +41,9 @@ public class TestResultList {
         return mTestResultList;
     }
 
+    public void clearResults() {
+        mTestResultList.clear();
+    }
+
 
 }
