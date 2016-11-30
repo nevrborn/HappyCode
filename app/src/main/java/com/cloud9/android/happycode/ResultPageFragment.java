@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -47,8 +48,7 @@ public class ResultPageFragment extends Fragment {
     private Button mToMenuButton;
     private Button mSaveTestResultButton;
 
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference mTestResultRef = mDatabase.child("test_results");
+    private DatabaseReference mUserRef;
 
     /*
     * create new instance
@@ -84,6 +84,10 @@ public class ResultPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
 
         hasWrittenToFirebase = false;
+
+        // set the database reference to the current user
+        String uid = User.get().getUid();
+        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
         // set the references
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
@@ -196,9 +200,9 @@ public class ResultPageFragment extends Fragment {
         }
     }
 
-    private void writeToFirebase(TestResult testResult) {
 
-        String key = mTestResultRef.push().getKey();
-        mTestResultRef.child(key).setValue(testResult);
+    private void writeToFirebase(TestResult testResult) {
+        String key = mUserRef.child("results").push().getKey();
+        mUserRef.child("results").child(key).setValue(testResult);
     }
 }
