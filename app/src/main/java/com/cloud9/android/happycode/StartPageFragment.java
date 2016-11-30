@@ -46,8 +46,8 @@ public class StartPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
     }
-
 
     @Nullable
     @Override
@@ -87,7 +87,7 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TestResultList.get(getActivity()).getTestResultList().size() != 0) {
+                if (TestResultList.get(getActivity()).getTestResultList().size() == 0) {
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
                 } else {
@@ -116,8 +116,6 @@ public class StartPageFragment extends Fragment {
                 }
             }
         });
-
-
 
         return view;
     }
