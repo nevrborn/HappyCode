@@ -21,7 +21,6 @@ public class TestResult {
     private String mUser;
     private String mTester;
     private Map<String, Integer> mResultArray = new HashMap<>();
-    private ArrayList<String> mTop3StrengthKeys = new ArrayList<String>();
 
     private String mNo1StrengthKey;
     private String mNo2StrengthKey;
@@ -37,8 +36,17 @@ public class TestResult {
         return mTestResult;
     }
 
-    private TestResult() {
+    public TestResult() {
 
+    }
+
+    public TestResult(Date date, String tester, Map<String, Integer> resultArray, String no1StrengthKey, String no2StrengthKey, String no3StrengthKey) {
+        this.mDate = date;
+        this.mTester = tester;
+        this.mResultArray = resultArray;
+        this.mNo1StrengthKey = no1StrengthKey;
+        this.mNo2StrengthKey = no2StrengthKey;
+        this.mNo3StrengthKey = no3StrengthKey;
     }
 
     public void deleteResult() {
@@ -111,6 +119,7 @@ public class TestResult {
 
     public void findTop3StrengthsHash(Map<String, Integer> resultArray) {
         Map<String, Integer> tempArray = new HashMap<>(resultArray);
+        ArrayList<String> mTop3StrengthKeys = new ArrayList<String>();
 
         String keyOfMaxValue = "";
 

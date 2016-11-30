@@ -117,7 +117,6 @@ public class StartPageFragment extends Fragment {
         });
 
 
-
         return view;
     }
 
