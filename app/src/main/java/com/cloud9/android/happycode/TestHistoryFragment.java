@@ -1,6 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,10 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by paulvancappelle on 24-11-16.
@@ -31,7 +27,7 @@ public class TestHistoryFragment extends Fragment {
 
     private RecyclerView mTestRecyclerView;
     private TestResultsAdapter mTestResultsAdapter;
-    private List<TestResult> mTestResultList;
+    private TestResultList mTestResultList;
 
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference mTestResultRef = mDatabase.child("test_results");
@@ -40,7 +36,7 @@ public class TestHistoryFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mTestResultList = TestResultList.getTestResultList();
+        mTestResultList = (TestResultList) TestResultList.get(getActivity());
     }
 
     @Nullable
@@ -58,31 +54,18 @@ public class TestHistoryFragment extends Fragment {
     }
 
     private void updateUI() {
-        TestResultList testResultList = TestResultList.get(getActivity());
-        mTestResultsAdapter = new TestResultsAdapter(testResultList.getTestResultList());
+        mTestResultsAdapter = new TestResultsAdapter(mTestResultList.getTestResultList());
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
 
     public void getDataFromFirebase() {
 
-        mTestResultRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            HashMap<String, Object> args = new HashMap<String, Object>();
-
+        mTestResultRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    TestResult testResult = (TestResult) child.getValue(TestResult.class);
-
-//                    String tester = ((Map)testResult).get("tester").toString();
-//                    Date date = (Date) ((Map)testResult).get("DateTime");
-//                    Map<String, Integer> resultArray = (Map<String, Integer>) ((Map)testResult).get("mResultArray");
-//                    String strengthNo1Key = ((Map)testResult).get("mStrengthNo1Key").toString();
-//                    String strengthNo2Key = ((Map)testResult).get("mStrengthNo2Key").toString();
-//                    String strengthNo3Key = ((Map)testResult).get("mStrengthNo3Key").toString();
-//
-//                    TestResult result = new TestResult(date, tester, resultArray, strengthNo1Key, strengthNo2Key, strengthNo3Key);
-//                    mTestResultList.add(result);
+                    TestResult testResult = child.getValue(TestResult.class);
+                    mTestResultList.addTestresult(testResult);
                 }
             }
 
@@ -91,7 +74,6 @@ public class TestHistoryFragment extends Fragment {
 
             }
         });
-
 
     }
 
@@ -164,7 +146,7 @@ public class TestHistoryFragment extends Fragment {
             holder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
             holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
             //holder.mDateTime.setText(testResult.getDate().toString() + " uu:mm"); // set date format and add getTime to TestResult
-            holder.mDateTime.setText(testResult.getDateTime());
+            //holder.mDateTime.setText(testResult.getDateTime());
 
             holder.setResult(testResult);
         }
