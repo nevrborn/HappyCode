@@ -29,7 +29,13 @@ public class TestResultList {
         mTestResultList = new ArrayList<>();
     }
 
-    public List<TestResult> getTestResultList() {
+    public void addTestresult(TestResult testResult) {
+        mTestResultList.add(testResult);
+    }
+
+    public static List<TestResult> getTestResultList() {
         return mTestResultList;
     }
+
+
 }
