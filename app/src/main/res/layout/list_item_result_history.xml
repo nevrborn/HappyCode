@@ -22,7 +22,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="6dip"
             android:contentDescription="tester"
-            android:src="@mipmap/strength_hardworker"
             />
 
         <ImageView
@@ -33,7 +32,6 @@
             android:layout_marginRight="6dip"
             android:layout_toRightOf="@id/list_item_tester_icon"
             android:contentDescription="code"
-            android:src="@mipmap/icon_challenger"
             />
 
         <ImageView
@@ -44,7 +42,6 @@
             android:layout_marginRight="6dip"
             android:layout_toRightOf="@id/list_item_icon_1"
             android:contentDescription="code"
-            android:src="@mipmap/icon_connector"
             />
 
         <ImageView
@@ -55,7 +52,6 @@
             android:layout_marginRight="6dip"
             android:layout_toRightOf="@id/list_item_icon_2"
             android:contentDescription="code"
-            android:src="@mipmap/icon_hardworker"
             />
 
         <TextView

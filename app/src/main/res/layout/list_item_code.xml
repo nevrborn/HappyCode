@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="6dip"
         android:contentDescription="code"
-        android:src="@mipmap/icon_administrator"/>
+        />
 
     <TextView
         android:id="@+id/list_item_description"
