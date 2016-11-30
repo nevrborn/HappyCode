@@ -29,8 +29,8 @@ public class TestHistoryFragment extends Fragment {
     private TestResultsAdapter mTestResultsAdapter;
     private TestResultList mTestResultList;
 
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference mTestResultRef = mDatabase.child("test_results");
+    private DatabaseReference mUserRef;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +46,10 @@ public class TestHistoryFragment extends Fragment {
         mTestRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_test_history);
         mTestRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        // set the database reference to the current user
+        String uid = User.get().getUid();
+        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
         getDataFromFirebase();
 
         updateUI();
@@ -58,11 +62,12 @@ public class TestHistoryFragment extends Fragment {
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
 
+
     public void getDataFromFirebase() {
 
         mTestResultList.clearResults();
 
-        mTestResultRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        mUserRef.child("results").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
