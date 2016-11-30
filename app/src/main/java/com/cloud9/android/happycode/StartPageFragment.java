@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by paulvancappelle on 22-11-16.
@@ -34,6 +36,7 @@ public class StartPageFragment extends Fragment {
     Button mLogInButton;
 
     User mUser;
+    private DatabaseReference mDatabaseRef;
 
     /*
     * create new instance
@@ -46,8 +49,8 @@ public class StartPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
     }
+
 
     @Nullable
     @Override
@@ -71,7 +74,7 @@ public class StartPageFragment extends Fragment {
 //                mAboutButton.setText("");
 //                mTestHistoryButton.setText("");
 //                mAllCodes.setText("");
-                animateCircles();
+//                animateCircles();
 
                 Intent i = QuestionActivity.newIntent(getActivity());
                 startActivity(i);
@@ -87,12 +90,8 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TestResultList.get(getActivity()).getTestResultList().size() == 0) {
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
-                } else {
-                    Toast.makeText(getActivity(), R.string.history_not_availabe, Toast.LENGTH_SHORT).show();
-                }
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +116,7 @@ public class StartPageFragment extends Fragment {
             }
         });
 
+
         return view;
     }
 
@@ -125,6 +125,11 @@ public class StartPageFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateLogInButton();
+        User user = User.get();
+        if (user != null) {
+            mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
+            Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void updateLogInButton() {

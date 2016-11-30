@@ -32,7 +32,7 @@ public class LogInFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-    private DatabaseReference myDatabaseRef = FirebaseDatabase.getInstance().getReference("test");
+    private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
     String mPassword;
     String mMail;
@@ -109,9 +109,8 @@ public class LogInFragment extends Fragment {
                             // set user state to logged in
                             User.set();
 
-                            // go to startPage
-                            Intent i = StartPageActivity.newIntent(getActivity());
-                            startActivity(i);
+                            // go to previous activity
+                            getActivity().finish();
 
 
                             // If sign in fails, display a message to the user. If sign in succeeds
@@ -145,20 +144,23 @@ public class LogInFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
-                            // go to startPage
-                            Intent i = StartPageActivity.newIntent(getActivity());
-                            startActivity(i);
-
-
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
                                 Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), R.string.auth_user_created, Toast.LENGTH_SHORT).show();
+                                User.set();
+                                User user = User.get();
+                                mDatabaseRef.child("users").child(user.getUid()).setValue(User.get());
+
+                                // go to previous activity
+                                getActivity().finish();
+
                             }
 
-                            // ...
                         }
                     });
 
