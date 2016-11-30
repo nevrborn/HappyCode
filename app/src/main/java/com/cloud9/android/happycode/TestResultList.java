@@ -17,6 +17,10 @@ public class TestResultList {
     private static List<TestResult> mTestResultList;
     private Context mContext;
 
+    public TestResultList() {
+        // constructor with no arguments to use for Firebase
+    }
+
     public static TestResultList get(Context context) {
         if (sTestResultList == null) {
             sTestResultList = new TestResultList(context);
