@@ -88,7 +88,7 @@
         android:progress="50"
         android:progressTint="@color/colorHappyCode"
         android:saveEnabled="true"
-        android:thumb="@android:drawable/sym_def_app_icon"
+        android:thumb="@mipmap/icon_cloud9_logo"
         android:thumbTint="@color/colorHappyCode"
         android:tickMark="@color/colorHappyCode"/>
 
