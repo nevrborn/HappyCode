@@ -93,9 +93,9 @@ public class ResultPageFragment extends Fragment {
 
         // If the intent is coming from QuestionPage, then look up
         if (mIsFromQuestionPage == true) {
-            mTestResult = mTestResultList.getTestResult("questionID");
+            mTestResult = TestResultList.getTestResult("questionID");
         } else if (mIsFromQuestionPage == false) {
-            mTestResult = mTestResultList.getTestResult(mID);
+            mTestResult = TestResultList.getTestResult(mID);
         }
 
         mResultArray = mTestResult.getResultArray();
@@ -122,12 +122,12 @@ public class ResultPageFragment extends Fragment {
         mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
         // save the test result to the firebase
-        if (mHasWrittenToFirebase == false) {
+        if (hasWrittenToFirebase == false) {
             mTestResult.setUser("Jarle");
             mTestResult.setTester("Paul");
             mTestResult.setDate();
             writeToFirebase(mTestResult);
-            mHasWrittenToFirebase = true;
+            hasWrittenToFirebase = true;
         }
 
         // set the references
