@@ -8,6 +8,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/lineralayout_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -35,6 +36,20 @@
             android:text="@string/test_text"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_progress_counter"
+        android:text="@string/question_progress_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="-10dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        tools:textSize="18sp"
+
+        android:layout_above="@id/seekBar_question"/>
 
     <LinearLayout
         android:id="@+id/linear_layout_buttons_prev_and_next"

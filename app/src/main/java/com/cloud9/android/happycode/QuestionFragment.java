@@ -35,6 +35,8 @@ public class QuestionFragment extends Fragment {
     private TextView mPercentageText;
     private ImageView mImage;
     private SeekBar mSeekBar;
+    private TextView mProgressCount;
+
     private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
     private TestResult mTestResult;
@@ -65,6 +67,9 @@ public class QuestionFragment extends Fragment {
         mNextButton = (Button) view.findViewById(R.id.button_question_next);
         mPreviousButton = (Button) view.findViewById(R.id.button_question_previous);
         mSeekBar = (SeekBar) view.findViewById(R.id.seekBar_question);
+        mProgressCount = (TextView) view.findViewById(R.id.textView_progress_counter);
+
+        mProgressCount.setText(getString(R.string.question_progress_count, mCurrentIndex + 1));
 
         mPercentage = 50;
         if (mCurrentIndex == 0) {
@@ -82,8 +87,9 @@ public class QuestionFragment extends Fragment {
                 if (mCurrentIndex < mStrengths.getSize() - 1) {
                     setPercentage(mPercentage);
                     mPreviousButton.setAlpha(1.0f);
-                    Log.d(TAG, getString(mStrengths.getStrengthFromIndex(mCurrentIndex).getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
                     mCurrentIndex++;
+
+                    mProgressCount.setText(getString(R.string.question_progress_count, mCurrentIndex + 1));
 
                     // add the last index reached if necessary
                     if (mCurrentIndex > mLastIndexReached) {
@@ -95,8 +101,7 @@ public class QuestionFragment extends Fragment {
                     if (mCurrentIndex == mLastIndexReached) {
                         mSeekBar.setProgress(50);
                     } else {
-                        // mSeekBar.setProgress(mStrengths.getStrength(mCurrentIndex).getPercentage());
-                        mSeekBar.setProgress(50);
+                        mSeekBar.setProgress(mResultArray.get(mStrengths.getStrengthFromIndex(mCurrentIndex).getID()));
                     }
 
                     // set NEXT button to finish if at the last question
@@ -107,10 +112,8 @@ public class QuestionFragment extends Fragment {
                     // you're at the last question, so go the result page
                 } else {
                     setPercentage(mPercentage);
-                    Log.d(TAG, getString(mStrengths.getStrengthFromIndex(mCurrentIndex).getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
 
                     mTestResultList = TestResultList.get(getContext());
-                    //mTestResult.setTestResult(mStrenghtArray);
                     mTestResult.setResultArray(mResultArray);
                     String tempID = "questionID";
                     mTestResultList.addTestresult(mTestResult, tempID);
@@ -134,8 +137,9 @@ public class QuestionFragment extends Fragment {
                     setPercentage(mPercentage);
                     mCurrentIndex--;
                     updateStrength();
-                    mSeekBar.setProgress(mResultArray.get(mStrengths.getStrengthFromIndex(mCurrentIndex)));
 
+                    mSeekBar.setProgress(mResultArray.get(mStrengths.getStrengthFromIndex(mCurrentIndex).getID()));
+                    mProgressCount.setText(getString(R.string.question_progress_count, mCurrentIndex + 1));
                     if (mCurrentIndex == 0) {
                         mPreviousButton.setAlpha(0.6f);
                     }
@@ -189,9 +193,6 @@ public class QuestionFragment extends Fragment {
         String strengthKey = mStrengths.getStrengthFromIndex(mCurrentIndex).getID();
 
         mResultArray.put(strengthKey, percentage);
-
-        mStrenghtArray.add(percentage);
-        //mStrengths.getStrength(mCurrentIndex).setPercentage(percentage);
         mPercentage = 50;
     }
 
@@ -206,4 +207,5 @@ public class QuestionFragment extends Fragment {
         outState.putIntegerArrayList(STRENGTH_ARRAY, mStrenghtArray);
 
     }
+
 }

@@ -91,4 +91,16 @@
         android:thumbTint="@color/colorHappyCode"
         android:tickMark="@color/colorHappyCode"/>
 
+    <TextView
+        android:text="@string/question_progress_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imageview_question"
+        android:padding="16dp"
+        android:id="@+id/textView_progress_counter"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        tools:textSize="18sp"
+        android:layout_alignParentRight="true"/>
+
 </RelativeLayout>

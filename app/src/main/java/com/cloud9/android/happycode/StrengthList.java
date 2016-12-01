@@ -59,6 +59,10 @@ public class StrengthList {
         return mStrengthList.get(id);
     }
 
+    public String getStrengthKeyFromIndex(int id) {
+        return mStrengthList.get(id).getID();
+    }
+
     public List<Strength> getStrengthList() {
         return mStrengthList;
     }

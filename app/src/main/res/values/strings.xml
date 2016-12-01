@@ -29,6 +29,8 @@
     <string name="auth_not_all_fields_filled">Niet alle velden zijn gevuld</string>
     <string name="sign_in_succesfull">Je bent ingelogd!</string>
     <string name="sign_out_succesfull">Je bent uitgelogd!</string>
+    <string name="question_progress_count">%1$d/20</string>
+    <string name="question_progress">1</string>
 
     // SHARE DIALOG
     <string name="button_share">Delen</string>
