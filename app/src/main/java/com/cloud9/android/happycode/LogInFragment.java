@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
+
 
 public class LogInFragment extends Fragment {
 
@@ -29,6 +31,8 @@ public class LogInFragment extends Fragment {
     Button mCreateAccountButton;
     EditText mMailField;
     EditText mPasswordField;
+
+    private TestResultList mTestResultList;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -56,6 +60,8 @@ public class LogInFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mTestResultList = TestResultList.get(getContext());
 
     }
 
@@ -120,6 +126,10 @@ public class LogInFragment extends Fragment {
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                            }
+
+                            if (task.isSuccessful()) {
+                                writeExcitingTestsToFirebase();
                             }
 
                             // ...
@@ -207,6 +217,42 @@ public class LogInFragment extends Fragment {
         super.onStop();
         if (mAuthStateListener != null) {
             mAuth.removeAuthStateListener(mAuthStateListener);
+        }
+    }
+
+    private void writeToFirebase(TestResult testResult) {
+        // set the database reference to the current user
+        String userID = User.get().getUid();
+        testResult.setDate();
+        testResult.setUser(userID);
+        testResult.setTester(userID);
+        testResult.setWrittenToFirebase(true);
+
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        String key = mUserRef.child("results").push().getKey();
+        mUserRef.child("results").child(key).setValue(testResult);
+    }
+
+    private void writeExcitingTestsToFirebase() {
+
+        mTestResultList = TestResultList.get(getContext());
+
+        if (mTestResultList.getSize() != 0 && User.get() != null) {
+            int i = 0;
+
+            while (i < mTestResultList.getSize()) {
+
+                TestResult testresult = mTestResultList.getTestResultFromIndex(i);
+                Date date = new Date();
+
+                if (testresult.getWrittenToFirebase() == false) {
+                    writeToFirebase(testresult);
+                }
+
+                i += 1;
+            }
+
+            mTestResultList.clearResults();
         }
     }
 

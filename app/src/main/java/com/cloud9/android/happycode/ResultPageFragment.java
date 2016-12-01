@@ -117,19 +117,6 @@ public class ResultPageFragment extends Fragment {
 
         hasWrittenToFirebase = false;
 
-        // set the database reference to the current user
-        String uid = User.get().getUid();
-        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-
-        // save the test result to the firebase
-        if (hasWrittenToFirebase == false) {
-            mTestResult.setUser("Jarle");
-            mTestResult.setTester("Paul");
-            mTestResult.setDate();
-            writeToFirebase(mTestResult);
-            hasWrittenToFirebase = true;
-        }
-
         // set the references
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
         mResultIcon2 = (ImageView) view.findViewById(R.id.imageview_result_two);
@@ -143,7 +130,6 @@ public class ResultPageFragment extends Fragment {
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
         mResultIcon2.setImageResource(mNr2Strength.getIconID());
         mResultIcon3.setImageResource(mNr3Strength.getIconID());
-
 
         // set listeners
         mResultIcon1.setOnClickListener(new View.OnClickListener() {
@@ -173,11 +159,22 @@ public class ResultPageFragment extends Fragment {
         mToMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mTestResult.setDate();
+                mTestResult.setUser("");
+                mTestResult.setTester("");
+
+                // save the test result to the firebase
+                if (hasWrittenToFirebase == false && User.get() != null) {
+                    writeToFirebase(mTestResult);
+                    hasWrittenToFirebase = true;
+                }
+
                 Intent i = StartPageActivity.newIntent(getActivity());
                 startActivity(i);
                 mTestResult.deleteResult();
 
-                if (mIsFromQuestionPage == true) {
+                if (User.get() != null) {
                     mTestResultList.deleteTestResult(mTestResult);
                 }
             }
@@ -247,6 +244,15 @@ public class ResultPageFragment extends Fragment {
 
 
     private void writeToFirebase(TestResult testResult) {
+        // set the database reference to the current user
+        String userID = User.get().getUid();
+
+        mTestResult.setDate();
+        mTestResult.setUser(userID);
+        mTestResult.setTester(userID);
+        mTestResult.setWrittenToFirebase(true);
+
+        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
         String key = mUserRef.child("results").push().getKey();
         mUserRef.child("results").child(key).setValue(testResult);
     }

@@ -22,6 +22,7 @@ public class TestResult {
     private String mTester;
     private Map<String, Integer> mResultArray = new HashMap<>();
     private String mID;
+    private Boolean mIsWrittenToFirebase = false;
 
     private String mNo1StrengthKey;
     private String mNo2StrengthKey;
@@ -156,5 +157,11 @@ public class TestResult {
         tempArray.clear();
     }
 
+    public Boolean getWrittenToFirebase() {
+        return mIsWrittenToFirebase;
+    }
 
+    public void setWrittenToFirebase(Boolean writtenToFirebase) {
+        mIsWrittenToFirebase = writtenToFirebase;
+    }
 }

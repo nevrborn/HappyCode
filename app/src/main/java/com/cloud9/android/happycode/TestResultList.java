@@ -68,5 +68,11 @@ public class TestResultList {
         return testresult;
     }
 
+    public int getSize() {
+        return mTestResultList.size();
+    }
 
+    public TestResult getTestResultFromIndex(int index) {
+        return mTestResultList.get(index);
+    }
 }

@@ -65,17 +65,20 @@ public class TestHistoryFragment extends Fragment {
         mTestRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_test_history);
         mTestRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        // set the database reference to the current user
-        String uid = User.get().getUid();
-        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-
         updateUI();
 
         return view;
     }
 
     public void updateUI() {
-        getDataFromFirebase();
+
+        if (User.get() != null) {
+            // set the database reference to the current user
+            String uid = User.get().getUid();
+            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+            getDataFromFirebase();
+        }
+
         mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }

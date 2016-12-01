@@ -20,8 +20,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by paulvancappelle on 22-11-16.
@@ -34,6 +37,8 @@ public class StartPageFragment extends Fragment {
     Button mTestHistoryButton;
     Button mAllCodes;
     Button mLogInButton;
+
+    private TestResultList mTestResultList;
 
     User mUser;
     private DatabaseReference mDatabaseRef;
@@ -49,8 +54,13 @@ public class StartPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
 
+        mTestResultList = TestResultList.get(getContext());
+
+        if (User.get() != null) {
+            getDataFromFirebase();
+        }
+    }
 
     @Nullable
     @Override
@@ -80,6 +90,7 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
+
         mAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,9 +98,11 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
+
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
             }
@@ -101,6 +114,7 @@ public class StartPageFragment extends Fragment {
                 startActivity(i);
             }
         });
+
         mLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,19 +130,20 @@ public class StartPageFragment extends Fragment {
             }
         });
 
-
         return view;
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
         updateLogInButton();
         User user = User.get();
+
         if (user != null) {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
             Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
+            mTestResultList.clearResults();
+            getDataFromFirebase();
         }
     }
 
@@ -141,59 +156,26 @@ public class StartPageFragment extends Fragment {
         }
     }
 
+    public void getDataFromFirebase() {
 
-    private void animateCircles() {
+        mTestResultList.clearResults();
 
-        int mStartButtonHeight = mStartButton.getHeight() / 3;
-        int mStartButtonWidth = mStartButton.getWidth() / 3;
-
-        float Yend = mStartButton.getTop() - mStartButtonHeight;
-        float Xend = mStartButton.getX() + mStartButtonWidth;
-
-        float aboutYstart = mAboutButton.getY();
-        float aboutXstart = mAboutButton.getX();
-        float testHistoryYstart = mAboutButton.getY();
-        float allCodesYstart = mAllCodes.getY();
-        float allCodesXstart = mAllCodes.getX();
-        float testHistoryXstart = mAboutButton.getX();
-
-
-        ObjectAnimator aboutYSize = ObjectAnimator.ofFloat(mAboutButton, "scaleY", 1f, 0);
-        ObjectAnimator aboutXSize = ObjectAnimator.ofFloat(mAboutButton, "scaleX", 1f, 0);
-        ObjectAnimator testHistoryYSize = ObjectAnimator.ofFloat(mTestHistoryButton, "scaleY", 1f, 0);
-        ObjectAnimator testHistoryXSize = ObjectAnimator.ofFloat(mTestHistoryButton, "scaleX", 1f, 0);
-        ObjectAnimator allCodesYSize = ObjectAnimator.ofFloat(mAllCodes, "scaleY", 1f, 0);
-        ObjectAnimator allCodesXSize = ObjectAnimator.ofFloat(mAllCodes, "scaleX", 1f, 0);
-
-        ObjectAnimator aboutYPos = ObjectAnimator.ofFloat(mAboutButton, "y", aboutYstart, Yend);
-        ObjectAnimator aboutXPos = ObjectAnimator.ofFloat(mAboutButton, "x", aboutXstart, Xend);
-        ObjectAnimator testHistoryYPos = ObjectAnimator.ofFloat(mTestHistoryButton, "y", testHistoryYstart, Yend);
-        ObjectAnimator allCodesYPos = ObjectAnimator.ofFloat(mAllCodes, "y", allCodesYstart, Yend);
-        ObjectAnimator allCodesXPos = ObjectAnimator.ofFloat(mAllCodes, "x", allCodesXstart, Xend);
-
-        AnimatorSet aboutButton = new AnimatorSet();
-        aboutButton
-                .setDuration(1500)
-                .play(aboutYPos)
-                .with(aboutXPos)
-                .with(aboutYSize)
-                .with(testHistoryXSize)
-                .with(testHistoryYSize)
-                .with(testHistoryYPos)
-                .with(allCodesYSize)
-                .with(allCodesYPos)
-                .with(allCodesXPos)
-        ;
-
-        aboutButton.addListener(new AnimatorListenerAdapter() {
+        String userID = User.get().getUid();
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        mUserRef.child("results").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onAnimationEnd(Animator animation) {
-                Intent i = QuestionActivity.newIntent(getActivity());
-                startActivity(i);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    TestResult testResult = child.getValue(TestResult.class);
+                    mTestResultList.addTestresult(testResult, child.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
-
-        aboutButton.start();
     }
 
 }
