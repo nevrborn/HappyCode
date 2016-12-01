@@ -106,7 +106,7 @@ public class StartPageFragment extends Fragment {
             public void onClick(View view) {
                 mUser = User.get();
                 if (mUser != null) {
-                    mUser.signOut();
+                    User.signOut();
                     Toast.makeText(getActivity(), R.string.sign_out_succesfull, Toast.LENGTH_LONG).show();
                     updateLogInButton();
                 } else {

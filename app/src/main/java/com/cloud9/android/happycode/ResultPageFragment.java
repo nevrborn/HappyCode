@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.cast.CastRemoteDisplayLocalService;
 import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import junit.framework.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +31,10 @@ public class ResultPageFragment extends Fragment {
 
     private static final String TAG = "ResultPageFragment";
     private static final String KEY_CURRENT_STRENGTH = "currentStrength";
+    private static final String DIALOG_SHARE = "dialog_share";
+    public static final String ARG_STRENGTH1 = "strength1_title";
+    public static final String ARG_STRENGTH2 = "strength2_title";
+    public static final String ARG_STRENGTH3 = "strength3_title";
 
     private static String mID;
     private Strength mNr1Strength;
@@ -52,7 +54,7 @@ public class ResultPageFragment extends Fragment {
     private TextView mStrenghtText;
     private TextView mStrengthTitle;
     private Button mToMenuButton;
-    private Button mSaveTestResultButton;
+    private Button mShareResultButton;
 
     private DatabaseReference mUserRef;
 
@@ -90,10 +92,10 @@ public class ResultPageFragment extends Fragment {
         mTestResultList = TestResultList.get(getContext());
 
         // If the intent is coming from QuestionPage, then look up
-        if (mIsFromQuestionPage) {
-            mTestResult = mTestResultList.getTestResult("questionID");
-        } else if (!mIsFromQuestionPage) {
-            mTestResult = mTestResultList.getTestResult(mID);
+        if (mIsFromQuestionPage == true) {
+            mTestResult = TestResultList.getTestResult("questionID");
+        } else if (mIsFromQuestionPage == false) {
+            mTestResult = TestResultList.getTestResult(mID);
         }
 
         mResultArray = mTestResult.getResultArray();
@@ -115,6 +117,19 @@ public class ResultPageFragment extends Fragment {
 
         hasWrittenToFirebase = false;
 
+        // set the database reference to the current user
+        String uid = User.get().getUid();
+        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
+        // save the test result to the firebase
+        if (hasWrittenToFirebase == false) {
+            mTestResult.setUser("Jarle");
+            mTestResult.setTester("Paul");
+            mTestResult.setDate();
+            writeToFirebase(mTestResult);
+            hasWrittenToFirebase = true;
+        }
+
         // set the references
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
         mResultIcon2 = (ImageView) view.findViewById(R.id.imageview_result_two);
@@ -122,7 +137,7 @@ public class ResultPageFragment extends Fragment {
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
         mToMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
-        mSaveTestResultButton = (Button) view.findViewById(R.id.button_result_save_result);
+        mShareResultButton = (Button) view.findViewById(R.id.button_share_result);
 
         // set images for the results
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
@@ -168,19 +183,19 @@ public class ResultPageFragment extends Fragment {
             }
         });
 
-        mSaveTestResultButton.setOnClickListener(new View.OnClickListener() {
+        mShareResultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (hasWrittenToFirebase == false) {
-                    mTestResult.setUser("Jarle");
-                    mTestResult.setTester("Paul");
-                    mTestResult.setDate();
-                    writeToFirebase(mTestResult);
-                    hasWrittenToFirebase = true;
-                    mSaveTestResultButton.setEnabled(false);
-                    mSaveTestResultButton.setClickable(false);
-                }
+                FragmentManager fragmentManager = getFragmentManager();
+                ShareDialogFragment shareDialogFragment = new ShareDialogFragment();
 
+                Bundle bundle = new Bundle();
+                bundle.putString(ARG_STRENGTH1, getString(mNr1Strength.getTitleID()));
+                bundle.putString(ARG_STRENGTH2, getString(mNr2Strength.getTitleID()));
+                bundle.putString(ARG_STRENGTH3, getString(mNr3Strength.getTitleID()));
+
+                shareDialogFragment.setArguments(bundle);
+                shareDialogFragment.show(fragmentManager, DIALOG_SHARE);
             }
         });
 
@@ -232,9 +247,6 @@ public class ResultPageFragment extends Fragment {
 
 
     private void writeToFirebase(TestResult testResult) {
-        // set the database reference to the current user
-        String uid = User.get().getUid();
-        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
         String key = mUserRef.child("results").push().getKey();
         mUserRef.child("results").child(key).setValue(testResult);
     }

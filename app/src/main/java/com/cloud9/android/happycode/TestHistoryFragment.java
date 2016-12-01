@@ -55,7 +55,7 @@ public class TestHistoryFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mTestResultList = (TestResultList) TestResultList.get(getActivity());
+        mTestResultList = TestResultList.get(getActivity());
     }
 
     @Nullable
@@ -76,7 +76,7 @@ public class TestHistoryFragment extends Fragment {
 
     public void updateUI() {
         getDataFromFirebase();
-        mTestResultsAdapter = new TestResultsAdapter(mTestResultList.getTestResultList());
+        mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
 
