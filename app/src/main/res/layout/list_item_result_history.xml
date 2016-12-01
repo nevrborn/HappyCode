@@ -15,22 +15,11 @@
         >
 
         <ImageView
-            android:id="@+id/list_item_tester_icon"
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="6dip"
-            android:contentDescription="tester"
-            />
-
-        <ImageView
             android:id="@+id/list_item_icon_1"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_alignParentTop="true"
             android:layout_marginRight="6dip"
-            android:layout_toRightOf="@id/list_item_tester_icon"
             android:contentDescription="code"
             />
 
@@ -61,7 +50,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignWithParentIfMissing="true"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@id/list_item_tester_icon"
+            android:layout_toRightOf="@id/list_item_icon_2"
             android:gravity="center_vertical"
             android:text="24-11-2016  10:26 uur"
             android:textColor="@color/colorHappyCode"

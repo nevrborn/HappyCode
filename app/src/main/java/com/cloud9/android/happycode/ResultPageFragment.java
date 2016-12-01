@@ -1,5 +1,7 @@
 package com.cloud9.android.happycode;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.cast.CastRemoteDisplayLocalService;
+import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,7 +34,7 @@ public class ResultPageFragment extends Fragment {
     private static final String TAG = "ResultPageFragment";
     private static final String KEY_CURRENT_STRENGTH = "currentStrength";
 
-    private static UUID mID;
+    private static String mID;
     private Strength mNr1Strength;
     private Strength mNr2Strength;
     private Strength mNr3Strength;
@@ -39,6 +43,8 @@ public class ResultPageFragment extends Fragment {
     private Map<String, Integer> mResultArray = new HashMap<>();
     private StrengthList mStrengths;
     private Boolean hasWrittenToFirebase = false;
+    private static Boolean mIsFromQuestionPage = false;
+    private TestResultList mTestResultList;
 
     private ImageView mResultIcon1;
     private ImageView mResultIcon2;
@@ -50,21 +56,46 @@ public class ResultPageFragment extends Fragment {
 
     private DatabaseReference mUserRef;
 
+//    private Callbacks mCallbacks;
+//
+//    public interface Callbacks {
+//        void onTestResultDeleted(TestResult testResult);
+//    }
+
     /*
     * create new instance
     */
-    public static Fragment newInstance(UUID testResultID) {
+    public static Fragment newInstance(String testResultID, Boolean isFromQuestionPage) {
         mID = testResultID;
+        mIsFromQuestionPage = isFromQuestionPage;
         return new ResultPageFragment();
     }
+
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        mCallbacks = (Callbacks) activity;
+//    }
+//
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        mCallbacks = null;
+//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mTestResultList = TestResultList.get(getContext());
 
-        // code to initialize the three strengths
-        mTestResult = TestResult.getInstance();
+        // If the intent is coming from QuestionPage, then look up
+        if (mIsFromQuestionPage == true) {
+            mTestResult = mTestResultList.getTestResult("questionID");
+        } else if (mIsFromQuestionPage == false) {
+            mTestResult = mTestResultList.getTestResult(mID);
+        }
+
         mResultArray = mTestResult.getResultArray();
         mStrengths = StrengthList.get(getContext());
 
@@ -75,7 +106,6 @@ public class ResultPageFragment extends Fragment {
         mNr1Strength = mStrengths.getStrengthFromKey(mNr1StrengthKey);
         mNr2Strength = mStrengths.getStrengthFromKey(mNr2StrengthKey);
         mNr3Strength = mStrengths.getStrengthFromKey(mNr3StrengthKey);
-
     }
 
     @Nullable
@@ -135,6 +165,10 @@ public class ResultPageFragment extends Fragment {
                 Intent i = StartPageActivity.newIntent(getActivity());
                 startActivity(i);
                 mTestResult.deleteResult();
+
+                if (mIsFromQuestionPage == true) {
+                    mTestResultList.deleteTestResult(mTestResult);
+                }
             }
         });
 
@@ -205,4 +239,9 @@ public class ResultPageFragment extends Fragment {
         String key = mUserRef.child("results").push().getKey();
         mUserRef.child("results").child(key).setValue(testResult);
     }
+
+//    private void deleteTestResult() {
+//        TestResultList.get(getActivity()).deleteTestResult(mTestResult);
+//        mCallbacks.onTestResultDeleted(mTestResult);
+//    }
 }
