@@ -65,6 +65,7 @@ public class LogInFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_log_in, container, false);
 
+
         // Fire up Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -171,12 +172,20 @@ public class LogInFragment extends Fragment {
             }
         });
 
+
+        // set user abc@gmail.com ready to log in - JUST FOR TESTING!
+        mMailField.setText("abc@gmail.com");
+        mPasswordField.setText("ffffff");
+
+
         return view;
     }
+
 
     private boolean fieldsAreFilled() {
         return !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
     }
+
 
     private void setMailAndPassword() {
         mMail = String.valueOf(mMailField.getText());
