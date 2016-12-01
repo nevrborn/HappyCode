@@ -90,9 +90,9 @@ public class ResultPageFragment extends Fragment {
         mTestResultList = TestResultList.get(getContext());
 
         // If the intent is coming from QuestionPage, then look up
-        if (mIsFromQuestionPage == true) {
+        if (mIsFromQuestionPage) {
             mTestResult = mTestResultList.getTestResult("questionID");
-        } else if (mIsFromQuestionPage == false) {
+        } else if (!mIsFromQuestionPage) {
             mTestResult = mTestResultList.getTestResult(mID);
         }
 
@@ -114,10 +114,6 @@ public class ResultPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
 
         hasWrittenToFirebase = false;
-
-        // set the database reference to the current user
-        String uid = User.get().getUid();
-        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
         // set the references
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
@@ -236,6 +232,9 @@ public class ResultPageFragment extends Fragment {
 
 
     private void writeToFirebase(TestResult testResult) {
+        // set the database reference to the current user
+        String uid = User.get().getUid();
+        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
         String key = mUserRef.child("results").push().getKey();
         mUserRef.child("results").child(key).setValue(testResult);
     }
