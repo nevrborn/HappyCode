@@ -1,0 +1,35 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_fragment_share"
+    android:layout_width="match_parent"
+    android:layout_height="131dp"
+    style="@style/MyDialog"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/button_share_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/share_dialog_share_button"
+            />
+
+        <Button
+            android:id="@+id/button_share_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/share_dialog_mail_button"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
+

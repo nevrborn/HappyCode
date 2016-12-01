@@ -1,15 +1,20 @@
 <resources>
     <string name="app_name">HappyCode</string>
+
+
+    // QUESTION PAGE
+    <string name="button_next">VOLGENDE</string>
+    <string name="button_previous"> VORIGE </string>
+    <string name="button_finish">FINISH</string>
+    <string name="button_result_menu">MENU</string>
+
+    // START PAGE
     <string name="title_main">HappyCode</string>
     <string name="title_subtitle">Ontcijfer jouw</string>
     <string name="button_start">START</string>
     <string name="button_about">Over\nCloud9</string>
     <string name="button_all_codes">Alle\ncodes</string>
     <string name="button_test_history">Test\nhistorie</string>
-    <string name="button_next">VOLGENDE</string>
-    <string name="button_previous"> VORIGE </string>
-    <string name="button_finish">FINISH</string>
-    <string name="button_result_retake">MENU</string>
     <string name="button_create_account">Maak nieuw account</string>
     <string name="button_sign_in">Log in</string>
     <string name="button_sign_out">Log uit</string>
@@ -17,18 +22,26 @@
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
+
+    // USER SIGN IN PAGE
     <string name="auth_failed">Authenticatie is mislukt</string>
     <string name="auth_user_created">Welkom bij HappyCode!</string>
     <string name="auth_not_all_fields_filled">Niet alle velden zijn gevuld</string>
     <string name="sign_in_succesfull">Je bent ingelogd!</string>
     <string name="sign_out_succesfull">Je bent uitgelogd!</string>
 
+    // SHARE DIALOG
+    <string name="button_share">Delen</string>
+    <string name="share_dialog_title">Deel je HappyCode! Own it!</string>
+    <string name="share_dialog_share_button">Mail je HappyCode</string>
+    <string name="share_dialog_mail_button">Deel je HappyCode</string>
+    <string name="share_mail_subject">YOUR HAPPYCODE!</string>
+    <string name="share_text_short">"Ik deed de HappyCode test. I ben een %1$s, een %2$s en een %3$s. Own it!"</string>
 
     // ABOUT PAGE
     <string name="title_about">Over cloud9</string>
     <string name="text_about_main">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
     <string name="text_about_closing_line">Cloud 9 is een initiatief van NJR.</string>
-
 
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leider</string>

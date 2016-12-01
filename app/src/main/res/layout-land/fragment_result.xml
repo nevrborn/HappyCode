@@ -27,6 +27,17 @@
             />
 
         <Button
+            android:id="@+id/button_share_result"
+            android:text="@string/button_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/button_result_to_menu"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/button_result_to_menu"
+            style="@style/Buttons"
+            />
+
+        <Button
             android:id="@+id/button_result_to_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +45,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             style="@style/Buttons"
-            android:text="@string/button_result_retake"
+            android:text="@string/button_result_menu"
             android:textAlignment="center"
             />
 
