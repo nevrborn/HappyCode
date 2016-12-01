@@ -3,14 +3,14 @@ package com.cloud9.android.happycode;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.zip.Inflater;
+import android.widget.Toast;
 
 /**
  * Created by paulvancappelle on 01-12-16.
@@ -19,7 +19,7 @@ import java.util.zip.Inflater;
 public class ShareDialogFragment extends DialogFragment {
 
     Button mShareMail;
-    Button mShareGeneral;
+    Button mShareWithAny;
 
 
     @NonNull
@@ -28,20 +28,17 @@ public class ShareDialogFragment extends DialogFragment {
         View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_fragment_share, null);
 
         // set the references
-        mShareGeneral = (Button) v.findViewById(R.id.button_share_general);
+        mShareWithAny = (Button) v.findViewById(R.id.button_share_with_any);
         mShareMail = (Button) v.findViewById(R.id.button_share_mail);
 
         // set the listeners
-        mShareGeneral.setOnClickListener(new View.OnClickListener() {
+        mShareWithAny.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] mailRecipient = new String[1];
-                mailRecipient[0] = User.get().getEmail();
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_mail_subject));
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
                 i.putExtra(Intent.EXTRA_TEXT, getTextToShare());
-                i.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
                 startActivity(i);
             }
         });
@@ -50,12 +47,17 @@ public class ShareDialogFragment extends DialogFragment {
             public void onClick(View view) {
                 String[] mailRecipient = new String[1];
                 mailRecipient[0] = User.get().getEmail();
-                Intent i = new Intent(Intent.ACTION_SEND);
+                Intent i = new Intent(Intent.ACTION_SENDTO);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_mail_subject));
+                i.setData(Uri.parse("mailto:")); // only email apps should handle this
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
                 i.putExtra(Intent.EXTRA_TEXT, getTextToShare());
                 i.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
-                startActivity(i);
+                if (i.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getActivity(), R.string.share_no_mail_app, Toast.LENGTH_SHORT);
+                }
             }
         });
 
@@ -66,8 +68,8 @@ public class ShareDialogFragment extends DialogFragment {
                 .create();
     }
 
-    private String getTextToShare() {
 
+    private String getTextToShare() {
         String strength1 = getArguments().getString(ResultPageFragment.ARG_STRENGTH1);
         String strength2 = getArguments().getString(ResultPageFragment.ARG_STRENGTH2);
         String strength3 = getArguments().getString(ResultPageFragment.ARG_STRENGTH3);
