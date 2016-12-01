@@ -21,6 +21,7 @@ public class TestResult {
     private String mUser;
     private String mTester;
     private Map<String, Integer> mResultArray = new HashMap<>();
+    private String mID;
 
     private String mNo1StrengthKey;
     private String mNo2StrengthKey;
@@ -85,6 +86,14 @@ public class TestResult {
         mUser = user;
     }
 
+    public String getID() {
+        return mID;
+    }
+
+    public void setID(String ID) {
+        mID = ID;
+    }
+
     public Date getDate() {
         return mDate;
     }
@@ -146,4 +155,6 @@ public class TestResult {
 
         tempArray.clear();
     }
+
+
 }

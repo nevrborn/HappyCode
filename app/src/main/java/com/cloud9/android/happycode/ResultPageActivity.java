@@ -14,15 +14,18 @@ import java.util.UUID;
 public class ResultPageActivity extends SingleFragmentActivity {
 
     private static final String TEST_RESULT_ID = "test_result_id";
+    private static final String QUESTION_PAGE_BOOLEAN = "false";
 
-    private static UUID mTestResultID;
+    private static String mTestResultID;
+    private static Boolean mIsFromQuestionPage;
 
     /*
     * create Intent to start this activity
     */
-    public static Intent newIntent(Context context, UUID testResultID) {
+    public static Intent newIntent(Context context, String testResultID, Boolean isFromQuestionPage) {
         Intent i = new Intent(context, ResultPageActivity.class);
         mTestResultID = testResultID;
+        mIsFromQuestionPage = isFromQuestionPage;
         return new Intent(context, ResultPageActivity.class);
     }
 
@@ -31,8 +34,7 @@ public class ResultPageActivity extends SingleFragmentActivity {
     */
     @Override
     protected Fragment createFragment() {
-        //mTestResultID = (UUID) getIntent().getSerializableExtra(TEST_RESULT_ID);
-        return ResultPageFragment.newInstance(mTestResultID);
+        mTestResultID = (String) getIntent().getSerializableExtra(TEST_RESULT_ID);
+        return ResultPageFragment.newInstance(mTestResultID, mIsFromQuestionPage);
     }
-
 }

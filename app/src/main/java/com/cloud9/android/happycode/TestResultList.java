@@ -33,7 +33,8 @@ public class TestResultList {
         mTestResultList = new ArrayList<>();
     }
 
-    public void addTestresult(TestResult testResult) {
+    public void addTestresult(TestResult testResult, String ID) {
+        testResult.setID(ID);
         mTestResultList.add(testResult);
     }
 
@@ -43,6 +44,28 @@ public class TestResultList {
 
     public void clearResults() {
         mTestResultList.clear();
+    }
+
+    public void deleteTestResult(TestResult testresult) {
+        mTestResultList.remove(testresult.getID());
+    }
+
+    public static TestResult getTestResult(String ID) {
+
+        int i = 0;
+        TestResult testresult = null;
+
+        while (i < mTestResultList.size()) {
+
+            if (mTestResultList.get(i).getID().equals(ID)) {
+                testresult = mTestResultList.get(i);
+                return testresult;
+            }
+
+            i += 1;
+        }
+
+        return testresult;
     }
 
 

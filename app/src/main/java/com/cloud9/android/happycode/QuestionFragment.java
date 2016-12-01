@@ -41,6 +41,7 @@ public class QuestionFragment extends Fragment {
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
     private int mPercentage;
+    private TestResultList mTestResultList;
 
     private StrengthList mStrengths;
 
@@ -71,7 +72,6 @@ public class QuestionFragment extends Fragment {
         } else {
             mPreviousButton.setAlpha(1.0f);
         }
-
 
         // Setting up what happens when the next button is pressed - go to next strength
         mNextButton.setOnClickListener(new View.OnClickListener() {
@@ -109,14 +109,14 @@ public class QuestionFragment extends Fragment {
                     setPercentage(mPercentage);
                     Log.d(TAG, getString(mStrengths.getStrengthFromIndex(mCurrentIndex).getTitleID()) + " has " + mStrenghtArray.get(mCurrentIndex) + "%");
 
+                    mTestResultList = TestResultList.get(getContext());
                     //mTestResult.setTestResult(mStrenghtArray);
                     mTestResult.setResultArray(mResultArray);
-                    //mTestResultList.addResult(mTestResult);
-
-                    UUID tempUUID = UUID.randomUUID();
+                    String tempID = "questionID";
+                    mTestResultList.addTestresult(mTestResult, tempID);
 
                     // Go to TestResult page
-                    Intent i = ResultPageActivity.newIntent(getActivity(), tempUUID);
+                    Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
                     startActivity(i);
 
                 }

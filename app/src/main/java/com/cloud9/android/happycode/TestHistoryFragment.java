@@ -1,5 +1,7 @@
 package com.cloud9.android.happycode;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,6 +33,23 @@ public class TestHistoryFragment extends Fragment {
 
     private DatabaseReference mUserRef;
 
+    private Callbacks mCallbacks;
+
+    public interface Callbacks {
+        void onTestResultSelected(TestResult testresult);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCallbacks = (Callbacks) activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,18 +69,16 @@ public class TestHistoryFragment extends Fragment {
         String uid = User.get().getUid();
         mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
-        getDataFromFirebase();
-
         updateUI();
 
         return view;
     }
 
-    private void updateUI() {
+    public void updateUI() {
+        getDataFromFirebase();
         mTestResultsAdapter = new TestResultsAdapter(mTestResultList.getTestResultList());
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
-
 
     public void getDataFromFirebase() {
 
@@ -72,7 +89,7 @@ public class TestHistoryFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     TestResult testResult = child.getValue(TestResult.class);
-                    mTestResultList.addTestresult(testResult);
+                    mTestResultList.addTestresult(testResult, child.getKey());
                 }
             }
 
@@ -81,9 +98,7 @@ public class TestHistoryFragment extends Fragment {
 
             }
         });
-
     }
-
 
     /*
     * inner class ViewHolder
@@ -100,7 +115,7 @@ public class TestHistoryFragment extends Fragment {
         public TestResultHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            mTesterIcon = (ImageView) itemView.findViewById(R.id.list_item_tester_icon);
+            //mTesterIcon = (ImageView) itemView.findViewById(R.id.list_item_tester_icon);
             mStrenghtIcon1 = (ImageView) itemView.findViewById(R.id.list_item_icon_1);
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
             mStrenghtIcon3 = (ImageView) itemView.findViewById(R.id.list_item_icon_3);
@@ -110,15 +125,13 @@ public class TestHistoryFragment extends Fragment {
         @Override
         public void onClick(View view) {
             // Go to TestResult page
-            //Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID());
-            //startActivity(i);
+            mCallbacks.onTestResultSelected(mTestResult);
         }
 
         public void setResult(TestResult result) {
             mTestResult = result;
         }
     }
-
 
     /*
     * inner class Adapter
