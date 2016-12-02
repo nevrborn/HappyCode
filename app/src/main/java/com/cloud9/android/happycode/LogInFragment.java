@@ -114,10 +114,6 @@ public class LogInFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                            Toast.makeText(getActivity(), R.string.sign_in_succesfull, Toast.LENGTH_LONG).show();
-
-
-
 
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
@@ -126,6 +122,8 @@ public class LogInFragment extends Fragment {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
                             } else if (task.isSuccessful()) {
+                                Toast.makeText(getActivity(), R.string.sign_in_succesfull, Toast.LENGTH_SHORT).show();
+
                                 // set user state to logged in
                                 User.set();
 
