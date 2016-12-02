@@ -123,7 +123,7 @@ public class StartPageFragment extends Fragment {
                 mUser = User.get();
                 if (mUser != null) {
                     User.signOut();
-                    Toast.makeText(getActivity(), R.string.sign_out_succesfull, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.sign_out_succesfull, Toast.LENGTH_SHORT).show();
                     updateLogInButton();
                 } else {
                     Intent i = LogInActivity.newIntent(getActivity());
@@ -143,7 +143,6 @@ public class StartPageFragment extends Fragment {
 
         if (user != null) {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
-            Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
             writeExcitingTestsToFirebase();
             getDataFromFirebase();
         }
