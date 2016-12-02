@@ -204,7 +204,7 @@ public class QuestionFragment extends Fragment {
 
         outState.putInt(CURRENT_INDEX, mCurrentIndex);
         outState.putInt(LAST_REACHED_INDEX, mLastIndexReached);
-        outState.putIntegerArrayList(STRENGTH_ARRAY, (ArrayList<Integer>) mResultArray);
+        // outState.putIntegerArrayList(STRENGTH_ARRAY, (ArrayList<Integer>) mResultArray);
 
     }
 

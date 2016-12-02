@@ -3,6 +3,7 @@ package com.cloud9.android.happycode;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.cast.CastRemoteDisplayLocalService;
@@ -51,6 +53,7 @@ public class ResultPageFragment extends Fragment {
     private ImageView mResultIcon1;
     private ImageView mResultIcon2;
     private ImageView mResultIcon3;
+    private ImageView mLine;
     private TextView mStrenghtText;
     private TextView mStrengthTitle;
     private Button mToMenuButton;
@@ -121,6 +124,7 @@ public class ResultPageFragment extends Fragment {
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
         mResultIcon2 = (ImageView) view.findViewById(R.id.imageview_result_two);
         mResultIcon3 = (ImageView) view.findViewById(R.id.imageview_result_three);
+        mLine = (ImageView) view.findViewById(R.id.imageview_result_line);
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
         mToMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
@@ -215,27 +219,46 @@ public class ResultPageFragment extends Fragment {
     }
 
     private void setPickedResult() {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mLine.getLayoutParams();
         switch (mCurrentStrength) {
             case 0:
                 mStrengthTitle.setText(mNr1Strength.getTitleID());
                 mStrenghtText.setText(mNr1Strength.getDescriptionID());
                 mResultIcon1.setAlpha(1.0f);
-                mResultIcon2.setAlpha(0.4f);
-                mResultIcon3.setAlpha(0.4f);
+                mResultIcon2.setAlpha(0.8f);
+                mResultIcon3.setAlpha(0.8f);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    layoutParams.removeRule(RelativeLayout.CENTER_HORIZONTAL);
+                    layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                }
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                mLine.setLayoutParams(layoutParams);
                 return;
             case 1:
                 mStrengthTitle.setText(mNr2Strength.getTitleID());
                 mStrenghtText.setText(mNr2Strength.getDescriptionID());
-                mResultIcon1.setAlpha(0.4f);
+                mResultIcon1.setAlpha(0.8f);
                 mResultIcon2.setAlpha(1.0f);
-                mResultIcon3.setAlpha(0.4f);
+                mResultIcon3.setAlpha(0.8f);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                    layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                }
+                layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                mLine.setLayoutParams(layoutParams);
                 return;
             case 2:
                 mStrengthTitle.setText(mNr3Strength.getTitleID());
                 mStrenghtText.setText(mNr3Strength.getDescriptionID());
-                mResultIcon1.setAlpha(0.4f);
-                mResultIcon2.setAlpha(0.4f);
+                mResultIcon1.setAlpha(0.8f);
+                mResultIcon2.setAlpha(0.8f);
                 mResultIcon3.setAlpha(1.0f);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    layoutParams.removeRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                    layoutParams.removeRule(RelativeLayout.CENTER_HORIZONTAL);
+                }
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                mLine.setLayoutParams(layoutParams);
                 return;
             default:
                 Log.e(TAG, "Picked result " + mCurrentStrength + " does not exist");

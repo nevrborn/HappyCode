@@ -61,8 +61,7 @@
                 android:id="@+id/imageview_result_one"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="16dp"
-                android:layout_weight="1"
+                android:layout_marginLeft="64dp"
                 android:src="@drawable/ic_android_happy_code_24dp"
                 />
 
@@ -78,22 +77,29 @@
                 android:id="@+id/imageview_result_three"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="1"
+                android:layout_marginRight="48dp"
                 android:src="@drawable/ic_android_happy_code_24dp"
                 />
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imageview_result_line"
+            android:layout_width="6dp"
+            android:layout_height="24dp"
+            android:layout_below="@id/linearlayout_result_images"
+            android:layout_marginLeft="91dp"
+            android:layout_marginRight="91dp"
+            android:background="@drawable/line_result_page"
+            />
 
         <TextView
             android:id="@+id/textview_result_strenght_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/linearlayout_result_images"
+            android:layout_below="@id/imageview_result_line"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/box_result_page"
             android:padding="8dp"
             android:textColor="@android:color/white"
