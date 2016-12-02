@@ -34,7 +34,6 @@ public class ResultPageActivity extends SingleFragmentActivity {
     */
     @Override
     protected Fragment createFragment() {
-        mTestResultID = (String) getIntent().getSerializableExtra(TEST_RESULT_ID);
         return ResultPageFragment.newInstance(mTestResultID, mIsFromQuestionPage);
     }
 }

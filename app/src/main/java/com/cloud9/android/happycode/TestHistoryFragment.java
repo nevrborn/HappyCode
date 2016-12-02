@@ -2,6 +2,7 @@ package com.cloud9.android.happycode;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -128,8 +129,8 @@ public class TestHistoryFragment extends Fragment {
         @Override
         public void onClick(View view) {
             // Go to TestResult page
-
-            mCallbacks.onTestResultSelected(mTestResult);
+            Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID(), false);
+            startActivity(i);
         }
 
         public void setResult(TestResult result) {

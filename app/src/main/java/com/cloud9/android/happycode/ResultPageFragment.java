@@ -1,7 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,14 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.cast.CastRemoteDisplayLocalService;
-import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by paulvancappelle on 23-11-16.
@@ -46,6 +41,7 @@ public class ResultPageFragment extends Fragment {
     private StrengthList mStrengths;
     private Boolean hasWrittenToFirebase = false;
     private static Boolean mIsFromQuestionPage = false;
+    private Boolean mIsComingFromResultPage = false;
     private TestResultList mTestResultList;
 
     private ImageView mResultIcon1;
@@ -94,8 +90,10 @@ public class ResultPageFragment extends Fragment {
         // If the intent is coming from QuestionPage, then look up
         if (mIsFromQuestionPage == true) {
             mTestResult = TestResultList.getTestResult("questionID");
+            mIsComingFromResultPage = false;
         } else if (mIsFromQuestionPage == false) {
             mTestResult = TestResultList.getTestResult(mID);
+            mIsComingFromResultPage = true;
         }
 
         mResultArray = mTestResult.getResultArray();
@@ -165,7 +163,7 @@ public class ResultPageFragment extends Fragment {
                 mTestResult.setTester("");
 
                 // save the test result to the firebase
-                if (hasWrittenToFirebase == false && User.get() != null) {
+                if (hasWrittenToFirebase == false && User.get() != null && mIsComingFromResultPage == false) {
                     writeToFirebase(mTestResult);
                     hasWrittenToFirebase = true;
                 }
