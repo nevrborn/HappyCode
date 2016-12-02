@@ -23,7 +23,7 @@ import java.util.UUID;
 
 public class TestResult {
 
-    private String mDate;
+    private long mDate;
     private String mUser;
     private String mTester;
     private Map<String, Integer> mResultArray = new HashMap<>();
@@ -48,7 +48,7 @@ public class TestResult {
 
     }
 
-    public TestResult(String date, String tester, Map<String, Integer> resultArray, String no1StrengthKey, String no2StrengthKey, String no3StrengthKey) {
+    public TestResult(Long date, String tester, Map<String, Integer> resultArray, String no1StrengthKey, String no2StrengthKey, String no3StrengthKey) {
         this.mDate = date;
         this.mTester = tester;
         this.mResultArray = resultArray;
@@ -65,24 +65,12 @@ public class TestResult {
         return mNo1StrengthKey;
     }
 
-    public void setNo1StrengthKey(String no1StrengthKey) {
-        mNo1StrengthKey = no1StrengthKey;
-    }
-
     public String getNo2StrengthKey() {
         return mNo2StrengthKey;
     }
 
-    public void setNo2StrengthKey(String no2StrengthKey) {
-        mNo2StrengthKey = no2StrengthKey;
-    }
-
     public String getNo3StrengthKey() {
         return mNo3StrengthKey;
-    }
-
-    public void setNo3StrengthKey(String no3StrengthKey) {
-        mNo3StrengthKey = no3StrengthKey;
     }
 
     public String getUser() {
@@ -101,12 +89,19 @@ public class TestResult {
         mID = ID;
     }
 
-    public String getDate() {
+    public long getDate() {
         return mDate;
     }
 
     public void setDate() {
-        mDate = getCurrentTimeStamp();
+        mDate = System.currentTimeMillis() / 1000;
+    }
+
+    public String getDateAndTime() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String currentDateTime = dateFormat.format(mDate);
+        return currentDateTime;
     }
 
     public String getTester() {
