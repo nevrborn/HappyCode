@@ -3,6 +3,7 @@ package com.cloud9.android.happycode;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -84,6 +85,11 @@ public class TestHistoryFragment extends Fragment {
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     public void getDataFromFirebase() {
 
         mTestResultList.clearResults();
@@ -102,6 +108,8 @@ public class TestHistoryFragment extends Fragment {
 
             }
         });
+
+
     }
 
     /*
@@ -124,11 +132,18 @@ public class TestHistoryFragment extends Fragment {
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
             mStrenghtIcon3 = (ImageView) itemView.findViewById(R.id.list_item_icon_3);
             mDateTime = (TextView) itemView.findViewById(R.id.list_item_date_time);
+            mStrenghtIcon1.setAlpha(0.9f);
+            mStrenghtIcon2.setAlpha(0.9f);
+            mStrenghtIcon3.setAlpha(0.9f);
+
         }
 
         @Override
         public void onClick(View view) {
             // Go to TestResult page
+            mStrenghtIcon1.setAlpha(1f);
+            mStrenghtIcon2.setAlpha(1f);
+            mStrenghtIcon3.setAlpha(1f);
             Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID(), false);
             startActivity(i);
         }
@@ -172,6 +187,10 @@ public class TestHistoryFragment extends Fragment {
             holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
             holder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
 
+            holder.mStrenghtIcon1.setAlpha(0.9f);
+            holder.mStrenghtIcon2.setAlpha(0.9f);
+            holder.mStrenghtIcon3.setAlpha(0.9f);
+
             holder.setResult(testResult);
         }
 
@@ -179,6 +198,7 @@ public class TestHistoryFragment extends Fragment {
         public int getItemCount() {
             return mTestResultList.size();
         }
+
 
     }
 

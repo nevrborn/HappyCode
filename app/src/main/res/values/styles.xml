@@ -21,4 +21,9 @@
         <item name="android:colorBackgroundCacheHint">@android:color/black</item>
     </style>
 
+    <style name="Menu_Buttons">
+        <item name="android:background">@drawable/menu_button</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
 </resources>
