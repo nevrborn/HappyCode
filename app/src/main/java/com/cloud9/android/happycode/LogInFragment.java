@@ -249,7 +249,6 @@ public class LogInFragment extends Fragment {
             while (i < mTestResultList.getSize()) {
 
                 TestResult testresult = mTestResultList.getTestResultFromIndex(i);
-                Date date = new Date();
 
                 if (testresult.getWrittenToFirebase() == false) {
                     writeToFirebase(testresult);

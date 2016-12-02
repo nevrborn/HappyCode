@@ -93,14 +93,15 @@ public class TestResult {
         return mDate;
     }
 
-    public void setDate() {
-        mDate = System.currentTimeMillis() / 1000;
+    public void setDate(long date) {
+        mDate = date;
     }
 
-    public String getDateAndTime() {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String currentDateTime = dateFormat.format(mDate);
+    public String getDateAndTime(long date) {
+        long tempDate = date * 1000L;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String currentDateTime = dateFormat.format(tempDate);
         return currentDateTime;
     }
 
@@ -159,16 +160,4 @@ public class TestResult {
         mIsWrittenToFirebase = writtenToFirebase;
     }
 
-    public static String getCurrentTimeStamp() {
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            String currentDateTime = dateFormat.format(new Date());
-
-            return currentDateTime;
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return null;
-        }
-    }
 }

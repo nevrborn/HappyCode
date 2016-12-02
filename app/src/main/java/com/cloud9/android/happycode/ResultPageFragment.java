@@ -160,7 +160,7 @@ public class ResultPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                mTestResult.setDate();
+                mTestResult.setDate(System.currentTimeMillis() / 1000L);
                 mTestResult.setUser("");
                 mTestResult.setTester("");
 
@@ -247,7 +247,7 @@ public class ResultPageFragment extends Fragment {
         // set the database reference to the current user
         String userID = User.get().getUid();
 
-        mTestResult.setDate();
+        mTestResult.setDate(System.currentTimeMillis() / 1000L);
         mTestResult.setUser(userID);
         mTestResult.setTester(userID);
         mTestResult.setWrittenToFirebase(true);

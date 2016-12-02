@@ -169,7 +169,7 @@ public class TestHistoryFragment extends Fragment {
             holder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
             holder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
             holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
-            holder.mDateTime.setText(testResult.getDateAndTime()); // set date format and add getTime to TestResult
+            holder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
 
             holder.setResult(testResult);
         }
