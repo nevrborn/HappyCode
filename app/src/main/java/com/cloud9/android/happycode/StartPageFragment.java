@@ -104,7 +104,6 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
             }
@@ -182,7 +181,6 @@ public class StartPageFragment extends Fragment {
     private void writeToFirebase(TestResult testResult) {
         // set the database reference to the current user
         String userID = User.get().getUid();
-        testResult.setDate();
         testResult.setUser(userID);
         testResult.setTester(userID);
         testResult.setWrittenToFirebase(true);
