@@ -38,7 +38,7 @@
     <string name="share_dialog_share_button">Deel je HappyCode</string>
     <string name="share_dialog_mail_button">Mail je HappyCode</string>
     <string name="share_subject">YOUR HAPPYCODE!</string>
-    <string name="share_text_short">"Ik deed de HappyCode test. I ben een %1$s, een %2$s en een %3$s. Own it!"</string>
+    <string name="share_text_short">"Ik deed de HappyCode test. Ik ben een %1$s, een %2$s en een %3$s. Own it!"</string>
     <string name="share_no_mail_app">"Jammer, je hebt geen app die kan mailen :( "</string>
 
     // ABOUT PAGE
