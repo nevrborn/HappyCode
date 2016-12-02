@@ -54,15 +54,23 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageview_result_line"
+        android:layout_width="6dp"
+        android:layout_height="32dp"
+        android:layout_below="@id/linearlayout_result_images"
+        android:layout_marginLeft="59dp"
+        android:layout_marginRight="59dp"
+        android:background="@drawable/line_result_page"
+        />
 
     <TextView
         android:id="@+id/textview_result_strenght_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linearlayout_result_images"
+        android:layout_below="@id/imageview_result_line"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="40dp"
         android:background="@drawable/box_result_page"
         android:padding="16dp"
         android:textColor="@android:color/white"
