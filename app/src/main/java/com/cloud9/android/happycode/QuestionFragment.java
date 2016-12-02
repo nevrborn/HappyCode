@@ -37,7 +37,7 @@ public class QuestionFragment extends Fragment {
     private SeekBar mSeekBar;
     private TextView mProgressCount;
 
-    private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
+    //private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
@@ -176,7 +176,7 @@ public class QuestionFragment extends Fragment {
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(CURRENT_INDEX);
             mLastIndexReached = savedInstanceState.getInt(LAST_REACHED_INDEX);
-            mStrenghtArray = savedInstanceState.getIntegerArrayList(STRENGTH_ARRAY);
+            mResultArray = (Map<String, Integer>) savedInstanceState.getIntegerArrayList(STRENGTH_ARRAY);
         }
 
     }
@@ -204,7 +204,7 @@ public class QuestionFragment extends Fragment {
 
         outState.putInt(CURRENT_INDEX, mCurrentIndex);
         outState.putInt(LAST_REACHED_INDEX, mLastIndexReached);
-        outState.putIntegerArrayList(STRENGTH_ARRAY, mStrenghtArray);
+        outState.putIntegerArrayList(STRENGTH_ARRAY, (ArrayList<Integer>) mResultArray);
 
     }
 
