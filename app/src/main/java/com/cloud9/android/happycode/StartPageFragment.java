@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
+
 /**
  * Created by paulvancappelle on 22-11-16.
  */
@@ -142,7 +144,7 @@ public class StartPageFragment extends Fragment {
         if (user != null) {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
             Toast.makeText(getActivity(), mDatabaseRef.getKey(), Toast.LENGTH_SHORT).show();
-            mTestResultList.clearResults();
+            writeExcitingTestsToFirebase();
             getDataFromFirebase();
         }
     }
@@ -178,4 +180,39 @@ public class StartPageFragment extends Fragment {
         });
     }
 
+    private void writeToFirebase(TestResult testResult) {
+        // set the database reference to the current user
+        String userID = User.get().getUid();
+        testResult.setDate();
+        testResult.setUser(userID);
+        testResult.setTester(userID);
+        testResult.setWrittenToFirebase(true);
+
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        String key = mUserRef.child("results").push().getKey();
+        mUserRef.child("results").child(key).setValue(testResult);
+    }
+
+    private void writeExcitingTestsToFirebase() {
+
+        mTestResultList = TestResultList.get(getContext());
+
+        if (mTestResultList.getSize() != 0 && User.get() != null) {
+            int i = 0;
+
+            while (i < mTestResultList.getSize()) {
+
+                TestResult testresult = mTestResultList.getTestResultFromIndex(i);
+                Date date = new Date();
+
+                if (testresult.getWrittenToFirebase() == false) {
+                    writeToFirebase(testresult);
+                }
+
+                i += 1;
+            }
+
+            mTestResultList.clearResults();
+        }
+    }
 }

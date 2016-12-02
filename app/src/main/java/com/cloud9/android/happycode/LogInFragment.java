@@ -113,11 +113,7 @@ public class LogInFragment extends Fragment {
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                             Toast.makeText(getActivity(), R.string.sign_in_succesfull, Toast.LENGTH_LONG).show();
 
-                            // set user state to logged in
-                            User.set();
 
-                            // go to previous activity
-                            getActivity().finish();
 
 
                             // If sign in fails, display a message to the user. If sign in succeeds
@@ -126,10 +122,12 @@ public class LogInFragment extends Fragment {
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                            }
+                            } else if (task.isSuccessful()) {
+                                // set user state to logged in
+                                User.set();
 
-                            if (task.isSuccessful()) {
-                                writeExcitingTestsToFirebase();
+                                // go to previous activity
+                                getActivity().finish();
                             }
 
                             // ...
@@ -142,6 +140,7 @@ public class LogInFragment extends Fragment {
 
             }
         });
+
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,7 +170,6 @@ public class LogInFragment extends Fragment {
                                 getActivity().finish();
 
                             }
-
                         }
                     });
 
@@ -220,41 +218,7 @@ public class LogInFragment extends Fragment {
         }
     }
 
-    private void writeToFirebase(TestResult testResult) {
-        // set the database reference to the current user
-        String userID = User.get().getUid();
-        testResult.setDate();
-        testResult.setUser(userID);
-        testResult.setTester(userID);
-        testResult.setWrittenToFirebase(true);
 
-        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
-        String key = mUserRef.child("results").push().getKey();
-        mUserRef.child("results").child(key).setValue(testResult);
-    }
-
-    private void writeExcitingTestsToFirebase() {
-
-        mTestResultList = TestResultList.get(getContext());
-
-        if (mTestResultList.getSize() != 0 && User.get() != null) {
-            int i = 0;
-
-            while (i < mTestResultList.getSize()) {
-
-                TestResult testresult = mTestResultList.getTestResultFromIndex(i);
-                Date date = new Date();
-
-                if (testresult.getWrittenToFirebase() == false) {
-                    writeToFirebase(testresult);
-                }
-
-                i += 1;
-            }
-
-            mTestResultList.clearResults();
-        }
-    }
 
 
 }

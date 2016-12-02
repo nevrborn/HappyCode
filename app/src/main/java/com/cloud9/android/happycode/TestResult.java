@@ -2,7 +2,13 @@ package com.cloud9.android.happycode;
 
 import android.text.format.DateFormat;
 
+import com.google.android.gms.instantapps.InstantApps;
+import com.google.firebase.database.ServerValue;
+
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,7 +23,7 @@ import java.util.UUID;
 
 public class TestResult {
 
-    private Date mDate;
+    private String mDate;
     private String mUser;
     private String mTester;
     private Map<String, Integer> mResultArray = new HashMap<>();
@@ -42,7 +48,7 @@ public class TestResult {
 
     }
 
-    public TestResult(Date date, String tester, Map<String, Integer> resultArray, String no1StrengthKey, String no2StrengthKey, String no3StrengthKey) {
+    public TestResult(String date, String tester, Map<String, Integer> resultArray, String no1StrengthKey, String no2StrengthKey, String no3StrengthKey) {
         this.mDate = date;
         this.mTester = tester;
         this.mResultArray = resultArray;
@@ -95,19 +101,12 @@ public class TestResult {
         mID = ID;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return mDate;
     }
 
-    public String getDateTime() {
-        Date date = this.getDate();
-        String dateFormat = "EEE, dd-MM-yyyy hh:mm";
-        String dateString = DateFormat.format(dateFormat, date).toString();
-        return dateString;
-    }
-
     public void setDate() {
-        mDate = new Date();
+        mDate = getCurrentTimeStamp();
     }
 
     public String getTester() {
@@ -163,5 +162,18 @@ public class TestResult {
 
     public void setWrittenToFirebase(Boolean writtenToFirebase) {
         mIsWrittenToFirebase = writtenToFirebase;
+    }
+
+    public static String getCurrentTimeStamp() {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String currentDateTime = dateFormat.format(new Date());
+
+            return currentDateTime;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
     }
 }
