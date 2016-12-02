@@ -17,8 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
@@ -128,6 +131,10 @@ public class LogInFragment extends Fragment {
 
                                 // go to previous activity
                                 getActivity().finish();
+
+                                writeExcitingTestsToFirebase();
+                                getDataFromFirebase();
+
                             }
 
                             // ...
@@ -160,14 +167,18 @@ public class LogInFragment extends Fragment {
                             if (!task.isSuccessful()) {
                                 Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                            } else {
+                            } else if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), R.string.auth_user_created, Toast.LENGTH_SHORT).show();
                                 User.set();
                                 User user = User.get();
                                 mDatabaseRef.child("users").child(user.getUid()).setValue(User.get());
 
+
                                 // go to previous activity
                                 getActivity().finish();
+
+                                writeExcitingTestsToFirebase();
+                                getDataFromFirebase();
 
                             }
                         }
@@ -218,7 +229,62 @@ public class LogInFragment extends Fragment {
         }
     }
 
+    private void writeToFirebase(TestResult testResult) {
+        // set the database reference to the current user
+        String userID = User.get().getUid();
+        testResult.setUser(userID);
+        testResult.setTester(userID);
+        testResult.setWrittenToFirebase(true);
 
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        String key = mUserRef.child("results").push().getKey();
+        mUserRef.child("results").child(key).setValue(testResult);
+    }
+
+    private void writeExcitingTestsToFirebase() {
+
+        mTestResultList = TestResultList.get(getContext());
+
+        if (mTestResultList.getSize() != 0 && User.get() != null) {
+            int i = 0;
+
+            while (i < mTestResultList.getSize()) {
+
+                TestResult testresult = mTestResultList.getTestResultFromIndex(i);
+                Date date = new Date();
+
+                if (testresult.getWrittenToFirebase() == false) {
+                    writeToFirebase(testresult);
+                }
+
+                i += 1;
+            }
+
+            mTestResultList.clearResults();
+        }
+    }
+
+    public void getDataFromFirebase() {
+
+        mTestResultList.clearResults();
+
+        String userID = User.get().getUid();
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        mUserRef.child("results").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    TestResult testResult = child.getValue(TestResult.class);
+                    mTestResultList.addTestresult(testResult, child.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
 }
