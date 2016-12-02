@@ -83,11 +83,7 @@ public class StartPageFragment extends Fragment {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mAboutButton.setText("");
-//                mTestHistoryButton.setText("");
-//                mAllCodes.setText("");
-//                animateCircles();
-
+                mStartButton.setBackgroundResource(R.drawable.button_pressed);
                 Intent i = QuestionActivity.newIntent(getActivity());
                 startActivity(i);
             }
@@ -96,6 +92,7 @@ public class StartPageFragment extends Fragment {
         mAboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAboutButton.setBackgroundResource(R.drawable.button_pressed);
                 Intent i = AboutPageActivity.newIntent(getActivity());
                 startActivity(i);
             }
@@ -104,6 +101,7 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
                     Intent i = TestHistoryActivity.newIntent(getActivity());
                     startActivity(i);
             }
@@ -111,6 +109,7 @@ public class StartPageFragment extends Fragment {
         mAllCodes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAllCodes.setBackgroundResource(R.drawable.button_pressed);
                 Intent i = CodesActivity.newIntent(getActivity());
                 startActivity(i);
             }
@@ -139,6 +138,11 @@ public class StartPageFragment extends Fragment {
         super.onResume();
         updateLogInButton();
         User user = User.get();
+
+        mStartButton.setBackgroundResource(R.drawable.button_start);
+        mAboutButton.setBackgroundResource(R.drawable.button_start);
+        mTestHistoryButton.setBackgroundResource(R.drawable.button_start);
+        mAllCodes.setBackgroundResource(R.drawable.button_start);
 
         if (user != null) {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
