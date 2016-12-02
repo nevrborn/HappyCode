@@ -2,6 +2,7 @@ package com.cloud9.android.happycode;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -176,7 +178,7 @@ public class QuestionFragment extends Fragment {
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(CURRENT_INDEX);
             mLastIndexReached = savedInstanceState.getInt(LAST_REACHED_INDEX);
-            mResultArray = (Map<String, Integer>) savedInstanceState.getIntegerArrayList(STRENGTH_ARRAY);
+            mResultArray = (HashMap<String, Integer>) savedInstanceState.getSerializable(STRENGTH_ARRAY);
         }
 
     }
@@ -204,7 +206,7 @@ public class QuestionFragment extends Fragment {
 
         outState.putInt(CURRENT_INDEX, mCurrentIndex);
         outState.putInt(LAST_REACHED_INDEX, mLastIndexReached);
-        // outState.putIntegerArrayList(STRENGTH_ARRAY, (ArrayList<Integer>) mResultArray);
+        outState.putSerializable(STRENGTH_ARRAY, (HashMap<String, Integer>) mResultArray);
 
     }
 
