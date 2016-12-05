@@ -174,7 +174,7 @@ public class ResultPageFragment extends Fragment {
 
                 Intent i = StartPageActivity.newIntent(getActivity());
                 startActivity(i);
-                mTestResult.deleteResult();
+                //mTestResult.deleteResult();
 
                 if (User.get() != null) {
                     mTestResultList.deleteTestResult(mTestResult);
