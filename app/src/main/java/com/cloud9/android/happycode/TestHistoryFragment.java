@@ -33,7 +33,7 @@ import java.util.List;
 public class TestHistoryFragment extends Fragment {
 
     private RecyclerView mTestRecyclerView;
-    private TestResultsAdapter mTestResultsAdapter;
+    private FirebaseRecyclerAdapter mTestResultsAdapter;
     private TestResultList mTestResultList;
 
     private DatabaseReference mUserRef;
@@ -78,7 +78,22 @@ public class TestHistoryFragment extends Fragment {
         updateModel();
 
         // set the recyclerview adapter
-        mTestResultsAdapter = new TestResultsAdapter(TestResult.class, R.layout.list_item_result_history, TestResultHolder.class, mUserRef);
+        mTestResultsAdapter = new FirebaseRecyclerAdapter<TestResult, TestResultHolder>(TestResult.class, R.layout.recycler_view_test_history, TestResultHolder.class, mUserRef) {
+            @Override
+            public void populateViewHolder(TestResultHolder testResultHolder, TestResult testResult, int position) {
+                StrengthList strengths = StrengthList.get(getActivity());
+                Strength mNr1Strength = strengths.getStrengthFromKey(testResult.getNo1StrengthKey());
+                Strength mNr2Strength = strengths.getStrengthFromKey(testResult.getNo2StrengthKey());
+                Strength mNr3Strength = strengths.getStrengthFromKey(testResult.getNo3StrengthKey());
+
+                // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
+                testResultHolder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
+                testResultHolder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
+                testResultHolder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
+                testResultHolder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
+
+            }
+        };
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
 
 
@@ -99,7 +114,7 @@ public class TestHistoryFragment extends Fragment {
             // set the database reference to the current user
             String uid = User.get().getUid();
             mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-            getDataFromFirebase();
+            //getDataFromFirebase();
         }
 
 //        mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
@@ -132,7 +147,7 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
-    private static class TestResultHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private static class TestResultHolder extends RecyclerView.ViewHolder {
 
         private TestResult mTestResult;
         private ImageView mStrenghtIcon1;
@@ -143,7 +158,7 @@ public class TestHistoryFragment extends Fragment {
 
         public TestResultHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
             //mTesterIcon = (ImageView) itemView.findViewById(R.id.list_item_tester_icon);
             mStrenghtIcon1 = (ImageView) itemView.findViewById(R.id.list_item_icon_1);
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
@@ -155,95 +170,11 @@ public class TestHistoryFragment extends Fragment {
 
         }
 
-        @Override
-        public void onClick(View view) {
-            // Go to TestResult page
-            mStrenghtIcon1.setAlpha(1f);
-            mStrenghtIcon2.setAlpha(1f);
-            mStrenghtIcon3.setAlpha(1f);
-//            Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID(), false);
-//            startActivity(i);
-        }
 
         public void setResult(TestResult result) {
             mTestResult = result;
         }
     }
 
-
-    /*
-    * inner class Adapter
-    */
-    private class TestResultsAdapter extends FirebaseRecyclerAdapter<TestResult, TestResultHolder> {
-
-        //        private List<TestResult> mTestResultList;
-        private StrengthList mStrengths = StrengthList.get(getContext());
-
-        /**
-         * @param modelClass      Firebase will marshall the data at a location into an instance of a class that you provide
-         * @param modelLayout     This is the layout used to represent a single item in the list. You will be responsible for populating an
-         *                        instance of the corresponding view with the data from an instance of modelClass.
-         * @param viewHolderClass The class that hold references to all sub-views in an instance modelLayout.
-         * @param ref             The Firebase location to watch for data changes. Can also be a slice of a location, using some
-         *                        combination of {@code limit()}, {@code startAt()}, and {@code endAt()}.
-         */
-        public TestResultsAdapter(Class<TestResult> modelClass, int modelLayout, Class<TestResultHolder> viewHolderClass, Query ref) {
-            super(modelClass, modelLayout, viewHolderClass, ref);
-        }
-
-
-//        public TestResultsAdapter(List<TestResult> testResultList) {
-//            mTestResultList = testResultList;
-//        }
-//
-//        @Override
-//        public TestResultHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-//            View view = layoutInflater.inflate(R.layout.list_item_result_history, parent, false);
-//            return new TestResultHolder(view);
-//        }
-
-        @Override
-        protected void populateViewHolder(TestResultHolder holder, TestResult testResult, int position) {
-
-            Strength mNr1Strength = mStrengths.getStrengthFromKey(testResult.getNo1StrengthKey());
-            Strength mNr2Strength = mStrengths.getStrengthFromKey(testResult.getNo2StrengthKey());
-            Strength mNr3Strength = mStrengths.getStrengthFromKey(testResult.getNo3StrengthKey());
-
-            // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
-            holder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
-            holder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
-            holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
-            holder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
-        }
-
-//        @Override
-//        public void onBindViewHolder(TestResultHolder holder, int position) {
-//            TestResult testResult = mTestResultList.get(position);
-//
-//            Strength mNr1Strength = mStrengths.getStrengthFromKey(testResult.getNo1StrengthKey());
-//            Strength mNr2Strength = mStrengths.getStrengthFromKey(testResult.getNo2StrengthKey());
-//            Strength mNr3Strength = mStrengths.getStrengthFromKey(testResult.getNo3StrengthKey());
-//
-//            // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
-//            holder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
-//            holder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
-//            holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
-//            holder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
-//
-//            holder.mStrenghtIcon1.setAlpha(0.9f);
-//            holder.mStrenghtIcon2.setAlpha(0.9f);
-//            holder.mStrenghtIcon3.setAlpha(0.9f);
-//
-//            holder.setResult(testResult);
-//        }
-
-//        @Override
-        //public int getItemCount() {
-//            return mTestResultList.size();
-//        }
-
-
-    }
 
 }
