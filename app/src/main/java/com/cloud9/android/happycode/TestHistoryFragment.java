@@ -78,8 +78,8 @@ public class TestHistoryFragment extends Fragment {
         updateModel();
 
         // set the recyclerview adapter
-//        mTestResultsAdapter = new TestResultsAdapter(TestResult.class, R.layout.list_item_result_history, TestResultHolder.class, mUserRef);
-//        mTestRecyclerView.setAdapter(mTestResultsAdapter);
+        mTestResultsAdapter = new TestResultsAdapter(TestResult.class, R.layout.list_item_result_history, TestResultHolder.class, mUserRef);
+        mTestRecyclerView.setAdapter(mTestResultsAdapter);
 
 
         return view;
@@ -89,7 +89,7 @@ public class TestHistoryFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        mTestResultsAdapter.cleanup();
+        mTestResultsAdapter.cleanup();
     }
 
 
@@ -102,7 +102,7 @@ public class TestHistoryFragment extends Fragment {
             getDataFromFirebase();
         }
 
-        //mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
+//        mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
 //        mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
 
@@ -115,7 +115,6 @@ public class TestHistoryFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     TestResult testResult = child.getValue(TestResult.class);
-                    String idTest = child.getKey();
                     mTestResultList.addTestresult(testResult, child.getKey());
                 }
             }
