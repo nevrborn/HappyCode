@@ -1,9 +1,6 @@
 package com.cloud9.android.happycode;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,11 +17,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 //import com.google.firebase.ui.database.FirebaseRecyclerAdapter;
 
-import java.util.List;
 
 /**
  * Created by paulvancappelle on 24-11-16.
@@ -36,7 +31,7 @@ public class TestHistoryFragment extends Fragment {
     private FirebaseRecyclerAdapter mTestResultsAdapter;
     private TestResultList mTestResultList;
 
-    private DatabaseReference mUserRef;
+    private DatabaseReference mUserResultsRef;
 
     private Callbacks mCallbacks;
 
@@ -78,7 +73,7 @@ public class TestHistoryFragment extends Fragment {
         updateModel();
 
         // set the recyclerview adapter
-        mTestResultsAdapter = new FirebaseRecyclerAdapter<TestResult, TestResultHolder>(TestResult.class, R.layout.recycler_view_test_history, TestResultHolder.class, mUserRef) {
+        mTestResultsAdapter = new FirebaseRecyclerAdapter<TestResult, TestResultHolder>(TestResult.class, R.layout.list_item_result_history, TestResultHolder.class, mUserResultsRef) {
             @Override
             public void populateViewHolder(TestResultHolder testResultHolder, TestResult testResult, int position) {
                 StrengthList strengths = StrengthList.get(getActivity());
@@ -109,23 +104,18 @@ public class TestHistoryFragment extends Fragment {
 
 
     public void updateModel() {
-
         if (User.get() != null) {
-            // set the database reference to the current user
+            // set the database reference to the current user's results
             String uid = User.get().getUid();
-            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-            //getDataFromFirebase();
+            mUserResultsRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("results");
         }
-
-//        mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
-//        mTestRecyclerView.setAdapter(mTestResultsAdapter);
     }
 
 
     public void getDataFromFirebase() {
         mTestResultList.clearResults();
 
-        mUserRef.child("results").addValueEventListener(new ValueEventListener() {
+        mUserResultsRef.child("results").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
@@ -158,8 +148,6 @@ public class TestHistoryFragment extends Fragment {
 
         public TestResultHolder(View itemView) {
             super(itemView);
-//            itemView.setOnClickListener(this);
-            //mTesterIcon = (ImageView) itemView.findViewById(R.id.list_item_tester_icon);
             mStrenghtIcon1 = (ImageView) itemView.findViewById(R.id.list_item_icon_1);
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
             mStrenghtIcon3 = (ImageView) itemView.findViewById(R.id.list_item_icon_3);
