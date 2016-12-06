@@ -92,11 +92,8 @@ public class TestHistoryFragment extends Fragment {
                 testResultHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "Geklikt!", Toast.LENGTH_SHORT).show();
-//                        Toast.makeText(getActivity(), position, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getActivity(), (CharSequence) mTestResultsAdapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
-                        String testKey = mTestResultsAdapter.getRef(position).getKey();
-                        Intent i = ResultPageActivity.newIntent(getActivity(), testResult);
+                        String key = mTestResultsAdapter.getRef(position).getKey();
+                        Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is used because in firebase the id is always "QuestionID"
                         startActivity(i);
                     }
                 });
