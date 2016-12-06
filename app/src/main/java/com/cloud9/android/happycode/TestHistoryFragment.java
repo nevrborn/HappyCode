@@ -1,6 +1,7 @@
 package com.cloud9.android.happycode;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -75,7 +77,7 @@ public class TestHistoryFragment extends Fragment {
         // set the recyclerview adapter
         mTestResultsAdapter = new FirebaseRecyclerAdapter<TestResult, TestResultHolder>(TestResult.class, R.layout.list_item_result_history, TestResultHolder.class, mUserResultsRef) {
             @Override
-            public void populateViewHolder(TestResultHolder testResultHolder, TestResult testResult, int position) {
+            public void populateViewHolder(TestResultHolder testResultHolder, final TestResult testResult, final int position) {
                 StrengthList strengths = StrengthList.get(getActivity());
                 Strength mNr1Strength = strengths.getStrengthFromKey(testResult.getNo1StrengthKey());
                 Strength mNr2Strength = strengths.getStrengthFromKey(testResult.getNo2StrengthKey());
@@ -87,6 +89,17 @@ public class TestHistoryFragment extends Fragment {
                 testResultHolder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
                 testResultHolder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
 
+                testResultHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getActivity(), "Geklikt!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), position, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), (CharSequence) mTestResultsAdapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
+                        String testKey = mTestResultsAdapter.getRef(position).getKey();
+                        Intent i = ResultPageActivity.newIntent(getActivity(), testResult);
+                        startActivity(i);
+                    }
+                });
             }
         };
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
