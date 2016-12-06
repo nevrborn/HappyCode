@@ -1,117 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <!-- The main content view -->
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/start_page_main_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/black"
-        tools:context="com.cloud9.android.happycode.StartPageActivity">
+<!-- The main content view -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start_page_main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.cloud9.android.happycode.StartPageActivity">
 
-        <LinearLayout
-            android:id="@+id/linearLayout_start_title"
+    <LinearLayout
+        android:id="@+id/linearLayout_start_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/textview_title_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            >
+            android:text="@string/title_subtitle"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            />
 
-            <TextView
-                android:id="@+id/textview_title_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_subtitle"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                />
+        <TextView
+            android:id="@+id/textview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_main"
+            android:textColor="@color/colorHappyCode"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
 
-            <TextView
-                android:id="@+id/textview_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_main"
-                android:textColor="@color/colorHappyCode"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                />
+    </LinearLayout>
 
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="275dp"
-            android:layout_centerInParent="true"
-            >
-
-            <Button
-                android:id="@+id/button_start"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/menu_button"
-                style="@style/Menu_Buttons"
-                android:text="@string/button_start"
-                android:textColor="@android:color/black"
-                android:textSize="30sp"
-                />
-
-            <Button
-                android:id="@+id/button_about"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                android:layout_toLeftOf="@id/button_start"
-                style="@style/Menu_Buttons"
-                android:layout_marginBottom="50dp"
-                android:background="@drawable/menu_button"
-                android:text="@string/button_about"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                />
-
-            <Button
-                android:id="@+id/button_test_history"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/menu_button"
-                style="@style/Menu_Buttons"
-                android:text="@string/button_test_history"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                />
-
-            <Button
-                android:id="@+id/button_all_codes"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@id/button_start"
-                android:layout_marginBottom="50dp"
-                style="@style/Menu_Buttons"
-                android:background="@drawable/menu_button"
-                android:text="@string/button_all_codes"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                />
-
-        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_centerInParent="true"
+        >
 
         <Button
-            android:id="@+id/buttonLogInStartPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_sign_in"
-            android:layout_marginBottom="16dp"
+            android:id="@+id/button_start"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/menu_button"
+            style="@style/Menu_Buttons"
+            android:text="@string/button_start"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            />
+
+        <Button
+            android:id="@+id/button_about"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/button_start"
+            style="@style/Menu_Buttons"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/menu_button"
+            android:text="@string/button_about"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            />
+
+        <Button
+            android:id="@+id/button_test_history"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/colorHappyCode"
+            android:background="@drawable/menu_button"
+            style="@style/Menu_Buttons"
+            android:text="@string/button_test_history"
             android:textColor="@android:color/black"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            />
+
+        <Button
+            android:id="@+id/button_all_codes"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/button_start"
+            android:layout_marginBottom="50dp"
+            style="@style/Menu_Buttons"
+            android:background="@drawable/menu_button"
+            android:text="@string/button_all_codes"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            />
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonLogInStartPage"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_sign_in"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:backgroundTint="@color/colorHappyCode"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/buttonOtherTester"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_invite"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/buttonLogInStartPage"
+        android:backgroundTint="@color/colorHappyCode"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+</RelativeLayout>
