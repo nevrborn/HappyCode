@@ -23,9 +23,7 @@ import java.util.List;
  */
 public class EqualScoreFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
     View mRecyclerView;
@@ -38,8 +36,6 @@ public class EqualScoreFragment extends Fragment {
     public EqualScoreFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
     public static EqualScoreFragment newInstance(int columnCount) {
         EqualScoreFragment fragment = new EqualScoreFragment();
         Bundle args = new Bundle();
