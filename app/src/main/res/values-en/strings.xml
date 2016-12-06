@@ -45,8 +45,8 @@
     //QUESTION DIALOG
     <string name="question_dialog_title">TAKE THE TEST</string>
     <string name="question_dialog_button_take_test">Take test for myself</string>
-    <string name="question_dialog_enter_code">Copy in code below:</string>
-    <string name="question_dialog_button_test_for_another">Take test for another</string>
+    <string name="question_dialog_enter_code">Copy in code from e-mail below:</string>
+    <string name="question_dialog_button_test_for_another">Take test for a friend</string>
     <string name="question_dialog_button_test_for_another_start">Start Test</string>
     <string name="question_dialog_text_log_in">Log in if you want to take the test for another person</string>
 
