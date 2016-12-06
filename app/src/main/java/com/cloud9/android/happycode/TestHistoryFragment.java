@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -108,8 +109,6 @@ public class TestHistoryFragment extends Fragment {
 
             }
         });
-
-
     }
 
     /*
@@ -135,7 +134,6 @@ public class TestHistoryFragment extends Fragment {
             mStrenghtIcon1.setAlpha(0.9f);
             mStrenghtIcon2.setAlpha(0.9f);
             mStrenghtIcon3.setAlpha(0.9f);
-
         }
 
         @Override
@@ -198,7 +196,6 @@ public class TestHistoryFragment extends Fragment {
         public int getItemCount() {
             return mTestResultList.size();
         }
-
 
     }
 

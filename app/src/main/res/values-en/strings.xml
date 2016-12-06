@@ -21,7 +21,7 @@
     <string name="button_invite">INVITE</string>
     <string name="textview_result_rename">RESULT</string>
     <string name="result_title">YOUR HAPPYCODE</string>
-    <string name="history_not_availabe">Sorry, you don't have a history yet</string>
+    <string name="history_not_availabe">Sorry, you do not have a history yet</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
 
     // USER SIGN IN PAGE
@@ -40,7 +40,7 @@
     <string name="share_dialog_mail_button">Mail your HappyCode</string>
     <string name="share_subject">YOUR HAPPYCODE!</string>
     <string name="share_text_short">"I did the HappyCode test. I am a %1$s, a %2$s and a %3$s. Own it!"</string>
-    <string name="share_no_mail_app">"You don't have an app where you can send emails!"</string>
+    <string name="share_no_mail_app">"You do not have an app where you can send emails!"</string>
 
     //QUESTION DIALOG
     <string name="question_dialog_title">TAKE THE TEST</string>
@@ -141,7 +141,7 @@
     <string name="strength_researcher_description">Jij bent leergierig. Je kunt je ergens in verdiepen en het dan begrijpen.  Zo geef je anderen inzicht.</string>
 
     <string name="strength_thinker_title">Thinker</string>
-    <string name="strength_thinker">I think it's great to come up with new ideas</string>
+    <string name="strength_thinker">I think it is great to come up with new ideas</string>
     <string name="strength_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
 
 
