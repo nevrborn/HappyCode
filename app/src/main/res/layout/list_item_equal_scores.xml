@@ -3,6 +3,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item_equal_score"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="6dip"
@@ -12,11 +13,12 @@
         android:id="@+id/checkbox_equal_score"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:textColor="@android:color/white"
         android:text="@string/test_text"
         android:textSize="14sp"
         android:focusable="false"
-        app:buttonTint="@color/cast_libraries_material_featurehighlight_text_header_color"
+        android:buttonTint="@color/colorHappyCode"
         android:checked="false"/>
 
 </RelativeLayout>

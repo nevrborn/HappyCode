@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="com.cloud9.android.happycode.EqualScoreFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context="com.cloud9.android.happycode.EqualScoreFragment"
-    tools:listitem="@layout/fragment_equalscore"/>
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/textview_equal_score_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Kies de X stelingen die je het beste bij jou vind passen."
+        />
+
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/recyclerview_equal_score"
+        android:name="com.cloud9.android.happycode.EqualScoreFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.cloud9.android.happycode.EqualScoreFragment"
+        tools:listitem="@layout/list_item_equal_scores"
+        />
+
+</LinearLayout>

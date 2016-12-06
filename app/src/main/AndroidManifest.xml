@@ -30,8 +30,6 @@
         </activity>
         <activity android:name=".LogInActivity">
         </activity>
-        <activity android:name=".EqualScores">
-        </activity>
         <activity android:name=".EqualScoreActivity">
         </activity>
     </application>

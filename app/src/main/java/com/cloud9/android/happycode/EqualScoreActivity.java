@@ -17,6 +17,6 @@ public class EqualScoreActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new EqualScoreFragment();
+        return EqualScoreFragment.newInstance(1);
     }
 }
