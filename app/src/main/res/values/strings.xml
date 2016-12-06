@@ -18,6 +18,7 @@
     <string name="button_create_account">Maak nieuw account</string>
     <string name="button_sign_in">Log in</string>
     <string name="button_sign_out">Log uit</string>
+    <string name="button_invite">INVITE</string>
     <string name="textview_result_rename">RESULT</string>
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
@@ -40,6 +41,22 @@
     <string name="share_subject">YOUR HAPPYCODE!</string>
     <string name="share_text_short">"Ik deed de HappyCode test. Ik ben een %1$s, een %2$s en een %3$s. Own it!"</string>
     <string name="share_no_mail_app">"Jammer, je hebt geen app die kan mailen :( "</string>
+
+    //QUESTION DIALOG
+    <string name="question_dialog_title">TAKE THE TEST</string>
+    <string name="question_dialog_button_take_test">Take Test for myself</string>
+    <string name="question_dialog_enter_code">Copy in code below:</string>
+    <string name="question_dialog_button_test_for_another">Take Test for another</string>
+    <string name="question_dialog_button_test_for_another_start">Start Test</string>
+    <string name="question_dialog_text_log_in">Log in if you want to take the test for another person</string>
+
+
+    //INVITE OTHERS DIALOG
+    <string name="invite_dialog_title">INVITE SOMEONE TO TAKE TEST FOR YOU</string>
+    <string name="invite_dialog_invite_enter_email">Enter the email of the user you want to take the test for you</string>
+    <string name="invite_dialog_invite_button">Send Invite</string>
+
+    <string name="invite_text">"Hello! \n\n I would like to invite you to take the HappyCode test for me. \n\n If you have downloaded the HappyCode app from the Google Play store, then you can add the code below to take the test for me. \n\n Code: \n\n %1$s \n\n\n Thank you!"</string>
 
     // ABOUT PAGE
     <string name="title_about">Over cloud9</string>
