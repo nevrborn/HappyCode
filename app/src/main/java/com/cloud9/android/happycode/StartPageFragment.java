@@ -102,9 +102,19 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
-                    Intent i = TestHistoryActivity.newIntent(getActivity());
-                    startActivity(i);
+                mUser = User.get();
+                if (mUser != null) {
+                    if (mTestResultList.getSize() != 0) {
+                        mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
+                        Intent i = TestHistoryActivity.newIntent(getActivity());
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(getActivity(), R.string.no_results_in_history, Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), R.string.must_be_logged_in, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +172,6 @@ public class StartPageFragment extends Fragment {
     }
 
     public void getDataFromFirebase() {
-
         mTestResultList.clearResults();
 
         String userID = User.get().getUid();

@@ -22,6 +22,8 @@
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
+    <string name="must_be_logged_in">Hiervoor moet je ingelogd zijn!</string>
+    <string name="no_results_in_history">Je hebt nog geen resultaat in je historie!</string>
 
     // USER SIGN IN PAGE
     <string name="auth_failed">Authenticatie is mislukt</string>
