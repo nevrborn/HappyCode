@@ -21,7 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-//import com.google.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -93,7 +92,6 @@ public class TestHistoryFragment extends Fragment {
         mTotalTop3StrengthText = (TextView) view.findViewById(R.id.textview_code_3_top);
         mTop3CodeLayout = (RelativeLayout) view.findViewById(R.id.totalTopCodes_relativelayout);
 
-        updateUI();
         //RecyclerView recycler = (RecyclerView) findViewById(R.id.messages_recycler);
         //recycler.setHasFixedSize(true);
         //recycler.setLayoutManager(new LinearLayoutManager(this));
@@ -127,13 +125,13 @@ public class TestHistoryFragment extends Fragment {
         };
         mTestRecyclerView.setAdapter(mTestResultsAdapter);
 
-
-        if (mTestResultList.getSize() > 1) {
-            setTotalTop3Strengths();
-            mTop3CodeLayout.setVisibility(View.VISIBLE);
-        } else {
-            mTop3CodeLayout.setVisibility(View.GONE);
-        }
+//
+//        if (mTestResultList.getSize() > 1) {
+//            setTotalTop3Strengths();
+//            mTop3CodeLayout.setVisibility(View.VISIBLE);
+//        } else {
+//            mTop3CodeLayout.setVisibility(View.GONE);
+//        }
 
         return view;
     }
@@ -153,46 +151,18 @@ public class TestHistoryFragment extends Fragment {
             mUserResultsRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("results");
         }
 
-        mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
-        mTestRecyclerView.setAdapter(mTestResultsAdapter);
-
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        if (mTestResultList.getSize() != 0) {
-            setTotalTop3Strengths();
-            mTop3CodeLayout.setVisibility(View.VISIBLE);
-        } else {
-            mTop3CodeLayout.setVisibility(View.GONE);
-        }
-    }
-
-    public void getDataFromFirebase() {
-        mTestResultList.clearResults();
-
-        mUserResultsRef.child("results").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    TestResult testResult = child.getValue(TestResult.class);
-                    mTestResultList.addTestresult(testResult, child.getKey());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-        setTotalTop3Strengths();
-
+//        if (mTestResultList.getSize() != 0) {
+//            setTotalTop3Strengths();
+//            mTop3CodeLayout.setVisibility(View.VISIBLE);
+//        } else {
+//            mTop3CodeLayout.setVisibility(View.GONE);
+//        }
     }
 
     private void makeTotalResultArray(TestResultList testResultList) {
@@ -272,6 +242,7 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
+    
     private static class TestResultHolder extends RecyclerView.ViewHolder {
 
         private TestResult mTestResult;
