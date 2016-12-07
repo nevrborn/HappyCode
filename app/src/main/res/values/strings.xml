@@ -25,7 +25,7 @@
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
 
     // RESULT PAGE
-    <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
+    <string name="date_and_user">Datum van de test: %1$s\nTester: %2$s</string>
 
     // USER SIGN IN PAGE
     <string name="auth_failed">Authenticatie is mislukt</string>
@@ -60,8 +60,8 @@
     <string name="invite_dialog_invite_button">Stuur uitnoding via email</string>
     <string name="invite_dialog_invite_button_send">Stuur uitnoding</string>
     <string name="invite_dialog_copy_button">Copy Key</string>
-    <string name="invite_dialog_key_is_copied">Send the key to the person(s) you want via any messaging app</string>
-    <string name="invite_dialog_copy_key">and send via WhatsApp, Messenger etc.</string>
+    <string name="invite_dialog_key_is_copied" translatable="false">Send the key to the person(s) you want via any messaging app</string>
+    <string name="invite_dialog_copy_key" translatable="false">en stuur bericht via WhatsApp, Messenger etc.</string>
     <string name="invite_text" translatable="false">"Hello! \n\n I would like to invite you to take the HappyCode test for me. \n\n If you have downloaded the HappyCode app from the Google Play store, then you can add the code below to take the test for me. \n\n Code: \n\n %1$s \n\n\n Thank you!"</string>
 
     // ABOUT PAGE
