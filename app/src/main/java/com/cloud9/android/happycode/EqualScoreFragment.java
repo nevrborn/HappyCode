@@ -102,7 +102,7 @@ public class EqualScoreFragment extends Fragment {
 
                     // go to Result Page
                     String key = mTestResult.getID();
-                    Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is "QuestionID" here because not saved to FireBase yet
+                    Intent i = ResultPageActivity.newIntent(getActivity(), key, true); // key is "QuestionID" here because not saved to FireBase yet
                     startActivity(i);
 
                 } else {
