@@ -135,7 +135,6 @@ public class EqualScoreFragment extends Fragment {
     }
 
 
-
     //
     //
     //
