@@ -28,6 +28,7 @@ public class QuestionFragment extends Fragment {
     private static final String CURRENT_INDEX = "current_index";
     private static final String LAST_REACHED_INDEX = "last_reached_index";
     private static final String STRENGTH_ARRAY = "strength_array";
+    private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
 
     private Button mNextButton;
     private Button mPreviousButton;
@@ -47,19 +48,29 @@ public class QuestionFragment extends Fragment {
     private int mLastIndexReached = 0;
     private int mPercentage;
     private TestResultList mTestResultList;
+    private String mUserID = "";
 
     private StrengthList mStrengths;
 
 
     /* Method to create fragment */
-    public static QuestionFragment newInstance(String tester_id) {
-        return new QuestionFragment();
+    public static QuestionFragment newInstance(String testerID) {
+        Bundle args = new Bundle();
+        args.putString(USER_ID_FROM_TESTER, testerID);
+
+        QuestionFragment fragment = new QuestionFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question, container, false);
+
+        mUserID = getArguments().getString(USER_ID_FROM_TESTER);
+        Log.i(TAG, "This test is taken for userID " + mUserID);
+
 
         mStrengths = StrengthList.get(getContext());
         mTestResult = TestResult.getInstance();
@@ -120,6 +131,8 @@ public class QuestionFragment extends Fragment {
                     mTestResultList = TestResultList.get(getContext());
                     mTestResult.setResultArray(mResultArray);
                     String tempID = "questionID";
+                    mTestResult.setUser(mUserID);
+                    Log.i(TAG, "Test is set for:" + mUserID);
                     mTestResultList.addTestresult(mTestResult, tempID);
 
                     // Test if top three is clear, then go to ResultpageFragment or to EqualScoresFragment
@@ -146,7 +159,6 @@ public class QuestionFragment extends Fragment {
                     if (mCurrentIndex == 0) {
                         mPreviousButton.setAlpha(0.6f);
                     }
-
                 }
             }
         });

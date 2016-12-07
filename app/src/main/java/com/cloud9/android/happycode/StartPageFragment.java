@@ -19,7 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by paulvancappelle on 22-11-16.
@@ -38,6 +40,7 @@ public class StartPageFragment extends Fragment {
     Button mInviteButton;
 
     private TestResultList mTestResultList;
+    public static Map<String, String> userKeyAndNameArray = new HashMap<>();
 
     User mUser;
     private DatabaseReference mDatabaseRef;
@@ -58,6 +61,7 @@ public class StartPageFragment extends Fragment {
 
         if (User.get() != null) {
             getDataFromFirebase();
+            getUserIDsFromFB();
         }
     }
 
@@ -106,19 +110,9 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mUser = User.get();
-                if (mUser != null) {
-                    if (mTestResultList.getSize() != 0) {
-                        mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
-                        Intent i = TestHistoryActivity.newIntent(getActivity());
-                        startActivity(i);
-                    } else {
-                        Toast.makeText(getActivity(), R.string.no_results_in_history, Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getActivity(), R.string.must_be_logged_in, Toast.LENGTH_SHORT).show();
-                }
-
+                mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
+                    Intent i = TestHistoryActivity.newIntent(getActivity());
+                    startActivity(i);
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +172,7 @@ public class StartPageFragment extends Fragment {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
             writeExcitingTestsToFirebase();
             getDataFromFirebase();
+            getUserIDsFromFB();
             mInviteButton.setVisibility(View.VISIBLE);
         }
     }
@@ -194,6 +189,7 @@ public class StartPageFragment extends Fragment {
     }
 
     public void getDataFromFirebase() {
+
         mTestResultList.clearResults();
 
         String userID = User.get().getUid();
@@ -247,4 +243,40 @@ public class StartPageFragment extends Fragment {
             mTestResultList.clearResults();
         }
     }
+
+    private void getUserIDsFromFB() {
+
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users");
+        mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String userKeyinFB = child.getKey();
+                    String userName = child.child("name").getValue().toString();
+
+                    userKeyAndNameArray.put(userKeyinFB, userName);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public static String getNameFromKey(String userID) {
+        int i = 0;
+        String name = "";
+
+        while (i < userKeyAndNameArray.size()) {
+
+            if (userKeyAndNameArray.containsKey(userID)) {
+                name = userKeyAndNameArray.get(userID);
+            }
+            i += 1;
+        }
+        return name;
+    }
+
 }

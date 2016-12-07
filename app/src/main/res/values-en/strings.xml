@@ -24,6 +24,9 @@
     <string name="history_not_availabe">Sorry, you do not have a history yet</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
 
+    // RESULT PAGE
+    <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
+
     // USER SIGN IN PAGE
     <string name="auth_failed">Authentication is not successful</string>
     <string name="auth_user_created">Welcome to HappyCode!</string>
@@ -58,8 +61,11 @@
     //INVITE OTHERS DIALOG
     <string name="invite_dialog_title">INVITE SOMEONE TO TAKE TEST FOR YOU</string>
     <string name="invite_dialog_invite_enter_email">Enter the email of the user you want to take the test for you</string>
-    <string name="invite_dialog_invite_button">Send Invite</string>
-
+    <string name="invite_dialog_invite_button">Send Invite via Email</string>
+    <string name="invite_dialog_invite_button_send">Send Invite</string>
+    <string name="invite_dialog_key_is_copied">Send the key to the person(s) you want via any messaging app</string>
+    <string name="invite_dialog_copy_button">Copy Key</string>
+    <string name="invite_dialog_copy_key">and send via WhatsApp, Messenger etc.</string>
     <string name="invite_text">"Hello! \n\n I would like to invite you to take the HappyCode test for me. \n\n If you have downloaded the HappyCode app from the Google Play store, then you can add the code below to take the test for me. \n\n Code: \n\n %1$s \n\n\n Thank you!"</string>
 
     // ABOUT PAGE
@@ -147,6 +153,7 @@
     <string name="strength_thinker_title">Thinker</string>
     <string name="strength_thinker">I think it is great to come up with new ideas</string>
     <string name="strength_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+    <string name="result_explanation" translatable="false">Tap icons to see the different explanations</string>
 
 
 </resources>

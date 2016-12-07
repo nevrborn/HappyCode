@@ -7,6 +7,16 @@
     tools:context=".LogInFragment"
     >
 
+    <EditText
+        android:id="@+id/textField_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:contentDescription="inputUserName"
+        android:text="Name"
+        android:hint="Name"
+        android:ems="10"
+        />
 
     <EditText
         android:id="@+id/textField_mail"
@@ -14,7 +24,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="inputEmailAdress"
         android:ems="10"
-        android:hint="Emailadress"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         />
 
