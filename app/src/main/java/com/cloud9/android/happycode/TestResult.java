@@ -160,4 +160,15 @@ public class TestResult {
         mIsWrittenToFirebase = writtenToFirebase;
     }
 
+    public void setNo1StrengthKey(String no1StrengthKey) {
+        mNo1StrengthKey = no1StrengthKey;
+    }
+
+    public void setNo2StrengthKey(String no2StrengthKey) {
+        mNo2StrengthKey = no2StrengthKey;
+    }
+
+    public void setNo3StrengthKey(String no3StrengthKey) {
+        mNo3StrengthKey = no3StrengthKey;
+    }
 }

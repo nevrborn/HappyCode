@@ -2,6 +2,7 @@ package com.cloud9.android.happycode;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -37,8 +39,8 @@ public class QuestionFragment extends Fragment {
     private SeekBar mSeekBar;
     private TextView mProgressCount;
 
+    //private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
-    private ArrayList<String> mSortedStrengthKeys;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
@@ -47,9 +49,8 @@ public class QuestionFragment extends Fragment {
 
     private StrengthList mStrengths;
 
-
     /* Method to create fragment */
-    public static QuestionFragment newInstance() {
+    public static QuestionFragment newInstance(String tester_id) {
         return new QuestionFragment();
     }
 
@@ -110,7 +111,7 @@ public class QuestionFragment extends Fragment {
                         mNextButton.setText(R.string.button_finish);
                     }
 
-                    // you're at the last question and you press the FINISH button
+                    // you're at the last question, so go the result page
                 } else {
                     setPercentage(mPercentage);
 
@@ -119,8 +120,9 @@ public class QuestionFragment extends Fragment {
                     String tempID = "questionID";
                     mTestResultList.addTestresult(mTestResult, tempID);
 
-                    // Test if top three is clear, then go to ResultpageFragment or to EqualScoresFragment
-                    handleFinishButton(tempID);
+                    // Go to TestResult page
+                    Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
+                    startActivity(i);
 
                 }
             }
@@ -168,41 +170,6 @@ public class QuestionFragment extends Fragment {
 
         return view;
     }
-
-
-    private void handleFinishButton(String tempID) {
-
-        sortResultArray();
-
-        Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
-        startActivity(i);
-    }
-
-
-    private void sortResultArray() {
-        Map<String, Integer> tempArray = new HashMap<>(mResultArray);
-        mSortedStrengthKeys = new ArrayList<String>();
-
-        String keyOfMaxValue = "";
-
-        int j = 0;
-
-        while (j < mResultArray.size()) {
-
-            int maxValue = Collections.max(tempArray.values());
-
-            for (Map.Entry<String, Integer> entry : tempArray.entrySet()) {
-                if (entry.getValue() == maxValue) {
-                    keyOfMaxValue = entry.getKey();
-                }
-            }
-
-            mSortedStrengthKeys.add(keyOfMaxValue);
-            tempArray.remove(keyOfMaxValue);
-            j++;
-        }
-    }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -163,7 +163,6 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
 
                 mTestResult.setDate(System.currentTimeMillis() / 1000L);
-                mTestResult.setUser("");
                 mTestResult.setTester("");
 
                 // save the test result to the firebase
@@ -174,7 +173,6 @@ public class ResultPageFragment extends Fragment {
 
                 Intent i = StartPageActivity.newIntent(getActivity());
                 startActivity(i);
-                mTestResult.deleteResult();
 
                 if (User.get() != null) {
                     mTestResultList.deleteTestResult(mTestResult);
@@ -263,17 +261,22 @@ public class ResultPageFragment extends Fragment {
         }
     }
 
-
     private void writeToFirebase(TestResult testResult) {
         // set the database reference to the current user
-        String userID = User.get().getUid();
+        String userID = mTestResult.getUser();
+        String testerID = User.get().getUid();
 
         mTestResult.setDate(System.currentTimeMillis() / 1000L);
         mTestResult.setUser(userID);
-        mTestResult.setTester(userID);
+        mTestResult.setTester(testerID);
         mTestResult.setWrittenToFirebase(true);
 
-        mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        if (testerID.equals(userID)) {
+            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(testerID);
+        } else {
+            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        }
+
         String key = mUserRef.child("results").push().getKey();
         mUserRef.child("results").child(key).setValue(testResult);
     }
