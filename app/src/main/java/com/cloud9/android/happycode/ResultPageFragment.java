@@ -59,13 +59,6 @@ public class ResultPageFragment extends Fragment {
 
     private DatabaseReference mUserRef;
 
-
-//    private Callbacks mCallbacks;
-//
-//    public interface Callbacks {
-//        void onTestResultDeleted(TestResult testResult);
-//    }
-
     /*
     * create new instance
     */
@@ -74,18 +67,6 @@ public class ResultPageFragment extends Fragment {
         mIsFromQuestionPage = isFromQuestionPage;
         return new ResultPageFragment();
     }
-
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//        mCallbacks = (Callbacks) activity;
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mCallbacks = null;
-//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -286,7 +267,6 @@ public class ResultPageFragment extends Fragment {
     }
 
     private void writeToFirebase(TestResult testResult) {
-        // set the database reference to the current user
         String userID = mTestResult.getUser();
         String testerID = User.get().getUid();
 
@@ -305,8 +285,4 @@ public class ResultPageFragment extends Fragment {
         mUserRef.child("results").child(key).setValue(testResult);
     }
 
-//    private void deleteTestResult() {
-//        TestResultList.get(getActivity()).deleteTestResult(mTestResult);
-//        mCallbacks.onTestResultDeleted(mTestResult);
-//    }
 }

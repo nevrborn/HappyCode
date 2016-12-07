@@ -17,10 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,6 +39,7 @@ public class StartPageFragment extends Fragment {
     Button mInviteButton;
 
     private TestResultList mTestResultList;
+    private static StrengthList mStrengthList;
     public static Map<String, String> userKeyAndNameArray = new HashMap<>();
 
     User mUser;
@@ -58,6 +58,7 @@ public class StartPageFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mTestResultList = TestResultList.get(getContext());
+        mStrengthList = StrengthList.get(getContext());
 
         if (User.get() != null) {
             getDataFromFirebase();
@@ -111,8 +112,9 @@ public class StartPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
-                    Intent i = TestHistoryActivity.newIntent(getActivity());
-                    startActivity(i);
+
+                Intent i = TestHistoryActivity.newIntent(getActivity());
+                startActivity(i);
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {
