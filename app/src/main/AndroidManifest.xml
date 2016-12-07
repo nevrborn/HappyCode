@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".LogInActivity">
         </activity>
+        <activity android:name=".EqualScoreActivity">
+        </activity>
     </application>
 
 </manifest>

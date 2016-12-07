@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +40,9 @@ public class QuestionFragment extends Fragment {
 
     //private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
+    private ArrayList<String> mSortedStrengthKeys;
+    ArrayList<String> mEqualScoreKeys;
+    private int mEqualScoresInTopThree = 1; // if we have equal scores, nr3 score == nr4 scores so 1 for sure
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
@@ -46,6 +51,7 @@ public class QuestionFragment extends Fragment {
     private String mUserID = "";
 
     private StrengthList mStrengths;
+
 
     /* Method to create fragment */
     public static QuestionFragment newInstance(String testerID) {
@@ -129,13 +135,13 @@ public class QuestionFragment extends Fragment {
                     Log.i(TAG, "Test is set for:" + mUserID);
                     mTestResultList.addTestresult(mTestResult, tempID);
 
-                    // Go to TestResult page
-                    Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
-                    startActivity(i);
+                    // Test if top three is clear, then go to ResultpageFragment or to EqualScoresFragment
+                    handleFinishButton(tempID);
 
                 }
             }
         });
+
 
         // Setting up what happens when the previous button is pressed - go to previous strength if possible
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
@@ -176,6 +182,62 @@ public class QuestionFragment extends Fragment {
         updateStrength();
 
         return view;
+    }
+
+    private void handleFinishButton(String tempID) {
+        sortResultArray();
+
+        int scoreThirdPlace = mResultArray.get(mSortedStrengthKeys.get(2));
+        int scoreFourthPlace = mResultArray.get(mSortedStrengthKeys.get(3));
+
+        // check if the top three strenghts are indisputable. If so, start the result page,
+        // if not, start the EqualScoreFragment
+        if (scoreThirdPlace == scoreFourthPlace) {
+            getEqualScores(scoreThirdPlace);
+            Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys, mEqualScoresInTopThree);
+            startActivity(i);
+        } else {
+            Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
+            startActivity(i);
+        }
+    }
+
+    private void getEqualScores(int scoreThirdPlace) {
+        mEqualScoreKeys = new ArrayList<String>();
+
+        for (int i = 0; i < mSortedStrengthKeys.size(); i++) {
+            if (mResultArray.get(mSortedStrengthKeys.get(i)) == scoreThirdPlace) {
+                if (i == 0 || i == 1) {
+                    mEqualScoresInTopThree++; // the number of strenghts we need to get from the EqualScoreFragment
+                }
+                mEqualScoreKeys.add(mSortedStrengthKeys.get(i));
+            }
+        }
+    }
+
+    private void sortResultArray() {
+        Map<String, Integer> tempArray = new HashMap<>(mResultArray);
+        mSortedStrengthKeys = new ArrayList<String>();
+
+        String keyOfMaxValue = "";
+
+        int j = 0;
+
+        while (j < mResultArray.size()) {
+
+            int maxValue = Collections.max(tempArray.values());
+
+            for (Map.Entry<String, Integer> entry : tempArray.entrySet()) {
+                if (entry.getValue() == maxValue) {
+                    keyOfMaxValue = entry.getKey();
+                }
+            }
+
+            mSortedStrengthKeys.add(keyOfMaxValue);
+            tempArray.remove(keyOfMaxValue);
+            j++;
+        }
+
     }
 
     @Override

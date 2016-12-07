@@ -1,9 +1,7 @@
 package com.cloud9.android.happycode;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+//import com.google.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +36,7 @@ import java.util.Map;
 public class TestHistoryFragment extends Fragment {
 
     private RecyclerView mTestRecyclerView;
-    private TestResultsAdapter mTestResultsAdapter;
+    private FirebaseRecyclerAdapter mTestResultsAdapter;
     private TestResultList mTestResultList;
     private StrengthList mStrengths = StrengthList.get(getContext());
     public static Map<String, Integer> arrayOfTotalResults = new HashMap<>();
@@ -49,7 +50,7 @@ public class TestHistoryFragment extends Fragment {
     private TextView mTotalTop3StrengthText;
     private RelativeLayout mTop3CodeLayout;
 
-    private DatabaseReference mUserRef;
+    private DatabaseReference mUserResultsRef;
 
     private Callbacks mCallbacks;
 
@@ -81,6 +82,7 @@ public class TestHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_test_history, container, false);
         mTestRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_test_history);
+        mTestRecyclerView.setHasFixedSize(false);
         mTestRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mTotalTop1StrengthImage = (ImageView) view.findViewById(R.id.list_item_icon_1_top);
@@ -92,6 +94,39 @@ public class TestHistoryFragment extends Fragment {
         mTop3CodeLayout = (RelativeLayout) view.findViewById(R.id.totalTopCodes_relativelayout);
 
         updateUI();
+        //RecyclerView recycler = (RecyclerView) findViewById(R.id.messages_recycler);
+        //recycler.setHasFixedSize(true);
+        //recycler.setLayoutManager(new LinearLayoutManager(this));
+
+        updateModel();
+
+        // set the recyclerview adapter
+        mTestResultsAdapter = new FirebaseRecyclerAdapter<TestResult, TestResultHolder>(TestResult.class, R.layout.list_item_result_history, TestResultHolder.class, mUserResultsRef) {
+            @Override
+            public void populateViewHolder(TestResultHolder testResultHolder, final TestResult testResult, final int position) {
+                StrengthList strengths = StrengthList.get(getActivity());
+                Strength mNr1Strength = strengths.getStrengthFromKey(testResult.getNo1StrengthKey());
+                Strength mNr2Strength = strengths.getStrengthFromKey(testResult.getNo2StrengthKey());
+                Strength mNr3Strength = strengths.getStrengthFromKey(testResult.getNo3StrengthKey());
+
+                // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
+                testResultHolder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
+                testResultHolder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
+                testResultHolder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
+                testResultHolder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
+
+                testResultHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String key = mTestResultsAdapter.getRef(position).getKey();
+                        Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is used because in firebase the id is always "QuestionID"
+                        startActivity(i);
+                    }
+                });
+            }
+        };
+        mTestRecyclerView.setAdapter(mTestResultsAdapter);
+
 
         if (mTestResultList.getSize() > 1) {
             setTotalTop3Strengths();
@@ -103,13 +138,19 @@ public class TestHistoryFragment extends Fragment {
         return view;
     }
 
-    public void updateUI() {
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mTestResultsAdapter.cleanup();
+    }
+
+
+    public void updateModel() {
         if (User.get() != null) {
-            // set the database reference to the current user
+            // set the database reference to the current user's results
             String uid = User.get().getUid();
-            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-            getDataFromFirebase();
+            mUserResultsRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("results");
         }
 
         mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
@@ -131,10 +172,9 @@ public class TestHistoryFragment extends Fragment {
     }
 
     public void getDataFromFirebase() {
-
         mTestResultList.clearResults();
 
-        mUserRef.child("results").addValueEventListener(new ValueEventListener() {
+        mUserResultsRef.child("results").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
@@ -148,6 +188,8 @@ public class TestHistoryFragment extends Fragment {
 
             }
         });
+
+
 
         setTotalTop3Strengths();
 
@@ -226,92 +268,36 @@ public class TestHistoryFragment extends Fragment {
         mTotalTop3StrengthText.setText(mTop3Strength.getTitleID());
     }
 
+
     /*
     * inner class ViewHolder
     */
-    private class TestResultHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private static class TestResultHolder extends RecyclerView.ViewHolder {
 
         private TestResult mTestResult;
-        private ImageView mTesterIcon;
         private ImageView mStrenghtIcon1;
         private ImageView mStrenghtIcon2;
         private ImageView mStrenghtIcon3;
         private TextView mDateTime;
+        //private ImageView mTesterIcon;
 
         public TestResultHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
-            //mTesterIcon = (ImageView) itemView.findViewById(R.id.list_item_tester_icon);
             mStrenghtIcon1 = (ImageView) itemView.findViewById(R.id.list_item_icon_1);
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
             mStrenghtIcon3 = (ImageView) itemView.findViewById(R.id.list_item_icon_3);
             mDateTime = (TextView) itemView.findViewById(R.id.list_item_date_time);
-            mStrenghtIcon1.setAlpha(0.9f);
-            mStrenghtIcon2.setAlpha(0.9f);
-            mStrenghtIcon3.setAlpha(0.9f);
+            //mStrenghtIcon1.setAlpha(0.9f);
+            //mStrenghtIcon2.setAlpha(0.9f);
+            //mStrenghtIcon3.setAlpha(0.9f);
+
         }
 
-        @Override
-        public void onClick(View view) {
-            // Go to TestResult page
-            mStrenghtIcon1.setAlpha(1f);
-            mStrenghtIcon2.setAlpha(1f);
-            mStrenghtIcon3.setAlpha(1f);
-            Intent i = ResultPageActivity.newIntent(getActivity(), mTestResult.getID(), false);
-            startActivity(i);
-        }
 
         public void setResult(TestResult result) {
             mTestResult = result;
         }
     }
 
-    /*
-    * inner class Adapter
-    */
-    private class TestResultsAdapter extends RecyclerView.Adapter<TestResultHolder> {
-
-        private List<TestResult> mTestResultList;
-        private StrengthList mStrengths = StrengthList.get(getContext());
-
-
-        public TestResultsAdapter(List<TestResult> testResultList) {
-            mTestResultList = testResultList;
-        }
-
-        @Override
-        public TestResultHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_item_result_history, parent, false);
-            return new TestResultHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(TestResultHolder holder, int position) {
-            TestResult testResult = mTestResultList.get(position);
-
-            Strength mNr1Strength = mStrengths.getStrengthFromKey(testResult.getNo1StrengthKey());
-            Strength mNr2Strength = mStrengths.getStrengthFromKey(testResult.getNo2StrengthKey());
-            Strength mNr3Strength = mStrengths.getStrengthFromKey(testResult.getNo3StrengthKey());
-
-            // mTesterIcon = testResult.get...;  icon of tester needs to be add to TestResult class
-            holder.mStrenghtIcon1.setImageResource(mNr1Strength.getIconID());
-            holder.mStrenghtIcon2.setImageResource(mNr2Strength.getIconID());
-            holder.mStrenghtIcon3.setImageResource(mNr3Strength.getIconID());
-            holder.mDateTime.setText(testResult.getDateAndTime(testResult.getDate())); // set date format and add getTime to TestResult
-
-            holder.mStrenghtIcon1.setAlpha(0.9f);
-            holder.mStrenghtIcon2.setAlpha(0.9f);
-            holder.mStrenghtIcon3.setAlpha(0.9f);
-
-            holder.setResult(testResult);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mTestResultList.size();
-        }
-
-    }
 
 }

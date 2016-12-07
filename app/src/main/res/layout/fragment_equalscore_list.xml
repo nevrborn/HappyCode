@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/textview_equal_score_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:text="@string/top_equal_score_text_view"
+        />
+
+    <Button
+        android:id="@+id/button_equal_score_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        style="@style/Buttons"
+        android:text="@string/button_finish"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_equal_score"
+        android:name="com.cloud9.android.happycode.EqualScoreFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textview_equal_score_top"
+        android:layout_above="@id/button_equal_score_finish"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.cloud9.android.happycode.EqualScoreFragment"
+        tools:listitem="@layout/list_item_equal_scores"
+        />
+
+
+</RelativeLayout>
