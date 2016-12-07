@@ -52,6 +52,7 @@ public class ResultPageFragment extends Fragment {
     private ImageView mLine;
     private TextView mStrenghtText;
     private TextView mStrengthTitle;
+    private TextView mExplanation;
     private Button mToMenuButton;
     private Button mShareResultButton;
 
@@ -127,6 +128,7 @@ public class ResultPageFragment extends Fragment {
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
         mToMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
         mShareResultButton = (Button) view.findViewById(R.id.button_share_result);
+        mExplanation = (TextView) view.findViewById(R.id.textview_result_explanation);
 
         // set images for the results
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
@@ -139,6 +141,7 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 mCurrentStrength = 0;
                 setPickedResult();
+                mExplanation.setVisibility(View.GONE);
             }
         });
 
@@ -147,6 +150,7 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 mCurrentStrength = 1;
                 setPickedResult();
+                mExplanation.setVisibility(View.GONE);
             }
         });
 
@@ -155,6 +159,7 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
                 mCurrentStrength = 2;
                 setPickedResult();
+                mExplanation.setVisibility(View.GONE);
             }
         });
 
