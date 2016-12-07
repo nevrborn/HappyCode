@@ -45,6 +45,7 @@
 
     // EQUAL SCORE PAGE
     <string name="top_equal_score_text_view">Kies de %1$s stelingen die je het beste bij jou vind passen.</string>
+    <string name="equal_score_uncorrect_nr_of_checkboxes">Selecteer het juiste aantal stellingen!</string>
 
     //QUESTION DIALOG
     <string name="question_dialog_title">TAKE THE TEST</string>

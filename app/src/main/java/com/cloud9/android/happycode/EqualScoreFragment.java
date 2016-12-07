@@ -1,11 +1,13 @@
 package com.cloud9.android.happycode;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +29,15 @@ import java.util.List;
 public class EqualScoreFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String TAG = "EqualScoreFragment";
+
     private int mColumnCount = 1;
     private static int mEqualScoresInTopThree;
     private static TestResult mTestResult;
     private static ArrayList<String> mEqualScoreKeys;
     private static StrengthList sStrengthList;
     private int mCheckedBoxes = 0;
+    private ArrayList<String> mCheckedStrenghts = new ArrayList<>();
 
     private View mRecyclerView;
     private TextView mTopTextView;
@@ -80,8 +85,29 @@ public class EqualScoreFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mCheckedBoxes == mEqualScoresInTopThree) {
-                    // change Result
+                    // change the Result
+                    switch (mEqualScoresInTopThree) {
+                        case 1:
+                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
+                            break;
+                        case 2:
+                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
+                            mTestResult.setNo2StrengthKey(mCheckedStrenghts.get(1));
+                            break;
+                        case 3:
+                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
+                            mTestResult.setNo2StrengthKey(mCheckedStrenghts.get(1));
+                            mTestResult.setNo3StrengthKey(mCheckedStrenghts.get(2));
+                            break;
+                        default:
+                            Log.e(TAG, "Error. mEqualScoresInTopThree = " + mEqualScoresInTopThree);
+                    }
+
                     // go to Result Page
+                    String key = mTestResult.getID();
+                    Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is "QuestionID" here because not saved to FireBase yet
+                    startActivity(i);
+
                 } else {
                     Toast.makeText(getActivity(), R.string.equal_score_uncorrect_nr_of_checkboxes, Toast.LENGTH_SHORT).show();
                 }
@@ -133,8 +159,8 @@ public class EqualScoreFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-//            holder.mCheckBox = mValues.get(position);
-            Strength strength = sStrengthList.getStrengthFromKey(mValues.get(position));
+            final String strengthKey = mValues.get(position);
+            Strength strength = sStrengthList.getStrengthFromKey(strengthKey);
             holder.mCheckBox.setText(getText(strength.getQuestionID()));
 
             holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -142,8 +168,10 @@ public class EqualScoreFragment extends Fragment {
                 public void onClick(View v) {
                     if (holder.mCheckBox.isChecked()) {
                         mCheckedBoxes++;
+                        mCheckedStrenghts.add(strengthKey);
                     } else {
                         mCheckedBoxes--;
+                        mCheckedStrenghts.remove(strengthKey);
                     }
                     Toast.makeText(getActivity(), "" + mCheckedBoxes, Toast.LENGTH_SHORT).show();
                 }
