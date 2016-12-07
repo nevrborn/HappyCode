@@ -63,7 +63,8 @@ public class QuestionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_question, container, false);
 
         mUserID = getArguments().getString(USER_ID_FROM_TESTER);
-        Log.i(TAG, "This test is taken for: " + mUserID);
+        Log.i(TAG, "This test is taken for userID " + mUserID);
+
 
         mStrengths = StrengthList.get(getContext());
         mTestResult = TestResult.getInstance();
