@@ -17,9 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cloud9.android.happycode.dummy.DummyContent;
-import com.cloud9.android.happycode.dummy.DummyContent.DummyItem;
-
 import java.util.ArrayList;
 import java.util.List;
 
