@@ -13,6 +13,7 @@
         android:id="@+id/textview_equal_score_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:padding="16dp"
         android:text="Kies de X stelingen die je het beste bij jou vind passen."
         />
