@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorHappyCode">#00FFE9</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorOffBlack">#363636</color>
 
 
 </resources>
