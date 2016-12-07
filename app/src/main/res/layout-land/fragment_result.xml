@@ -143,6 +143,18 @@
             android:layout_marginBottom="8dp"
             />
 
+        <TextView
+            android:id="@+id/textview_result_date_and_user"
+            android:text="@string/date_and_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_result_header"
+            android:layout_marginTop="-22dp"
+            android:layout_alignLeft="@+id/text_view_result_header"
+            android:layout_alignStart="@+id/text_view_result_header"
+            android:textSize="10dp"
+            android:textColor="@android:color/white"/>
+
     </RelativeLayout>
 
 </ScrollView>

@@ -89,6 +89,7 @@
         />
 
     <LinearLayout
+        android:id="@+id/result_button_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -128,6 +129,19 @@
         android:padding="4dp"
         android:textSize="10sp"
         android:layout_marginBottom="8dp"
+        />
+
+    <TextView
+        android:id="@+id/textview_result_date_and_user"
+        android:text="@string/date_and_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/result_button_linear_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textSize="10dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
         />
 
 
