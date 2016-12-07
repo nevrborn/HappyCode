@@ -55,8 +55,10 @@ public class ResultPageFragment extends Fragment {
     private TextView mExplanation;
     private Button mToMenuButton;
     private Button mShareResultButton;
+    private TextView mDateAndUser;
 
     private DatabaseReference mUserRef;
+
 
 //    private Callbacks mCallbacks;
 //
@@ -103,6 +105,7 @@ public class ResultPageFragment extends Fragment {
         mResultArray = mTestResult.getResultArray();
         mStrengths = StrengthList.get(getContext());
 
+
         String mNr1StrengthKey = mTestResult.getNo1StrengthKey();
         String mNr2StrengthKey = mTestResult.getNo2StrengthKey();
         String mNr3StrengthKey = mTestResult.getNo3StrengthKey();
@@ -129,11 +132,27 @@ public class ResultPageFragment extends Fragment {
         mToMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
         mShareResultButton = (Button) view.findViewById(R.id.button_share_result);
         mExplanation = (TextView) view.findViewById(R.id.textview_result_explanation);
+        mDateAndUser = (TextView) view.findViewById(R.id.textview_result_date_and_user);
 
         // set images for the results
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
         mResultIcon2.setImageResource(mNr2Strength.getIconID());
         mResultIcon3.setImageResource(mNr3Strength.getIconID());
+
+        String userName = StartPageFragment.getNameFromKey(mTestResult.getUser());
+        if (!userName.equals("")) {
+            String date;
+
+            if (mTestResult.getWrittenToFirebase() == false) {
+                date = mTestResult.getDateAndTime(System.currentTimeMillis() / 1000L);
+            } else {
+                date = mTestResult.getDateAndTime(mTestResult.getDate());
+            }
+            mDateAndUser.setText(getString(R.string.date_and_user, date, userName));
+            mDateAndUser.setVisibility(View.VISIBLE);
+        } else {
+            mDateAndUser.setVisibility(View.GONE);
+        }
 
         // set listeners
         mResultIcon1.setOnClickListener(new View.OnClickListener() {
