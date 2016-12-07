@@ -2,7 +2,6 @@ package com.cloud9.android.happycode;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,12 +13,10 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -43,6 +40,7 @@ public class QuestionFragment extends Fragment {
     //private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
     private ArrayList<String> mSortedStrengthKeys;
+    ArrayList<String> mEqualScoreKeys;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
@@ -174,16 +172,35 @@ public class QuestionFragment extends Fragment {
     }
 
     private void handleFinishButton(String tempID) {
-
         sortResultArray();
 
-        Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
-        startActivity(i);
+        int scoreThirdPlace = mResultArray.get(mSortedStrengthKeys.get(2));
+        int scoreFourthPlace = mResultArray.get(mSortedStrengthKeys.get(3));
+
+        // check if the top three strenghts are indisputable. If so, start the result page,
+        // if not, start the EqualScoreFragment
+        if (scoreThirdPlace == scoreFourthPlace) {
+            getEqualScores(scoreThirdPlace);
+            Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys);
+            startActivity(i);
+        } else {
+            Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
+            startActivity(i);
+        }
+    }
+
+    private void getEqualScores(int scoreThirdPlace) {
+        mEqualScoreKeys = new ArrayList<String>();
+        for (String string : mSortedStrengthKeys) {
+            if (mResultArray.get(string) == scoreThirdPlace) {
+                mEqualScoreKeys.add(string);
+            }
+        }
     }
 
     private void sortResultArray() {
         Map<String, Integer> tempArray = new HashMap<>(mResultArray);
-        ArrayList<String> mSortedStrengthKeys = new ArrayList<String>();
+        mSortedStrengthKeys = new ArrayList<String>();
 
         String keyOfMaxValue = "";
 

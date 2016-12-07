@@ -12,10 +12,12 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cloud9.android.happycode.dummy.DummyContent;
 import com.cloud9.android.happycode.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +27,12 @@ public class EqualScoreFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    private static TestResult mTestResult;
+    private static ArrayList<String> mEqualScoreKeys;
+    private static StrengthList sStrengthList;
+    private int mCheckedBoxes = 0;
 
-    View mRecyclerView;
+    private View mRecyclerView;
 
 
     /**
@@ -36,7 +42,10 @@ public class EqualScoreFragment extends Fragment {
     public EqualScoreFragment() {
     }
 
-    public static EqualScoreFragment newInstance(int columnCount) {
+    public static EqualScoreFragment newInstance(int columnCount, TestResult testResult, ArrayList<String> equalScoreKeys) {
+        mTestResult = testResult;
+        mEqualScoreKeys = equalScoreKeys;
+
         EqualScoreFragment fragment = new EqualScoreFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
@@ -69,11 +78,16 @@ public class EqualScoreFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new EqualScoreRecyclerViewAdapter(DummyContent.ITEMS));
+            recyclerView.setAdapter(new EqualScoreRecyclerViewAdapter(mEqualScoreKeys));
         }
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        sStrengthList = StrengthList.get(getActivity());
+    }
 
 
 
@@ -82,10 +96,10 @@ public class EqualScoreFragment extends Fragment {
     //
     public class EqualScoreRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-        private final List<DummyItem> mValues;
+        private final List<String> mValues;
 
-        public EqualScoreRecyclerViewAdapter(List<DummyItem> items) {
-            mValues = items;
+        public EqualScoreRecyclerViewAdapter(ArrayList<String> equalScoreKeys) {
+            mValues = equalScoreKeys;
         }
 
         @Override
@@ -98,12 +112,18 @@ public class EqualScoreFragment extends Fragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 //            holder.mCheckBox = mValues.get(position);
-            holder.mCheckBox.setText("Dit is nu nog onzin maar het wordt echt goed hoor.");
+            Strength strength = sStrengthList.getStrengthFromKey(mValues.get(position));
+            holder.mCheckBox.setText(getText(strength.getQuestionID()));
 
-            holder.mView.setOnClickListener(new View.OnClickListener() {
+            holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    if (holder.mCheckBox.isChecked()) {
+                        mCheckedBoxes++;
+                    } else {
+                        mCheckedBoxes--;
+                    }
+                    Toast.makeText(getActivity(), "" + mCheckedBoxes, Toast.LENGTH_SHORT).show();
                 }
             });
         }
