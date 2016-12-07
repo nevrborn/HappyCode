@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_fragment_other_tester"
     android:layout_width="match_parent"
-    android:layout_height="225dp"
+    android:layout_height="300dp"
     style="@style/MyDialog"
     >
 
@@ -14,10 +14,36 @@
         android:gravity="center"
         >
 
+        <Button
+            android:id="@+id/button_copy_key"
+            android:text="@string/invite_dialog_copy_button"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/textview_copy_key"
+            android:text="@string/invite_dialog_copy_key"
+            android:textAlignment="center"
+            android:layout_marginTop="4dp"
+            android:textSize="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:text="-- OR --"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_OR_text"/>
+
         <TextView
             android:id="@+id/textview_invite_text_description"
             android:text="@string/invite_dialog_invite_enter_email"
-            android:layout_marginTop="32dp"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

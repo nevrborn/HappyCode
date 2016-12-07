@@ -2,6 +2,9 @@ package com.cloud9.android.happycode;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ClipboardManager;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -24,8 +28,13 @@ public class InviteTesterDialogFragment extends DialogFragment {
     public static final String ARG_WILL_INVITE = "dialog_will_invite";
 
     Button mInviteTester;
+    Button mCopyKey;
     EditText mEditText;
+    TextView mEmailText;
+    TextView mCopyText;
+
     User mUser;
+    Boolean wantsToSendEmail = false;
 
     @NonNull
     @Override
@@ -36,24 +45,47 @@ public class InviteTesterDialogFragment extends DialogFragment {
 
         // set the references
         mInviteTester = (Button) v.findViewById(R.id.button_invite);
+        mCopyKey = (Button) v.findViewById(R.id.button_copy_key);
         mEditText = (EditText) v.findViewById(R.id.editText_invite_dialog);
+        mEmailText = (TextView) v.findViewById(R.id.textview_invite_text_description);
+        mCopyText = (TextView) v.findViewById(R.id.textview_copy_key);
+
+        mEmailText.setVisibility(View.GONE);
+        mEditText.setVisibility(View.GONE);
+
+        mCopyKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                copyKey(mUser.getUid());
+                Toast.makeText(getActivity(), R.string.invite_dialog_key_is_copied, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         mInviteTester.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] mailRecipient = new String[1];
-                mailRecipient[0] = mEditText.getText().toString();
-                Intent i = new Intent(Intent.ACTION_SENDTO);
-                i.setType("text/plain");
-                i.setData(Uri.parse("mailto:")); // only email apps should handle this
-                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
-                i.putExtra(Intent.EXTRA_TEXT, getTextToShare());
-                i.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
-                if (i.resolveActivity(getActivity().getPackageManager()) != null) {
-                    startActivity(i);
-                } else {
-                    Toast.makeText(getActivity(), R.string.share_no_mail_app, Toast.LENGTH_SHORT);
+                if (wantsToSendEmail == false) {
+                    mEmailText.setVisibility(View.VISIBLE);
+                    mEditText.setVisibility(View.VISIBLE);
+                    mInviteTester.setText(R.string.invite_dialog_invite_button_send);
+                    wantsToSendEmail = true;
+                } else if (wantsToSendEmail == true) {
+                    String[] mailRecipient = new String[1];
+                    mailRecipient[0] = mEditText.getText().toString();
+                    Intent i = new Intent(Intent.ACTION_SENDTO);
+                    i.setType("text/plain");
+                    i.setData(Uri.parse("mailto:")); // only email apps should handle this
+                    i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+                    i.putExtra(Intent.EXTRA_TEXT, getTextToShare());
+                    i.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
+                    if (i.resolveActivity(getActivity().getPackageManager()) != null) {
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(getActivity(), R.string.share_no_mail_app, Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
 
@@ -67,8 +99,13 @@ public class InviteTesterDialogFragment extends DialogFragment {
     private String getTextToShare() {
         String usedID = mUser.getUid();
 
-        String result = getString(R.string.invite_text, usedID);
-        return result;
+        return getString(R.string.invite_text, usedID);
+    }
+
+    public void copyKey(String userID) {
+        ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("userKey", userID);
+        clipboard.setPrimaryClip(clip);
     }
 
 }

@@ -24,6 +24,9 @@
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
 
+    // RESULT PAGE
+    <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
+
     // USER SIGN IN PAGE
     <string name="auth_failed">Authenticatie is mislukt</string>
     <string name="auth_user_created">Welkom bij HappyCode!</string>
@@ -46,7 +49,7 @@
     <string name="question_dialog_title">DOE HET TEST</string>
     <string name="question_dialog_button_take_test">Neem test voor mij</string>
     <string name="question_dialog_enter_code" translatable="false">Kopieer code in beneden:</string>
-    <string name="question_dialog_button_test_for_another">Neem test voor iemand</string>
+    <string name="question_dialog_button_test_for_another">Neem test voor een vriend</string>
     <string name="question_dialog_button_test_for_another_start">Test starten</string>
     <string name="question_dialog_text_log_in" translatable="false">Log in if you want to take the test for another person</string>
 
@@ -54,8 +57,11 @@
     //INVITE OTHERS DIALOG
     <string name="invite_dialog_title" translatable="false">IEMAND UITNODIGEN TE NEMEN HET TEST VOOR U</string>
     <string name="invite_dialog_invite_enter_email" translatable="false">Enter the email of the user you want to take the test for you</string>
-    <string name="invite_dialog_invite_button">Stuur uitnoding</string>
-
+    <string name="invite_dialog_invite_button">Stuur uitnoding via email</string>
+    <string name="invite_dialog_invite_button_send">Stuur uitnoding</string>
+    <string name="invite_dialog_copy_button">Copy Key</string>
+    <string name="invite_dialog_key_is_copied">Send the key to the person(s) you want via any messaging app</string>
+    <string name="invite_dialog_copy_key">and send via WhatsApp, Messenger etc.</string>
     <string name="invite_text" translatable="false">"Hello! \n\n I would like to invite you to take the HappyCode test for me. \n\n If you have downloaded the HappyCode app from the Google Play store, then you can add the code below to take the test for me. \n\n Code: \n\n %1$s \n\n\n Thank you!"</string>
 
     // ABOUT PAGE
@@ -143,6 +149,7 @@
     <string name="strength_thinker_title">Bedenker</string>
     <string name="strength_thinker">Ik vind het geweldig om nieuwe ideeën te bedenken</string>
     <string name="strength_thinker_description" translatable="false">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+    <string name="result_explanation" translatable="false">Tap icons to see the different explanations</string>
 
 
 </resources>
