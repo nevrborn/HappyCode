@@ -41,6 +41,7 @@ public class QuestionFragment extends Fragment {
     private Map<String, Integer> mResultArray = new HashMap<>();
     private ArrayList<String> mSortedStrengthKeys;
     ArrayList<String> mEqualScoreKeys;
+    private int mEqualScoresInTopThree = 1; // if we have equal scores, nr3 score == nr4 scores so 1 for sure
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
@@ -181,7 +182,7 @@ public class QuestionFragment extends Fragment {
         // if not, start the EqualScoreFragment
         if (scoreThirdPlace == scoreFourthPlace) {
             getEqualScores(scoreThirdPlace);
-            Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys);
+            Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys, mEqualScoresInTopThree);
             startActivity(i);
         } else {
             Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
@@ -191,9 +192,13 @@ public class QuestionFragment extends Fragment {
 
     private void getEqualScores(int scoreThirdPlace) {
         mEqualScoreKeys = new ArrayList<String>();
-        for (String string : mSortedStrengthKeys) {
-            if (mResultArray.get(string) == scoreThirdPlace) {
-                mEqualScoreKeys.add(string);
+
+        for (int i = 0; i < mSortedStrengthKeys.size(); i++) {
+            if (mResultArray.get(mSortedStrengthKeys.get(i)) == scoreThirdPlace) {
+                if (i == 0 || i == 1) {
+                    mEqualScoresInTopThree++; // the number of strenghts we need to get from the EqualScoreFragment
+                }
+                mEqualScoreKeys.add(mSortedStrengthKeys.get(i));
             }
         }
     }

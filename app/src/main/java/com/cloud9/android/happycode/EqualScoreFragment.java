@@ -27,12 +27,14 @@ public class EqualScoreFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    private static int mEqualScoresInTopThree;
     private static TestResult mTestResult;
     private static ArrayList<String> mEqualScoreKeys;
     private static StrengthList sStrengthList;
     private int mCheckedBoxes = 0;
 
     private View mRecyclerView;
+    private TextView mTopTextView;
 
 
     /**
@@ -42,9 +44,10 @@ public class EqualScoreFragment extends Fragment {
     public EqualScoreFragment() {
     }
 
-    public static EqualScoreFragment newInstance(int columnCount, TestResult testResult, ArrayList<String> equalScoreKeys) {
+    public static EqualScoreFragment newInstance(int columnCount, TestResult testResult, ArrayList<String> equalScoreKeys, int equalScoresInTopThree) {
         mTestResult = testResult;
         mEqualScoreKeys = equalScoreKeys;
+        mEqualScoresInTopThree = equalScoresInTopThree;
 
         EqualScoreFragment fragment = new EqualScoreFragment();
         Bundle args = new Bundle();
@@ -66,6 +69,10 @@ public class EqualScoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_equalscore_list, container, false);
+
+        mTopTextView = (TextView) view.findViewById(R.id.textview_equal_score_top);
+        Integer i = new Integer(mEqualScoresInTopThree);
+        mTopTextView.setText(getString(R.string.top_equal_score_text_view, i.toString()));
 
         mRecyclerView = view.findViewById(R.id.recyclerview_equal_score);
 

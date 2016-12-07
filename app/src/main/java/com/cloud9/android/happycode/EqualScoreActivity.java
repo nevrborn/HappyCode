@@ -12,19 +12,21 @@ public class EqualScoreActivity extends SingleFragmentActivity {
 
     private static TestResult mTestResult;
     private static ArrayList<String> mEqualScoreKeys;
+    private static int mEqualScoresInTopThree;
 
 
     /*
     * create Intent to start this activity
     */
-    public static Intent newIntent(Context context, TestResult testResult, ArrayList<String> sortedStrengthKeys) {
+    public static Intent newIntent(Context context, TestResult testResult, ArrayList<String> sortedStrengthKeys, int equalScoresInTopThree) {
         mTestResult = testResult;
         mEqualScoreKeys = sortedStrengthKeys;
+        mEqualScoresInTopThree = equalScoresInTopThree;
         return new Intent(context, EqualScoreActivity.class);
     }
 
     @Override
     protected Fragment createFragment() {
-        return EqualScoreFragment.newInstance(1, mTestResult, mEqualScoreKeys);
+        return EqualScoreFragment.newInstance(1, mTestResult, mEqualScoreKeys, mEqualScoresInTopThree);
     }
 }
