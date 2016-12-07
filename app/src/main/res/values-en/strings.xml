@@ -27,6 +27,9 @@
     // RESULT PAGE
     <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
 
+    // TEST HISTORY PAGE
+    <string name="test_history_top_codes">YOUR TOP 3 CODES</string>
+
     // USER SIGN IN PAGE
     <string name="auth_failed">Authentication is not successful</string>
     <string name="auth_user_created">Welcome to HappyCode!</string>
@@ -79,7 +82,7 @@
     <string name="strength_storyteller_description">Jij bent gevat.  Je kunt pakkende verhalen vertellen.  Zo gaan anderen in je ideeën geloven.</string>
 
     <string name="strength_challenger_title">Challenger</string>
-    <string name="strength_challenger">I like to wind</string>
+    <string name="strength_challenger">I like to win</string>
     <string name="strength_challenger_description">Jij bent fanatiek.  Je kunt helemaal voor de winst gaan.  Zo daag je anderen uit om zichzelf te overtreffen.</string>
 
     <string name="strength_networker_title">Networker</string>

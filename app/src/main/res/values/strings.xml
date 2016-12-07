@@ -27,6 +27,9 @@
     // RESULT PAGE
     <string name="date_and_user">Datum van de test: %1$s\nTester: %2$s</string>
 
+    // TEST HISTORY PAGE
+    <string name="test_history_top_codes">YOUR TOP 3 CODES</string>
+
     // USER SIGN IN PAGE
     <string name="auth_failed">Authenticatie is mislukt</string>
     <string name="auth_user_created">Welkom bij HappyCode!</string>
