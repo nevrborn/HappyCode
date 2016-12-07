@@ -1,6 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -23,8 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
-
 
 public class LogInFragment extends Fragment {
 
@@ -32,6 +29,7 @@ public class LogInFragment extends Fragment {
 
     Button mLogInButton;
     Button mCreateAccountButton;
+    EditText mUserNameField;
     EditText mMailField;
     EditText mPasswordField;
 
@@ -41,6 +39,7 @@ public class LogInFragment extends Fragment {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
+    String mUserName;
     String mPassword;
     String mMail;
 
@@ -97,6 +96,7 @@ public class LogInFragment extends Fragment {
         mLogInButton = (Button) view.findViewById(R.id.buttonLogIn);
         mCreateAccountButton = (Button) view.findViewById(R.id.buttonNewAccount);
 
+        mUserNameField = (EditText) view.findViewById(R.id.textField_user_name);
         mMailField = (EditText) view.findViewById(R.id.textField_mail);
         mPasswordField = (EditText) view.findViewById(R.id.textField_password);
 
@@ -107,7 +107,7 @@ public class LogInFragment extends Fragment {
 
                 if (fieldsAreFilled()) {
 
-                    setMailAndPassword();
+                    setUserNameAndMailAndPassword();
 
                     // proceed LogIn
                     mAuth.signInWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -152,7 +152,7 @@ public class LogInFragment extends Fragment {
 
                 if (fieldsAreFilled()) {
 
-                    setMailAndPassword();
+                    setUserNameAndMailAndPassword();
 
                     mAuth.createUserWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
@@ -169,6 +169,7 @@ public class LogInFragment extends Fragment {
                                 Toast.makeText(getActivity(), R.string.auth_user_created, Toast.LENGTH_SHORT).show();
                                 User.set();
                                 User user = User.get();
+                                user.setName(mUserName);
                                 mDatabaseRef.child("users").child(user.getUid()).setValue(User.get());
 
 
@@ -191,7 +192,8 @@ public class LogInFragment extends Fragment {
 
 
         // set user abc@gmail.com ready to log in - JUST FOR TESTING!
-        mMailField.setText("abc@gmail.com");
+        mUserNameField.setText("Jarle M");
+        mMailField.setText("jarle.matland@gmail.com");
         mPasswordField.setText("ffffff");
 
 
@@ -200,11 +202,13 @@ public class LogInFragment extends Fragment {
 
 
     private boolean fieldsAreFilled() {
-        return !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
+        return !String.valueOf(mUserNameField.getText()).equals("") && !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
     }
 
 
-    private void setMailAndPassword() {
+    private void setUserNameAndMailAndPassword() {
+        mUserName = String.valueOf(mUserNameField.getText());
+        Log.i(TAG, mUserName);
         mMail = String.valueOf(mMailField.getText());
         Log.i(TAG, mMail);
         mPassword = String.valueOf(mPasswordField.getText());
