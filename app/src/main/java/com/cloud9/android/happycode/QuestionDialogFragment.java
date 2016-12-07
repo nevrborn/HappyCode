@@ -19,7 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by nevrborn on 06.12.2016.
@@ -29,6 +30,7 @@ public class QuestionDialogFragment extends DialogFragment {
 
     public static final String TAG = "QuestionDialogFragment";
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
+    private static final String USER_NAME_FROM_TESTER = "user_name_from_tester";
 
     Button mTakeTestYourselfButton;
     Button mTakeTestForOthersButton;
@@ -38,11 +40,11 @@ public class QuestionDialogFragment extends DialogFragment {
 
     Boolean wantsToEnterCode = true;
     private DatabaseReference mUserRef;
-    Boolean checkedFBForCode = false;
-    ArrayList<String> userIDsArray = new ArrayList<>();
+    public static Map<String, String> userKeyAndNameArray;
 
     User mUser;
     String mUserID;
+    String mUserName;
 
     @NonNull
     @Override
@@ -50,6 +52,8 @@ public class QuestionDialogFragment extends DialogFragment {
         View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_fragment_question, null);
 
         mUser = User.get();
+
+        userKeyAndNameArray = StartPageFragment.userKeyAndNameArray;
 
         // set the references
         mTakeTestYourselfButton = (Button) v.findViewById(R.id.button_take_test_for_me);
@@ -64,7 +68,6 @@ public class QuestionDialogFragment extends DialogFragment {
             mEditText.setVisibility(View.GONE);
             mTakeTestForOthersButton.setVisibility(View.GONE);
         } else if (mUser != null) {
-            getUserIDsFromFB();
             mEnterCodeText.setVisibility(View.GONE);
             mEditText.setVisibility(View.GONE);
             mTakeTestForOthersButton.setVisibility(View.VISIBLE);
@@ -93,7 +96,7 @@ public class QuestionDialogFragment extends DialogFragment {
 
                 if (wantsToEnterCode == true) {
                     mEditText.setVisibility(View.VISIBLE);
-                    mEditText.setText("q7jA5CD0lgeiRRWjWKrigozZ93H2");
+                    mEditText.setText("3GlzlsmpHVaHXOEyN62BDp9tVHB3");
                     mEnterCodeText.setVisibility(View.VISIBLE);
                     mEnterCodeText.setText(R.string.question_dialog_enter_code);
                     mTakeTestForOthersButton.setText(R.string.question_dialog_button_test_for_another_start);
@@ -101,10 +104,12 @@ public class QuestionDialogFragment extends DialogFragment {
                 } else {
                     mUserID = mEditText.getText().toString();
 
-                    if (validateUserID(mUserID) && checkedFBForCode == true) {
+                    if (validateUserID(mUserID)) {
                         Intent i = QuestionActivity.newIntent(getActivity());
                         i.putExtra(USER_ID_FROM_TESTER, mUserID);
+                        i.putExtra(USER_NAME_FROM_TESTER, mUserName);
                         startActivity(i);
+                        Toast.makeText(getActivity(), "You are taking the test for " + mUserName.toUpperCase(), Toast.LENGTH_SHORT).show();
                     } else if (!validateUserID(mUserID)) {
                         Toast.makeText(getActivity(), "Wrong code used!", Toast.LENGTH_SHORT).show();
                     }
@@ -119,39 +124,32 @@ public class QuestionDialogFragment extends DialogFragment {
                 .create();
     }
 
-    private void getUserIDsFromFB() {
-
-        mUserRef = FirebaseDatabase.getInstance().getReference("users");
-        mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    String userKeyinFB = child.getKey();
-
-                    userIDsArray.add(userKeyinFB);
-                }
-
-                checkedFBForCode = true;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
     private Boolean validateUserID(String userID) {
         int i = 0;
 
-        while (i < userIDsArray.size()) {
-            if (userIDsArray.get(i).equals(userID)) {
+        while (i < userKeyAndNameArray.size()) {
+
+            if (userKeyAndNameArray.containsKey(userID)) {
+                mUserName = userKeyAndNameArray.get(userID);
                 return true;
             }
             i += 1;
         }
         return false;
+    }
+
+    public static String getNameFromKey(String userID) {
+        int i = 0;
+        String name = "";
+
+        while (i < userKeyAndNameArray.size()) {
+
+            if (userKeyAndNameArray.containsKey(userID)) {
+                name = userKeyAndNameArray.get(userID);
+            }
+            i += 1;
+        }
+        return name;
     }
 
 }
