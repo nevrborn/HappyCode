@@ -19,14 +19,6 @@ public class AboutPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = EqualScoreActivity.newIntent(getActivity());
-                startActivity(i);
-            }
-        });
-
         return view;
     }
 }
