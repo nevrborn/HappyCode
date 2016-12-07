@@ -43,6 +43,20 @@
     <string name="share_text_short">"Ik deed de HappyCode test. Ik ben een %1$s, een %2$s en een %3$s. Own it!"</string>
     <string name="share_no_mail_app">"Jammer, je hebt geen app die kan mailen :( "</string>
 
+    //QUESTION DIALOG
+    <string name="question_dialog_title">TAKE THE TEST</string>
+    <string name="question_dialog_button_take_test">Take test for myself</string>
+    <string name="question_dialog_enter_code">Copy in code from e-mail below:</string>
+    <string name="question_dialog_button_test_for_another">Take test for a friend</string>
+    <string name="question_dialog_button_test_for_another_start">Start Test</string>
+    <string name="question_dialog_text_log_in">Log in if you want to take the test for another person</string>
+
+    //INVITE OTHERS DIALOG
+    <string name="invite_dialog_title">INVITE SOMEONE TO TAKE TEST FOR YOU</string>
+    <string name="invite_dialog_invite_enter_email">Enter the email of the user you want to take the test for you</string>
+    <string name="invite_dialog_invite_button">Send Invite</string>
+    <string name="invite_text">"Hello! \n\n I would like to invite you to take the HappyCode test for me. \n\n If you have downloaded the HappyCode app from the Google Play store, then you can add the code below to take the test for me. \n\n Code: \n\n %1$s \n\n\n Thank you!"</string>
+
     // ABOUT PAGE
     <string name="title_about">Over cloud9</string>
     <string name="text_about_main">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
