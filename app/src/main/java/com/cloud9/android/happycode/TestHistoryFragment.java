@@ -34,8 +34,8 @@ import java.util.Map;
 
 public class TestHistoryFragment extends Fragment {
 
-    private RecyclerView mTestRecyclerView;
-    private FirebaseRecyclerAdapter mTestResultsAdapter;
+    public RecyclerView mTestRecyclerView;
+    public FirebaseRecyclerAdapter mTestResultsAdapter;
     private TestResultList mTestResultList;
     private StrengthList mStrengths = StrengthList.get(getContext());
     public static Map<String, Integer> arrayOfTotalResults = new HashMap<>();
@@ -242,8 +242,8 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
-    
-    private static class TestResultHolder extends RecyclerView.ViewHolder {
+
+    public static class TestResultHolder extends RecyclerView.ViewHolder {
 
         private TestResult mTestResult;
         private ImageView mStrenghtIcon1;
