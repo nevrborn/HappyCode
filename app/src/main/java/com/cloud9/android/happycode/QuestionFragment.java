@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -41,6 +42,7 @@ public class QuestionFragment extends Fragment {
 
     //private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
+    private ArrayList<String> mSortedStrengthKeys;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
@@ -48,6 +50,7 @@ public class QuestionFragment extends Fragment {
     private TestResultList mTestResultList;
 
     private StrengthList mStrengths;
+
 
     /* Method to create fragment */
     public static QuestionFragment newInstance(String tester_id) {
@@ -120,9 +123,8 @@ public class QuestionFragment extends Fragment {
                     String tempID = "questionID";
                     mTestResultList.addTestresult(mTestResult, tempID);
 
-                    // Go to TestResult page
-                    Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
-                    startActivity(i);
+                    // Test if top three is clear, then go to ResultpageFragment or to EqualScoresFragment
+                    handleFinishButton(tempID);
 
                 }
             }
@@ -169,6 +171,39 @@ public class QuestionFragment extends Fragment {
         updateStrength();
 
         return view;
+    }
+
+    private void handleFinishButton(String tempID) {
+
+        sortResultArray();
+
+        Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
+        startActivity(i);
+    }
+
+    private void sortResultArray() {
+        Map<String, Integer> tempArray = new HashMap<>(mResultArray);
+        ArrayList<String> mSortedStrengthKeys = new ArrayList<String>();
+
+        String keyOfMaxValue = "";
+
+        int j = 0;
+
+        while (j < mResultArray.size()) {
+
+            int maxValue = Collections.max(tempArray.values());
+
+            for (Map.Entry<String, Integer> entry : tempArray.entrySet()) {
+                if (entry.getValue() == maxValue) {
+                    keyOfMaxValue = entry.getKey();
+                }
+            }
+
+            mSortedStrengthKeys.add(keyOfMaxValue);
+            tempArray.remove(keyOfMaxValue);
+            j++;
+        }
+
     }
 
     @Override
