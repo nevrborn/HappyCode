@@ -85,16 +85,16 @@ public class EqualScoreFragment extends Fragment {
                     // change the Result
                     switch (mEqualScoresInTopThree) {
                         case 1:
-                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
+                            mTestResult.setNo3StrengthKey(mCheckedStrenghts.get(2));
                             break;
                         case 2:
-                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
+                            mTestResult.setNo3StrengthKey(mCheckedStrenghts.get(2));
                             mTestResult.setNo2StrengthKey(mCheckedStrenghts.get(1));
                             break;
                         case 3:
-                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
-                            mTestResult.setNo2StrengthKey(mCheckedStrenghts.get(1));
                             mTestResult.setNo3StrengthKey(mCheckedStrenghts.get(2));
+                            mTestResult.setNo2StrengthKey(mCheckedStrenghts.get(1));
+                            mTestResult.setNo1StrengthKey(mCheckedStrenghts.get(0));
                             break;
                         default:
                             Log.e(TAG, "Error. mEqualScoresInTopThree = " + mEqualScoresInTopThree);
