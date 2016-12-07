@@ -45,6 +45,10 @@
     <string name="share_text_short">"Ik deed de HappyCode test. Ik ben een %1$s, een %2$s en een %3$s. Own it!"</string>
     <string name="share_no_mail_app">"Jammer, je hebt geen app die kan mailen :( "</string>
 
+    // EQUAL SCORE PAGE
+    <string name="top_equal_score_text_view">Kies de %1$s stelingen die je het beste bij jou vind passen.</string>
+    <string name="equal_score_uncorrect_nr_of_checkboxes">Selecteer het juiste aantal stellingen!</string>
+
     //QUESTION DIALOG
     <string name="question_dialog_title">DOE HET TEST</string>
     <string name="question_dialog_button_take_test">Neem test voor mij</string>
