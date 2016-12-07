@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class EqualScoreFragment extends Fragment {
 
     private View mRecyclerView;
     private TextView mTopTextView;
+    private Button mFinishButton;
 
 
     /**
@@ -73,6 +75,18 @@ public class EqualScoreFragment extends Fragment {
         mTopTextView = (TextView) view.findViewById(R.id.textview_equal_score_top);
         Integer i = new Integer(mEqualScoresInTopThree);
         mTopTextView.setText(getString(R.string.top_equal_score_text_view, i.toString()));
+        mFinishButton = (Button) view.findViewById(R.id.button_equal_score_finish);
+        mFinishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mCheckedBoxes == mEqualScoresInTopThree) {
+                    // change Result
+                    // go to Result Page
+                } else {
+                    Toast.makeText(getActivity(), R.string.equal_score_uncorrect_nr_of_checkboxes, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         mRecyclerView = view.findViewById(R.id.recyclerview_equal_score);
 
@@ -87,6 +101,7 @@ public class EqualScoreFragment extends Fragment {
             }
             recyclerView.setAdapter(new EqualScoreRecyclerViewAdapter(mEqualScoreKeys));
         }
+
         return view;
     }
 
