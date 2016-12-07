@@ -1,10 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recyclerview_test_history"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@android:color/black"
+    android:padding="16dp"
     >
 
-</android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:id="@+id/totalTopCodes_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="6dp"
+        android:background="@drawable/box_test_history_page"
+        >
+
+        <TextView
+            android:id="@+id/textview_top_3_codes"
+            android:text="YOUR TOP 3 CODES"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:id="@+id/list_item_icon_1_top"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="6dip"
+            android:layout_toLeftOf="@+id/list_item_icon_2_top"
+            android:layout_below="@id/textview_top_3_codes"
+            android:contentDescription="code"
+            />
+
+        <ImageView
+            android:id="@+id/list_item_icon_2_top"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/textview_top_3_codes"
+            android:layout_marginRight="6dip"
+            android:contentDescription="code"
+            />
+
+        <ImageView
+            android:id="@+id/list_item_icon_3_top"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_toRightOf="@id/list_item_icon_2_top"
+            android:layout_below="@id/textview_top_3_codes"
+            android:contentDescription="code"
+            />
+
+        <TextView
+            android:id="@+id/textview_code_2_top"
+            android:text="Visonary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/list_item_icon_2_top"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorHappyCode"
+            />
+
+        <TextView
+            android:id="@+id/textview_code_1_top"
+            android:text="Leader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/list_item_icon_1_top"
+            android:layout_toLeftOf="@id/textview_code_2_top"
+            android:textColor="@color/colorHappyCode"
+            />
+
+        <TextView
+            android:id="@+id/textview_code_3_top"
+            android:text="Visonary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dip"
+            android:layout_below="@id/list_item_icon_3_top"
+            android:layout_toRightOf="@id/textview_code_2_top"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorHappyCode"
+            />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recyclerview_test_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:layout_below="@+id/totalTopCodes_relativelayout"/>
+
+
+</RelativeLayout>
