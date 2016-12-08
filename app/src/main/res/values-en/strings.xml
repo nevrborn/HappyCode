@@ -53,6 +53,7 @@
     // EQUAL SCORE PAGE
     <string name="top_equal_score_text_view">Select the %1$s propositions that fit you best.</string>
     <string name="equal_score_uncorrect_nr_of_checkboxes">Select the correct number of propositions!</string>
+    <string name="equal_score_too_many_checked">You checked too many boxes!</string>
 
     //QUESTION DIALOG
     <string name="question_dialog_title">TAKE THE TEST</string>
@@ -159,5 +160,6 @@
     <string name="strength_thinker_title">Thinker</string>
     <string name="strength_thinker">I think it is great to come up with new ideas</string>
     <string name="strength_thinker_description">You are creative. You can always come up with something new. That is how you show others surprising possibillitis.</string>
+
 
 </resources>

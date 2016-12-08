@@ -185,6 +185,9 @@ public class EqualScoreFragment extends Fragment {
                     if (holder.mCheckBox.isChecked()) {
                         mCheckedBoxes++;
                         mCheckedStrenghts.add(strengthKey);
+                        if (mCheckedBoxes > mEqualScoresInTopThree) {
+                            Toast.makeText(getActivity(), R.string.equal_score_too_many_checked, Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         mCheckedBoxes--;
                         mCheckedStrenghts.remove(strengthKey);
