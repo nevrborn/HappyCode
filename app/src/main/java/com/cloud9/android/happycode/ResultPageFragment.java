@@ -94,6 +94,7 @@ public class ResultPageFragment extends Fragment {
         mNr1Strength = mStrengths.getStrengthFromKey(mNr1StrengthKey);
         mNr2Strength = mStrengths.getStrengthFromKey(mNr2StrengthKey);
         mNr3Strength = mStrengths.getStrengthFromKey(mNr3StrengthKey);
+
     }
 
     @Nullable
@@ -135,6 +136,13 @@ public class ResultPageFragment extends Fragment {
             mDateAndUser.setVisibility(View.GONE);
         }
 
+        // save the test result to the firebase
+        if (hasWrittenToFirebase == false && User.get() != null) {
+            writeToFirebase(mTestResult);
+            hasWrittenToFirebase = true;
+        }
+
+
         // set listeners
         mResultIcon1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,13 +175,13 @@ public class ResultPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                mTestResult.setDate(System.currentTimeMillis() / 1000L);
-                mTestResult.setTester("");
-
                 // save the test result to the firebase
                 if (hasWrittenToFirebase == false && User.get() != null && mIsComingFromResultPage == false) {
                     writeToFirebase(mTestResult);
                     hasWrittenToFirebase = true;
+                } else {
+                    mTestResult.setDate(System.currentTimeMillis() / 1000L);
+                    mTestResult.setTester("");
                 }
 
                 Intent i = StartPageActivity.newIntent(getActivity());
