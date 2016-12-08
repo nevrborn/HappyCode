@@ -46,7 +46,9 @@ public class ShareDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 String[] mailRecipient = new String[1];
-                mailRecipient[0] = User.get().getEmail();
+                if (User.get() != null) {
+                    mailRecipient[0] = User.get().getEmail();
+                }
                 Intent i = new Intent(Intent.ACTION_SENDTO);
                 i.setType("text/plain");
                 i.setData(Uri.parse("mailto:")); // only email apps should handle this
