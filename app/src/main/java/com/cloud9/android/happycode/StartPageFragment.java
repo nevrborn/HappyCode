@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import java.util.Map;
 
 public class StartPageFragment extends Fragment {
 
+    private static final String TAG = "StartPageFragment";
     private static final String DIALOG_INVITE = "dialog_invite";
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
 
@@ -111,10 +113,20 @@ public class StartPageFragment extends Fragment {
         mTestHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
 
-                Intent i = TestHistoryActivity.newIntent(getActivity());
-                startActivity(i);
+                mUser = User.get();
+                if (mUser != null) {
+                    Log.i(TAG, "There are " + mTestResultList.getSize() + " tests in total");
+                    if (mTestResultList.getSize() != 0) {
+                        mTestHistoryButton.setBackgroundResource(R.drawable.button_pressed);
+                        Intent i = TestHistoryActivity.newIntent(getActivity());
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(getActivity(), R.string.history_not_availabe, Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), R.string.must_be_logged_in, Toast.LENGTH_SHORT).show();
+                }
             }
         });
         mAllCodes.setOnClickListener(new View.OnClickListener() {

@@ -13,19 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -237,7 +232,7 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
-    private static class TestResultHolder extends RecyclerView.ViewHolder {
+    public static class TestResultHolder extends RecyclerView.ViewHolder {
 
         private TestResult mTestResult;
         private ImageView mStrenghtIcon1;
