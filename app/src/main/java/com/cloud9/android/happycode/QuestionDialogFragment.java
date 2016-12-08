@@ -85,6 +85,7 @@ public class QuestionDialogFragment extends DialogFragment {
                     i.putExtra(USER_ID_FROM_TESTER, "");
                 }
 
+                getDialog().cancel();
                 startActivity(i);
 
             }
@@ -108,6 +109,7 @@ public class QuestionDialogFragment extends DialogFragment {
                         Intent i = QuestionActivity.newIntent(getActivity());
                         i.putExtra(USER_ID_FROM_TESTER, mUserID);
                         i.putExtra(USER_NAME_FROM_TESTER, mUserName);
+                        getDialog().cancel();
                         startActivity(i);
                         Toast.makeText(getActivity(), "You are taking the test for " + mUserName.toUpperCase(), Toast.LENGTH_SHORT).show();
                     } else if (!validateUserID(mUserID)) {

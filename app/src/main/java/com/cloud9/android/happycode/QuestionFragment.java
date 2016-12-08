@@ -113,10 +113,11 @@ public class QuestionFragment extends Fragment {
 
                     // update the view for the new question
                     updateStrength();
-                    if (mCurrentIndex == mLastIndexReached) {
-                        mSeekBar.setProgress(50);
-                    } else {
+
+                    if (mResultArray.get(mStrengths.getStrengthFromIndex(mCurrentIndex).getID()) != null) {
                         mSeekBar.setProgress(mResultArray.get(mStrengths.getStrengthFromIndex(mCurrentIndex).getID()));
+                    } else {
+                        mSeekBar.setProgress(50);
                     }
 
                     // set NEXT button to finish if at the last question
@@ -148,9 +149,10 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                setPercentage(mPercentage);
+
                 // Decrease index by one till at first question
                 if (mCurrentIndex > 0) {
-                    setPercentage(mPercentage);
                     mCurrentIndex--;
                     updateStrength();
 
@@ -159,6 +161,10 @@ public class QuestionFragment extends Fragment {
                     if (mCurrentIndex == 0) {
                         mPreviousButton.setAlpha(0.6f);
                     }
+                }
+
+                if (mCurrentIndex < mStrengths.getSize() - 1) {
+                    mNextButton.setText(R.string.button_next);
                 }
             }
         });
@@ -197,6 +203,7 @@ public class QuestionFragment extends Fragment {
             Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys, mEqualScoresInTopThree);
             startActivity(i);
         } else {
+            getActivity().finish();
             Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
             startActivity(i);
         }
