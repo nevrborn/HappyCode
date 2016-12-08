@@ -1,0 +1,35 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_fragment_enter_user__name"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    style="@style/MyDialog"
+    >
+
+    <LinearLayout
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <EditText
+            android:id="@+id/editText_enter_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textEmailAddress"
+            android:hint="Enter a user name"
+            android:ems="10"
+            />
+
+        <Button
+            android:id="@+id/button_make_new_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_create_account"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

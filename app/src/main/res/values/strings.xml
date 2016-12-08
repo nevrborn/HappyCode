@@ -54,6 +54,9 @@
     <string name="top_equal_score_text_view">Kies de %1$s stelingen die je het beste bij jou vind passen.</string>
     <string name="equal_score_uncorrect_nr_of_checkboxes">Selecteer het juiste aantal stellingen!</string>
 
+    // ENTER USER NAME DIALOG
+    <string name="enter_name_dialog_title">Enter a user name</string>
+
     //QUESTION DIALOG
     <string name="question_dialog_title">DOE DE TEST</string>
     <string name="question_dialog_button_take_test">Doe de test voor jezelf</string>

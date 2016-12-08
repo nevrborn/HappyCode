@@ -55,6 +55,16 @@
     </LinearLayout>
 
 
+    <ImageView
+        android:id="@+id/imageview_result_line"
+        android:layout_width="6dp"
+        android:layout_height="32dp"
+        android:layout_below="@id/linearlayout_result_images"
+        android:layout_marginLeft="59dp"
+        android:layout_marginRight="59dp"
+        android:background="@drawable/line_result_page"
+        />
+
     <TextView
         android:id="@+id/textview_result_strenght_title"
         android:layout_width="match_parent"
@@ -102,7 +112,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             style="@style/Buttons"
-            android:id="@+id/button_result_save_result"
+            android:id="@+id/button_share_result"
             android:layout_marginRight="18dp"
             />
 
@@ -143,6 +153,41 @@
         android:textColor="@android:color/white"
         android:textAlignment="center"
         />
+
+    <LinearLayout
+        android:id="@+id/linearlayout_strength_summary_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_result_strentgh_text"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/textview_strength_summary_1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/strength_leader_title"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:id="@+id/imageview_strength_summary_1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/icon_leader"
+            />
+
+        <TextView
+            android:id="@+id/textview_strength_summary__percentage_1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="50%"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
