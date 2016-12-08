@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -81,10 +83,16 @@ public class EqualScoreFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_equalscore_list, container, false);
 
+        // Shuffle the elements in the array
+        Collections.shuffle(mEqualScoreKeys);
+
         mTopTextView = (TextView) view.findViewById(R.id.textview_equal_score_top);
         Integer i = new Integer(mEqualScoresInTopThree);
         mTopTextView.setText(getString(R.string.top_equal_score_text_view, i.toString()));
         mFinishButton = (Button) view.findViewById(R.id.button_equal_score_finish);
+        if (mCheckedBoxes != mEqualScoresInTopThree) {
+            mFinishButton.setAlpha(0.6f);
+        }
         mFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,6 +141,7 @@ public class EqualScoreFragment extends Fragment {
             }
             recyclerView.setAdapter(new EqualScoreRecyclerViewAdapter(mEqualScoreKeys));
         }
+
         return view;
     }
 
@@ -187,10 +196,18 @@ public class EqualScoreFragment extends Fragment {
                         mCheckedStrenghts.add(strengthKey);
                         if (mCheckedBoxes > mEqualScoresInTopThree) {
                             Toast.makeText(getActivity(), R.string.equal_score_too_many_checked, Toast.LENGTH_SHORT).show();
+                            mFinishButton.setAlpha(0.6f);
+                        } else if (mCheckedBoxes == mEqualScoresInTopThree) {
+                            mFinishButton.setAlpha(1.0f);
                         }
                     } else {
                         mCheckedBoxes--;
                         mCheckedStrenghts.remove(strengthKey);
+                        if (mCheckedBoxes == mEqualScoresInTopThree) {
+                            mFinishButton.setAlpha(1.0f);
+                        } else {
+                            mFinishButton.setAlpha(0.6f);
+                        }
                     }
                 }
             });
