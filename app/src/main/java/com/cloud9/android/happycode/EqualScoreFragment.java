@@ -124,7 +124,6 @@ public class EqualScoreFragment extends Fragment {
             }
             recyclerView.setAdapter(new EqualScoreRecyclerViewAdapter(mEqualScoreKeys));
         }
-
         return view;
     }
 
@@ -133,6 +132,20 @@ public class EqualScoreFragment extends Fragment {
         super.onResume();
         sStrengthList = StrengthList.get(getActivity());
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+// create code that saves the state of the checkboxes
+//        Log.i(TAG, "onSavedInstanceSTate");
+//
+//        outState.putInt(CURRENT_INDEX, mCurrentIndex);
+//        outState.putInt(LAST_REACHED_INDEX, mLastIndexReached);
+//        outState.putSerializable(STRENGTH_ARRAY, (HashMap<String, Integer>) mResultArray);
+
+    }
+
 
 
     //
