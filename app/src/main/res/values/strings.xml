@@ -68,7 +68,7 @@
     <string name="invite_dialog_invite_enter_email" translatable="false">Voer het emailadres in van de persoon die je wil uitnodigen</string>
     <string name="invite_dialog_invite_button">Stuur uitnoding via email</string>
     <string name="invite_dialog_invite_button_send">Stuur uitnoding</string>
-    <string name="invite_dialog_copy_button">Kopieer de key</string>
+    <string name="invite_dialog_copy_button">Deel jouw key</string>
     <string name="invite_dialog_key_is_copied" translatable="false">Verstuur nu de key met welke app je maar wilt!</string>
     <string name="invite_dialog_copy_key" translatable="false">en stuur bericht via WhatsApp, of Messenger etc.</string>
     <string name="invite_text" translatable="false">"Hallo! \n\n Ik wil je uitnodigen de HappyCode test voor mij te maken. \n\n Als je de HappyCode app hebt gedownload van de Google Play store, dan kun je de code hieronder gebruiken om de test voor mij te maken. \n\n Code: \n\n %1$s \n\n\n Dankjewel!"</string>
@@ -77,6 +77,8 @@
     <string name="title_about">Over cloud9</string>
     <string name="text_about_main" translatable="false">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
     <string name="text_about_closing_line">Cloud 9 is een initiatief van NJR.</string>
+    <string name="njr_link"><a href="http://www.njr.nl">NJR Website</a></string>
+    <string name="cloud9_link"><a href="http://www.cloud9.world">Cloud9 Website</a></string>
 
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leider</string>

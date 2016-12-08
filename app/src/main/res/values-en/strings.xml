@@ -67,7 +67,7 @@
     <string name="invite_dialog_invite_button">Send Invite via Email</string>
     <string name="invite_dialog_invite_button_send">Send Invite</string>
     <string name="invite_dialog_key_is_copied">Send the key to the person(s) you want via any messaging app</string>
-    <string name="invite_dialog_copy_button">Copy Key</string>
+    <string name="invite_dialog_copy_button">Share your Key</string>
     <string name="invite_dialog_copy_key">and send via WhatsApp, Messenger etc.</string>
     <string name="invite_text">"Hello! \n\n I would like to invite you to take the HappyCode test for me. \n\n If you have downloaded the HappyCode app from the Google Play store, then you can add the code below to take the test for me. \n\n Code: \n\n %1$s \n\n\n Thank you!"</string>
 
@@ -75,6 +75,8 @@
     <string name="title_about">About cloud9</string>
     <string name="text_about_main">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
     <string name="text_about_closing_line">Cloud 9 is an initative from NJR.</string>
+    <string name="njr_link"><a href="http://www.njr.nl">NJR Website</a></string>
+    <string name="cloud9_link"><a href="http://www.cloud9.world">Cloud9 Website</a></string>
 
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leader</string>
