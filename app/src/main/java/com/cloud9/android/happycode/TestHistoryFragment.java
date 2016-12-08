@@ -109,6 +109,7 @@ public class TestHistoryFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         String key = mTestResultsAdapter.getRef(position).getKey();
+                        ResultPageFragment.mTestResultKey = key;
                         Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is used because in firebase the id is always "QuestionID"
                         startActivity(i);
                     }
@@ -154,6 +155,10 @@ public class TestHistoryFragment extends Fragment {
         } else {
             mTop3CodeLayout.setVisibility(View.GONE);
         }
+    }
+
+    public void onTestResultDeleted() {
+
     }
 
     private void makeTotalResultArray(TestResultList testResultList) {
@@ -254,11 +259,13 @@ public class TestHistoryFragment extends Fragment {
         @Override
         public void onClick(View view) {
             mCallbacks.onTestResultSelected(mTestResultKey);
+            ResultPageFragment.mTestResultKey = mTestResultKey;
         }
 
         public void setResult(TestResult result) {
             mTestResult = result;
         }
+
     }
 
 

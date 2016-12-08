@@ -154,6 +154,18 @@
         android:textAlignment="center"
         />
 
+    <Button
+        android:id="@+id/delete_test_result"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:drawable/ic_menu_delete"
+        android:layout_alignTop="@+id/button_result_to_menu"
+        />
+
     <LinearLayout
         android:id="@+id/linearlayout_strength_summary_1"
         android:layout_width="match_parent"

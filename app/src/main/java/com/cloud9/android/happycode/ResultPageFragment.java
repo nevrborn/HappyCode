@@ -1,5 +1,6 @@
 package com.cloud9.android.happycode;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +46,8 @@ public class ResultPageFragment extends Fragment {
     private static Boolean mIsFromQuestionPage = false;
     private Boolean mIsComingFromResultPage = false;
     private TestResultList mTestResultList;
+    public static String mTestResultKey;
+    private Callbacks mCallbacks;
 
     private ImageView mResultIcon1;
     private ImageView mResultIcon2;
@@ -56,6 +59,7 @@ public class ResultPageFragment extends Fragment {
     private Button mToMenuButton;
     private Button mShareResultButton;
     private TextView mDateAndUser;
+    private Button mDeleteButton;
 
     private DatabaseReference mUserRef;
 
@@ -66,6 +70,22 @@ public class ResultPageFragment extends Fragment {
         mID = testResultID;
         mIsFromQuestionPage = isFromQuestionPage;
         return new ResultPageFragment();
+    }
+
+    public interface Callbacks {
+        void onTestResultDeleted();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCallbacks = (Callbacks) activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     @Override
@@ -115,6 +135,7 @@ public class ResultPageFragment extends Fragment {
         mShareResultButton = (Button) view.findViewById(R.id.button_share_result);
         mExplanation = (TextView) view.findViewById(R.id.textview_result_explanation);
         mDateAndUser = (TextView) view.findViewById(R.id.textview_result_date_and_user);
+        mDeleteButton = (Button) view.findViewById(R.id.delete_test_result);
 
         // set images for the results
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
@@ -137,7 +158,7 @@ public class ResultPageFragment extends Fragment {
         }
 
         // save the test result to the firebase
-        if (hasWrittenToFirebase == false && User.get() != null) {
+        if (mTestResult.getWrittenToFirebase() == false && User.get() != null) {
             writeToFirebase(mTestResult);
             hasWrittenToFirebase = true;
         }
@@ -176,7 +197,7 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
 
                 // save the test result to the firebase
-                if (hasWrittenToFirebase == false && User.get() != null && mIsComingFromResultPage == false) {
+                if (mTestResult.getWrittenToFirebase() == false && hasWrittenToFirebase == false && User.get() != null && mIsComingFromResultPage == false) {
                     writeToFirebase(mTestResult);
                     hasWrittenToFirebase = true;
                 } else {
@@ -206,6 +227,13 @@ public class ResultPageFragment extends Fragment {
 
                 shareDialogFragment.setArguments(bundle);
                 shareDialogFragment.show(fragmentManager, DIALOG_SHARE);
+            }
+        });
+
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteFromFirebase();
             }
         });
 
@@ -291,6 +319,14 @@ public class ResultPageFragment extends Fragment {
 
         String key = mUserRef.child("results").push().getKey();
         mUserRef.child("results").child(key).setValue(testResult);
+    }
+
+    private void deleteFromFirebase() {
+        String userID = User.get().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userID).child("results");
+        ref.child(mTestResultKey).removeValue();
+        getActivity().finish();
+        mCallbacks.onTestResultDeleted();
     }
 
 

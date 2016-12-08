@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
  * Created by paulvancappelle on 24-11-16.
  */
 
-public class TestHistoryActivity extends SingleFragmentActivity implements TestHistoryFragment.Callbacks {
+public class TestHistoryActivity extends SingleFragmentActivity implements TestHistoryFragment.Callbacks, ResultPageFragment.Callbacks {
 
     /*
     * create Intent to start this activity
@@ -47,5 +47,11 @@ public class TestHistoryActivity extends SingleFragmentActivity implements TestH
     public void onTestResultDeleted(TestResult testResult) {
         TestHistoryFragment testResultFragment = (TestHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         testResultFragment.updateModel();
+    }
+
+    @Override
+    public void onTestResultDeleted() {
+        TestHistoryFragment listFragment = (TestHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        listFragment.updateModel();
     }
 }

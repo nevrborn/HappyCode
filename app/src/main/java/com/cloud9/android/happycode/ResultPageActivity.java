@@ -11,7 +11,7 @@ import java.util.UUID;
  * Created by paulvancappelle on 23-11-16.
  */
 
-public class ResultPageActivity extends SingleFragmentActivity {
+public class ResultPageActivity extends SingleFragmentActivity implements ResultPageFragment.Callbacks {
 
     private static final String TEST_RESULT_ID = "test_result_id";
     private static final String QUESTION_PAGE_BOOLEAN = "false";
@@ -35,5 +35,10 @@ public class ResultPageActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
         return ResultPageFragment.newInstance(mTestResultID, mIsFromQuestionPage);
+    }
+
+    @Override
+    public void onTestResultDeleted() {
+
     }
 }

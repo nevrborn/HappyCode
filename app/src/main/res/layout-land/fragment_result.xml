@@ -155,6 +155,17 @@
             android:textSize="10dp"
             android:textColor="@android:color/white"/>
 
+        <Button
+            android:id="@+id/delete_test_result"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:background="@android:drawable/ic_menu_delete"
+            android:layout_alignTop="@+id/button_result_to_menu"
+            />
+
     </RelativeLayout>
 
 </ScrollView>
