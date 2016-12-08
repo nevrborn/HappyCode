@@ -101,9 +101,11 @@ public class EqualScoreFragment extends Fragment {
                     }
 
                     // go to Result Page
+                    getActivity().finish();
                     String key = mTestResult.getID();
                     Intent i = ResultPageActivity.newIntent(getActivity(), key, true); // key is "QuestionID" here because not saved to FireBase yet
                     startActivity(i);
+
 
                 } else {
                     Toast.makeText(getActivity(), R.string.equal_score_uncorrect_nr_of_checkboxes, Toast.LENGTH_SHORT).show();

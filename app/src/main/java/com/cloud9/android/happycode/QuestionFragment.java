@@ -162,6 +162,10 @@ public class QuestionFragment extends Fragment {
                         mPreviousButton.setAlpha(0.6f);
                     }
                 }
+
+                if (mCurrentIndex < mStrengths.getSize() - 1) {
+                    mNextButton.setText(R.string.button_next);
+                }
             }
         });
 
@@ -199,6 +203,7 @@ public class QuestionFragment extends Fragment {
             Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys, mEqualScoresInTopThree);
             startActivity(i);
         } else {
+            getActivity().finish();
             Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
             startActivity(i);
         }
