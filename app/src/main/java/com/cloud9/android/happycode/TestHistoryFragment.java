@@ -93,7 +93,6 @@ public class TestHistoryFragment extends Fragment {
         mTotalTop3StrengthText = (TextView) view.findViewById(R.id.textview_code_3_top);
         mTop3CodeLayout = (RelativeLayout) view.findViewById(R.id.totalTopCodes_relativelayout);
 
-        updateUI();
         //RecyclerView recycler = (RecyclerView) findViewById(R.id.messages_recycler);
         //recycler.setHasFixedSize(true);
         //recycler.setLayoutManager(new LinearLayoutManager(this));
@@ -152,11 +151,6 @@ public class TestHistoryFragment extends Fragment {
             String uid = User.get().getUid();
             mUserResultsRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("results");
         }
-
-        mTestResultsAdapter = new TestResultsAdapter(TestResultList.getTestResultList());
-        mTestRecyclerView.setAdapter(mTestResultsAdapter);
-
-
     }
 
     @Override
