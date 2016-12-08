@@ -53,6 +53,7 @@
     // EQUAL SCORE PAGE
     <string name="top_equal_score_text_view">Kies de %1$s stelingen die je het beste bij jou vind passen.</string>
     <string name="equal_score_uncorrect_nr_of_checkboxes">Selecteer het juiste aantal stellingen!</string>
+    <string name="equal_score_too_many_checked">Je hebt te veel stellingen aangevinkt!</string>
 
     // ENTER USER NAME DIALOG
     <string name="enter_name_dialog_title">Enter a user name</string>
