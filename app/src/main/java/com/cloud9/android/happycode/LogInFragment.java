@@ -106,6 +106,9 @@ public class LogInFragment extends Fragment {
 
                 if (fieldsAreFilled()) {
 
+                    mMail = mMailField.getText().toString();
+                    mPassword = mPasswordField.getText().toString();
+
                     // proceed LogIn
                     mAuth.signInWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
