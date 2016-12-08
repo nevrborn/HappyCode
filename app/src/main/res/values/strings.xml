@@ -55,6 +55,9 @@
     <string name="equal_score_uncorrect_nr_of_checkboxes">Selecteer het juiste aantal stellingen!</string>
     <string name="equal_score_too_many_checked">Je hebt te veel stellingen aangevinkt!</string>
 
+    // ENTER USER NAME DIALOG
+    <string name="enter_name_dialog_title">Enter a user name</string>
+
     //QUESTION DIALOG
     <string name="question_dialog_title">DOE DE TEST</string>
     <string name="question_dialog_button_take_test">Doe de test voor jezelf</string>

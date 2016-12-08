@@ -31,12 +31,12 @@ public class TestHistoryActivity extends SingleFragmentActivity implements TestH
     }
 
     @Override
-    public void onTestResultSelected(TestResult testresult) {
+    public void onTestResultSelected(String testresultKey) {
         if (findViewById(R.id.detail_fragment_container) == null) {
-            Intent intent = ResultPageActivity.newIntent(this, testresult.getID(), false);
+            Intent intent = ResultPageActivity.newIntent(this, testresultKey, false);
             startActivity(intent);
         } else {
-            Fragment newDetail = ResultPageFragment.newInstance(testresult.getID(), false);
+            Fragment newDetail = ResultPageFragment.newInstance(testresultKey, false);
 
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.detail_fragment_container, newDetail)

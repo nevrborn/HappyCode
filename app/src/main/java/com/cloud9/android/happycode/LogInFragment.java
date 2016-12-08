@@ -3,6 +3,7 @@ package com.cloud9.android.happycode;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 public class LogInFragment extends Fragment {
 
     private static final String TAG = "HappyCode.LogInFragment";
+    private static final String DIALOG_USER_NAME = "dialog_user_name";
 
     Button mLogInButton;
     Button mCreateAccountButton;
-    EditText mUserNameField;
     EditText mMailField;
     EditText mPasswordField;
 
@@ -47,7 +48,6 @@ public class LogInFragment extends Fragment {
     public LogInFragment() {
         // Required empty public constructor
     }
-
 
     /**
      * Use this factory method to create a new instance of
@@ -96,7 +96,6 @@ public class LogInFragment extends Fragment {
         mLogInButton = (Button) view.findViewById(R.id.buttonLogIn);
         mCreateAccountButton = (Button) view.findViewById(R.id.buttonNewAccount);
 
-        mUserNameField = (EditText) view.findViewById(R.id.textField_user_name);
         mMailField = (EditText) view.findViewById(R.id.textField_mail);
         mPasswordField = (EditText) view.findViewById(R.id.textField_password);
 
@@ -107,7 +106,8 @@ public class LogInFragment extends Fragment {
 
                 if (fieldsAreFilled()) {
 
-                    setUserNameAndMailAndPassword();
+                    mMail = mMailField.getText().toString();
+                    mPassword = mPasswordField.getText().toString();
 
                     // proceed LogIn
                     mAuth.signInWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -152,36 +152,12 @@ public class LogInFragment extends Fragment {
 
                 if (fieldsAreFilled()) {
 
-                    setUserNameAndMailAndPassword();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    LogInDialogUserName logInDialogUserName = new LogInDialogUserName();
+                    logInDialogUserName.mMail = String.valueOf(mMailField.getText());
+                    logInDialogUserName.mPassword = String.valueOf(mPasswordField.getText());
 
-                    mAuth.createUserWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                            // If sign in fails, display a message to the user. If sign in succeeds
-                            // the auth state listener will be notified and logic to handle the
-                            // signed in user can be handled in the listener.
-                            if (!task.isSuccessful()) {
-                                Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage());
-                                Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                            } else if (task.isSuccessful()) {
-                                Toast.makeText(getActivity(), R.string.auth_user_created, Toast.LENGTH_SHORT).show();
-                                User.set();
-                                User user = User.get();
-                                user.setName(mUserName);
-                                mDatabaseRef.child("users").child(user.getUid()).setValue(User.get());
-
-
-                                // go to previous activity
-                                getActivity().finish();
-
-                                writeExcitingTestsToFirebase();
-                                getDataFromFirebase();
-
-                            }
-                        }
-                    });
+                    logInDialogUserName.show(fragmentManager, DIALOG_USER_NAME);
 
                 } else {
                     Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT);
@@ -192,7 +168,6 @@ public class LogInFragment extends Fragment {
 
 
         // set user abc@gmail.com ready to log in - JUST FOR TESTING!
-        mUserNameField.setText("Jarle M");
         mMailField.setText("jarle.matland@gmail.com");
         mPasswordField.setText("ffffff");
 
@@ -202,19 +177,8 @@ public class LogInFragment extends Fragment {
 
 
     private boolean fieldsAreFilled() {
-        return !String.valueOf(mUserNameField.getText()).equals("") && !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
+        return !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
     }
-
-
-    private void setUserNameAndMailAndPassword() {
-        mUserName = String.valueOf(mUserNameField.getText());
-        Log.i(TAG, mUserName);
-        mMail = String.valueOf(mMailField.getText());
-        Log.i(TAG, mMail);
-        mPassword = String.valueOf(mPasswordField.getText());
-        Log.i(TAG, mPassword);
-    }
-
 
     @Override
     public void onStart() {
