@@ -18,7 +18,7 @@
     <string name="button_create_account">Maak nieuw account</string>
     <string name="button_sign_in">Log in</string>
     <string name="button_sign_out">Log uit</string>
-    <string name="button_invite">Stuur uitnodiging</string>
+    <string name="button_invite">Uitnodigen</string>
     <string name="textview_result_rename">RESULTAAT</string>
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
