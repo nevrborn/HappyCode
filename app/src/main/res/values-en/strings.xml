@@ -157,6 +157,7 @@
     <string name="strength_thinker">I think it is great to come up with new ideas</string>
     <string name="strength_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
     <string name="result_explanation" translatable="false">Tap icons to see the different explanations</string>
+    <string name="or">-- OR --</string>
 
 
 </resources>
