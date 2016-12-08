@@ -43,13 +43,14 @@ public class TestHistoryFragment extends Fragment {
     private TextView mTotalTop2StrengthText;
     private TextView mTotalTop3StrengthText;
     private RelativeLayout mTop3CodeLayout;
+    public static String mTestResultKey;
 
     private DatabaseReference mUserResultsRef;
 
-    private Callbacks mCallbacks;
+    public static Callbacks mCallbacks;
 
     public interface Callbacks {
-        void onTestResultSelected(TestResult testresult);
+        void onTestResultSelected(String testresultKey);
     }
 
     @Override
@@ -232,7 +233,7 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
-    public static class TestResultHolder extends RecyclerView.ViewHolder {
+    public static class TestResultHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TestResult mTestResult;
         private ImageView mStrenghtIcon1;
@@ -247,12 +248,13 @@ public class TestHistoryFragment extends Fragment {
             mStrenghtIcon2 = (ImageView) itemView.findViewById(R.id.list_item_icon_2);
             mStrenghtIcon3 = (ImageView) itemView.findViewById(R.id.list_item_icon_3);
             mDateTime = (TextView) itemView.findViewById(R.id.list_item_date_time);
-            //mStrenghtIcon1.setAlpha(0.9f);
-            //mStrenghtIcon2.setAlpha(0.9f);
-            //mStrenghtIcon3.setAlpha(0.9f);
 
         }
 
+        @Override
+        public void onClick(View view) {
+            mCallbacks.onTestResultSelected(mTestResultKey);
+        }
 
         public void setResult(TestResult result) {
             mTestResult = result;
