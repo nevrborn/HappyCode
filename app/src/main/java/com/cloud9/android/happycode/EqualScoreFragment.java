@@ -27,6 +27,8 @@ public class EqualScoreFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private static final String TAG = "EqualScoreFragment";
+    private static final String CHECKED_KEYS = "the keys of the strenghts that are checked";
+    private static final String CHECKED_BOXES = "number_of_checked_boxes";
 
     private int mColumnCount = 1;
     private static int mEqualScoresInTopThree;
@@ -63,6 +65,11 @@ public class EqualScoreFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mCheckedBoxes = savedInstanceState.getInt(CHECKED_BOXES);
+            mCheckedStrenghts = (ArrayList<String>) savedInstanceState.getSerializable(CHECKED_KEYS);
+        }
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -138,14 +145,9 @@ public class EqualScoreFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-// create code that saves the state of the checkboxes
-//        Log.i(TAG, "onSavedInstanceSTate");
-//
-//        outState.putInt(CURRENT_INDEX, mCurrentIndex);
-//        outState.putInt(LAST_REACHED_INDEX, mLastIndexReached);
-//        outState.putSerializable(STRENGTH_ARRAY, (HashMap<String, Integer>) mResultArray);
-
+        Log.i(TAG, "onSavedInstanceSTate");
+        outState.putSerializable(CHECKED_KEYS, mCheckedStrenghts);
+        outState.putInt(CHECKED_BOXES, mCheckedBoxes);
     }
 
 
@@ -173,6 +175,9 @@ public class EqualScoreFragment extends Fragment {
             final String strengthKey = mValues.get(position);
             Strength strength = sStrengthList.getStrengthFromKey(strengthKey);
             holder.mCheckBox.setText(getText(strength.getQuestionID()));
+            if (mCheckedStrenghts.contains(strengthKey)) {
+                holder.mCheckBox.setChecked(true);
+            }
 
             holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,7 +189,6 @@ public class EqualScoreFragment extends Fragment {
                         mCheckedBoxes--;
                         mCheckedStrenghts.remove(strengthKey);
                     }
-                    Toast.makeText(getActivity(), "" + mCheckedBoxes, Toast.LENGTH_SHORT).show();
                 }
             });
         }

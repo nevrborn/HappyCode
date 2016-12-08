@@ -232,7 +232,7 @@ public class TestHistoryFragment extends Fragment {
     /*
     * inner class ViewHolder
     */
-    public static class TestResultHolder extends RecyclerView.ViewHolder {
+    private static class TestResultHolder extends RecyclerView.ViewHolder {
 
         private TestResult mTestResult;
         private ImageView mStrenghtIcon1;
