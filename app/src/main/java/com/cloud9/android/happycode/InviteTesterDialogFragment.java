@@ -56,8 +56,10 @@ public class InviteTesterDialogFragment extends DialogFragment {
         mCopyKey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                copyKey(mUser.getUid());
-                Toast.makeText(getActivity(), R.string.invite_dialog_key_is_copied, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, mUser.getUid());
+                startActivity(i);
             }
         });
 

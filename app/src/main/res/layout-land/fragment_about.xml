@@ -48,9 +48,31 @@
             android:id="@+id/textview_about_closing_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/text_about_closing_line"
             android:textColor="@android:color/white"
+            />
+
+        <TextView
+            android:id="@+id/textview_about_link_to_njr_website"
+            android:text="@string/njr_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorHappyCode"
+            android:layout_marginTop="5dp"
+            android:linksClickable="true"
+            android:textColorLink="@color/colorHappyCode"
+            />
+
+        <TextView
+            android:id="@+id/textview_about_link_to_cloud9_website"
+            android:text="@string/cloud9_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorHappyCode"
+            android:layout_marginTop="5dp"
+            android:linksClickable="true"
+            android:textColorLink="@color/colorHappyCode"
             />
 
     </LinearLayout>
