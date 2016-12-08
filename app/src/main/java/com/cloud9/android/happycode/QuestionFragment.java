@@ -42,7 +42,7 @@ public class QuestionFragment extends Fragment {
     private Map<String, Integer> mResultArray = new HashMap<>();
     private ArrayList<String> mSortedStrengthKeys;
     ArrayList<String> mEqualScoreKeys;
-    private int mEqualScoresInTopThree = 1; // if we have equal scores, nr3 score == nr4 scores so 1 for sure
+    private int mEqualScoresInTopThree;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
     private int mLastIndexReached = 0;
@@ -204,6 +204,7 @@ public class QuestionFragment extends Fragment {
 
     private void getEqualScores(int scoreThirdPlace) {
         mEqualScoreKeys = new ArrayList<String>();
+        mEqualScoresInTopThree = 1; // if we have equal scores, nr3 score == nr4 scores so 1 for sure
 
         for (int i = 0; i < mSortedStrengthKeys.size(); i++) {
             if (mResultArray.get(mSortedStrengthKeys.get(i)) == scoreThirdPlace) {
