@@ -22,12 +22,12 @@
     <string name="textview_result_rename">RESULTAAT</string>
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
-    <string name="must_be_logged_in">You must be logged in</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
+    <string name="must_be_logged_in">Je moet ingelogd zijn</string>
 
     // RESULT PAGE
     <string name="date_and_user">Datum van de test: %1$s\nTester: %2$s</string>
-    <string name="result_explanation" translatable="false">Klik op één van jouw drie codes voor de uitleg!</string>
+    <string name="result_explanation">Klik op één van jouw drie codes voor de uitleg!</string>
 
     // TEST HISTORY PAGE
     <string name="test_history_top_codes">Jouw Top 3 Codes</string>
@@ -57,25 +57,25 @@
     //QUESTION DIALOG
     <string name="question_dialog_title">DOE DE TEST</string>
     <string name="question_dialog_button_take_test">Doe de test voor jezelf</string>
-    <string name="question_dialog_enter_code" translatable="false">Vul hieronder de code in die je hebt ontvangen</string>
+    <string name="question_dialog_enter_code">Vul hieronder de code in die je hebt ontvangen</string>
     <string name="question_dialog_button_test_for_another">Doe de test voor een vriend</string>
     <string name="question_dialog_button_test_for_another_start">Start de test</string>
-    <string name="question_dialog_text_log_in" translatable="false">Log in als je de test voor een ander wilt maken</string>
+    <string name="question_dialog_text_log_in">Log in als je de test voor een ander wilt maken</string>
 
 
     //INVITE OTHERS DIALOG
-    <string name="invite_dialog_title" translatable="false">NODIG IEMAND UIT OM DE TEST VOOR JOU TE MAKEN</string>
-    <string name="invite_dialog_invite_enter_email" translatable="false">Voer het emailadres in van de persoon die je wil uitnodigen</string>
+    <string name="invite_dialog_title">NODIG IEMAND UIT OM DE TEST VOOR JOU TE MAKEN</string>
+    <string name="invite_dialog_invite_enter_email">Voer het emailadres in van de persoon die je wil uitnodigen</string>
     <string name="invite_dialog_invite_button">Stuur uitnoding via email</string>
     <string name="invite_dialog_invite_button_send">Stuur uitnoding</string>
     <string name="invite_dialog_copy_button">Deel jouw key</string>
-    <string name="invite_dialog_key_is_copied" translatable="false">Verstuur nu de key met welke app je maar wilt!</string>
-    <string name="invite_dialog_copy_key" translatable="false">en stuur bericht via WhatsApp, of Messenger etc.</string>
-    <string name="invite_text" translatable="false">"Hallo! \n\n Ik wil je uitnodigen de HappyCode test voor mij te maken. \n\n Als je de HappyCode app hebt gedownload van de Google Play store, dan kun je de code hieronder gebruiken om de test voor mij te maken. \n\n Code: \n\n %1$s \n\n\n Dankjewel!"</string>
+    <string name="invite_dialog_key_is_copied">Verstuur nu de key met welke app je maar wilt!</string>
+    <string name="invite_dialog_copy_key">en stuur bericht via WhatsApp, of Messenger etc.</string>
+    <string name="invite_text">"Hallo! \n\n Ik wil je uitnodigen de HappyCode test voor mij te maken. \n\n Als je de HappyCode app hebt gedownload van de Google Play store, dan kun je de code hieronder gebruiken om de test voor mij te maken. \n\n Code: \n\n %1$s \n\n\n Dankjewel!"</string>
 
     // ABOUT PAGE
     <string name="title_about">Over cloud9</string>
-    <string name="text_about_main" translatable="false">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
+    <string name="text_about_main">Wij zijn Cloud 9. Waar anderen veilig laag blijven, vliegen wij hoog. Naar de top en daar voorbij. Afwachten is niet voor ons, we leven maar één keer. Ons geheim is de HappyCode. Die geeft ons vleugels. Een code die laat zien waar wij goed in zijn. Waar we energie van krijgen. Ontcijferen gaat via deze test. Weet waar je aan begint. Je leven zal nooit meer hetzelfde zijn.</string>
     <string name="text_about_closing_line">Cloud 9 is een initiatief van NJR.</string>
     <string name="njr_link"><a href="http://www.njr.nl">NJR Website</a></string>
     <string name="cloud9_link"><a href="http://www.cloud9.world">Cloud9 Website</a></string>
@@ -83,43 +83,43 @@
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leider</string>
     <string name="strength_leader">In een groep neem ik vaak de belissingen, want ik weet waar ik naar toe wil</string>
-    <string name="strength_leader_description" translatable="false">Jij bent zelfverzekerd. Je kunt goed de leiding nemen. Zo geef je anderen duidelijkheid.</string>
+    <string name="strength_leader_description">Jij bent zelfverzekerd. Je kunt goed de leiding nemen. Zo geef je anderen duidelijkheid.</string>
 
     <string name="strength_storyteller_title">Verteller</string>
     <string name="strength_storyteller">Ik geniet ervan om te vertellen</string>
-    <string name="strength_storyteller_description" translatable="false">Jij bent gevat.  Je kunt pakkende verhalen vertellen.  Zo gaan anderen in je ideeën geloven.</string>
+    <string name="strength_storyteller_description">Jij bent gevat.  Je kunt pakkende verhalen vertellen.  Zo gaan anderen in je ideeën geloven.</string>
 
-    <string name="strength_challenger_title" translatable="false">Uitdager</string>
+    <string name="strength_challenger_title">Uitdager</string>
     <string name="strength_challenger">Ik wil heel graag winnen</string>
-    <string name="strength_challenger_description" translatable="false">Jij bent fanatiek.  Je kunt helemaal voor de winst gaan.  Zo daag je anderen uit om zichzelf te overtreffen.</string>
+    <string name="strength_challenger_description">Jij bent fanatiek.  Je kunt helemaal voor de winst gaan.  Zo daag je anderen uit om zichzelf te overtreffen.</string>
 
     <string name="strength_networker_title">Netwerker</string>
     <string name="strength_networker">Ik leg makkelijk contact, het is leuk om nieuwe mensen te leren kennen</string>
-    <string name="strength_networker_description" translatable="false">Jij bent charmant.  Je kunt mensen voor je winnen.  Zo zorg je dat anderen graag iets voor je doen.</string>
+    <string name="strength_networker_description">Jij bent charmant.  Je kunt mensen voor je winnen.  Zo zorg je dat anderen graag iets voor je doen.</string>
 
-    <string name="strength_moodmaker_title" translatable="false">Gangmaker</string>
+    <string name="strength_moodmaker_title">Gangmaker</string>
     <string name="strength_moodmaker">Ik wil niet te lang nadenken, maar ideeën meteen uitvoeren</string>
-    <string name="strength_moodmaker_description" translatable="false">Jij bent ondernemend. Je kunt er helemaal voor gaan.  Zo breng je anderen in beweging. </string>
+    <string name="strength_moodmaker_description">Jij bent ondernemend. Je kunt er helemaal voor gaan.  Zo breng je anderen in beweging. </string>
 
     <string name="strength_organiser_title">Organisator</string>
     <string name="strength_organiser">Ik kan goed organiseren en zie al voor me hoe het kan worden</string>
-    <string name="strength_organiser_description" translatable="false">Jij bent in control. Je kunt alles overzien en coördineren.  Zo zorg je dat anderen weten wat hun rol is.</string>
+    <string name="strength_organiser_description">Jij bent in control. Je kunt alles overzien en coördineren.  Zo zorg je dat anderen weten wat hun rol is.</string>
 
-    <string name="strength_guardian_title" translatable="false">Bewaker</string>
+    <string name="strength_guardian_title">Bewaker</string>
     <string name="strength_guardian">Ik denk goed na over voor- en nadelen voordat ik beslis</string>
-    <string name="strength_guardian_description" translatable="false">Jij bent verstandig.  Je kunt risico’s en kansen inschatten.  Zo help je anderen om goede keuzes te maken.</string>
+    <string name="strength_guardian_description">Jij bent verstandig.  Je kunt risico’s en kansen inschatten.  Zo help je anderen om goede keuzes te maken.</string>
 
     <string name="strength_planner_title">Planner</string>
     <string name="strength_planner">Als ik iets moet doen, dan bereid ik het goed voor</string>
-    <string name="strength_planner_description" translatable="false">Jij bent geordend.  Je kunt voorzien welke dingen wanneer moeten gebeuren.  Zo geef je anderen houvast.</string>
+    <string name="strength_planner_description">Jij bent geordend.  Je kunt voorzien welke dingen wanneer moeten gebeuren.  Zo geef je anderen houvast.</string>
 
-    <string name="strength_hardworker_title" translatable="false">Aanpakker</string>
+    <string name="strength_hardworker_title">Aanpakker</string>
     <string name="strength_hardworker">Ik vind het heerlijk om bezig te zijn, van niets doen word ik onrustig</string>
-    <string name="strength_hardworker_description" translatable="false">Jij bent energiek.  Je kunt veel aan en geeft niet op.  Zo geef je anderen vertrouwen dat het gaat lukken.</string>
+    <string name="strength_hardworker_description">Jij bent energiek.  Je kunt veel aan en geeft niet op.  Zo geef je anderen vertrouwen dat het gaat lukken.</string>
 
     <string name="strength_administrator_title">Beheerder</string>
     <string name="strength_administrator">Ik doe de dingen die nodig zijn, mensen kunnen op me rekenen</string>
-    <string name="strength_administrator_description" translatable="false">Jij bent verantwoordelijk.  Je kunt zien wat nodig is en zorgt dat het gebeurt.  Zo weten anderen dat het nooit mis kan gaan.</string>
+    <string name="strength_administrator_description">Jij bent verantwoordelijk.  Je kunt zien wat nodig is en zorgt dat het gebeurt.  Zo weten anderen dat het nooit mis kan gaan.</string>
 
     <string name="strength_motivator_title">Motivator</string>
     <string name="strength_motivator">Ik zie waar mensen goed in zijn en vind het leuk om ze aan te moedigen</string>
@@ -127,38 +127,39 @@
 
     <string name="strength_connector_title">Verbinder</string>
     <string name="strength_connector">Ik voel mij verbonden met anderen en geloof dat alles met elkaar te maken heeft</string>
-    <string name="strength_connector_description" translatable="false">Jij bent open. Je kunt zien wat mensen met elkaar gemeen hebben.  Zo help je anderen om overeenkomsten te zien.</string>
+    <string name="strength_connector_description">Jij bent open. Je kunt zien wat mensen met elkaar gemeen hebben.  Zo help je anderen om overeenkomsten te zien.</string>
 
     <string name="strength_unifier_title">Vereniger</string>
     <string name="strength_unifier">Ik vind het belangrijk dat iedereen mee kan doen</string>
-    <string name="strength_unifier_description" translatable="false">Jij bent harmonieus.  Je kunt mensen accepteren zoals ze zijn.  Zo voelen ze zich betrokken bij de groep.</string>
+    <string name="strength_unifier_description">Jij bent harmonieus.  Je kunt mensen accepteren zoals ze zijn.  Zo voelen ze zich betrokken bij de groep.</string>
 
     <string name="strength_inspirer_title">Inspirator</string>
-    <string name="strength_inspirer" translatable="false">Ik ben enthousiast en dat straal ik vaak uit</string>
-    <string name="strength_inspirer_description" translatable="false">Jij bent enthousiast.  Je kunt de positieve kanten zien.  Zo krijgen anderen er zin in.</string>
+    <string name="strength_inspirer">Ik ben enthousiast en dat straal ik vaak uit</string>
+    <string name="strength_inspirer_description">Jij bent enthousiast.  Je kunt de positieve kanten zien.  Zo krijgen anderen er zin in.</string>
 
-    <string name="strength_feeler_title" translatable="false">Aanvoeler</string>
+    <string name="strength_feeler_title">Aanvoeler</string>
     <string name="strength_feeler">Ik voel meestal precies wat anderen voelen.</string>
-    <string name="strength_feeler_description" translatable="false">Jij bent vriendelijk.  Je kunt je goed inleven in mensen. Zo voelen anderen zich begrepen.</string>
+    <string name="strength_feeler_description">Jij bent vriendelijk.  Je kunt je goed inleven in mensen. Zo voelen anderen zich begrepen.</string>
 
     <string name="strength_strategist_title">Strateeg</string>
-    <string name="strength_strategist" translatable="false">Ik overzie wat gevolgen van iets zijn en hoe je daar rekening mee kan houden</string>
-    <string name="strength_strategist_description" translatable="false">Jij bent scherp. Je kunt bedenken hoe een doel het beste bereikt wordt.  Zo help je anderen aan een slimme aanpak.</string>
+    <string name="strength_strategist">Ik overzie wat gevolgen van iets zijn en hoe je daar rekening mee kan houden</string>
+    <string name="strength_strategist_description">Jij bent scherp. Je kunt bedenken hoe een doel het beste bereikt wordt.  Zo help je anderen aan een slimme aanpak.</string>
 
     <string name="strength_visionary_title">Visionair</string>
     <string name="strength_visionary">Ik vind de toekomst fascinerend en stel me voor hoe het zal zijn</string>
-    <string name="strength_visionary_description" translatable="false">Jij bent bevlogen. Jij kunt je voorstellen hoe de toekomst er uit ziet. Zo geef je anderen iets om naar toe te werken.</string>
+    <string name="strength_visionary_description">Jij bent bevlogen. Jij kunt je voorstellen hoe de toekomst er uit ziet. Zo geef je anderen iets om naar toe te werken.</string>
 
-    <string name="strength_pathfinder_title" translatable="false">Verkenner</string>
+    <string name="strength_pathfinder_title">Verkenner</string>
     <string name="strength_pathfinder">Ik leer graag nieuwe dingen en wil er dan ook veel over weten</string>
-    <string name="strength_pathfinder_description" translatable="false">Jij bent nieuwsgierig.  Je kunt oneindig veel informatie verzamelen.  Zo help je anderen aan nuttige kennis.</string>
+    <string name="strength_pathfinder_description">Jij bent nieuwsgierig.  Je kunt oneindig veel informatie verzamelen.  Zo help je anderen aan nuttige kennis.</string>
 
     <string name="strength_researcher_title">Onderzoeker</string>
     <string name="strength_researcher">Ik wil precies begrijpen hoe dingen zitten</string>
-    <string name="strength_researcher_description" translatable="false">Jij bent leergierig. Je kunt je ergens in verdiepen en het dan begrijpen.  Zo geef je anderen inzicht.</string>
+    <string name="strength_researcher_description">Jij bent leergierig. Je kunt je ergens in verdiepen en het dan begrijpen.  Zo geef je anderen inzicht.</string>
 
     <string name="strength_thinker_title">Bedenker</string>
     <string name="strength_thinker">Ik vind het geweldig om nieuwe ideeën te bedenken</string>
-    <string name="strength_thinker_description" translatable="false">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+    <string name="strength_thinker_description">Jij bent creatief. Je kunt altijd weer iets nieuws bedenken.  Zo laat je anderen verrassende mogelijkheden zien.</string>
+
 
 </resources>
