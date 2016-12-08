@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imageview_question"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:clickable="false"
