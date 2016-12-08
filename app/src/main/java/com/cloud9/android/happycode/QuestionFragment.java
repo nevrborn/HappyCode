@@ -133,6 +133,7 @@ public class QuestionFragment extends Fragment {
                     mTestResult.setResultArray(mResultArray);
                     String tempID = "questionID";
                     mTestResult.setUser(mUserID);
+                    mTestResult.setWrittenToFirebase(false);
                     Log.i(TAG, "Test is set for:" + mUserID);
                     mTestResultList.addTestresult(mTestResult, tempID);
 

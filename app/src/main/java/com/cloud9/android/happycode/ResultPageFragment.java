@@ -1,6 +1,8 @@
 package com.cloud9.android.happycode;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,9 +44,7 @@ public class ResultPageFragment extends Fragment {
     private TestResult mTestResult;
     private Map<String, Integer> mResultArray = new HashMap<>();
     private StrengthList mStrengths;
-    private Boolean hasWrittenToFirebase = false;
     private static Boolean mIsFromQuestionPage = false;
-    private Boolean mIsComingFromResultPage = false;
     private TestResultList mTestResultList;
     public static String mTestResultKey;
     private Callbacks mCallbacks;
@@ -97,10 +97,8 @@ public class ResultPageFragment extends Fragment {
         // If the intent is coming from QuestionPage, then look up
         if (mIsFromQuestionPage == true) {
             mTestResult = TestResultList.getTestResult("questionID");
-            mIsComingFromResultPage = false;
         } else if (mIsFromQuestionPage == false) {
             mTestResult = TestResultList.getTestResult(mID);
-            mIsComingFromResultPage = true;
         }
 
         mResultArray = mTestResult.getResultArray();
@@ -121,8 +119,6 @@ public class ResultPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
-
-        hasWrittenToFirebase = false;
 
         // set the references
         mResultIcon1 = (ImageView) view.findViewById(R.id.imageview_result_one);
@@ -160,7 +156,6 @@ public class ResultPageFragment extends Fragment {
         // save the test result to the firebase
         if (mTestResult.getWrittenToFirebase() == false && User.get() != null) {
             writeToFirebase(mTestResult);
-            hasWrittenToFirebase = true;
         }
 
 
@@ -197,9 +192,8 @@ public class ResultPageFragment extends Fragment {
             public void onClick(View view) {
 
                 // save the test result to the firebase
-                if (mTestResult.getWrittenToFirebase() == false && hasWrittenToFirebase == false && User.get() != null && mIsComingFromResultPage == false) {
+                if (mTestResult.getWrittenToFirebase() == false && User.get() != null) {
                     writeToFirebase(mTestResult);
-                    hasWrittenToFirebase = true;
                 } else {
                     mTestResult.setDate(System.currentTimeMillis() / 1000L);
                     mTestResult.setTester("");
@@ -233,8 +227,17 @@ public class ResultPageFragment extends Fragment {
         mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                new AlertDialog.Builder(getActivity())
+                        .setView(view)
+                        .setTitle(R.string.delete_test_result)
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(android.R.string.ok, null)
+                        .create();
+
                 deleteFromFirebase();
             }
+
         });
 
         // set the current strenght, if there use the savedInstanceState

@@ -28,6 +28,7 @@
     // RESULT PAGE
     <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
     <string name="result_explanation" translatable="false">Tap the icons to see the different explanations</string>
+    <string name="delete_test_result">Are you sure you want to delete the test result?</string>
 
     // TEST HISTORY PAGE
     <string name="test_history_top_codes">YOUR TOP 3 CODES</string>

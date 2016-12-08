@@ -28,6 +28,7 @@
     // RESULT PAGE
     <string name="date_and_user">Datum van de test: %1$s\nTester: %2$s</string>
     <string name="result_explanation">Klik op één van jouw drie codes voor de uitleg!</string>
+    <string name="delete_test_result">Weet je zeker dat je dit resultaat wilt verwijderen?</string>
 
     // TEST HISTORY PAGE
     <string name="test_history_top_codes">Jouw Top 3 Codes</string>
