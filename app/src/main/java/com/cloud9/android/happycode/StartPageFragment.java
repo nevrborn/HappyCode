@@ -83,10 +83,6 @@ public class StartPageFragment extends Fragment {
         mLogInButton = (Button) view.findViewById(R.id.buttonLogInStartPage);
         mInviteButton = (Button) view.findViewById(R.id.buttonOtherTester);
 
-        if (mUser == null) {
-            mInviteButton.setVisibility(View.GONE);
-        }
-
         // set listeners
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -165,7 +161,6 @@ public class StartPageFragment extends Fragment {
                     User.signOut();
                     Toast.makeText(getActivity(), R.string.sign_out_succesfull, Toast.LENGTH_SHORT).show();
                     updateLogInButton();
-                    mInviteButton.setVisibility(View.GONE);
                 } else {
                     Intent i = LogInActivity.newIntent(getActivity());
                     startActivity(i);
@@ -176,7 +171,6 @@ public class StartPageFragment extends Fragment {
         mInviteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (mUser == null) {
                     Toast.makeText(getActivity(), "You must be logged in to do this", Toast.LENGTH_SHORT).show();
                 } else {
@@ -204,13 +198,12 @@ public class StartPageFragment extends Fragment {
     }
 
     private void userIsLoggedIn() {
-        User user = User.get();
-        if (user != null) {
-            mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
+        mUser = User.get();
+        if (mUser != null) {
+            mDatabaseRef = FirebaseDatabase.getInstance().getReference(mUser.getUid());
             writeExcitingTestsToFirebase();
             getDataFromFirebase();
             getUserIDsFromFB();
-            mInviteButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -226,10 +219,8 @@ public class StartPageFragment extends Fragment {
         mUser = User.get();
         if (mUser != null) {
             mLogInButton.setText(R.string.button_sign_out);
-            mInviteButton.setVisibility(View.VISIBLE);
         } else {
             mLogInButton.setText(R.string.button_sign_in);
-            mInviteButton.setVisibility(View.GONE);
         }
     }
 
