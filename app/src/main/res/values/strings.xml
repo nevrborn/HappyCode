@@ -22,7 +22,7 @@
     <string name="result_title">JOUW HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, je hebt nog geen historie.</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
-    <string name="must_be_logged_in">Je moet ingelogd zijn</string>
+    <string name="must_be_logged_in">Hier moet je voor ingelogd zijn</string>
     <string name="logged_in_on_start">"Je bent ingelogd: "</string>
 
     // RESULT PAGE

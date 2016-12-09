@@ -91,27 +91,25 @@
 
     <Button
         android:id="@+id/buttonLogInStartPage"
-        android:layout_width="90dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Test LogIn"
+        android:text="@string/button_sign_in"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@color/colorHappyCode"
-        android:textColor="@android:color/black"
+        style="@style/Buttons"
         />
 
     <Button
         android:id="@+id/buttonOtherTester"
-        android:layout_width="90dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="@string/button_invite"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:padding="8dp"
-        android:background="@color/colorHappyCode"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"/>
+        style="@style/Buttons"
+        />
 
 </RelativeLayout>
 
