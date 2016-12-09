@@ -97,7 +97,7 @@
         android:text="Test LogIn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:backgroundTint="@color/colorHappyCode"
+        android:background="@color/colorHappyCode"
         android:textColor="@android:color/black"
         />
 
@@ -109,7 +109,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:padding="8dp"
-        android:backgroundTint="@color/colorHappyCode"
+        android:background="@color/colorHappyCode"
         android:textColor="@android:color/black"
         android:textSize="14sp"/>
 

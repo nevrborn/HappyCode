@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     @LayoutRes
-    protected int getLayoutResId() {
+    int getLayoutResId() {
         return R.layout.activity_fragment;
     }
 

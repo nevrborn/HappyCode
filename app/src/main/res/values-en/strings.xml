@@ -19,7 +19,6 @@
     <string name="button_sign_in">Log in</string>
     <string name="button_sign_out">Log out</string>
     <string name="button_invite">INVITE</string>
-    <string name="textview_result_rename">RESULT</string>
     <string name="result_title">YOUR HAPPYCODE</string>
     <string name="history_not_availabe">Sorry, you do not have a history yet</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
@@ -27,7 +26,7 @@
 
     // RESULT PAGE
     <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
-    <string name="result_explanation" translatable="false">Tap the icons to see the different explanations</string>
+    <string name="result_explanation">Tap the icons to see the different explanations</string>
     <string name="delete_test_result">Are you sure you want to delete the test result?</string>
 
     // TEST HISTORY PAGE
@@ -40,7 +39,6 @@
     <string name="sign_in_succesfull">You are logged in!</string>
     <string name="sign_out_succesfull">You are logged out!</string>
     <string name="question_progress_count">%1$d/20</string>
-    <string name="question_progress">1</string>
 
     // SHARE DIALOG
     <string name="button_share">Share</string>
@@ -90,7 +88,7 @@
 
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leader</string>
-    <string name="strength_leader">In a group, I often take the descisions, because I know where I want to go</string>
+    <string name="strength_leader">In a group, I often take the decisions, because I know where I want to go</string>
     <string name="strength_leader_description">You are confident. You are good at taking charge. That is how you make things clear for others.</string>
 
     <string name="strength_storyteller_title">Storyteller</string>
@@ -99,7 +97,7 @@
 
     <string name="strength_challenger_title">Challenger</string>
     <string name="strength_challenger">I really like to win</string>
-    <string name="strength_challenger_description">You are a fanatic. You do everything to win. That is how you challenge others to excell.</string>
+    <string name="strength_challenger_description">You are a fanatic. You do everything to win. That is how you challenge others to excel.</string>
 
     <string name="strength_networker_title">Networker</string>
     <string name="strength_networker">I easily make contact with people. I really like to get to know new people.</string>
@@ -107,7 +105,7 @@
 
     <string name="strength_moodmaker_title">Pacesetter</string>
     <string name="strength_moodmaker">I do not like to think too long, but immediately implement ideas</string>
-    <string name="strength_moodmaker_description" translatable="false">You are undertaking. You can go full power for something. That is how you inspire others to get moving.</string>
+    <string name="strength_moodmaker_description">You are undertaking. You can go full power for something. That is how you inspire others to get moving.</string>
 
     <string name="strength_organiser_title">Organizer</string>
     <string name="strength_organiser">I am good at organizing and see clearly how things could work out</string>
@@ -142,7 +140,7 @@
     <string name="strength_unifier_description">You are harmonieus. You accept people the way they are. That is how you make people feel part of the group.</string>
 
     <string name="strength_inspirer_title">Inspirator</string>
-    <string name="strength_inspirer" translatable="false">I am eager and I often radiate positivity</string>
+    <string name="strength_inspirer">I am eager and I often radiate positivity</string>
     <string name="strength_inspirer_description">You are enthousiastic. You see the positive sides. That is how you make others get in the mood too.</string>
 
     <string name="strength_feeler_title">Feeler</string>

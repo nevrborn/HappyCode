@@ -33,22 +33,20 @@ public class StartPageFragment extends Fragment {
     private static final String DIALOG_INVITE = "dialog_invite";
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
 
-    Button mStartButton;
-    Button mAboutButton;
-    Button mTestHistoryButton;
-    Button mAllCodes;
-    Button mLogInButton;
-    Button mInviteButton;
+    private Button mStartButton;
+    private Button mAboutButton;
+    private Button mTestHistoryButton;
+    private Button mAllCodes;
+    private Button mLogInButton;
+    private Button mInviteButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     private TestResultList mTestResultList;
-    private static StrengthList mStrengthList;
     public static Map<String, String> userKeyAndNameArray = new HashMap<>();
 
-    User mUser;
-    private DatabaseReference mDatabaseRef;
+    private User mUser;
 
     /*
     * create new instance
@@ -63,7 +61,7 @@ public class StartPageFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mTestResultList = TestResultList.get(getContext());
-        mStrengthList = StrengthList.get(getContext());
+        StrengthList strengthList = StrengthList.get(getContext());
 
     }
 
@@ -201,7 +199,7 @@ public class StartPageFragment extends Fragment {
         mAllCodes.setBackgroundResource(R.drawable.button_start);
 
         if (user != null) {
-            mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
+            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
             writeExcitingTestsToFirebase();
             getDataFromFirebase();
             getUserIDsFromFB();
@@ -273,7 +271,7 @@ public class StartPageFragment extends Fragment {
 
                 TestResult testresult = mTestResultList.getTestResultFromIndex(i);
 
-                if (testresult.getWrittenToFirebase() == false) {
+                if (!testresult.getWrittenToFirebase()) {
                     writeToFirebase(testresult);
                 }
 

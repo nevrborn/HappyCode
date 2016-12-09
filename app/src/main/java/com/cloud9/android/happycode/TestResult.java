@@ -46,10 +46,6 @@ public class TestResult {
         this.mNo3StrengthKey = no3StrengthKey;
     }
 
-    public void deleteResult() {
-        mTestResult = null;
-    }
-
     public String getNo1StrengthKey() {
         return mNo1StrengthKey;
     }
@@ -90,8 +86,7 @@ public class TestResult {
     public String getDateAndTime(long date) {
         long tempDate = date * 1000L;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        String currentDateTime = dateFormat.format(tempDate);
-        return currentDateTime;
+        return dateFormat.format(tempDate);
     }
 
     public String getTester() {

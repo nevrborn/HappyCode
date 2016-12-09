@@ -16,13 +16,12 @@ public class StrengthList {
 
     public static StrengthList get(Context context) {
         if (sStrengthList == null) {
-            sStrengthList = new StrengthList(context);
+            sStrengthList = new StrengthList();
         }
         return sStrengthList;
     }
 
-    private StrengthList(Context context) {
-        Context context1 = context.getApplicationContext();
+    private StrengthList() {
         mStrengthList = new ArrayList<>();
 
         addStrength(new Strength("100", R.string.strength_leader_title, R.string.strength_leader, R.string.strength_leader_description, R.drawable.strength_leader, R.drawable.icon_leader));

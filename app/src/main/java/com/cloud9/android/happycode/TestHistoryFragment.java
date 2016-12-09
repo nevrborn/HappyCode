@@ -1,7 +1,6 @@
 package com.cloud9.android.happycode;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -163,7 +162,7 @@ public class TestHistoryFragment extends Fragment {
         arrayOfTotalResults.clear();
         int sizeOfArray = testResultList.getSize();
         int i = 0;
-        int totalPercentage = 0;
+        int totalPercentage;
         ArrayList<String> listOfAllCodes = StrengthList.getAllKeys();
 
 
@@ -237,7 +236,6 @@ public class TestHistoryFragment extends Fragment {
     */
     public static class TestResultHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TestResult mTestResult;
         private ImageView mStrenghtIcon1;
         private ImageView mStrenghtIcon2;
         private ImageView mStrenghtIcon3;
@@ -259,9 +257,6 @@ public class TestHistoryFragment extends Fragment {
             ResultPageFragment.mTestResultKey = mTestResultKey;
         }
 
-        public void setResult(TestResult result) {
-            mTestResult = result;
-        }
 
     }
 

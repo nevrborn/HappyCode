@@ -82,7 +82,7 @@ public class EqualScoreFragment extends Fragment {
         Collections.shuffle(mEqualScoreKeys);
 
         TextView topTextView = (TextView) view.findViewById(R.id.textview_equal_score_top);
-        Integer i = new Integer(mEqualScoresInTopThree);
+        Integer i = mEqualScoresInTopThree;
         topTextView.setText(getString(R.string.top_equal_score_text_view, i.toString()));
         mFinishButton = (Button) view.findViewById(R.id.button_equal_score_finish);
         if (mCheckedBoxes != mEqualScoresInTopThree) {

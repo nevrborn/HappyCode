@@ -48,9 +48,8 @@ public class CodeFragment extends Fragment {
     private class CodeAdapter extends BaseAdapter {
 
         public CodeAdapter(Context codeFragment, StrengthList strengths) {
-            Context context = codeFragment;
             mStrengths = strengths;
-            mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mInflater = (LayoutInflater) codeFragment.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
         @Override

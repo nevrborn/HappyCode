@@ -58,7 +58,7 @@ public class ShareDialogFragment extends DialogFragment {
                 if (i.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(i);
                 } else {
-                    Toast.makeText(getActivity(), R.string.share_no_mail_app, Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity(), R.string.share_no_mail_app, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -76,7 +76,6 @@ public class ShareDialogFragment extends DialogFragment {
         String strength2 = getArguments().getString(ResultPageFragment.ARG_STRENGTH2);
         String strength3 = getArguments().getString(ResultPageFragment.ARG_STRENGTH3);
 
-        String result = getString(R.string.share_text_short, strength1, strength2, strength3);
-        return result;
+        return getString(R.string.share_text_short, strength1, strength2, strength3);
     }
 }

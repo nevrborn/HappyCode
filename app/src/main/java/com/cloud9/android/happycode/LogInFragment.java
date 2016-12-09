@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,8 +50,7 @@ public class LogInFragment extends Fragment {
      * this fragment using the provided parameters.
      */
     public static LogInFragment newInstance() {
-        LogInFragment fragment = new LogInFragment();
-        return fragment;
+        return new LogInFragment();
     }
 
 
@@ -122,7 +120,7 @@ public class LogInFragment extends Fragment {
                     });
 
                 } else {
-                    Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -142,7 +140,7 @@ public class LogInFragment extends Fragment {
                     logInDialogUserName.show(fragmentManager, DIALOG_USER_NAME);
 
                 } else {
-                    Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity(), R.string.auth_not_all_fields_filled, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -160,11 +158,6 @@ public class LogInFragment extends Fragment {
 
     private boolean fieldsAreFilled() {
         return !String.valueOf(mMailField.getText()).equals("") && !String.valueOf(mPasswordField.getText()).equals("");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
     }
 
 

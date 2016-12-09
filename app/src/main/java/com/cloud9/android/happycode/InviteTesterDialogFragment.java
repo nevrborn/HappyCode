@@ -27,7 +27,6 @@ public class InviteTesterDialogFragment extends DialogFragment {
     private Button mCopyKey;
     private EditText mEditText;
     private TextView mEmailText;
-    private TextView mCopyText;
 
     private User mUser;
     private Boolean wantsToSendEmail = false;
@@ -44,7 +43,7 @@ public class InviteTesterDialogFragment extends DialogFragment {
         mCopyKey = (Button) v.findViewById(R.id.button_copy_key);
         mEditText = (EditText) v.findViewById(R.id.editText_invite_dialog);
         mEmailText = (TextView) v.findViewById(R.id.textview_invite_text_description);
-        mCopyText = (TextView) v.findViewById(R.id.textview_copy_key);
+        TextView copyText = (TextView) v.findViewById(R.id.textview_copy_key);
 
         mEmailText.setVisibility(View.GONE);
         mEditText.setVisibility(View.GONE);
@@ -71,7 +70,7 @@ public class InviteTesterDialogFragment extends DialogFragment {
                     mEditText.setVisibility(View.VISIBLE);
                     mInviteTester.setText(R.string.invite_dialog_invite_button_send);
                     wantsToSendEmail = true;
-                } else if (wantsToSendEmail) {
+                } else {
                     String[] mailRecipient = new String[1];
                     mailRecipient[0] = mEditText.getText().toString();
                     Intent i = new Intent(Intent.ACTION_SENDTO);

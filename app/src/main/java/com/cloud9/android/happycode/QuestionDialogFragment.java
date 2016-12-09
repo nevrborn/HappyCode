@@ -26,7 +26,6 @@ public class QuestionDialogFragment extends DialogFragment {
     private Button mTakeTestYourselfButton;
     private Button mTakeTestForOthersButton;
     private EditText mEditText;
-    private TextView mORText;
     private TextView mEnterCodeText;
 
     private Boolean wantsToEnterCode = true;
@@ -49,7 +48,7 @@ public class QuestionDialogFragment extends DialogFragment {
         mTakeTestYourselfButton = (Button) v.findViewById(R.id.button_take_test_for_me);
         mTakeTestForOthersButton = (Button) v.findViewById(R.id.button_take_test_for_another);
         mEditText = (EditText) v.findViewById(R.id.editText_question_dialog);
-        mORText = (TextView) v.findViewById(R.id.textview_OR_text);
+        TextView ORText = (TextView) v.findViewById(R.id.textview_OR_text);
         mEnterCodeText = (TextView) v.findViewById(R.id.textview_question_text_description);
 
 
@@ -57,7 +56,7 @@ public class QuestionDialogFragment extends DialogFragment {
             mEnterCodeText.setText(R.string.question_dialog_text_log_in);
             mEditText.setVisibility(View.GONE);
             mTakeTestForOthersButton.setVisibility(View.GONE);
-        } else if (mUser != null) {
+        } else {
             mEnterCodeText.setVisibility(View.GONE);
             mEditText.setVisibility(View.GONE);
             mTakeTestForOthersButton.setVisibility(View.VISIBLE);
@@ -128,20 +127,6 @@ public class QuestionDialogFragment extends DialogFragment {
             i += 1;
         }
         return false;
-    }
-
-    public static String getNameFromKey(String userID) {
-        int i = 0;
-        String name = "";
-
-        while (i < userKeyAndNameArray.size()) {
-
-            if (userKeyAndNameArray.containsKey(userID)) {
-                name = userKeyAndNameArray.get(userID);
-            }
-            i += 1;
-        }
-        return name;
     }
 
 }
