@@ -86,6 +86,10 @@
     <string name="njr_link"><a href="http://www.njr.nl">NJR Website</a></string>
     <string name="cloud9_link"><a href="http://www.cloud9.world">Cloud9 Website</a></string>
 
+    // RESULT PAGE TABLET
+    <string name="strength_percentage_50">50</string>
+    <string name="percentage_sign">&#37;</string>
+
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leider</string>
     <string name="strength_leader">In een groep neem ik vaak de belissingen, want ik weet waar ik naar toe wil</string>
@@ -129,7 +133,7 @@
 
     <string name="strength_motivator_title">Motivator</string>
     <string name="strength_motivator">Ik zie waar mensen goed in zijn en vind het leuk om ze aan te moedigen</string>
-    <string name="strength_motivator_description" translatable="false">Jij bent betrokken.  Je kunt zorgen dat mensen het beste uit zichzelf halen.  Zo krijgen ze zelfvertrouwen.</string>
+    <string name="strength_motivator_description">Jij bent betrokken.  Je kunt zorgen dat mensen het beste uit zichzelf halen.  Zo krijgen ze zelfvertrouwen.</string>
 
     <string name="strength_connector_title">Verbinder</string>
     <string name="strength_connector">Ik voel mij verbonden met anderen en geloof dat alles met elkaar te maken heeft</string>

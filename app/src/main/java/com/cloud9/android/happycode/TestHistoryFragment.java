@@ -47,7 +47,7 @@ public class TestHistoryFragment extends Fragment {
 
     private DatabaseReference mUserResultsRef;
 
-    public static Callbacks mCallbacks;
+    private static Callbacks mCallbacks;
 
     public interface Callbacks {
         void onTestResultSelected(String testresultKey);
@@ -110,8 +110,9 @@ public class TestHistoryFragment extends Fragment {
                     public void onClick(View view) {
                         String key = mTestResultsAdapter.getRef(position).getKey();
                         ResultPageFragment.mTestResultKey = key;
-                        Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is used because in firebase the id is always "QuestionID"
-                        startActivity(i);
+                        mCallbacks.onTestResultSelected(key);
+//                        Intent i = ResultPageActivity.newIntent(getActivity(), key, false); // key is used because in firebase the id is always "QuestionID"
+//                        startActivity(i);
                     }
                 });
             }

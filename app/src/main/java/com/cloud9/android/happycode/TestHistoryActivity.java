@@ -37,13 +37,13 @@ public class TestHistoryActivity extends SingleFragmentActivity implements TestH
             startActivity(intent);
         } else {
             Fragment newDetail = ResultPageFragment.newInstance(testresultKey, false);
+            ResultPageFragment.isTablet = true;
 
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.detail_fragment_container, newDetail)
                     .commit();
         }
     }
-
 
     @Override
     public void onTestResultDeleted() {

@@ -19,7 +19,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(getLayoutResId());
         setContentView(getLayoutResId());
 
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
