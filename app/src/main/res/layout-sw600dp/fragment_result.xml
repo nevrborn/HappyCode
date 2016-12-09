@@ -32,7 +32,7 @@
             android:id="@+id/imageview_result_one"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="64dp"
             android:src="@drawable/ic_android_happy_code_24dp"
             android:contentDescription="image"
             />
@@ -50,7 +50,7 @@
             android:id="@+id/imageview_result_three"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="64dp"
             android:src="@drawable/ic_android_happy_code_24dp"
             android:contentDescription="image"
             />
@@ -63,8 +63,8 @@
         android:layout_width="6dp"
         android:layout_height="40dp"
         android:layout_below="@id/linearlayout_result_images"
-        android:layout_marginLeft="59dp"
-        android:layout_marginRight="59dp"
+        android:layout_marginLeft="91dp"
+        android:layout_marginRight="91dp"
         android:background="@drawable/line_result_page"
         android:contentDescription="image"
         />
