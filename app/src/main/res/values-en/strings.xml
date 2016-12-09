@@ -24,6 +24,7 @@
     <string name="history_not_availabe">Sorry, you do not have a history yet</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis sit amet nisi nec posuere</string>
     <string name="must_be_logged_in">You must be logged in</string>
+    <string name="logged_in_on_start">"You are logged in: "</string>
 
     // RESULT PAGE
     <string name="date_and_user">Date of test: %1$s\nTester: %2$s</string>
@@ -164,6 +165,5 @@
     <string name="strength_thinker_title">Thinker</string>
     <string name="strength_thinker">I think it is great to come up with new ideas</string>
     <string name="strength_thinker_description">You are creative. You can always come up with something new. That is how you show others surprising possibillitis.</string>
-
 
 </resources>

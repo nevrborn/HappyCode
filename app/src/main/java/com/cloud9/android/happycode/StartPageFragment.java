@@ -95,7 +95,8 @@ public class StartPageFragment extends Fragment {
                 if (user != null) {
                     // User is signed in
                     User.set();
-                    Toast.makeText(getActivity(), "" + user.getUid(), Toast.LENGTH_SHORT).show();
+                    userIsLoggedIn();
+                    Toast.makeText(getActivity(), getString(R.string.logged_in_on_start) + user.getEmail(), Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -193,13 +194,17 @@ public class StartPageFragment extends Fragment {
     public void onResume() {
         super.onResume();
         updateLogInButton();
-        User user = User.get();
 
         mStartButton.setBackgroundResource(R.drawable.button_start);
         mAboutButton.setBackgroundResource(R.drawable.button_start);
         mTestHistoryButton.setBackgroundResource(R.drawable.button_start);
         mAllCodes.setBackgroundResource(R.drawable.button_start);
 
+        userIsLoggedIn();
+    }
+
+    private void userIsLoggedIn() {
+        User user = User.get();
         if (user != null) {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
             writeExcitingTestsToFirebase();

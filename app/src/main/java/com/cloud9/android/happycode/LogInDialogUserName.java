@@ -48,20 +48,6 @@ public class LogInDialogUserName extends DialogFragment {
 
         // Fire up Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
-        FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
 
         // set the references
         mCreateUser = (Button) v.findViewById(R.id.button_make_new_user);
