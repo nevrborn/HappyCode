@@ -18,18 +18,14 @@ import android.widget.Toast;
 
 public class ShareDialogFragment extends DialogFragment {
 
-    private Button mShareMail;
-    private Button mShareWithAny;
-
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_fragment_share, null);
 
         // set the references
-        mShareWithAny = (Button) v.findViewById(R.id.button_share_with_any);
-        mShareMail = (Button) v.findViewById(R.id.button_share_mail);
+        Button mShareWithAny = (Button) v.findViewById(R.id.button_share_with_any);
+        Button mShareMail = (Button) v.findViewById(R.id.button_share_mail);
 
         // set the listeners
         mShareWithAny.setOnClickListener(new View.OnClickListener() {

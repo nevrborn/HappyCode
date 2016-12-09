@@ -31,7 +31,7 @@ public class TestHistoryFragment extends Fragment {
     public RecyclerView mTestRecyclerView;
     public FirebaseRecyclerAdapter mTestResultsAdapter;
     private TestResultList mTestResultList;
-    private StrengthList mStrengths = StrengthList.get(getContext());
+    private final StrengthList mStrengths = StrengthList.get(getContext());
     public static Map<String, Integer> arrayOfTotalResults = new HashMap<>();
     public static ArrayList<String> mTotalTop3StrengthKeys = new ArrayList<>();
 

@@ -23,7 +23,6 @@ public class QuestionDialogFragment extends DialogFragment {
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
     private static final String USER_NAME_FROM_TESTER = "user_name_from_tester";
 
-    private Button mTakeTestYourselfButton;
     private Button mTakeTestForOthersButton;
     private EditText mEditText;
     private TextView mEnterCodeText;
@@ -45,7 +44,7 @@ public class QuestionDialogFragment extends DialogFragment {
         userKeyAndNameArray = StartPageFragment.userKeyAndNameArray;
 
         // set the references
-        mTakeTestYourselfButton = (Button) v.findViewById(R.id.button_take_test_for_me);
+        Button takeTestYourselfButton = (Button) v.findViewById(R.id.button_take_test_for_me);
         mTakeTestForOthersButton = (Button) v.findViewById(R.id.button_take_test_for_another);
         mEditText = (EditText) v.findViewById(R.id.editText_question_dialog);
         TextView ORText = (TextView) v.findViewById(R.id.textview_OR_text);
@@ -62,7 +61,7 @@ public class QuestionDialogFragment extends DialogFragment {
             mTakeTestForOthersButton.setVisibility(View.VISIBLE);
         }
 
-        mTakeTestYourselfButton.setOnClickListener(new View.OnClickListener() {
+        takeTestYourselfButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

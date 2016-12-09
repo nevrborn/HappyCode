@@ -12,8 +12,6 @@ public class QuestionActivity extends SingleFragmentActivity {
 
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
 
-    private String tester_id;
-
     /*
     * create Intent to start this activity
     */
@@ -25,7 +23,7 @@ public class QuestionActivity extends SingleFragmentActivity {
     /* Method to create fragment from Activity */
     @Override
     protected Fragment createFragment() {
-        tester_id = (String) getIntent().getExtras().get(USER_ID_FROM_TESTER);
+        String tester_id = (String) getIntent().getExtras().get(USER_ID_FROM_TESTER);
         return QuestionFragment.newInstance(tester_id);
     }
 

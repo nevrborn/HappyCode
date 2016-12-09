@@ -28,7 +28,6 @@ public class LogInDialogUserName extends DialogFragment {
 
     private static final String TAG = "HappyCode.LogInFragment";
 
-    private Button mCreateUser;
     public String mMail;
     public String mPassword;
     private String mUserName;
@@ -50,7 +49,7 @@ public class LogInDialogUserName extends DialogFragment {
         mAuth = FirebaseAuth.getInstance();
 
         // set the references
-        mCreateUser = (Button) v.findViewById(R.id.button_make_new_user);
+        Button mCreateUser = (Button) v.findViewById(R.id.button_make_new_user);
         mUserNameField = (EditText) v.findViewById(R.id.editText_enter_user_name);
 
         mCreateUser.setOnClickListener(new View.OnClickListener() {

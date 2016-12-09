@@ -28,8 +28,6 @@ public class LogInFragment extends Fragment {
     private static final String TAG = "HappyCode.LogInFragment";
     private static final String DIALOG_USER_NAME = "dialog_user_name";
 
-    private Button mLogInButton;
-    private Button mCreateAccountButton;
     private EditText mMailField;
     private EditText mPasswordField;
 
@@ -73,14 +71,14 @@ public class LogInFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         //Set the references
-        mLogInButton = (Button) view.findViewById(R.id.buttonLogIn);
-        mCreateAccountButton = (Button) view.findViewById(R.id.buttonNewAccount);
+        Button logInButton = (Button) view.findViewById(R.id.buttonLogIn);
+        Button createAccountButton = (Button) view.findViewById(R.id.buttonNewAccount);
 
         mMailField = (EditText) view.findViewById(R.id.textField_mail);
         mPasswordField = (EditText) view.findViewById(R.id.textField_password);
 
         // set listeners
-        mLogInButton.setOnClickListener(new View.OnClickListener() {
+        logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -126,7 +124,7 @@ public class LogInFragment extends Fragment {
             }
         });
 
-        mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

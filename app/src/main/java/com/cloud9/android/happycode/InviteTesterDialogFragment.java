@@ -24,7 +24,6 @@ import android.widget.Toast;
 public class InviteTesterDialogFragment extends DialogFragment {
 
     private Button mInviteTester;
-    private Button mCopyKey;
     private EditText mEditText;
     private TextView mEmailText;
 
@@ -40,7 +39,7 @@ public class InviteTesterDialogFragment extends DialogFragment {
 
         // set the references
         mInviteTester = (Button) v.findViewById(R.id.button_invite);
-        mCopyKey = (Button) v.findViewById(R.id.button_copy_key);
+        Button copyKey = (Button) v.findViewById(R.id.button_copy_key);
         mEditText = (EditText) v.findViewById(R.id.editText_invite_dialog);
         mEmailText = (TextView) v.findViewById(R.id.textview_invite_text_description);
         TextView copyText = (TextView) v.findViewById(R.id.textview_copy_key);
@@ -48,7 +47,7 @@ public class InviteTesterDialogFragment extends DialogFragment {
         mEmailText.setVisibility(View.GONE);
         mEditText.setVisibility(View.GONE);
 
-        mCopyKey.setOnClickListener(new View.OnClickListener() {
+        copyKey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 copyKey(mUser.getUid());
