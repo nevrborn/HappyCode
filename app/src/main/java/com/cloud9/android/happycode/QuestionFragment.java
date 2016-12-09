@@ -29,6 +29,7 @@ public class QuestionFragment extends Fragment {
     private static final String LAST_REACHED_INDEX = "last_reached_index";
     private static final String STRENGTH_ARRAY = "strength_array";
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
+    private static final int REQUEST_TO_IDENTIFY = 1;
 
     private Button mNextButton;
     private Button mPreviousButton;
@@ -204,9 +205,8 @@ public class QuestionFragment extends Fragment {
             Intent i = EqualScoreActivity.newIntent(getActivity(), mTestResult, mEqualScoreKeys, mEqualScoresInTopThree);
             startActivity(i);
         } else {
-            getActivity().finish();
             Intent i = ResultPageActivity.newIntent(getActivity(), tempID, true);
-            startActivity(i);
+            startActivityForResult(i, REQUEST_TO_IDENTIFY);
         }
     }
 

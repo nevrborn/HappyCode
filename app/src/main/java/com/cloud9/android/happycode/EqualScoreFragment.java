@@ -28,6 +28,7 @@ public class EqualScoreFragment extends Fragment {
     private static final String TAG = "EqualScoreFragment";
     private static final String CHECKED_KEYS = "the keys of the strenghts that are checked";
     private static final String CHECKED_BOXES = "number_of_checked_boxes";
+    private static final int REQUEST_TO_IDENTIFY = 1;
 
     private int mColumnCount;
     private static int mEqualScoresInTopThree;
@@ -111,10 +112,9 @@ public class EqualScoreFragment extends Fragment {
                     }
 
                     // go to Result Page
-                    getActivity().finish();
                     String key = mTestResult.getID();
                     Intent i = ResultPageActivity.newIntent(getActivity(), key, true); // key is "QuestionID" here because not saved to FireBase yet
-                    startActivity(i);
+                    startActivityForResult(i, REQUEST_TO_IDENTIFY);
 
 
                 } else {
