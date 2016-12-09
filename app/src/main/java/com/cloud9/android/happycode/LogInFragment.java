@@ -37,7 +37,6 @@ public class LogInFragment extends Fragment {
     private TestResultList mTestResultList;
 
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     private String mPassword;
     private String mMail;
@@ -74,21 +73,6 @@ public class LogInFragment extends Fragment {
 
         // Fire up Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
-
 
         //Set the references
         mLogInButton = (Button) view.findViewById(R.id.buttonLogIn);
@@ -165,7 +149,7 @@ public class LogInFragment extends Fragment {
         });
 
 
-        // set user abc@gmail.com ready to log in - JUST FOR TESTING!
+        // set testuser ready to log in - JUST FOR TESTING!
         mMailField.setText("jarle.matland@gmail.com");
         mPasswordField.setText("ffffff");
 
@@ -181,19 +165,11 @@ public class LogInFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthStateListener);
     }
 
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthStateListener != null) {
-            mAuth.removeAuthStateListener(mAuthStateListener);
-        }
-    }
 
     private void writeToFirebase(TestResult testResult) {
+
         // set the database reference to the current user
         String userID = User.get().getUid();
         testResult.setUser(userID);

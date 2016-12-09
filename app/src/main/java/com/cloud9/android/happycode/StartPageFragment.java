@@ -2,6 +2,7 @@ package com.cloud9.android.happycode;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,17 +33,22 @@ public class StartPageFragment extends Fragment {
     private static final String DIALOG_INVITE = "dialog_invite";
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
 
-    private Button mStartButton;
-    private Button mAboutButton;
-    private Button mTestHistoryButton;
-    private Button mAllCodes;
-    private Button mLogInButton;
-    private Button mInviteButton;
+    Button mStartButton;
+    Button mAboutButton;
+    Button mTestHistoryButton;
+    Button mAllCodes;
+    Button mLogInButton;
+    Button mInviteButton;
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     private TestResultList mTestResultList;
+    private static StrengthList mStrengthList;
     public static Map<String, String> userKeyAndNameArray = new HashMap<>();
 
-    private User mUser;
+    User mUser;
+    private DatabaseReference mDatabaseRef;
 
     /*
     * create new instance
@@ -54,12 +63,8 @@ public class StartPageFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mTestResultList = TestResultList.get(getContext());
-        StrengthList strengthList = StrengthList.get(getContext());
+        mStrengthList = StrengthList.get(getContext());
 
-        if (User.get() != null) {
-            getDataFromFirebase();
-            getUserIDsFromFB();
-        }
     }
 
     @Nullable
@@ -83,6 +88,25 @@ public class StartPageFragment extends Fragment {
         }
 
         // set listeners
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    User.set();
+                    Toast.makeText(getActivity(), "" + user.getUid(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                updateLogInButton();
+            }
+        };
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.addAuthStateListener(mAuthStateListener);
+
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,11 +201,19 @@ public class StartPageFragment extends Fragment {
         mAllCodes.setBackgroundResource(R.drawable.button_start);
 
         if (user != null) {
-            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
+            mDatabaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
             writeExcitingTestsToFirebase();
             getDataFromFirebase();
             getUserIDsFromFB();
             mInviteButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthStateListener != null) {
+            mAuth.removeAuthStateListener(mAuthStateListener);
         }
     }
 
@@ -241,7 +273,7 @@ public class StartPageFragment extends Fragment {
 
                 TestResult testresult = mTestResultList.getTestResultFromIndex(i);
 
-                if (!testresult.getWrittenToFirebase()) {
+                if (testresult.getWrittenToFirebase() == false) {
                     writeToFirebase(testresult);
                 }
 
