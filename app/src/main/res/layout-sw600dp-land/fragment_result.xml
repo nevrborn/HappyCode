@@ -166,577 +166,6 @@
         />
 
     <LinearLayout
-        android:id="@+id/linearlayout_strenghts_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="30dp"
-        android:layout_above="@id/textview_result_date_and_user">
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_16"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_16"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_strategist_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_16"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_strategist"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_16"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_17"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_17"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_visionary_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_17"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_visionary"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_17"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_18"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_18"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_pathfinder_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_18"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_pathfinder"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_18"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_19"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_19"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_researcher_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_19"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_researcher"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_19"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_20"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_20"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_thinker_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_20"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_thinker"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_20"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearlayout_strenghts_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_above="@id/linearlayout_strenghts_4">
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_11"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_11"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_motivator_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_11"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_motivator"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_11"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_12"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_12"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_connector_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_12"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_connector"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_12"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_13"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_13"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_unifier_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_13"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_unifier"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_13"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_14"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_14"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_inspirer_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_14"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_inspirer"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_14"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_15"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_15"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_feeler_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_15"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_feeler"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_15"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearlayout_strenghts_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_above="@id/linearlayout_strenghts_3">
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_6"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_6"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_organiser_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_6"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_organiser"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_6"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_7"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_7"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_guardian_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_7"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_guardian"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_7"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_8"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_8"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_planner_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_8"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_planner"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_8"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_9"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_9"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_hardworker_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_9"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_hardworker"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_9"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearlayout_strength_summary_10"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/textview_strength_summary_10"
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_administrator_title"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/imageview_strength_summary_10"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_administrator"
-                />
-
-            <TextView
-                android:id="@+id/textview_strength_summary_percentage_10"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="@string/strength_percentage_50"
-                android:layout_marginTop="2dp"
-                android:textSize="10sp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearlayout_strenghts_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -915,6 +344,568 @@
 
             <TextView
                 android:id="@+id/textview_strength_summary_percentage_5"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_7"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_7"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_guardian_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_7"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_guardian"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_7"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_6"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_6"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_organiser_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_organiser"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_6"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_strenghts_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_above="@id/linearlayout_strenghts_3">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_8"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_8"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_planner_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_8"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_planner"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_8"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_9"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_9"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_hardworker_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_9"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_hardworker"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_9"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_10"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_10"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_administrator_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_10"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_administrator"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_10"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_11"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_11"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_motivator_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_11"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_motivator"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_11"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_12"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_12"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_connector_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_connector"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_12"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_13"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_13"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_unifier_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_13"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_unifier"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_13"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_14"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_14"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_inspirer_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_14"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_inspirer"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_14"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_strenghts_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_above="@id/textview_result_date_and_user">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_15"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_15"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_feeler_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_15"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_feeler"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_15"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_16"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_16"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_strategist_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_16"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_strategist"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_16"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_17"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_17"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_visionary_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_17"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_visionary"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_17"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_18"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_18"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_pathfinder_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_18"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_pathfinder"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_18"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_19"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_19"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_researcher_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_19"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_researcher"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_19"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_percentage_50"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_strength_summary_20"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textview_strength_summary_20"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/strength_thinker_title"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_strength_summary_20"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_thinker"
+                />
+
+            <TextView
+                android:id="@+id/textview_strength_summary_percentage_20"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"

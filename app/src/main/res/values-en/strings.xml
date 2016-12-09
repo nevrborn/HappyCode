@@ -84,6 +84,10 @@
     <string name="njr_link"><a href="http://www.njr.nl">NJR Website</a></string>
     <string name="cloud9_link"><a href="http://www.cloud9.world">Cloud9 Website</a></string>
 
+    // RESULT PAGE TABLET
+    <string name="strength_percentage_50">50</string>
+    <string name="percentage_sign">&#37;</string>
+
     // STRENGTHS AND DESCRIPTIONS
     <string name="strength_leader_title">Leader</string>
     <string name="strength_leader">In a group, I often take the descisions, because I know where I want to go</string>

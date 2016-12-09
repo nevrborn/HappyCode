@@ -42,6 +42,9 @@ public class ResultPageFragment extends Fragment {
     private TestResultList mTestResultList;
     public static String mTestResultKey;
     private Callbacks mCallbacks;
+    public static Boolean isTablet = false;
+
+    Map<String, Integer> mResultArray;
 
     private ImageView mResultIcon1;
     private ImageView mResultIcon2;
@@ -89,7 +92,7 @@ public class ResultPageFragment extends Fragment {
             mTestResult = TestResultList.getTestResult(mID);
         }
 
-        Map<String, Integer> resultArray = mTestResult.getResultArray();
+        mResultArray = mTestResult.getResultArray();
         StrengthList strengths = StrengthList.get(getContext());
 
 
@@ -125,6 +128,50 @@ public class ResultPageFragment extends Fragment {
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
         mResultIcon2.setImageResource(mNr2Strength.getIconID());
         mResultIcon3.setImageResource(mNr3Strength.getIconID());
+
+        if (isTablet) {
+            TextView strength_percentage_1 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_1);
+            TextView strength_percentage_2 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_2);
+            TextView strength_percentage_3 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_3);
+            TextView strength_percentage_4 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_4);
+            TextView strength_percentage_5 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_5);
+            TextView strength_percentage_6 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_6);
+            TextView strength_percentage_7 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_7);
+            TextView strength_percentage_8 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_8);
+            TextView strength_percentage_9 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_9);
+            TextView strength_percentage_10 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_10);
+            TextView strength_percentage_11 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_11);
+            TextView strength_percentage_12 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_12);
+            TextView strength_percentage_13 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_13);
+            TextView strength_percentage_14 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_14);
+            TextView strength_percentage_15 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_15);
+            TextView strength_percentage_16 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_16);
+            TextView strength_percentage_17 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_17);
+            TextView strength_percentage_18 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_18);
+            TextView strength_percentage_19 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_19);
+            TextView strength_percentage_20 = (TextView) view.findViewById(R.id.textview_strength_summary_percentage_20);
+
+            strength_percentage_1.setText(mResultArray.get("100").toString() + "%");
+            strength_percentage_2.setText(mResultArray.get("200").toString() + "%");
+            strength_percentage_3.setText(mResultArray.get("300").toString() + "%");
+            strength_percentage_4.setText(mResultArray.get("400").toString() + "%");
+            strength_percentage_5.setText(mResultArray.get("500").toString() + "%");
+            strength_percentage_6.setText(mResultArray.get("600").toString() + "%");
+            strength_percentage_7.setText(mResultArray.get("700").toString() + "%");
+            strength_percentage_8.setText(mResultArray.get("800").toString() + "%");
+            strength_percentage_9.setText(mResultArray.get("900").toString() + "%");
+            strength_percentage_10.setText(mResultArray.get("1000").toString() + "%");
+            strength_percentage_11.setText(mResultArray.get("1100").toString() + "%");
+            strength_percentage_12.setText(mResultArray.get("1200").toString() + "%");
+            strength_percentage_13.setText(mResultArray.get("1300").toString() + "%");
+            strength_percentage_14.setText(mResultArray.get("1400").toString() + "%");
+            strength_percentage_15.setText(mResultArray.get("1500").toString() + "%");
+            strength_percentage_16.setText(mResultArray.get("1600").toString() + "%");
+            strength_percentage_17.setText(mResultArray.get("1700").toString() + "%");
+            strength_percentage_18.setText(mResultArray.get("1800").toString() + "%");
+            strength_percentage_19.setText(mResultArray.get("1900").toString() + "%");
+            strength_percentage_20.setText(mResultArray.get("2000").toString() + "%");
+        }
 
         String userName = StartPageFragment.getNameFromKey(mTestResult.getUser());
         if (!userName.equals("")) {
