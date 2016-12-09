@@ -2,6 +2,7 @@ package com.cloud9.android.happycode;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -263,14 +264,19 @@ public class ResultPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                new AlertDialog.Builder(getActivity())
-                        .setView(view)
+                AlertDialog alertDialogBuilder = new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.delete_test_result)
                         .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(android.R.string.ok, null)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        deleteFromFirebase();
+                                    }
+                                }
+                        )
                         .create();
 
-                deleteFromFirebase();
+                alertDialogBuilder.show();
             }
 
         });
