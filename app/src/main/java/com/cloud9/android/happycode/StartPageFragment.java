@@ -172,7 +172,7 @@ public class StartPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mUser == null) {
-                    Toast.makeText(getActivity(), "You must be logged in to do this", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.must_be_logged_in), Toast.LENGTH_SHORT).show();
                 } else {
                     FragmentManager fragmentManager = getFragmentManager();
                     InviteTesterDialogFragment inviteTesterDialogFragment = new InviteTesterDialogFragment();
