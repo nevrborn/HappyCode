@@ -11,6 +11,7 @@
     <style name="Buttons">
         <item name="android:background">@color/colorHappyCode</item>
         <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="MyDialog" parent="@android:style/Theme.Dialog">
