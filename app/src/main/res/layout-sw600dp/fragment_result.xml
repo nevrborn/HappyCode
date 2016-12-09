@@ -34,6 +34,7 @@
             android:layout_height="70dp"
             android:layout_marginLeft="16dp"
             android:src="@drawable/ic_android_happy_code_24dp"
+            android:contentDescription="image"
             />
 
         <ImageView
@@ -42,6 +43,7 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:src="@drawable/ic_android_happy_code_24dp"
+            android:contentDescription="image"
             />
 
         <ImageView
@@ -50,6 +52,7 @@
             android:layout_height="70dp"
             android:layout_marginRight="16dp"
             android:src="@drawable/ic_android_happy_code_24dp"
+            android:contentDescription="image"
             />
 
     </LinearLayout>
@@ -63,6 +66,7 @@
         android:layout_marginLeft="59dp"
         android:layout_marginRight="59dp"
         android:background="@drawable/line_result_page"
+        android:contentDescription="image"
         />
 
     <TextView
@@ -149,7 +153,7 @@
         android:layout_above="@+id/result_button_linear_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:textSize="10dp"
+        android:textSize="10sp"
         android:textColor="@android:color/white"
         android:textAlignment="center"
         />
@@ -196,6 +200,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_strategist"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -232,6 +237,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_visionary"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -268,6 +274,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_pathfinder"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -304,6 +311,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_researcher"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -340,6 +348,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_thinker"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -386,6 +395,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_motivator"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -422,6 +432,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_connector"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -458,6 +469,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_unifier"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -494,6 +506,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_inspirer"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -530,6 +543,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_feeler"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -576,6 +590,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_organiser"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -612,6 +627,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_guardian"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -648,6 +664,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_planner"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -684,6 +701,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_hardworker"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -720,6 +738,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_administrator"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -767,6 +786,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_leader"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -803,6 +823,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_storyteller"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -839,6 +860,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_challenger"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -875,6 +897,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_networker"
+                android:contentDescription="image"
                 />
 
             <TextView
@@ -911,6 +934,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/icon_moodmaker"
+                android:contentDescription="image"
                 />
 
             <TextView

@@ -64,13 +64,10 @@ public class LogInDialogUserName extends DialogFragment {
                     mAuth.createUserWithEmailAndPassword(mMail, mPassword).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
-                                Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage());
                                 Toast.makeText(getActivity(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
                             } else if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), R.string.auth_user_created, Toast.LENGTH_SHORT).show();
@@ -78,7 +75,6 @@ public class LogInDialogUserName extends DialogFragment {
                                 User user = User.get();
                                 user.setName(mUserName);
                                 mDatabaseRef.child("users").child(user.getUid()).setValue(User.get());
-
 
                                 // go to previous activity
                                 getActivity().finish();

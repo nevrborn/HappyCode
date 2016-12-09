@@ -17,7 +17,6 @@ public class ResultPageActivity extends SingleFragmentActivity implements Result
     * create Intent to start this activity
     */
     public static Intent newIntent(Context context, String testResultID, Boolean isFromQuestionPage) {
-        Intent i = new Intent(context, ResultPageActivity.class);
         mTestResultID = testResultID;
         mIsFromQuestionPage = isFromQuestionPage;
         return new Intent(context, ResultPageActivity.class);

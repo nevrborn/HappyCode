@@ -14,14 +14,11 @@ public class User {
     // Name, email address, and profile photo Url
     private static String sName;
     private static String sEmail;
-    private static Uri sPhotoUrl;
 
     // The user's ID, unique to the Firebase project. Do NOT use this value to
     // authenticate with your backend server, if you have one. Use
     // FirebaseUser.getToken() instead.
     private static String sUid;
-
-    private static boolean sIsLoggedIn;
 
     private static User mUser;
 
@@ -30,7 +27,6 @@ public class User {
     private User(FirebaseUser firebaseUser) {
         sName = firebaseUser.getDisplayName();
         sEmail = firebaseUser.getEmail();
-        sPhotoUrl = firebaseUser.getPhotoUrl();
         sUid = firebaseUser.getUid();
         setIsLoggedIn(true);
     }
@@ -52,12 +48,8 @@ public class User {
         mUser = null;
     }
 
-    public boolean isLoggedIn() {
-        return sIsLoggedIn;
-    }
-
-    public void setIsLoggedIn(boolean isLoggedIn) {
-        sIsLoggedIn = isLoggedIn;
+    private void setIsLoggedIn(boolean isLoggedIn) {
+        boolean sIsLoggedIn = isLoggedIn;
     }
 
     public String getName() {
@@ -76,19 +68,8 @@ public class User {
         User.sEmail = email;
     }
 
-    public Uri getPhotoUrl() {
-        return sPhotoUrl;
-    }
-
-    public void setPhotoUrl(Uri photoUrl) {
-        User.sPhotoUrl = photoUrl;
-    }
-
     public String getUid() {
         return sUid;
     }
 
-    public void setUid(String uid) {
-        User.sUid = uid;
-    }
 }

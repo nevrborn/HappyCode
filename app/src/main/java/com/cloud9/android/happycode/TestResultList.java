@@ -25,7 +25,6 @@ public class TestResultList {
     }
 
     private TestResultList(Context context) {
-        Context context1 = context.getApplicationContext();
         mTestResultList = new ArrayList<>();
     }
 

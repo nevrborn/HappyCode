@@ -45,7 +45,7 @@ public class ResultPageFragment extends Fragment {
     private Callbacks mCallbacks;
     public static Boolean isTablet = false;
 
-    Map<String, Integer> mResultArray;
+    private Map<String, Integer> mResultArray;
 
     private ImageView mResultIcon1;
     private ImageView mResultIcon2;
@@ -89,7 +89,7 @@ public class ResultPageFragment extends Fragment {
         // If the intent is coming from QuestionPage, then look up
         if (mIsFromQuestionPage) {
             mTestResult = TestResultList.getTestResult("questionID");
-        } else if (!mIsFromQuestionPage) {
+        } else {
             mTestResult = TestResultList.getTestResult(mID);
         }
 
