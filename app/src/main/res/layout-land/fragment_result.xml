@@ -79,7 +79,7 @@
                 android:id="@+id/imageview_result_three"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginRight="48dp"
+                android:layout_marginRight="64dp"
                 android:src="@drawable/ic_android_happy_code_24dp"
                 android:contentDescription="image"
                 />
