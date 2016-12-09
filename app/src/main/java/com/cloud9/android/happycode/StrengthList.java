@@ -13,7 +13,6 @@ public class StrengthList {
 
     private static StrengthList sStrengthList;
     private static List<Strength> mStrengthList;
-    private Context mContext;
 
     public static StrengthList get(Context context) {
         if (sStrengthList == null) {
@@ -23,7 +22,7 @@ public class StrengthList {
     }
 
     private StrengthList(Context context) {
-        mContext = context.getApplicationContext();
+        Context context1 = context.getApplicationContext();
         mStrengthList = new ArrayList<>();
 
         addStrength(new Strength("100", R.string.strength_leader_title, R.string.strength_leader, R.string.strength_leader_description, R.drawable.strength_leader, R.drawable.icon_leader));
@@ -49,7 +48,7 @@ public class StrengthList {
 
     }
 
-    public void addStrength(Strength strength) {
+    private void addStrength(Strength strength) {
         mStrengthList.add(strength);
     }
 

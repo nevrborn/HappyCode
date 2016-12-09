@@ -44,10 +44,6 @@ public class TestHistoryActivity extends SingleFragmentActivity implements TestH
         }
     }
 
-    public void onTestResultDeleted(TestResult testResult) {
-        TestHistoryFragment testResultFragment = (TestHistoryFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        testResultFragment.updateModel();
-    }
 
     @Override
     public void onTestResultDeleted() {

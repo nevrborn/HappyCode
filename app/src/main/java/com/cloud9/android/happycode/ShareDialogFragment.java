@@ -18,8 +18,8 @@ import android.widget.Toast;
 
 public class ShareDialogFragment extends DialogFragment {
 
-    Button mShareMail;
-    Button mShareWithAny;
+    private Button mShareMail;
+    private Button mShareWithAny;
 
 
     @NonNull

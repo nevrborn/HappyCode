@@ -4,17 +4,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipboardManager;
 import android.content.ClipData;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,25 +17,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 /**
  * Created by nevrborn on 06.12.2016.
  */
 
 public class InviteTesterDialogFragment extends DialogFragment {
 
-    private static final String DIALOG_INVITE = "dialog_invite";
-    public static final String ARG_WILL_INVITE = "dialog_will_invite";
+    private Button mInviteTester;
+    private Button mCopyKey;
+    private EditText mEditText;
+    private TextView mEmailText;
+    private TextView mCopyText;
 
-    Button mInviteTester;
-    Button mCopyKey;
-    EditText mEditText;
-    TextView mEmailText;
-    TextView mCopyText;
-
-    User mUser;
-    Boolean wantsToSendEmail = false;
+    private User mUser;
+    private Boolean wantsToSendEmail = false;
 
     @NonNull
     @Override
@@ -76,12 +66,12 @@ public class InviteTesterDialogFragment extends DialogFragment {
         mInviteTester.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (wantsToSendEmail == false) {
+                if (!wantsToSendEmail) {
                     mEmailText.setVisibility(View.VISIBLE);
                     mEditText.setVisibility(View.VISIBLE);
                     mInviteTester.setText(R.string.invite_dialog_invite_button_send);
                     wantsToSendEmail = true;
-                } else if (wantsToSendEmail == true) {
+                } else if (wantsToSendEmail) {
                     String[] mailRecipient = new String[1];
                     mailRecipient[0] = mEditText.getText().toString();
                     Intent i = new Intent(Intent.ACTION_SENDTO);
@@ -113,7 +103,7 @@ public class InviteTesterDialogFragment extends DialogFragment {
         return getString(R.string.invite_text, usedID);
     }
 
-    public void copyKey(String userID) {
+    private void copyKey(String userID) {
         ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("userKey", userID);
         clipboard.setPrimaryClip(clip);

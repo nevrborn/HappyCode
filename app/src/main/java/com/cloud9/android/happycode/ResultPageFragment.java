@@ -2,7 +2,6 @@ package com.cloud9.android.happycode;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,11 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -42,8 +38,6 @@ public class ResultPageFragment extends Fragment {
     private Strength mNr3Strength;
     private int mCurrentStrength; // which result is currently selected (0, 1, ...)
     private TestResult mTestResult;
-    private Map<String, Integer> mResultArray = new HashMap<>();
-    private StrengthList mStrengths;
     private static Boolean mIsFromQuestionPage = false;
     private TestResultList mTestResultList;
     public static String mTestResultKey;
@@ -56,12 +50,6 @@ public class ResultPageFragment extends Fragment {
     private TextView mStrenghtText;
     private TextView mStrengthTitle;
     private TextView mExplanation;
-    private Button mToMenuButton;
-    private Button mShareResultButton;
-    private TextView mDateAndUser;
-    private Button mDeleteButton;
-
-    private DatabaseReference mUserRef;
 
     /*
     * create new instance
@@ -95,23 +83,23 @@ public class ResultPageFragment extends Fragment {
         mTestResultList = TestResultList.get(getContext());
 
         // If the intent is coming from QuestionPage, then look up
-        if (mIsFromQuestionPage == true) {
+        if (mIsFromQuestionPage) {
             mTestResult = TestResultList.getTestResult("questionID");
-        } else if (mIsFromQuestionPage == false) {
+        } else if (!mIsFromQuestionPage) {
             mTestResult = TestResultList.getTestResult(mID);
         }
 
-        mResultArray = mTestResult.getResultArray();
-        mStrengths = StrengthList.get(getContext());
+        Map<String, Integer> resultArray = mTestResult.getResultArray();
+        StrengthList strengths = StrengthList.get(getContext());
 
 
         String mNr1StrengthKey = mTestResult.getNo1StrengthKey();
         String mNr2StrengthKey = mTestResult.getNo2StrengthKey();
         String mNr3StrengthKey = mTestResult.getNo3StrengthKey();
 
-        mNr1Strength = mStrengths.getStrengthFromKey(mNr1StrengthKey);
-        mNr2Strength = mStrengths.getStrengthFromKey(mNr2StrengthKey);
-        mNr3Strength = mStrengths.getStrengthFromKey(mNr3StrengthKey);
+        mNr1Strength = strengths.getStrengthFromKey(mNr1StrengthKey);
+        mNr2Strength = strengths.getStrengthFromKey(mNr2StrengthKey);
+        mNr3Strength = strengths.getStrengthFromKey(mNr3StrengthKey);
 
     }
 
@@ -127,11 +115,11 @@ public class ResultPageFragment extends Fragment {
         mLine = (ImageView) view.findViewById(R.id.imageview_result_line);
         mStrenghtText = (TextView) view.findViewById(R.id.textview_result_strentgh_text);
         mStrengthTitle = (TextView) view.findViewById(R.id.textview_result_strenght_title);
-        mToMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
-        mShareResultButton = (Button) view.findViewById(R.id.button_share_result);
+        Button toMenuButton = (Button) view.findViewById(R.id.button_result_to_menu);
+        Button shareResultButton = (Button) view.findViewById(R.id.button_share_result);
         mExplanation = (TextView) view.findViewById(R.id.textview_result_explanation);
-        mDateAndUser = (TextView) view.findViewById(R.id.textview_result_date_and_user);
-        mDeleteButton = (Button) view.findViewById(R.id.delete_test_result);
+        TextView dateAndUser = (TextView) view.findViewById(R.id.textview_result_date_and_user);
+        Button deleteButton = (Button) view.findViewById(R.id.delete_test_result);
 
         // set images for the results
         mResultIcon1.setImageResource(mNr1Strength.getIconID());
@@ -142,19 +130,19 @@ public class ResultPageFragment extends Fragment {
         if (!userName.equals("")) {
             String date;
 
-            if (mTestResult.getWrittenToFirebase() == false) {
+            if (!mTestResult.getWrittenToFirebase()) {
                 date = mTestResult.getDateAndTime(System.currentTimeMillis() / 1000L);
             } else {
                 date = mTestResult.getDateAndTime(mTestResult.getDate());
             }
-            mDateAndUser.setText(getString(R.string.date_and_user, date, userName));
-            mDateAndUser.setVisibility(View.VISIBLE);
+            dateAndUser.setText(getString(R.string.date_and_user, date, userName));
+            dateAndUser.setVisibility(View.VISIBLE);
         } else {
-            mDateAndUser.setVisibility(View.GONE);
+            dateAndUser.setVisibility(View.GONE);
         }
 
         // save the test result to the firebase
-        if (mTestResult.getWrittenToFirebase() == false && User.get() != null) {
+        if (!mTestResult.getWrittenToFirebase() && User.get() != null) {
             writeToFirebase(mTestResult);
         }
 
@@ -187,12 +175,12 @@ public class ResultPageFragment extends Fragment {
             }
         });
 
-        mToMenuButton.setOnClickListener(new View.OnClickListener() {
+        toMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // save the test result to the firebase
-                if (mTestResult.getWrittenToFirebase() == false && User.get() != null) {
+                if (!mTestResult.getWrittenToFirebase() && User.get() != null) {
                     writeToFirebase(mTestResult);
                 } else {
                     mTestResult.setDate(System.currentTimeMillis() / 1000L);
@@ -208,7 +196,7 @@ public class ResultPageFragment extends Fragment {
             }
         });
 
-        mShareResultButton.setOnClickListener(new View.OnClickListener() {
+        shareResultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getFragmentManager();
@@ -224,7 +212,7 @@ public class ResultPageFragment extends Fragment {
             }
         });
 
-        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -314,14 +302,15 @@ public class ResultPageFragment extends Fragment {
         mTestResult.setTester(testerID);
         mTestResult.setWrittenToFirebase(true);
 
+        DatabaseReference userRef;
         if (testerID.equals(userID)) {
-            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(testerID);
+            userRef = FirebaseDatabase.getInstance().getReference("users").child(testerID);
         } else {
-            mUserRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+            userRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
         }
 
-        String key = mUserRef.child("results").push().getKey();
-        mUserRef.child("results").child(key).setValue(testResult);
+        String key = userRef.child("results").push().getKey();
+        userRef.child("results").child(key).setValue(testResult);
     }
 
     private void deleteFromFirebase() {

@@ -1,6 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

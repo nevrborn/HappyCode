@@ -1,21 +1,10 @@
 package com.cloud9.android.happycode;
 
-import android.text.format.DateFormat;
-
-import com.google.android.gms.instantapps.InstantApps;
-import com.google.firebase.database.ServerValue;
-
-import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by nevrborn on 22.11.2016.
@@ -122,9 +111,9 @@ public class TestResult {
         findTop3StrengthsHash(mResultArray);
     }
 
-    public void findTop3StrengthsHash(Map<String, Integer> resultArray) {
+    private void findTop3StrengthsHash(Map<String, Integer> resultArray) {
         Map<String, Integer> tempArray = new HashMap<>(resultArray);
-        ArrayList<String> mTop3StrengthKeys = new ArrayList<String>();
+        ArrayList<String> mTop3StrengthKeys = new ArrayList<>();
 
         String keyOfMaxValue = "";
 

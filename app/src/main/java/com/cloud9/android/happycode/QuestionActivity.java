@@ -12,7 +12,7 @@ public class QuestionActivity extends SingleFragmentActivity {
 
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
 
-    String tester_id;
+    private String tester_id;
 
     /*
     * create Intent to start this activity

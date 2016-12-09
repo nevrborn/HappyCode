@@ -12,14 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,23 +20,21 @@ import java.util.Map;
 
 public class QuestionDialogFragment extends DialogFragment {
 
-    public static final String TAG = "QuestionDialogFragment";
     private static final String USER_ID_FROM_TESTER = "user_id_from_tester";
     private static final String USER_NAME_FROM_TESTER = "user_name_from_tester";
 
-    Button mTakeTestYourselfButton;
-    Button mTakeTestForOthersButton;
-    EditText mEditText;
-    TextView mORText;
-    TextView mEnterCodeText;
+    private Button mTakeTestYourselfButton;
+    private Button mTakeTestForOthersButton;
+    private EditText mEditText;
+    private TextView mORText;
+    private TextView mEnterCodeText;
 
-    Boolean wantsToEnterCode = true;
-    private DatabaseReference mUserRef;
-    public static Map<String, String> userKeyAndNameArray;
+    private Boolean wantsToEnterCode = true;
+    private static Map<String, String> userKeyAndNameArray;
 
-    User mUser;
-    String mUserID;
-    String mUserName;
+    private User mUser;
+    private String mUserID;
+    private String mUserName;
 
     @NonNull
     @Override
@@ -95,7 +85,7 @@ public class QuestionDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
 
-                if (wantsToEnterCode == true) {
+                if (wantsToEnterCode) {
                     mEditText.setVisibility(View.VISIBLE);
                     mEditText.setText("3GlzlsmpHVaHXOEyN62BDp9tVHB3");
                     mEnterCodeText.setVisibility(View.VISIBLE);

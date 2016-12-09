@@ -41,7 +41,7 @@ public class QuestionFragment extends Fragment {
     //private ArrayList<Integer> mStrenghtArray = new ArrayList<Integer>();   // Temporary array to hold all the different Percentages from the Strenghts
     private Map<String, Integer> mResultArray = new HashMap<>();
     private ArrayList<String> mSortedStrengthKeys;
-    ArrayList<String> mEqualScoreKeys;
+    private ArrayList<String> mEqualScoreKeys;
     private int mEqualScoresInTopThree;
     private TestResult mTestResult;
     private int mCurrentIndex = 0;
@@ -211,7 +211,7 @@ public class QuestionFragment extends Fragment {
     }
 
     private void getEqualScores(int scoreThirdPlace) {
-        mEqualScoreKeys = new ArrayList<String>();
+        mEqualScoreKeys = new ArrayList<>();
         mEqualScoresInTopThree = 1; // if we have equal scores, nr3 score == nr4 scores so 1 for sure
 
         for (int i = 0; i < mSortedStrengthKeys.size(); i++) {
@@ -226,7 +226,7 @@ public class QuestionFragment extends Fragment {
 
     private void sortResultArray() {
         Map<String, Integer> tempArray = new HashMap<>(mResultArray);
-        mSortedStrengthKeys = new ArrayList<String>();
+        mSortedStrengthKeys = new ArrayList<>();
 
         String keyOfMaxValue = "";
 

@@ -34,7 +34,7 @@ public class TestHistoryFragment extends Fragment {
     private TestResultList mTestResultList;
     private StrengthList mStrengths = StrengthList.get(getContext());
     public static Map<String, Integer> arrayOfTotalResults = new HashMap<>();
-    public static ArrayList<String> mTotalTop3StrengthKeys = new ArrayList<String>();
+    public static ArrayList<String> mTotalTop3StrengthKeys = new ArrayList<>();
 
     private ImageView mTotalTop1StrengthImage;
     private ImageView mTotalTop2StrengthImage;
@@ -157,17 +157,13 @@ public class TestHistoryFragment extends Fragment {
         }
     }
 
-    public void onTestResultDeleted() {
-
-    }
-
     private void makeTotalResultArray(TestResultList testResultList) {
 
         arrayOfTotalResults.clear();
         int sizeOfArray = testResultList.getSize();
         int i = 0;
         int totalPercentage = 0;
-        ArrayList<String> listOfAllCodes = mStrengths.getAllKeys();
+        ArrayList<String> listOfAllCodes = StrengthList.getAllKeys();
 
 
         while (i < listOfAllCodes.size()) {

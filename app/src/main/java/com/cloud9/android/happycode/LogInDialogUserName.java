@@ -28,16 +28,15 @@ public class LogInDialogUserName extends DialogFragment {
 
     private static final String TAG = "HappyCode.LogInFragment";
 
-    Button mCreateUser;
+    private Button mCreateUser;
     public String mMail;
     public String mPassword;
-    String mUserName;
-    EditText mUserNameField;
+    private String mUserName;
+    private EditText mUserNameField;
 
     private TestResultList mTestResultList;
 
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
     @NonNull
@@ -49,7 +48,7 @@ public class LogInDialogUserName extends DialogFragment {
 
         // Fire up Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+        FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -138,7 +137,7 @@ public class LogInDialogUserName extends DialogFragment {
 
                 TestResult testresult = mTestResultList.getTestResultFromIndex(i);
 
-                if (testresult.getWrittenToFirebase() == false) {
+                if (!testresult.getWrittenToFirebase()) {
                     writeToFirebase(testresult);
                 }
 

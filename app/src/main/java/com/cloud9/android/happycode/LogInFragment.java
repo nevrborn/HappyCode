@@ -29,20 +29,18 @@ public class LogInFragment extends Fragment {
     private static final String TAG = "HappyCode.LogInFragment";
     private static final String DIALOG_USER_NAME = "dialog_user_name";
 
-    Button mLogInButton;
-    Button mCreateAccountButton;
-    EditText mMailField;
-    EditText mPasswordField;
+    private Button mLogInButton;
+    private Button mCreateAccountButton;
+    private EditText mMailField;
+    private EditText mPasswordField;
 
     private TestResultList mTestResultList;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-    private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
-    String mUserName;
-    String mPassword;
-    String mMail;
+    private String mPassword;
+    private String mMail;
 
 
     public LogInFragment() {
@@ -218,7 +216,7 @@ public class LogInFragment extends Fragment {
 
                 TestResult testresult = mTestResultList.getTestResultFromIndex(i);
 
-                if (testresult.getWrittenToFirebase() == false) {
+                if (!testresult.getWrittenToFirebase()) {
                     writeToFirebase(testresult);
                 }
 
@@ -229,7 +227,7 @@ public class LogInFragment extends Fragment {
         }
     }
 
-    public void getDataFromFirebase() {
+    private void getDataFromFirebase() {
 
         mTestResultList.clearResults();
 

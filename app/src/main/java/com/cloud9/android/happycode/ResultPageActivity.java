@@ -2,19 +2,13 @@ package com.cloud9.android.happycode;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import java.util.UUID;
 
 /**
  * Created by paulvancappelle on 23-11-16.
  */
 
 public class ResultPageActivity extends SingleFragmentActivity implements ResultPageFragment.Callbacks {
-
-    private static final String TEST_RESULT_ID = "test_result_id";
-    private static final String QUESTION_PAGE_BOOLEAN = "false";
 
     private static String mTestResultID;
     private static Boolean mIsFromQuestionPage;

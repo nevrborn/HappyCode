@@ -18,10 +18,8 @@ import android.widget.TextView;
 
 public class CodeFragment extends Fragment {
 
-    private ListView mListView;
     private StrengthList mStrengths;
     private LayoutInflater mInflater;
-    private Context mContext;
 
     /* Method to create fragment */
     public static CodeFragment newInstance() {
@@ -40,19 +38,19 @@ public class CodeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_codes, container, false);
 
-        mListView = (ListView) view.findViewById(R.id.listView_codes);
+        ListView listView = (ListView) view.findViewById(R.id.listView_codes);
 
         CodeAdapter adapter = new CodeAdapter(this.getContext(), mStrengths);
-        mListView.setAdapter(adapter);
+        listView.setAdapter(adapter);
         return view;
     }
 
     private class CodeAdapter extends BaseAdapter {
 
         public CodeAdapter(Context codeFragment, StrengthList strengths) {
-            mContext = codeFragment;
+            Context context = codeFragment;
             mStrengths = strengths;
-            mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
         @Override

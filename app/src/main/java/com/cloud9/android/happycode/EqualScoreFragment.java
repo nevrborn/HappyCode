@@ -13,12 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,7 +29,7 @@ public class EqualScoreFragment extends Fragment {
     private static final String CHECKED_KEYS = "the keys of the strenghts that are checked";
     private static final String CHECKED_BOXES = "number_of_checked_boxes";
 
-    private int mColumnCount = 1;
+    private int mColumnCount;
     private static int mEqualScoresInTopThree;
     private static TestResult mTestResult;
     private static ArrayList<String> mEqualScoreKeys;
@@ -40,8 +37,6 @@ public class EqualScoreFragment extends Fragment {
     private int mCheckedBoxes = 0;
     private ArrayList<String> mCheckedStrenghts = new ArrayList<>();
 
-    private View mRecyclerView;
-    private TextView mTopTextView;
     private Button mFinishButton;
 
 
@@ -86,9 +81,9 @@ public class EqualScoreFragment extends Fragment {
         // Shuffle the elements in the array
         Collections.shuffle(mEqualScoreKeys);
 
-        mTopTextView = (TextView) view.findViewById(R.id.textview_equal_score_top);
+        TextView topTextView = (TextView) view.findViewById(R.id.textview_equal_score_top);
         Integer i = new Integer(mEqualScoresInTopThree);
-        mTopTextView.setText(getString(R.string.top_equal_score_text_view, i.toString()));
+        topTextView.setText(getString(R.string.top_equal_score_text_view, i.toString()));
         mFinishButton = (Button) view.findViewById(R.id.button_equal_score_finish);
         if (mCheckedBoxes != mEqualScoresInTopThree) {
             mFinishButton.setAlpha(0.6f);
@@ -128,12 +123,12 @@ public class EqualScoreFragment extends Fragment {
             }
         });
 
-        mRecyclerView = view.findViewById(R.id.recyclerview_equal_score);
+        View recyclerView1 = view.findViewById(R.id.recyclerview_equal_score);
 
         // Set the adapter
-        if (mRecyclerView instanceof RecyclerView) {
+        if (recyclerView1 instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) mRecyclerView;
+            RecyclerView recyclerView = (RecyclerView) recyclerView1;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
