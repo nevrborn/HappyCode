@@ -61,7 +61,7 @@
     <ImageView
         android:id="@+id/imageview_result_line"
         android:layout_width="6dp"
-        android:layout_height="32dp"
+        android:layout_height="40dp"
         android:layout_below="@id/linearlayout_result_images"
         android:layout_marginLeft="59dp"
         android:layout_marginRight="59dp"
@@ -175,7 +175,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="50dp"
         android:layout_above="@id/textview_result_date_and_user">
 
         <LinearLayout
