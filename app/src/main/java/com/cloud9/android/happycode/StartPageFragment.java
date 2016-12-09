@@ -198,7 +198,7 @@ public class StartPageFragment extends Fragment {
     private void userIsLoggedIn() {
         mUser = User.get();
         if (mUser != null) {
-            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(user.getUid());
+            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference(mUser.getUid());
             writeExcitingTestsToFirebase();
             getDataFromFirebase();
             getUserIDsFromFB();

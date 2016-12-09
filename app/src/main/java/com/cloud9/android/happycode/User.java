@@ -1,6 +1,5 @@
 package com.cloud9.android.happycode;
 
-import android.net.Uri;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

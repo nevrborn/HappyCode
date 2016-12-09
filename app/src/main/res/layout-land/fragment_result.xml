@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="16dp"
-            android:textSize="40sp"
+            android:textSize="38sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:text="@string/result_title"
@@ -132,22 +132,6 @@
             />
 
         <TextView
-            android:id="@+id/textview_result_explanation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/linearlayout_result_images"
-            android:layout_marginRight="38dp"
-            android:layout_marginEnd="38dp"
-            android:text="@string/result_explanation"
-            android:textColor="@android:color/white"
-            android:layout_centerHorizontal="true"
-            android:alpha="0.7"
-            android:padding="4dp"
-            android:textSize="10sp"
-            android:layout_marginBottom="8dp"
-            />
-
-        <TextView
             android:id="@+id/textview_result_date_and_user"
             android:text="@string/date_and_user"
             android:layout_width="wrap_content"
@@ -161,14 +145,24 @@
 
         <Button
             android:id="@+id/delete_test_result"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:visibility="gone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@android:drawable/ic_menu_delete"
-            android:layout_alignTop="@+id/button_result_to_menu"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@+id/button_share_result"
             />
+
+        <TextView
+            android:id="@+id/textview_result_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result_explanation"
+            android:textColor="@android:color/white"
+            android:alpha="0.7"
+            android:padding="4dp"
+            android:textSize="10sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/linearlayout_result_images"/>
 
     </RelativeLayout>
 

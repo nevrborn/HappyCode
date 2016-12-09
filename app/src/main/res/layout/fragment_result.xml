@@ -129,20 +129,6 @@
         />
 
     <TextView
-        android:id="@+id/textview_result_explanation"
-        android:text="@string/result_explanation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearlayout_result_images"
-        android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
-        android:alpha="0.7"
-        android:padding="4dp"
-        android:textSize="10sp"
-        android:layout_marginBottom="8dp"
-        />
-
-    <TextView
         android:id="@+id/textview_result_date_and_user"
         android:text="@string/date_and_user"
         android:layout_width="wrap_content"
@@ -164,6 +150,19 @@
         android:background="@android:drawable/ic_menu_delete"
         android:layout_alignTop="@+id/button_result_to_menu"
         />
+
+    <TextView
+        android:id="@+id/textview_result_explanation"
+        android:text="@string/result_explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:alpha="0.7"
+        android:padding="4dp"
+        android:textSize="10sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linearlayout_result_images"
+        android:layout_above="@id/textview_result_strenght_title"/>
 
 
 </RelativeLayout>
