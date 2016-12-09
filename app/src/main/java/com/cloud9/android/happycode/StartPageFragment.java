@@ -47,6 +47,7 @@ public class StartPageFragment extends Fragment {
     public static Map<String, String> userKeyAndNameArray = new HashMap<>();
 
     private User mUser;
+    private static boolean sWasStartedBefore;
 
     /*
     * create new instance
@@ -90,7 +91,10 @@ public class StartPageFragment extends Fragment {
                     // User is signed in
                     User.set();
                     userIsLoggedIn();
-                    Toast.makeText(getActivity(), getString(R.string.logged_in_on_start) + user.getEmail(), Toast.LENGTH_SHORT).show();
+                    if (sWasStartedBefore) {
+                        Toast.makeText(getActivity(), getString(R.string.logged_in_on_start) + user.getEmail(), Toast.LENGTH_SHORT).show();
+                        sWasStartedBefore = true;
+                    }
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out

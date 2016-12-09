@@ -42,7 +42,6 @@ public class ResultPageActivity extends SingleFragmentActivity implements Result
         * Therefore when you press the backbutton getCallingActivity will not be empty, and the user
         * is send 'back' to the start Page
         */
-        String test = this.getCallingActivity().toShortString();
         if (this.getCallingActivity() != null) {
             Intent i = StartPageActivity.newIntent(this);
             startActivity(i);
